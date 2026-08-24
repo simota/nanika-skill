@@ -100,7 +100,7 @@ P1 CRYSTALLIZE  (orchestrator only — no spawns)  → contract.md, rubric-draft
 [ ] 1.10 draft rubric: 3-5 dims, weights sum to 1.0, each with a score-3 AND a score-1 descriptor; each disappointment
          criterion attached to a dim as a score-0 trigger                                                                      ev:
 [ ] 1.11 one evaluator archetype assigned per dimension                                                                        ev:
-[ ] 1.12 contract lint run (`run-discipline.md` §1, 6 conditions), each marked pass/fail                                       ev:
+[ ] 1.12 contract lint run (`run-discipline.md` §1, 8 conditions), each marked pass/fail                                       ev:
 
 P1A ANCHOR, VERIFY, THEN FREEZE  → anchors.md, requote.md, rubric-frozen.md
 [ ] 1A.1 exemplar sweep → `anchors.md`: >=1 exemplar and >=1 control, each row carrying a LOCATOR (file:line or URL), the

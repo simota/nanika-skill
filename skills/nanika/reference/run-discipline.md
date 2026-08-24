@@ -1,8 +1,8 @@
 # run-discipline.md — the quality of the run itself
 
-**Owns:** the stance, the six contract-lint conditions row 1.12 runs, the Decision Ledger, acceptance
+**Owns:** the stance, the eight contract-lint conditions row 1.12 runs, the Decision Ledger, acceptance
 provenance, and completion integrity.
-**Read when:** at **P1**, for §1's six lint conditions, which row 1.12 lints against; and at **P5**, for §6's
+**Read when:** at **P1**, for §1's eight lint conditions, which row 1.12 lints against; and at **P5**, for §6's
 completion sweep, which row 5.3 evidences. This file is named on **two** `READ:` lines and is a summand of
 both of `SKILL.md` §0.6's tied peaks — edit it and both peaks move.
 
@@ -12,7 +12,7 @@ independent verification, relocated · §5 acceptance provenance (Q12-Q15) · §
 
 **Eleven numbered rules live here: Q4-Q6 (§2) and Q12-Q19 (§5, §6) — 3 + 8 = 11.** That count is `SKILL.md`
 §0.6's P1 and P5 input; recount it here after any edit to this file, and recompute **both** peaks there.
-§1's six conditions are lint conditions, not numbered rules, and are not in the count — row 1.12 counts them
+§1's eight conditions are lint conditions, not numbered rules, and are not in the count — row 1.12 counts them
 separately and by name. The unit is the coarse one (numbered rules, x1.0); §0.6 prices that, and this file
 does not publish a second count in a second unit.
 
@@ -43,9 +43,11 @@ never permission (N8).
 
 ## §1 — Contract lint, run at the end of P1, not after P2
 
-**Row 1.12 delegates the lint's contents to this section**; the six conditions are stated here and nowhere
-else, and the row requires each to be marked pass/fail. They are cheap, and each names the card row whose
-output it reads:
+**Row 1.12 delegates the lint's contents to this section**; the eight conditions are stated here and
+nowhere else, and the row requires each to be marked pass/fail. Each names the card row whose output it
+reads. Conditions 1-6 check that a part is **present**; 7 and 8 check how the present parts are **written**,
+and they are the only two that read every element of the contract once — the most expensive of the eight,
+and still bounded by the contract's own length:
 
 1. The goal names an outcome, not an internal action (row 1.1).
 2. Every acceptance criterion has a named oracle — a command, a check, a rubric dimension, or a named human
@@ -60,8 +62,35 @@ output it reads:
 6. The envelope and the cycle cap exist and cover success, escalation *and* abort, not success alone (rows
    0.4, 0.6).
 
-Lint does not certify the contract is *right*, only that it is not missing a part. Skipping it moves the
-same failures to P4, where they cost the run a bonus cycle it may not have.
+7. **Every element admits exactly one reading** (rows 1.1-1.7). The test is per element and it is
+   mechanical, not taste: (a) every evaluative word carries a bound, a comparison target, or row 1.2's
+   named oracle — `fast`, `clean`, `polished`, `comprehensive` are unbounded until one is attached; (b)
+   every referent resolves without the dialogue in front of you — no `it`, no `this`, no `the same as
+   before`; (c) a term the run would act on differently under two readings is fixed at first use, by a
+   one-line definition or by an `ASSUME-n` row (row 1.8) naming the reading taken. The question each
+   element must survive: *could two competent readers build materially different artifacts from this line,
+   and both be right?* If yes, it fails. **This does not license badgering the user** — D7 caps the asking
+   at one follow-up, and what the user will not resolve is parked as an `ASSUME-n` stating the reading the
+   run adopted. Ambiguity is removed from *the document*, which is reachable, not from the user's mind,
+   which is not.
+
+8. **Every fact is stated once** (row 1.9). The delete test: cut the sentence and re-read the contract; if
+   no acceptance criterion, oracle, non-goal, prohibited outcome, disappointment criterion or recipient
+   changes reading, it was decoration — delete it. Restating one element in another element's words is the
+   common case; cite the row instead of repeating it. **Two carve-outs, both binding.** The user's own
+   quoted utterances are evidence (`SKILL.md` §0.3, row 1.8, A2) and are never redundancy — a contract
+   holding only your paraphrase records your intent rather than theirs (D6). And non-goals and prohibited
+   outcomes are two axes, not a duplicated pair; condition 3 says why, and collapsing them is the
+   characteristic wrong deletion here.
+
+**When 7 and 8 pull apart, 7 wins.** A line whose removal reopens a reading is not redundant, and length is
+never the reason to leave a reading open. The converse binds equally: precision is never bought with a
+second copy — say it once, exactly, in the field that owns it.
+
+Lint does not certify the contract is *right*. Conditions 1-6 certify that no part is missing; 7 and 8
+certify that what is there says one thing and says it once. Neither certifies that the thing said is what
+the user wanted — 1.8's quotes, 1A.5's Provenance Gate and P3R's personas carry that. Skipping the lint
+moves the same failures to P4, where they cost the run a bonus cycle it may not have.
 
 ## §2 — Decision Ledger (Q4-Q6)
 
