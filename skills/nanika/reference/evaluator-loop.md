@@ -5,11 +5,6 @@
 **Read when:** P3, for the convergence loop; P4, for §8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
 of its four workers.
 
-**Eight numbered rules live here: L1-L8.** That count is `SKILL.md` §0.6's P3 and P4 input; recount it
-here after any edit to this file, and recompute the loads there. This file ships written as of cycle 4 —
-before that it was a manifest description, and `SKILL.md`'s P4 block pointed at a `PAIRWISE_VERDICT`
-schema that existed in no file while N6 forbade the spawn without one.
-
 Nanika raises exactly one thing about this machinery — the ACCEPT bar — and adds blind-pair calibration
 (`SKILL.md` card row 2.3 and its §P2 table) and panel ratification (`refutation-panel.md`). Everything
 else below is the ordinary loop.
@@ -18,7 +13,7 @@ else below is the ordinary loop.
 
 ## L1 — Separation
 
-**An agent never evaluates its own output.** The generator produces the deliverable; independent
+**The producer never supplies its own independent acceptance verdict.** The generator produces the deliverable; independent
 evaluators score it against the contract using the frozen rubric. A generator asked to grade its work
 grades the *intent* it held while producing, not the artifact it produced. `SKILL.md` N1 owns the
 prohibition and the degraded-mode consequence; this rule owns the shape.
@@ -200,11 +195,10 @@ properties are the comparable part and the part the rubric was written from.
 
 **Do:** map each rubric dimension to exactly one evaluator · keep the roster at ≤ 5, beyond which
 agreement rises and information does not · tune the *evaluator*, not the generator, because making an
-evaluator appropriately skeptical is far more tractable than making a generator self-critical · attach the
-calibration pair with the orchestrator's own breakdowns to every scoring prompt (N6's fourth field) · put
+evaluator appropriately skeptical is far more tractable than making a generator self-critical · keep scoring and blinded-pair payloads within N6's role-specific boundaries · put
 the frozen dimension names and weights into each cycle file by quoting them, per card row 3.1.
 
-**Don't:** let the generator evaluate its own output, "a quick self-check" included · run without a cycle
+**Don't:** treat the generator's tests or self-review as independent acceptance · run without a cycle
 cap · accept a score with no `evidence_span` · let an evaluator edit the artifact · treat a passing loop
 as a substitute for exercising the deliverable, because a tuned evaluator still misses subtle bugs,
 layout defects and deeply nested behaviour.

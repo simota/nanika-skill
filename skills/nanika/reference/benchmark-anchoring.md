@@ -12,10 +12,6 @@ Contents: §1 what an anchor is and what each row must carry (B1-B7) · §2 the 
 **§3 the 1A.3 checker: four verdicts, four schemas (B8-B11)** · §4 disposition at 1A.4 (B12) ·
 §5 the Provenance Gate (B13).
 
-**Thirteen numbered rules live here: B1-B13** — `grep -c '^\*\*B[0-9]'` returns 13. That count is
-`SKILL.md` §0.6's P1A input; recount it here after any edit to this file, and recompute the load there.
-**The count moved 12 → 13 this cycle** and B10, the separation verdict, is the rule that moved it.
-
 A ceiling defined only by the system that must reach it can be satisfied by mediocrity. This phase goes and
 finds out what excellent looks like for this class of artifact, writes the score-3 descriptors *from what
 it found*, and then hands the whole thing to a worker that did not run the sweep.
@@ -29,8 +25,7 @@ existing artifacts of the deliverable's class and the specific properties that m
 are row 1A.1's. Two disciplines follow and neither is optional. **Reachability is demonstrated, not
 assumed** — an artifact that scores 3 exists, and its locator is in `anchors.md`, which is a stronger
 guarantee than a panel agreeing that a bar "seems achievable". And **do not copy the exemplar**: it
-calibrates the bar, and row 4.1 asks whether ours *wins*, not whether it *resembles*. An artifact that
-reaches 3 by imitation loses that gate to the thing it imitated.
+calibrates the bar, and row 4.1 asks whether ours *wins*, not whether it *resembles*. The gate does not guarantee that imitation loses; similarity is not quality evidence.
 
 **B2 — Every row carries a locator that someone else can open.** A `file:line` inside a repository the run
 can read, or a URL. A locator is not a title, a description, a search phrase or "the well-known X" —
@@ -198,7 +193,7 @@ criterion, each disappointment criterion, each rubric dimension, each named reci
 
 | class | meaning |
 |-------|---------|
-| `elicited` | traceable to an explicit user utterance — the quote is in `contract.md` |
+| `elicited` | traceable to a permitted explicit user quote in `contract.md`; approved summaries/redactions are `ratified` (A2) |
 | `ratified` | started as an `ASSUME-n` row and was ratified at a checkpoint |
 | `parked` | recorded in Open Questions, and shipping as a known gap |
 | `silent` | none of the above — the dialogue never touched it |

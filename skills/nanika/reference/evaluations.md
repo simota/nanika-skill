@@ -11,9 +11,7 @@ checking what `DELTA: UNMEASURED` in `SKILL.md` is a claim about.
 Contents: E1 skill delta · E2 instruction-compliance vs verbal-compliance · E3 deletion control ·
 E4 weakest-tier survival · §5 what each result would change.
 
-Row and load figures below are **pointers, not copies**: the card's row count and `SKILL.md` §0.6's peak
-own themselves, and this file names the section rather than restating the arithmetic. Cycle 3 restated
-§0.6's whole computation here, which is the class A4 forbids.
+Read row counts from the actual card; do not infer execution capacity from mixed instruction units.
 
 ---
 
@@ -123,9 +121,16 @@ written before any result exists to defend.
 each, delete the mechanism (its card rows, its rules, its reference sections), run all three E1 briefs
 under the reduced skill, and score with the same blind judges and the same frozen rubric.
 
-**Decision rule, pre-registered:** a mechanism whose deletion costs less than **0.15** weighted points,
-with a CI that includes 0, is **cut** at the next revision, not defended. The forced-cut ordering in the
-cycle report is a guess at this ranking made without data; E3 replaces it.
+**Deletion decision, specified before data collection:** define loss as full minus ablated quality. Choose a
+maximum tolerable loss for the task class before seeing results; the former **0.15** is a design choice, not a
+safety invariant. A mechanism is eligible for removal when the loss's upper confidence bound is below that margin
+and no hard safety/correctness gate regressed. A CI containing zero is not evidence of equivalence. A wide CI is
+inconclusive, not protection for the architecture and not permission to declare the mechanism useless.
+
+Pair full and ablated runs on the same briefs, models and budgets. Pilot the **paired-difference SD**; repeats on
+one brief and repeated judgments are not independent briefs. Prespecify class coverage, uncertainty estimation,
+maximum sample size and multiple-ablation handling. A sequential design needs valid stopping boundaries rather
+than repeated unadjusted significance tests. Three briefs alone cannot establish a 0.15-point non-inferiority claim.
 
 **Ablations, in the order they will be run** (cheapest to delete first, so an early kill saves the rest):
 spawn/engine preflight (0.8, 1A.7) · salvage wiring (2.6 → 3.3) · reception spans (3R.1) · refutation
@@ -138,10 +143,8 @@ its clauses on, and ablating it whole answers "does anchoring help?", not "does 
 — which is the question the property axis and the control axis were added to serve. So the anchor
 ablation runs in four variants: full · minus the separation verdict (1A.3's control clause) · minus the
 dimension mapping (1A.2's third clause) · minus the reject list (1A.1's third clause). Same cut rule.
-**The result that would hurt most, named in advance:** the three reduced variants scoring inside 0.15 of
-the full one. That would mean the two anchor clauses that pushed the peak load up — §0.6 owns both the
-figure and the fraction — bought nothing measurable, and the honest response is to delete them rather than
-re-argue them.
+The reduced variants remain deletion candidates. Apply the same upper-bound rule separately; a small observed
+difference alone does not establish no loss, and null significance is not a reason to preserve or delete a mechanism.
 
 ---
 
@@ -158,10 +161,9 @@ executed; and where in the card the run first drifted — the phase at which a r
 artifact.
 
 **Pass:** ≥ 0.90 of rows carry resolving paths and ≥ 9 of 10 identities balance in all three runs.
-**Expected failure mode, stated before the run:** the two phases `SKILL.md` §0.6 names as the peak-load
-tie are where a weak tier should break first, and §0.6 states what fraction of the measured adherence
-knee that peak is [EV-10]. If E4 fails at either, the fix is a smaller card, not a stronger claim — and
-E3's four-variant anchor ablation is the ranking that decides which clauses go.
+**Execution hypothesis, untested:** omissions may grow with instruction burden; no validated count predicts the
+first failing phase [EV-10]. Record that phase rather than inferring it from mixed units. If E4 fails, reduce the
+card instead of adding explanatory prose. E3 can inform deletion only when its uncertainty is adequate.
 
 ---
 
@@ -172,9 +174,9 @@ E3's four-variant anchor ablation is the ranking that decides which clauses go.
 | E1 outcome 1 (no effect above +0.40) | `delta:` becomes a measured null; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
 | E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
-| E1's M arm ≈ W arm | the run directory, the card and the identities are ceremony and should be cut; the prose is doing the work |
+| E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |
 | E2 low `yes` rate on the content sample | ID1's limitation stops being a footnote: either a content check earns a row, or §7's claim narrows again |
 | E2's `spawns/` ratio far from 1 | not a detection — a question. It would put a `spawns/` identity on the next revision's agenda against whatever it must displace |
-| any E3 ablation inside 0.15 with a CI including 0 | that row leaves §7's kept table and its card rows are deleted |
-| E3's anchor sub-ablations inside 0.15 | 1A.2's dimension clause and 1A.3's separation clause are deleted, and the peak drops by those two clauses — recompute it in §0.6 rather than quoting an earlier figure |
-| E4 failure at a peak-load phase | the card is cut to fit the tier, using E3's ranking rather than the published guess |
+| E3 upper loss bound below its prespecified margin, no hard-gate regression | remove the eligible mechanism at revision rather than defend it by elegance |
+| E3 anchor sub-ablations meeting that same decision rule | remove the eligible anchor clauses; report measured size and execution changes without a mixed-unit load ratio |
+| E4 execution failure | reduce the card or duplication at the observed failure; use E3 only within its measured uncertainty |

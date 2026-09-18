@@ -1,6 +1,6 @@
 ---
 name: nanika
-description: "Once-in-a-lifetime request delivery: a scarcity-gated, one-shot, quality-ceiling harness for any deliverable — code, document, design, or plan. Use when the user frames a request as their most important ask, or when there is no second delivery."
+description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; nanika may wrap them. Explicit invocation still requires spend consent."
 allowed-tools: Read, Write, Edit, Bash, WebSearch, WebFetch
 requires-capability: spawn-independent-worker
 ---
@@ -22,43 +22,25 @@ you need.
 
 This is not an essay about quality. It is a harness, and you are the machine in it.
 
-1. **The specification is the Run Card (§1) plus the Always/Never rules (§2)** — 57 rows and 14 rules, and nothing
-   else in this file adds one. Two counts, both recountable, neither rounded: **71 addressable requirements** (`grep
-   -c '^\[ \] '` = 57, plus A1-A6 and N1-N8) and, at clause level — every requirement inside a row that can be failed
-   on its own and leaves its own evidence — **101 row clauses + 14 rules = 115**, itemised per row in `identities.md`
-   §0 so it can be recounted rather than believed. §0.6 uses the higher unit. Where a row names a table in this file
-   (§3's exit table, scope line and degraded-mode list; §P2's calibration table), that table is part of that row. §4's
-   phase blocks are commentary. **If a phase block reads like a requirement the card does not carry, the card is
-   wrong** — record it as a residual in the report's Amendment section; do not silently obey it and do not silently
-   drop it.
-2. **Copy the card into your visible response now**, before Phase 0, and write it to `.nanika/runs/<slug>/card.md`. A1
-   owns re-emission after that.
-3. **Evidence is a path** — this item owns that rule; the card legend and N3 point at it. Every filled cell holds
-   `file:line` inside the run directory. A quoted user utterance is evidence once it is in `contract.md`; a command is
-   evidence once its output is in a file. A row you performed but cannot point at is an unperformed row. Verbal and
-   actual compliance have been measured up to 100 percentage points apart, and human reviewers caught the gap 0 times
-   in 15 [EV-14]. The run directory holds, at minimum: `card.md` · `gate.md` · `contract.md` · `rubric-draft.md` ·
-   `anchors.md` · `requote.md` · `rubric-frozen.md` · `candidates/` · `cycles/<n>.md` · `personas/` · `gate4.md` ·
-   `unexplored.md` · `report.md` · and three directories: `scorecards/` (one per scorer, counted by ID9), `ext/` (one
-   per `ext` cell, counted by ID8), and `spawns/` (one file per spawn prompt, required by N6 and **counted by no
-   identity** — §7 prices that residue rather than letting this line imply a check).
+1. **The specification is the Run Card (§1) plus Always/Never (§2).** There are 57 row addresses and 14 rule
+   addresses, not 71 atomic instructions. Tables explicitly delegated by a row are part of its requirements.
+   `identities.md` §0 owns the address inventory. Phase commentary adds no rules; an unowned imperative is a
+   specification defect, recorded in the report's Amendment section rather than silently obeyed or dropped.
+2. **Write the card to `.nanika/runs/<slug>/card.md` before Phase 0.** A1 owns gate updates and visible summaries.
+3. **Evidence needs a path and supporting content.** Every filled cell points to `file:line` in the run directory;
+   the content must support that row. A path resolving proves neither relevance nor truth. ID1 checks paths, not
+   semantic support. No artifact means the step cannot be credited as performed; an artifact alone is insufficient.
+   The process/report gap [EV-14] motivates records, not a claim that records solve it. Preserve, as applicable:
+   `card.md`, `gate.md`, `contract.md`, `rubric-draft.md`, `anchors.md`, `requote.md`, `rubric-frozen.md`, `candidates/`,
+   `cycles/`, `personas/`, `gate4.md`, `unexplored.md`, `report.md`, `scorecards/`, `ext/`, and `spawns/`.
+   All persistence is subject to A2; unavailable or redacted evidence limits the claim, never licenses a fake tick.
 4. **Three cells are `ext`** — 1A.3, 4.1 and 5.7. The card legend defines the state, ID8 counts it from `ext/`, and
    **A5** says what it buys and what it does not.
 5. **The gate is hard.** A phase begins only when every card row of the previous phase carries evidence or a legal
    `not-run: <reason>`. If a row is empty, the only legal next action is to fill it.
-6. **Instruction budget: 115 clauses here.** Peak load is those 115 plus the heaviest phase's reference reads, at
-   **file** level (one section read = the file open): P0 124 · **P1 138** · P1A 132 · P2 123 · P3 129 · P3R 123 · P4
-   123 · **P5 138** — two tie. **No summand is projected:** all twelve reference files ship and every rule count was
-   recounted against the shipped file (`MANIFEST.md`'s table and greps). The peak moved **135 → 138 — not because of
-   the files**, whose twelve measured counts came back identical to the projection, but because of three clauses added
-   here (3R.2's cap condition, 3R.3's re-entry, 4.1's per-property verdict). Adherence is near-perfect to ~150
-   explicit instructions and decays past it, errors peaking at 150-200 [EV-10]: **138 is 92% of that knee.** Three
-   qualifiers. **The unit is not identical** — IFScale counts atomic keywords, a card clause is a procedural
-   requirement: an order-of-magnitude check, not a measurement, and the coarse unit (71 + 23) puts the peak at 94.
-   **Nor are the summands one unit, so 138 is a floor:** this file is clause-expanded (57 rows → 101, ×1.77),
-   reference files are numbered rules (×1.0) — recount `identities.md` in clauses and it is **36, not 12**, past the
-   knee. **And the rise is strain, not a paid trade:** the peak went 88 (59%) → 138 (92%) with **nothing cut**; no
-   required behaviour was given up to buy another. Recount after any edit.
+6. **Execution capacity is unmeasured.** Row clauses, numbered reference rules and IFScale keyword instructions
+   [EV-10] are different units; no ratio between them is a safe instruction budget. E4 tests the weakest tier's
+   execution. On failure, reduce the card or duplicated instructions rather than append more explanations.
 
 ## 1. The Run Card
 
@@ -66,12 +48,12 @@ This is not an essay about quality. It is a harness, and you are the machine in 
 WISH RUN CARD — run: <slug> · scope: <S|M|L|XL> · class: <code|document|design|plan>
 cycles: <N + ≤1 bonus> · generation: <outline|full-build>   (both read off §3 at row 0.4)
 rubric: <R1|R2> · mode: <full | single-agent(declared)>
-tick = evidence present, as a path into the run dir (§0.3). blank = not done.
+tick = supporting record claimed at a run-dir path (§0.3), not independently verified quality. blank = not done.
 not-run:<reason> = skipped; the reason must be one of six: `no spawn` · `no external worker` ·
   `not applicable(<class|scope>)` · `precondition unmet(<row>)` · `user declined(<path>)` ·
   `capability absent(<name>)`. Any other string is an ID1 imbalance at 5.7.
 ext = fillable only by a worker that was not in the context it checks, AND `ext/<row>.md` holds
-that worker's spawn prompt and raw return.
+that worker's prompt and raw return. A saved record alone does not authenticate a worker or its independence.
 
 P0 SCARCITY GATE  → gate.md
 [ ] 0.1 run dir `.nanika/runs/<slug>/` exists and holds this card                                                                ev:
@@ -79,11 +61,14 @@ P0 SCARCITY GATE  → gate.md
 [ ] 0.3 previous nanika's `outcome` backfilled by asking, or `unknown` because they declined                                     ev:
 [ ] 0.4 deliverable class and scope class chosen and written; the cycle cap AND the generation level read off §3's scope line
         for that class and written into the card header                                                                        ev:
-[ ] 0.5 routine test, scored one at a time: (a) the request maps onto ordinary work, no one-shot or irreversibility framing;
-        (b) the phrasing carries no scarcity vocabulary; (c) a redo would cost the user little. 2-of-3 yes → the cheaper path
-        is priced and recommended out loud                                                                                     ev:
+[ ] 0.5 state the concrete cost of a materially wrong first delivery and why the cheaper domain path is insufficient.
+        Recommend nanika only when that loss is high AND additional search or scrutiny has a specific expected use;
+        otherwise recommend the cheaper path. Unknown stakes or marginal value → clarify, not launch.
+        Urgency words, novelty alone and an explicit invocation are not severity evidence                                       ev:
 [ ] 0.6 envelope computed from the §3 formula, not quoted from prose                                                           ev:
-[ ] 0.7 user confirmed; their reply quoted verbatim; any override journaled                                                    ev:
+[ ] 0.7 user approved the stated spend ceiling (including only explicitly granted headroom) and the data/retention
+        boundary under A2; record consent in the approved form and any override of the cheaper-path recommendation.
+        `/nanika` alone is not informed authorization                                                                          ev:
 [ ] 0.8 spawn preflight: a throwaway worker was actually spawned and its exit status recorded; `mode:` set from that result;
         on failure §3's degraded list binds                                                                                    ev:
 
@@ -94,8 +79,8 @@ P1 CRYSTALLIZE  (orchestrator only — no spawns)  → contract.md, rubric-draft
 [ ] 1.4 prohibited outcomes — asked, stated or explicitly `none`                                                               ev:
 [ ] 1.5 disappointment criteria — asked, pushed past the first answer; >=2 recorded                                            ev:
 [ ] 1.6 named recipients — role-specific enough to simulate                                                                    ev:
-[ ] 1.7 probe run verbatim — "if this lands, what changes for you?" — and answer quoted                                        ev:
-[ ] 1.8 every row 1.1-1.7 either quotes the user or carries an ASSUME-n row with its default, its reason, and its status       ev:
+[ ] 1.7 probe run verbatim — "if this lands, what changes for you?" — and answer retained per A2                                        ev:
+[ ] 1.8 every row 1.1-1.7 has user evidence in A2's approved form or an ASSUME-n with default, reason and status       ev:
 [ ] 1.9 contract written to `contract.md`                                                                                      ev:
 [ ] 1.10 draft rubric: 3-5 dims, weights sum to 1.0, each with a score-3 AND a score-1 descriptor; each disappointment
          criterion attached to a dim as a score-0 trigger                                                                      ev:
@@ -121,8 +106,8 @@ P1A ANCHOR, VERIFY, THEN FREEZE  → anchors.md, requote.md, rubric-frozen.md
          descriptor reverted to invented-and-flagged; a stronger candidate found → re-anchor (1A.1-1A.2 re-run on it) or declare
          `out-anchored`, which §3 makes ACCEPT-unreachable; no-exemplar fallback fired / did not fire — stated either way       ev:
 [ ] 1A.5 Provenance Gate: every contract element elicited/ratified/parked; `silent` = 0                                        ev:
-[ ] 1A.6 envelope recomputed from the §3 formula with the frozen dimension count, and re-authorized by the user (authorized,
-         not restated)                                                                                                         ev:
+[ ] 1A.6 envelope recomputed from §3 with the settled dimensions; show the delta. Re-authorize only when the approved
+         ceiling or scope/data/destination/retention boundary would be exceeded or changed; otherwise cite 0.7's approval       ev:
 [ ] 1A.7 engine preflight: per extra engine the spawn command was actually run and its exit status recorded; unreachable
          engines struck before P2 plans around them                                                                            ev:
 [ ] 1A.8 rubric copied byte-for-byte to `rubric-frozen.md`, tagged R1 — after 1A.4, never before                               ev:
@@ -186,11 +171,10 @@ P5 DELIVER  → report.md
 [ ] 5.3 completion sweep run: the command, the hit count, the accounting for each hit                                          ev:
 [ ] 5.4 unexplored-space ledger delivered as accrued; row count equals `unexplored.md`'s                                       ev:
 [ ] 5.5 ledger entry appended with `outcome: pending`                                                                          ev:
-[ ] 5.6 this card delivered with every row ticked or `not-run:`, and diffed against `card.md` on disk — the file is the card
-        of record                                                                                                              ev:
+[ ] 5.6 deliver a link to the full card, every row ticked or `not-run:`; the linked `card.md` is the card of record               ev:
 [ ] 5.7 ext — IDENTITY AUDIT: a worker that did not run this wish recomputes the ten identities from the run directory
-        (`identities.md`), naming every file it opened, and returns pass or the imbalance; pasted verbatim into the report and
-        summarized in the header. An imbalance is a phase that did not run: name it, then run it or record it `not-run` — never
+        (`identities.md`), naming every file it opened, and returns pass or the imbalance; retain its raw return in `ext/5.7.md`, linked
+        from the report and summarized in the header. An imbalance is a phase that did not run: name it, then run it or record it `not-run` — never
         adjust a count to close one                                                                                            ev:
 ```
 
@@ -198,29 +182,32 @@ P5 DELIVER  → report.md
 
 **ALWAYS**
 
-- **A1** Emit the Run Card into your visible response at every phase gate, evidence filled. A card held in your head
-  is a card that loses rows.
-- **A2** Quote the user's own words as the evidence for any row claiming elicitation. A paraphrase you wrote records
-  your intent, not theirs.
+- **A1** Update the full `card.md` at each gate. Show the user a compact phase/delta/blocker/spend summary and its
+  link; reprint the full card only on request or when needed to resolve a discrepancy. The audit artifact stays complete.
+- **A2** Before copying user data, record the approved boundary in `gate.md`: current execution only, approved worker
+  destinations, or public; plus what may persist and for how long. Unapproved web queries, other workers/engines,
+  persistence and commits are not authorized by invocation. Keep run records private and untracked by default.
+  For elicitation, retain only permitted minimal quotes, or a user-approved redaction/summary labelled as such.
+  Never call a summary verbatim or a hash proof of meaning/consent. This governs all prompts, candidates and ledgers;
+  evidence withheld for privacy remains unverified, not silently complete.
 - **A3** Write a phase's output to a file before opening the next phase. Prose about a step is not the step.
 - **A4** State a figure once, in the file that owns it. `reference/evidence.md` owns every literature figure with its
   scope; this file carries one `[EV-n]` use-site each and the bare tag elsewhere. **Scope, named:** this binds
   literature figures; the document's own counts are owned by `identities.md` §0, recounted there.
-- **A5** Grade a filled cell with a worker that was not in the context that filled it — the three `ext` cells, on the
-  two-part condition the card legend states. **Sourced half:** intrinsic self-correction, with no external feedback,
-  degrades performance on every benchmark tested [EV-20]. **Asserted half, measured nowhere in `evidence.md`:** that a
-  fresh-context instance of the *same* model supplies the missing signal — fresh context removes context, not
-  self-recognition, and self-preference is tied to the latter [EV-17]. **If that half is wrong**, two of the three
-  cells still buy what a re-read catches mechanically: a locator that does not open, a span not in the file, an
-  identity that does not sum — but not 1A.3's property and separation verdicts, judgments both.
+- **A5** Use a worker outside the producer's context for the three `ext` cells. Fresh context, model, engine,
+  prompt and evidence-source separation are different axes, not guarantees of independent judgment. Re-quoting and
+  identity arithmetic can be mechanically checked; property, separation and pairwise judgments cannot be certified
+  by worker count. Intrinsic correction without external feedback has failed on reasoning tasks [EV-20]; this does
+  not establish a same-model fresh-context benefit. Self-recognition remains a risk [EV-17]. Use native execution
+  receipts when the platform supplies them; otherwise claim only a spawn record is present, not authenticated execution.
 - **A6** Ask one question, or one batch of at most four dimensions, per turn during P1. `crystallization-dialogue.md`
   owns how to ask; this rule owns the rate.
 
 **NEVER**
 
-- **N1** Never let the worker that produced or revised the artifact score, judge, attack or audit it — informally
-  included, "a quick self-check" included [EV-20]. In `single-agent(declared)` mode it cannot be satisfied; §3's
-  degraded-mode block, not your discretion, says what happens then.
+- **N1** The producer may run tests, inspect renders and debug using external feedback, but may not supply its own
+  independent score, judge verdict, refutation or audit. Tool-grounded self-testing is not intrinsic self-correction
+  [EV-20], nor does it replace independent acceptance checking. §3 owns the declared single-agent fallback.
 - **N2** Never open a phase whose `ENTER` line is unmet. A skipped early phase poisons every later one: your own
   earlier errors in context raise your later error rate, and model scale does not fix it [EV-12].
 - **N3** Never tick a card row without a path (§0.3). An empty cell is a truthful card; a tick with no file is the
@@ -229,19 +216,20 @@ P5 DELIVER  → report.md
   self-deception to catch afterwards. §6 is the only legal path, it produces R2, and it may never be opened by whoever
   produced the output that failed. Re-anchoring at 1A.4 happens before the freeze and may only raise the bar, so it is
   not this.
-- **N5** Never present a same-model run as engine-diverse, a `mixed`, unverified or out-anchored anchor as `sourced`,
-  an inconsistent pairing as a verdict, a single-agent run as full, or an unrun step as `N/A`. Each of the five has a
-  declared state; use it.
-- **N6** Never spawn a worker without three fields: the frozen rubric with its version tag, the exact output schema,
-  and an output-length envelope — **and its prompt written to `spawns/` before it is issued, every spawn, not only the
-  ones a card row names.** A **scoring** spawn carries a fourth field: the exemplar and control, now labelled, with
-  the orchestrator's own breakdown for each, as worked examples. No schema returns prose you cannot aggregate; no
-  envelope returns padding; no worked examples gives up the largest single effect here [EV-16a].
-- **N7** Never run a second improvement loop inside this one. If the wrapped task owns its own, take that process's
-  generator step and drop its termination gate — nested loops multiply cost and duel over oracles.
-- **N8** Never treat row 0.7's confirmation as pre-authorizing anything but the spend. Ordinary duties on the wrapped
-  work are unchanged — confirmation before a destructive action, commit and PR discipline when the deliverable is code
-  — and autonomous mode does not skip 0.7, 1A.6 or §6.
+- **N5** Never call same-model judgments model-independent, record completeness quality, a mixed/unverified or
+  out-anchored anchor sourced, an inconsistent pairing a verdict, a single-agent run full, or an unrun step N/A.
+  Report the actual scope of the evidence rather than upgrading its label.
+- **N6** Before each spawn, save its permitted prompt to `spawns/`; include its task, exact output schema and
+  output-length envelope. Add only role-appropriate, A2-approved context: the versioned rubric for rubric scoring,
+  no rubric/history for cold-read personas, and no nonexistent rubric for preflight or pre-freeze work.
+  Blind calibration and blind comparisons get no answer/provenance labels. After calibration, rubric scorers may
+  receive labelled anchor breakdowns as a borrowed grading aid [EV-16a], not as evidence that they are reliable.
+- **N7** Flatten only a wrapped process's optional improvement loop. Preserve its safety, correctness, acceptance
+  and permission gates; a failed domain gate disqualifies the candidate regardless of rubric score. Use one agreed
+  revision budget within both processes' hard caps. Conflicting oracles require upstream repair or escalation,
+  never removal of a non-negotiable gate merely to avoid two loops.
+- **N8** Row 0.7 authorizes only the stated spend and data/retention boundary, not publication, destructive actions
+  or code commits. Ordinary domain duties remain; autonomous mode does not skip required consent under 0.7, 1A.6 or §6.
 
 ## 3. Pre-resolved decisions — decided here so no phase improvises them
 
@@ -252,7 +240,9 @@ composition is itself the design problem — N=5, full-build. N=5 requires an en
 *Outline* = generators compete at outline level, one built; *full-build* = each ships a complete artifact. Plus at
 most one bonus cycle from P4 — total N+1.
 
-**Envelope.** Computed at card row 0.6, never quoted from here. Each term's range lives on the row that spends it:
+**Envelope.** Computed at 0.6. Include wrapped-domain work and retries, not just nanika seats. Counts are not
+monetary cost or quality evidence; name the cost units actually bounded and any unpriced exposure. No overrun is authorized
+by a low point estimate. Each term's range lives on the row that spends it:
 
 ```
 agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
@@ -260,12 +250,13 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
        + C (row 2.1 angles) + J (row 2.4 judges)
        + cycles × (D evaluators, row 1.10 + K skeptics, row 3.4)
        + P (row 3R.1) + 4 (row 4.1: 2 pairings × 2 orders) + 1 (row 5.7)
+       + wrapped-domain workers, retries and reruns not already counted
 ```
 
 | Exit | Meaning |
 |------|---------|
-| `ACCEPT` | all dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks, no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. Any other mixture prints `mixed(<anchored>/<descriptors>)`, which is a legal run and is **not** `sourced` |
-| `reception-demoted` | a named recipient bounced off a rubric-perfect artifact, so the rubric mis-measured and the score moved — **and the cap was already spent, which is the only state in which 3R.3 may convert that finding into a residual instead of another cycle.** Ships best-so-far with the persona's verbatim stop-span. **Never reports as `ACCEPT`** |
+| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks, no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. Any other mixture prints `mixed(<anchored>/<descriptors>)`, which is a legal run and is **not** `sourced` |
+| `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection — **and the cap was already spent, which is the only state in which 3R.3 may convert that finding into a residual instead of another cycle.** Ships best-so-far with the persona's verbatim stop-span. **Never reports as `ACCEPT`** |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
 | `budget-reached` | the envelope ceiling hit mid-loop → deliver best-so-far with the residual gap, and every carried salvage item listed as carried |
@@ -276,8 +267,7 @@ The ceiling is often unreachable; a clean `diminishing-returns` is honourable, a
 
 **Degraded mode**, binding when row 0.8's preflight fails. These fourteen rows are `not-run: no spawn` — 1A.3, 1A.7,
 2.2, 2.3, 2.4, 3.2, 3.4, 3.5, 3R.1, 3R.2, 3R.3, 4.1, 4.2, 5.7 — and no other row may carry that reason (ID10 checks
-the biconditional). N1 is then unsatisfiable: the only available scorer is the producer, the configuration [EV-20]
-measures as degrading. Scores are advisory and reported as such, `ACCEPT` is unreachable, and the only legal exits are
+the biconditional). N1 is then unsatisfiable: the only available scorer is the producer; [EV-20] does not measure this fallback or tool-grounded testing. Scores are advisory and reported as such, `ACCEPT` is unreachable, and the only legal exits are
 `single-agent-best-effort`, `budget-reached` or `BLOCK`. The header prints the mode.
 
 ## 4. Phases — entry, what to read, the failure prevented. Reference files below are basenames; all live in `reference/`.
@@ -292,7 +282,7 @@ spawn, and one throwaway worker makes that a detected capability rather than a d
 
 ### P1 — Crystallize · rows 1.1-1.12
 **ENTER:** rows 0.1-0.8 evidenced. **READ:** `crystallization-dialogue.md`; `run-discipline.md` §1 (row 1.12's lint).
-Two files open — this phase ties P5 for the peak (§0.6).
+Execution reliability at this phase is tested by E4, not inferred from a rule count.
 
 The five rows agents drop here (1.2-1.5, 1.7) get dropped because they feel answered by the rest of the conversation.
 They are not. **Row 1.7 reframes the rubric** — "make this proposal excellent" is usually "I need this person to say
@@ -304,21 +294,10 @@ decide", 1.8 still binds: nothing tells a delegated ASSUME from a question never
 **ENTER:** rows 1.1-1.12 evidenced. **READ:** `benchmark-anchoring.md`, which owns the sweep, the reject list, the
 Provenance Gate behind 1A.5 and the four-part 1A.3 protocol; `engine-map.md` for 1A.7.
 
-The control is not optional: without a low anchor, calibration is one-sided and cannot catch an inflating evaluator.
-**The order of this phase is the mechanism:** re-read, property-checked, separation-checked and challenged at 1A.3,
-disposed at 1A.4, frozen only then at 1A.8. **1A.3 guards three levels.** A locator plus a verbatim span costs a
-fabricator a document that does not exist — that catches an *invented* exemplar. The property verdict and the
-challenge catch one that is real, re-quotes perfectly, and is *weak*. **The separation verdict catches the level above
-both:** an excellent document with a narrow property named off it passes every earlier check honestly — the reject
-list beats two real candidates, the property is really there, and `none-better-found` is *true*, because a trivial
-property has no stronger exemplar anywhere. What it cannot do is fail to appear in the control. So the checker opens
-the control at the same property: `non-separating` means the property cannot tell a 3 from a 1; `non-comparable` means
-the control was chosen absurd rather than ordinary, inflating every gap under it. 1A.2's dimension clause closes the
-third level. **Two states the report may never merge:** `non-separating` is *a pair that exists and did not
-discriminate* — a fact about the property, struck at 1A.4 and the descriptor reverted; the 1A.4 fallback and
-`unanchored` are *no pair in the corpus at all* — a fact about the corpus, and the only one of the two that makes a
-dimension unreachable rather than re-anchorable. `unreachable` at 1A.3 degrades the run the same way: an honest
-weakening that must read as one. 1A.7 is the same gate for engine diversity.
+The control and property check test the selected comparison, not a global quality ceiling. A resolving locator
+can still be irrelevant, a same-genre control can still be weak, and a trivial property can separate a cherry-picked
+pair. `none-better-found` means none found in the reported search, not globally best. Keep `non-separating`,
+`non-comparable`, `unreachable` and genuinely absent exemplars distinct; the existing fallback weakens the claim.
 
 ### P2 — Tournament · rows 2.1-2.7
 **ENTER:** rows 1A.1-1A.8 evidenced. **READ:** `evaluator-roster.md` §4, §6.
@@ -328,7 +307,7 @@ same artifact with different word choices are one angle. **Order is the trap:** 
 judges calibrate against the pair, *then* judging opens — blind judging is candidate selection, the one moment an
 inflated score is unrecoverable. **The pair is used twice and the order must not swap:** at 2.3 unlabelled and graded
 by the orchestrator, because a self-declared `calibration:` is a string the scorer typed about itself; only then
-labelled, with the orchestrator's breakdown, on every scoring spawn (N6):
+labelled for rubric scoring only, with N6 preserving blinded comparisons and cold reads:
 
 | what the orchestrator computes | action, written onto that scorer's scorecard |
 |---|---|
@@ -337,8 +316,7 @@ labelled, with the orchestrator's breakdown, on every scoring spawn (N6):
 
 **An uncalibrated scorer cannot produce a ceiling ACCEPT** — a guard that leaves an artifact: one scorecard per scorer
 under `scorecards/`, and ID9 both counts the files **and recomputes each verdict from the two scores against the table
-above**, so a truthful pair under a false verdict is arithmetic a non-participant catches. Rows 2.2 and 2.4 are
-otherwise negatives: N6's persisted prompt and 2.4's seed are what a warm, reused judge cannot produce. Judging is
+above**, so a truthful pair under a false verdict is arithmetic a non-participant catches. Prompt files and shuffle seeds document intended isolation; they do not authenticate it. Judging is
 pointwise, so its bias mitigation is shuffling order *across* judges; the *pairwise* one is 4.1.
 
 ### P3 — Converge · rows 3.1-3.10
@@ -347,7 +325,7 @@ pointwise, so its bias mitigation is shuffling order *across* judges; the *pairw
 Every dimension is scored 0-3 with cited evidence, stamped with the rubric version it was made under (3.2) — a
 trajectory crossing an amendment boundary untagged is silently incomparable. Row 3.9 stops the loop's state being
 implicit: the longest phase is the likeliest to drift to a halt, and an unwritten verdict decides the exit in
-retrospect. **The rubric is the single termination oracle**: the panel sits inside it as ratification, never as a
+retrospect. **The rubric controls optional quality iteration, subject to N7's domain gates**: the panel sits inside it as ratification, never as a
 second verdict, and an attack no dimension can express routes to §6 (3.10), not to a new gate. Row 3.4 carries the
 panel's independence conditions itself — the whole reason §7 keeps a mechanism the debate literature contradicts. Rows
 3.1 and 3.7 are the reset that earns its cost [EV-12].
@@ -355,33 +333,29 @@ panel's independence conditions itself — the whole reason §7 keeps a mechanis
 ### P3R — Reception · rows 3R.1-3R.3 · **the one phase with a return edge**
 **ENTER:** row 3.9 carries a verdict. **READ:** `evaluator-roster.md` §5. **EXIT:** to **P3** when 3R.3 fires.
 
-Personas meet the artifact cold: no rubric, no loop history, no knowledge that it was optimized — a persona told "this
-is our best work" evaluates the claim. **The verbatim stop-span is what makes a persona a reader rather than
-reader-shaped prose:** a worker asked to imagine a recipient can produce three fluent paragraphs without opening the
-artifact, but not a sentence that is *in* it. **A rubric-perfect artifact its recipient bounces off is a rubric
-failure, so the score moves — and a moved score is a cycle, not a note.** That is 3R.3: the cap does not grow, the
-counter advances inside it, and only a spent cap turns the finding into a residual (§3 `reception-demoted`).
+P3R produces **simulated cold-read evidence**, not actual recipient acceptance, preference or audience coverage.
+A matching stop-span demonstrates only that the quoted text exists. The finding still needs interpretation and
+3R.2 disposal; a score change follows 3R.3 without enlarging the cap. Report any real recipient observations
+separately, with their actual source and authorization; never relabel a persona return as one.
 
 ### P4 — Exit gate · rows 4.1-4.2
 **ENTER:** row 3.6 names the artifact **and 3R.3 did not fire**. **READ:** `evaluator-loop.md` §8, which owns the
 `PAIRWISE_VERDICT` schema row 4.1 hands to each of the four workers.
 
-A loss to the runner-up means convergence destroyed what the tournament found. **Both orders, consistent-only:**
+A loss to the runner-up may reflect a regression, noise or an intentional trade-off; the comparison alone cannot decide which. **Both orders, consistent-only:**
 swap-consistency has been measured as low as 23.8% [EV-16b], so a single-pass pairwise verdict is partly a verdict
-about position. Agreement → verdict; disagreement → `inconsistent`, which the header carries. **The exemplar pairing
+about position. Order agreement does not guarantee a correct preference. Agreement → verdict; disagreement → `inconsistent`, which the header carries. **The exemplar pairing
 is per property, the runner-up pairing is not**: the artifact was built deliberately *not* to resemble the exemplar,
 so an overall preference is mostly a preference about genre, while the anchored properties are the comparable part and
 the part the rubric came from — and a lost property hands 4.2 a brief instead of a mood.
 
 ### P5 — Deliver · rows 5.1-5.7
-**ENTER:** rows 4.1-4.2 evidenced. **READ:** `identities.md`; `run-discipline.md` §6 for row 5.3 — two files, tying P1.
+**ENTER:** rows 4.1-4.2 evidenced. **READ:** `identities.md`; `run-discipline.md` §6 for row 5.3.
 
-Emit the report, run the audit, append the ledger, hand over. **Row 5.7 is the terminal external check**: an
-orchestrator recomputing its own arithmetic is the compliance gap's own configuration [EV-14]. The auditor works on
-AUD's protocol, and every identity has a bucket for every state the card legalises — `not-run` and `carried` included
-— so an imbalance is never the audit's own artefact.
+Emit the report, run the audit, append the ledger, hand over. Row 5.7 checks the recorded accounting, not the
+truth of every record or artifact quality [EV-14]. An imbalance can also expose a specification defect.
 
-## 5. The Fulfillment Report — opens with a state header, so an unverified run cannot read as verified
+## 5. The Fulfillment Report — process state, not a quality certificate
 
 ```
 mode:        full | single-agent(declared)                rubric: R1 | R2
@@ -389,9 +363,9 @@ anchoring:   sourced | mixed(n/n) | invented-fallback | unverified | unanchored
 re-quote:    n exact-match / n mismatch / n unreachable | not-run(<reason>)
 property:    n present / n absent / n not-assessed        reject-lists: n / n | unchallenged(n)
 separation:  n separating / n non-separating / n non-comparable   shared-property(n) | one-per-dimension
-challenge:   none-better | out-anchored | re-anchored     engines: cross-engine(<list>) | monoculture(declared)
+challenge:   none-better-found | out-anchored | re-anchored     engines: cross-engine(<list>) | monoculture(declared)
 evaluators:  n calibrated / n re-prompted / n replaced | not-run(<reason>)
-reception:   clean | re-entered(n) | demoted | residual(n, cap spent)
+reception:   simulated-cold-read: clean | re-entered(n) | demoted | residual(n, cap spent)
 exit gate:   vs-exemplar n properties: n won / n lost / n inconsistent · vs-runner-up won | lost(<property>) | inconsistent | not-run(<reason>)
 identity:    pass | imbalance(n) | not-run(<reason>)      delta: UNMEASURED
 gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
@@ -405,22 +379,22 @@ and recomputed them. **Tournament** — angles, engine distribution or declared 
 scores, winner, runner-up, salvage grafted / rejected / deferred / carried. **Trajectory** — per-cycle weighted scores
 per dimension tagged R1/R2, each cycle's 3.9 verdict, and which artifact shipped and why it, not the last.
 **Gauntlet** — attacks raised / killed / survived-then-fixed / open / `unproven-because-new`, each of the last with
-what would falsify it. **Reception** — per persona, the verbatim stop-span, every finding's disposal, and 3R.3's
+what would falsify it. **Reception** — simulated cold-read, per persona, the verbatim stop-span, every finding's disposal, and 3R.3's
 decision: which finding re-opened P3, or why none did. **Amendment** — trigger, (a)-(d), R1→R2, re-scored delta, plus
 any phase-block imperative the card did not carry (§0 item 1); omit when both are empty. **Exit gate** — the
 exemplar's verdict per named property and the runner-up's whole, both orders, `inconsistent` where it applies, the
 property that briefed the bonus cycle, advisory verdicts. **Exit** — reason, residual gap, spend. **Unexplored-Space
 Ledger** — as accrued at 3.8, each row tagged with its cycle: the honest one-shot claim is not "nothing was left on
-the table" but "here is what was left, and why." **Identity audit** — the auditor's return, verbatim, with the files
-it opened; then **the Run Card** as delivered at 5.6, ending in the terminal line.
+the table" but "here is what was left, and why." **Identity audit** — link to the auditor's raw return with the files it opened; then the **Run Card** link from 5.6.
+Counts below are process accounting only; `ACCEPT` means harness criteria satisfied, not best possible output.
 
 ```
 wish <slug> closed · card <n> rows: n ticked + n not-run · identities 10/10 balance
 · anchors 5 = 5 exact-match · property 4 present + 1 not-assessed · separation 4 = 4 separating
-· reject-lists 4 / 4 + 0 unchallenged · challenge none-better · one-per-dimension
+· reject-lists 4 / 4 + 0 unchallenged · challenge none-better-found · one-per-dimension
 · salvage 9 = 6 grafted + 2 rejected + 1 deferred + 0 carried · attacks 7 = 4 killed + 2 fixed + 0 open + 1 unproven-because-new
 · scorers 3 = 3 calibrated + 0 re-prompted + 0 replaced · ext 3 = 3 recorded + 0 not-run
-· reception 2 = 1 re-entered + 1 re-scored + 0 residual · exit-gate 4 properties = 4 won · exit ACCEPT
+· simulated cold-read 2 = 1 re-entered + 1 re-scored + 0 residual · exit-gate 4 properties = 4 won · exit ACCEPT
 ```
 
 ## 6. Rubric amendment — once, user-ratified
@@ -433,21 +407,21 @@ request is §3's business. Calibration failures never route here (N4).
 
 ## 7. What each mechanism buys, what was removed, and what defeats this
 
-**Kept — and what a run loses without it.** `evidence.md` owns every figure; the tags below point, never redefine.
+**Retained hypotheses — not established quality gains.** `evidence.md` owns every figure; the tags below point, never redefine.
 
-| Mechanism | Delete it and a run loses | Evidence |
+| Mechanism | Intended role, unmeasured in nanika | Evidence |
 |---|---|---|
-| Contract → frozen rubric (1.9-1.12, 1A.8) | any oracle at all; every later mechanism maximizes whatever the generator decided the ask meant | decomposition into explicit checkable items beats holistic judgment — **training-time** evidence only, on instruction-following benchmarks [EV-24] |
-| Sourced anchor + control, **re-quoted, property-checked, separation-checked and challenged by a non-participant** (1A.1-1A.4) | the ceiling, and the only steps that can catch an invented exemplar, a weak one, or a trivial property named off a strong one; `sourced` becomes a word | — (design argument; the re-read is mechanical, the property and separation verdicts are not — A5) |
-| **Blind-pair calibration (2.3), counted and recomputed by ID9** | the meaning of "3"; an inflating judge makes every later ceiling ACCEPT vacuous | reference-guided grading cut **math**-grading judge failure 70% → 15%, the largest single effect in the file — and it is borrowed across settings: no one has measured it for rubric grading of prose [EV-16a] |
+| Contract → frozen rubric (1.9-1.12, 1A.8) | keep the user's criteria stable; domain oracles can exist without this mechanism | decomposition into explicit checkable items beats holistic judgment — **training-time** evidence only, on instruction-following benchmarks [EV-24] |
+| Sourced anchor + control, **re-quoted, property-checked, separation-checked and challenged by a non-participant** (1A.1-1A.4) | make the selected benchmark inspectable; strength, relevance and transfer remain judgments | — (design argument; the re-read is mechanical, the property and separation verdicts are not — A5) |
+| **Blind-pair calibration (2.3), counted and recomputed by ID9** | screen some gross grading failures; passing one pair does not establish candidate-grading reliability | reference-guided grading cut **math**-grading judge failure 70% → 15%, the largest single effect in the file — and it is borrowed across settings: no one has measured it for rubric grading of prose [EV-16a] |
 | Angle tournament, blind, shuffled (2.1-2.7) | one first idea, iterated, graded by a judge that can see whose it is | author labels swing **preference** votes up to 50pp and **pointwise** ratings up to 12pp [EV-19] — P2's judging is pointwise, so 12pp is the figure that applies here and 50pp is the ceiling of a setting this skill does not use; best-of-n is supported only in its **majority-vote** form, which rows 2.7 and 3.6 deliberately do not use [EV-23] |
-| Salvage wiring (2.6 → 3.3) | the tournament's losers entirely; the run bought a lottery ticket, not a search | — (structural; measured only by E3's deletion control) |
-| External-only revision (N1, A5) | the artifact gets worse, not better, after each self-review | the self-correction result, quoted once at A5 [EV-20]; the same-model converse is asserted, not measured — A5 |
+| Salvage wiring (2.6 → 3.3) | retain potentially useful losing ideas; salvage quantity is not useful transfer | — (structural; measured only by E3's deletion control) |
+| Independent acceptance checking (N1, A5) | avoid producer self-certification without forbidding tool-grounded self-testing | the self-correction result, quoted once at A5 [EV-20]; the same-model converse is asserted, not measured — A5 |
 | Refutation panel (3.4-3.5) | the attack surface nobody on the rubric is looking at | contradicted as *debate*; kept as a non-debate on row 3.4's conditions — see below |
-| **Reception with verbatim spans (3R.1), and its return edge (3R.3)** | the difference between a reader and three paragraphs of reader-shaped prose — and, without 3R.3, the consequence: a bounce that only moves a number in the report | — (grep-checkable, zero extra spawns; 3R.3 spends a cycle already inside §3's cap) |
+| **Reception with verbatim spans (3R.1), and its return edge (3R.3)** | obtain simulated cold-read friction tied to the artifact; neither audience coverage nor real reception | — (grep-checkable, zero extra spawns; 3R.3 spends a cycle already inside §3's cap) |
 | **Both-order exit gate (4.1), the exemplar pairing per property** | half the pairwise verdict; a single pass is partly a verdict about position — and an overall exemplar preference is a preference about genre, which briefs nothing | the swap-consistency floor, quoted once at P4 [EV-16b] |
-| **Identity audit by a non-participant (5.7)** | the closing check; the orchestrator grading its own arithmetic is the configuration behind the compliance gap | the compliance gap, quoted once at §0 item 3 [EV-14] |
-| **Spawn preflight (0.8) and engine preflight (1A.7)** | the distinction between a capability and a claim about one; every `ext` row silently becomes a self-report | — (structural; the failure it prevents was observed in this skill's own run) |
+| **Identity audit by a non-participant (5.7)** | recompute recorded accounting; fabricated but consistent records can still pass | the compliance gap, quoted once at §0 item 3 [EV-14] |
+| **Spawn preflight (0.8) and engine preflight (1A.7)** | exercise an available dispatch path; saved sentinel files alone do not authenticate a spawn | — (structural; the failure it prevents was observed in this skill's own run) |
 
 **Cut, and what covers the failure now.** What would bring each back: `evidence.md` §3.
 

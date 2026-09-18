@@ -14,9 +14,6 @@ Contents: §0 capability → tool · §1 why engine diversity is worth its cost 
 (row 0.8)** · **§2b engine reachability preflight (row 1A.7)** · §3 role names · §4 distributing the roles
 · §5 when one engine is all there is.
 
-**Four numbered rules live here: M1-M4** — `grep -c '^\*\*M[0-9]'` returns 4. That count is `SKILL.md`
-§0.6's P0 and P1A input; recount it here after any edit to this file, and recompute both loads there.
-
 ---
 
 ## §0 — Capability → tool
@@ -34,7 +31,7 @@ else. A host that is *not* in these tables is not improvised at 0.8 — the run 
 | **Codex CLI** | `spawn_agent(prompt)` | `wait_agent(id)`. Keep spawns foreground: a detached TTY with a non-trivial prompt can fail silently with no output |
 | **agy** | `/agent <name> "<task>"` inside the TUI, or `agy -p "<prompt>" --dangerously-skip-permissions` headless | **stdout is not a reliable capture channel.** Have the prompt write its result to an absolute path and read the file. Reference files in the prompt as `@<path>` — bare path strings can hang the subagent |
 
-An independent worker means a *separate context*, not a separate turn. A second reply in the same context
+Here the worker capability means a *separate context*, not demonstrated independent judgment or a separate turn. A second reply in the same context
 is the configuration N1 forbids, whatever the host calls it.
 
 ## §1 — Why engine diversity is worth its cost
@@ -57,8 +54,8 @@ not this file and not your judgment — says what the run costs. Never infer the
 spawn tool is listed above: a listed tool that is not in this host's allowlist fails here, which is exactly
 what the row exists to detect.
 
-Every row spawns one throwaway worker whose whole job is to write one known string to one known path, so
-that the check is a file on disk and not a return the orchestrator could have written itself.
+Every row spawns one throwaway worker whose whole job is to write one known string to one known path, so the check has a file on disk. That file alone is not authenticated execution: the orchestrator could write it.
+Use native process/dispatch receipts when supplied by the platform; otherwise report the narrower record-present claim (A5).
 
 **Claude Code**
 
@@ -164,8 +161,7 @@ receives the spawn, never what the spawn contains.
 ## §5 — When one engine is all there is — guidance, not a numbered rule
 
 Keep the mechanism and lower the claim. Angle diversity (row 2.1) is unaffected by having one engine;
-blind judging (row 2.4) is unaffected, because provenance stripping removes order and self-recognition
-effects within one engine too. What is lost is priors independence, and the run says so: the header prints
+blind judging (row 2.4) is unaffected, although provenance stripping does not guarantee removal of order or self-recognition effects. Different engines need not imply different models, priors or evidence; and the run says so: the header prints
 `monoculture(declared)`, and N5 forbids presenting a same-model run as engine-diverse.
 
 With no engine diversity, the sourced anchor is the only opinion in the run that did not come from this
