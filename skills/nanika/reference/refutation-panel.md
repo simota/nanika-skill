@@ -8,12 +8,9 @@ carries. Not read before that, and not read again once the panel has ratified at
 Contents: §1 briefing a skeptic (G1) · §2 evidence vs novelty (G2) · §3 staging (G3) · §4 the ratification
 duty (G4) · §5 verdict aggregation (G5) · §6 hard exclusions (G6).
 
-**Six numbered rules live here: G1-G6, one per section.** That count is `SKILL.md` §0.6's P3 input; recount
-it here after any edit and recompute that load there.
-
 The panel's target claim is fixed and singular:
 
-> **"This is the best achievable output for this wish."**
+> **"This artifact satisfies the frozen criteria without a material overlooked defect."**
 
 Every skeptic is asked to destroy that claim from an assigned angle. A claim survives only if it withstood a
 genuine attempt to refute it.

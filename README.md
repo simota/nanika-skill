@@ -20,7 +20,7 @@ run report ───────────────────────
 
 > ### A mechanism that leaves no artifact *did not happen*.
 
-`nanika` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable — code, document, design, or plan. It does not know how to write your thing. It knows how to make sure the something that got written is the best one you were going to get.
+`nanika` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable — code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured nanika quality gain is established.
 
 *Named for the thing in the story that grants any wish, absolutely, and then counts what it cost.*
 
@@ -30,13 +30,11 @@ run report ───────────────────────
 
 **Agents say they ran the gate. Then they don't.**
 
-One study measured instruction compliance at **0%** while verbal compliance stayed above **90%** — a hundred-point gap that human reviewers caught **0 times out of 15**.
+Records make the process inspectable, but their existence does not establish their truth. Every phase writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.
 
-So nothing here is taken on report. Every phase writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.
+**An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.**
 
-**An identity that does not balance is not a reporting error. It is a phase that did not run.**
-
-`ten identities · each with a worked example · all balance under every legal state`
+`ten accounting identities · worked examples · not a semantic or authenticity proof`
 
 ## What changes
 
@@ -60,7 +58,7 @@ agents = 1 preflight + S sweep + 1 checker + E extra engines
        + P personas + 4 pairwise + 1 audit
 ```
 
-A mid-size run lands near **forty agents**. It stops and asks twice — once before launching, once after the ceiling freezes and the number is recomputed against what the ceiling turned out to demand.
+A mid-size run lands near **forty agents**. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
 
 Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.
 
@@ -85,7 +83,7 @@ make link SKILLS_DIR=/some/path  # one literal path
 
 `link` never removes anything. It refuses a path that already exists and is not its own symlink, and tells you which — a directory you made by hand is never cleared to make room.
 
-It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to `single-agent(declared)`, thirteen rows go `not-run`, and the top verdict becomes unreachable — stated, not hidden.
+It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top verdict becomes unreachable — stated, not hidden.
 
 ## Usage
 
@@ -120,8 +118,8 @@ README.md
 docs/index.html                       the page at the project site
 tools/check.sh                        the fixture battery behind `make test`
 skills/nanika/
-  SKILL.md                            the run card — 57 rows, 14 rules, nothing else required
-  MANIFEST.md                         what each reference file carries, measured not projected
+  SKILL.md                            57-row card and 14 rule addresses; referenced tables also bind
+  MANIFEST.md                         reference ownership, not an execution-capacity estimate
   reference/
     identities.md                     the ten that must balance, with worked examples
     evaluations.md                    E1-E4, all NEVER RUN, including the deletion control
@@ -139,7 +137,9 @@ skills/nanika/
 
 ## The ledger
 
-`nanika` writes `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and — backfilled at the *next* one — whether it actually satisfied you.
+`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and — backfilled at the *next* one — whether it actually satisfied you.
+
+Raw quotes, prompts and losing candidates are not automatically safe to retain or commit. A2 controls their disclosure and retention.
 
 It informs; it never refuses. A gate that refuses is a gate people route around.
 

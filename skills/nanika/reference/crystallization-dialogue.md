@@ -4,15 +4,7 @@
 engagement calibration. **How to ask — never what to ask.** Every question P1 must land is a card row
 (1.1-1.7), and the card owns them; a list of them here is the duplication this file was carrying and no
 longer does.
-**Read when:** **P1**, in full — the one `READ:` line that names this file, and one of the two files open
-at that phase's peak load (`SKILL.md` §0.6).
-
-**Twelve numbered rules live here** — `grep -c '^| D'` returns 12. **The labels are not contiguous, on
-purpose,** so that what moved stays traceable: **D1** (one question per turn) is deleted, because it is
-`SKILL.md` **A6** and the rate is stated once in the whole skill; **D16** (the Provenance Gate) moved to
-`benchmark-anchoring.md`, which is where 1A.5 reads it; **D11** merged into D2 and **D14** merged into D7,
-each pair having said the same thing twice. Retained rules keep their old labels. That count is `SKILL.md`
-§0.6's P1 input; recount it here after any edit to this file, and recompute the peak there.
+**Read when:** **P1**, in full, at its `READ:` line.
 
 The deliverable of a wish is only as good as the elicitation that produced it. A one-shot artifact built on
 a misheard intent is the most expensive failure available here — every downstream mechanism will faithfully
@@ -41,7 +33,7 @@ arrive only under D3 and D5.
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| D6 | **Paraphrase-back before persist** | Before writing any user decision into `contract.md`, reflect it back in one or two lines in *different words* than the user used — echoing verbatim tests nothing. Persist on the confirmed paraphrase. **What gets persisted as evidence is still the user's own words**, per A2: the paraphrase is the check, the quote is the record, and a contract holding only your paraphrase records your intent rather than theirs. |
+| D6 | **Paraphrase-back before persist** | Before writing any user decision into `contract.md`, reflect it back in one or two lines in *different words* than the user used — echoing verbatim tests nothing. Persist on the confirmed paraphrase. A2 governs what may persist: a minimal permitted quote, or an explicitly user-approved redaction/summary. Mark the form; an unapproved paraphrase is not elicitation evidence. |
 | D7 | **One follow-up, then park** | A low-information answer ("sounds fine", "whatever works") gets exactly ONE concretizing follow-up in D2 or D3 form. A point that circles two rounds with no new information gets named as circling and the same two ways out. Either way, do not badger: lock the leading option, or record it as an `ASSUME-n` row (D9) and move on. |
 | D8 | **Contradiction surfacing** | When a new answer conflicts with an earlier persisted decision, surface it immediately ("this changes DEC-2 from X to Y — intentional?"). Never silently overwrite; never silently keep the old one. The resolution is itself a persisted decision, and `run-discipline.md` owns where it is written. |
 
@@ -53,10 +45,10 @@ Ledger mandatory; this rule is its schema and lifecycle.
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| D9 | **Every gap is a row, and every row carries what the user actually said** | The `Utterance` column holds the user's verbatim words where any exist, and is empty where none do. An empty `Utterance` is what an unasked question looks like on disk; that distinction is not recoverable from memory, and ID2's classification is computed from this column rather than from the orchestrator's recollection. |
+| D9 | **Every gap is a row; its evidence form follows A2** | `Utterance` holds a permitted quote, an approved summary/redaction explicitly labelled, or `withheld` when retention was declined. Empty means unasked, never privacy-withheld. Classify approved summaries as ratified, not verbatim elicitation. |
 
 ```
-| ID | Assumption | Default chosen | Utterance (verbatim, or empty) | Why | Status |
+| ID | Assumption | Default chosen | Utterance (A2-approved form, withheld, or empty) | Why | Status |
 |----|-----------|----------------|--------------------------------|-----|--------|
 | ASSUME-1 | "flagship" means the investor audience, not the public site | investor framing | "" | audience question never asked | open |
 | ASSUME-2 | success is measured at the partner meeting, not at publication | partner meeting | "honestly, whatever they react to" | D7 follow-up returned no more | open |

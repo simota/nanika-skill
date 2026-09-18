@@ -3,24 +3,13 @@
 **Owns:** the stance, the eight contract-lint conditions row 1.12 runs, the Decision Ledger, acceptance
 provenance, and completion integrity.
 **Read when:** at **P1**, for §1's eight lint conditions, which row 1.12 lints against; and at **P5**, for §6's
-completion sweep, which row 5.3 evidences. This file is named on **two** `READ:` lines and is a summand of
-both of `SKILL.md` §0.6's tied peaks — edit it and both peaks move.
+completion sweep, which row 5.3 evidences. The two read triggers are task contexts, not measured instruction loads.
 
 Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §3 drift control, relocated · §4
 independent verification, relocated · §5 acceptance provenance (Q12-Q15) · §6 completion integrity
 (Q16-Q19).
 
-**Eleven numbered rules live here: Q4-Q6 (§2) and Q12-Q19 (§5, §6) — 3 + 8 = 11.** That count is `SKILL.md`
-§0.6's P1 and P5 input; recount it here after any edit to this file, and recompute **both** peaks there.
-§1's eight conditions are lint conditions, not numbered rules, and are not in the count — row 1.12 counts them
-separately and by name. The unit is the coarse one (numbered rules, x1.0); §0.6 prices that, and this file
-does not publish a second count in a second unit.
-
-The ten run identities left this file for `identities.md` in cycle 3 and do not return. Q1-Q3, Q7-Q8 and
-Q9-Q11 are now card rows and Always/Never rules; §3 and §4 name where each went rather than keeping a
-reworded copy.
-
-The nanika machinery maximizes the artifact. These rules keep the *run* honest while it does — a run that
+The nanika machinery attempts to improve the artifact. These rules keep the *run* honest while it does — a run that
 quietly lowered its bar, dropped a criterion, or shipped a stub can still emit a beautiful Fulfillment
 Report.
 
@@ -77,9 +66,8 @@ and still bounded by the contract's own length:
 8. **Every fact is stated once** (row 1.9). The delete test: cut the sentence and re-read the contract; if
    no acceptance criterion, oracle, non-goal, prohibited outcome, disappointment criterion or recipient
    changes reading, it was decoration — delete it. Restating one element in another element's words is the
-   common case; cite the row instead of repeating it. **Two carve-outs, both binding.** The user's own
-   quoted utterances are evidence (`SKILL.md` §0.3, row 1.8, A2) and are never redundancy — a contract
-   holding only your paraphrase records your intent rather than theirs (D6). And non-goals and prohibited
+   common case; cite the row instead of repeating it. **Two carve-outs, both binding.** User evidence follows A2: retain only permitted minimal quotes or explicitly approved summaries/redactions;
+   privacy-withheld evidence is not an unasked question (D6). And non-goals and prohibited
    outcomes are two axes, not a duplicated pair; condition 3 says why, and collapsing them is the
    characteristic wrong deletion here.
 

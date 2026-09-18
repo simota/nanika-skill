@@ -5,9 +5,6 @@
 0.4's deliverable class is `document`** — that attachment is its only trigger, and it is why this file has no
 `READ:` line of its own and never enters `SKILL.md` §0.6's load table.
 
-Thirteen numbered rules live here — W1-W12 plus W11b — and they are carried by the spawn, not by the
-orchestrator, so the count is stated here for recounting rather than as an input to a load figure.
-
 Code has tests; documents have readers. So quality here means: the declared reader can make the declared
 decision from the artifact alone, every externally-checkable fact is grounded, and the set is internally
 coherent. W12 becomes a rubric dimension; the rest are production rules for the generator.
