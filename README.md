@@ -83,6 +83,8 @@ make link PROJECT=/path/to/repo  # that project's .claude/skills
 make link SKILLS_DIR=/some/path  # one literal path
 ```
 
+Codex is linked into `~/.agents/skills`, the location current Codex reads; an older link under `$CODEX_HOME/skills` still loads but is deprecated there. agy's skills directory is not confirmed by first-party documentation — override it with `AGY_SKILLS_DIR=` if yours differs.
+
 `link` never removes anything. It refuses a path that already exists and is not its own symlink, and tells you which — a directory you made by hand is never cleared to make room.
 
 It needs a filesystem it may write to and the ability to spawn an independent worker. Without a writable filesystem it cannot run at all; without a spawnable worker it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top exit becomes unreachable — stated, not hidden.

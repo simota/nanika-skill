@@ -1,15 +1,17 @@
 ---
 name: nanika
 description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; nanika may wrap them. Explicit invocation still requires spend consent."
-allowed-tools: Read, Write, Edit, Bash, WebSearch, WebFetch
-requires-capability: spawn-independent-worker
+allowed-tools: Read, Write, Edit, Bash, WebSearch, WebFetch, Agent
+compatibility: "Needs a writable filesystem and a way to spawn an independent worker with its own context; reference/engine-map.md maps that to each host."
+metadata:
+  requires-capability: spawn-independent-worker
 ---
 # Wish — the one-shot delivery harness
 
 **REQUIRES:** a filesystem you may write to, and the ability to spawn an independent worker with its own context. The
 frontmatter declares that capability by name, not by host tool: **the spawn tool's name, the model names and every
-per-host command live in `reference/engine-map.md` and nowhere else** — porting nanika is one file's edit, and the
-host's allowlist must admit what it names. Row 0.8 tests the capability by using it; §3's degraded block says what a
+per-host command live in `reference/engine-map.md` and nowhere else** — porting nanika is one file's edit.
+`allowed-tools` only pre-approves tools for the invoking turn; it neither restricts nor guarantees them. Row 0.8 tests the capability by using it; §3's degraded block says what a
 failure costs. Nothing depends on another skill.
 
 **DELTA: UNMEASURED.** No with-skill / without-skill A/B has been run on this document. Four evaluations that would
