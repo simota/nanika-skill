@@ -85,7 +85,8 @@ EVALUATION:
 **`evidence_span` is load-bearing for a card clause.** Row 3.2's "citing an observation rather than an
 impression" lands here and nowhere else — this key is the artifact that clause produces. **Void-and-re-run:** an `evidence_span` that cannot be found
 in the artifact or reproduced from the named command voids that dimension's score, and the evaluator is
-re-run once; a second void leaves the dimension unscored for that cycle, named in the cycle file. "Should be fine" and "looks strong" are forbidden vocabulary.
+re-run once; a second void leaves the dimension unscored for that cycle, named in the cycle file — an
+unscored dimension blocks ACCEPT and carries its prior score into Δ and row 3.6. "Should be fine" and "looks strong" are forbidden vocabulary.
 
 **No `calibration:` field exists in this schema, deliberately.** A self-declared calibration state is a
 string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
@@ -101,7 +102,7 @@ SCORECARD:
     - pass: 1
       labelled_control: false          # true on a pass-2 re-prompt, which names the control per §P2
       pairs:                           # written by the SCORER, before it sees any candidate
-        - dimension: "<name>"          # one pair per dimension this scorer scores: all for a judge, one for an evaluator
+        - dimension: "<name>"          # one pair per anchored dimension it scores; others are listed `no-pair`
           items:
             - item: A                  # that dimension's exemplar and its control, unlabelled and shuffled per scorer
               score: 0-3
@@ -171,7 +172,7 @@ across the boundary.
 
 ## L8 — `PAIRWISE_VERDICT`, the P4 exit-gate return
 
-Row 4.1 spawns four workers: two pairings (this artifact vs the P1A exemplar; this artifact vs the
+Row 4.1 spawns four workers: two pairings (this artifact vs the P1A exemplars, each worker receiving every one; this artifact vs the
 retained runner-up) × two orders. **The two pairings are not judged at the same grain, and row 4.1 owns
 which is which:** the exemplar pairing returns one verdict *per named 1A.1 property*, the runner-up pairing
 one verdict overall. Each worker returns exactly this, and nothing else:

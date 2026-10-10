@@ -51,7 +51,7 @@ cycles: <N + ≤1 bonus> · generation: <outline|full-build>   (both read off §
 rubric: <R1|R2> · mode: <full | single-agent(declared)>
 tick = supporting record claimed at a run-dir path (§0.3), not independently verified quality. blank = not done.
 not-run:<reason> = skipped; the reason must be one of six: `no spawn` · `no external worker` ·
-  `not applicable(<class|scope|condition>)` · `precondition unmet(<row>)` · `user declined(<path>)` ·
+  `not applicable(<class|scope|no amendment|first wish|single cycle>)` · `precondition unmet(<row>)` · `user declined(<path>)` ·
   `capability absent(<name>)`. Any other string is an ID1 imbalance at 5.7.
 ext = fillable only by a worker that was not in the context it checks, AND `ext/<row>.md` holds
 that worker's prompt and raw return. A saved record alone does not authenticate a worker or its independence.
@@ -117,9 +117,9 @@ P2 TOURNAMENT  → candidates/, spawns/, scorecards/
 [ ] 2.1 3-5 angles chosen, each a one-line bet, each disagreeing with the others                                               ev:
 [ ] 2.2 generators spawned in isolation — none sees another's output or the loop history; `doc-deliverables.md` attached to
         each generator spawn when 0.4's class is `document`                                                                    ev:
-[ ] 2.3 BLIND PAIR: every judge scored, per dimension, that dimension's exemplar and its control (`anchors.md` pairs them)
-        as two unlabelled, per-scorer-shuffled items on that dimension BEFORE seeing any candidate — a score AND quoted
-        evidence for each, persisted to `scorecards/<scorer>.md`; the orchestrator holds
+[ ] 2.3 BLIND PAIR: every judge scored, per dimension whose descriptor is `anchored` (others `no-pair`), that dimension's
+        exemplar and its control (`anchors.md` pairs them) as two unlabelled, per-scorer-shuffled items on that dimension
+        BEFORE seeing any candidate — a score AND quoted evidence for each, persisted to `scorecards/<scorer>.md`; the orchestrator holds
         the key, applies the §P2 table itself and writes its verdict `calibrated | re-prompted | replaced` onto that
         scorecard. No `calibration:` field is accepted from a scorer                                                           ev:
 [ ] 2.4 judging blind: provenance stripped AND candidate order shuffled per judge, and the shuffle recorded as a seed          ev:
@@ -155,7 +155,7 @@ P3R RECEPTION  → personas/
 [ ] 3R.2 every finding routed to a named dimension and re-scored, or routed to §6 amendment, or recorded as a residual with
          the reason no dimension fits — a residual is legal ONLY once the cap is spent or §6 was declined or already used    ev:
 [ ] 3R.3 RE-ENTRY, written either way: a 3R.2 finding that moved a score re-opens P3 while cycles remain under §3's cap —
-         counter advances, new `cycles/<n>.md`, P4 waits, causing finding named. Else: no score moved → clean; cap spent → demoted ev:
+         counter advances, new `cycles/<n>.md`, P4 waits, causing finding named. Else: no score moved → clean; cap spent → demoted (an exit only on a rubric-perfect artifact) ev:
 
 P4 EXIT GATE  → gate4.md
 [ ] 4.1 ext — blind comparative vs the P1A exemplars and vs the retained runner-up, each pairing judged in BOTH ORDERS by workers
@@ -241,7 +241,7 @@ P5 DELIVER  → report.md
 outline · **L** several coupled artifacts, or one whose parts must cohere — N=5, full-build · **XL** a set whose
 composition is itself the design problem — N=5, full-build. N=5 requires an envelope that covers it, else N=3.
 *Outline* = generators compete at outline level and a spawned generator builds the winner before cycle 1, so 4.1's
-runner-up is the second-best retained cycle artifact (3.6); *full-build* = each ships a complete artifact. Plus at
+runner-up is the second-best retained cycle artifact (3.6), or `not applicable(single cycle)`; *full-build* = each ships a complete artifact. Plus at
 most one bonus cycle from P4 — total N+1.
 
 **Envelope.** Computed at 0.6. Include wrapped-domain work and retries, not just nanika seats. Counts are not
@@ -250,16 +250,16 @@ by a low point estimate. Each term's range lives on the row that spends it:
 
 ```
 agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
-       + S (row 1A.1 sweep) + 1 (row 1A.3 checker, +1 per re-anchor) + E (row 1A.7, one per extra engine)
+       + S × (1 + re-anchors) (row 1A.1 sweep) + 1 + re-anchors (row 1A.3 checker) + E (row 1A.7, one per extra engine)
        + C (row 2.1 angles) + J (row 2.4 judges, >= 3) + 1 (outline build; outline only)
        + (N+1) × (1 generator revision + D evaluators, row 1.10 + K skeptics, row 3.4)
-       + P (row 3R.1) per reception pass + 4 (row 4.1: 2 pairings × 2 orders) + D (row 4.2 re-score) + 1 (row 5.7)
+       + P × reception passes (row 3R.1) + 4 × P4 passes (row 4.1: 2 pairings × 2 orders) + D (row 4.2) + 1 (row 5.7)
        + replaced scorers, one re-run per void return, and wrapped-domain workers and retries
 ```
 
 | Exit | Meaning |
 |------|---------|
-| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, every 4.1 loss disposed by 4.2, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. A state with 0 < anchored < descriptors prints `mixed(<anchored>/<descriptors>)`, a legal run that is **not** `sourced`; ID3(c) owns the other non-`sourced` states |
+| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, every non-advisory 4.1 loss disposed by 4.2, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. A state with 0 < anchored < descriptors prints `mixed(<anchored>/<descriptors>)`, a legal run that is **not** `sourced`; ID3(c) owns the other non-`sourced` states |
 | `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection — **and the cap was already spent, which is the only state in which 3R.3 may convert that finding into a residual instead of another cycle.** Ships best-so-far with the persona's verbatim stop-span. **Never reports as `ACCEPT`** |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
@@ -269,13 +269,15 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
 
 The ceiling is often unreachable; a clean `diminishing-returns` is honourable, and the report names what plateaued, and why.
 
-**Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`, whose P3R and P4 rows
-read `precondition unmet(3.9)`; P5 always runs, and a BLOCKed run resumes only as a new wish. A 3R.3 re-entry or 4.2's
-bonus reopens P3, and P3R follows that cycle again; 3R.3 and P4's ENTER read the latest pass, and a P4 after the bonus
-is advisory. 3R.2-3R.3's cap is N; the +1 is 4.2's alone. The report's `exit:` is fixed when P5 opens, as the first that
-applies of `BLOCK` > `budget-reached` > `single-agent-best-effort` > `reception-demoted` > `cap-reached` >
-`diminishing-returns` > `ACCEPT`. `budget-reached` fires one agent below the ceiling, reserving 5.7. A declined 0.7 or
-1A.6 closes the run: later rows read `precondition unmet(<that row>)`, no exit prints and no ledger entry is written.
+**Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`; after those, P3R and P4
+rows not yet evidenced read `precondition unmet(3.9)` (earlier-pass evidence stands; a degraded-list row keeps `no
+spawn`), and P5 runs. A BLOCKed run resumes only as a new wish. A 3R.3 re-entry or 4.2's bonus reopens P3, and P3R
+follows that cycle again; ENTER lines, 3R.3 and P4 read the latest pass, and a P4 after the bonus is advisory.
+3R.2-3R.3's cap is N; the +1 is 4.2's alone. The report's `exit:` is fixed when P5 opens, as the first that applies of
+`BLOCK` > `budget-reached` > `single-agent-best-effort` > `reception-demoted` > `ACCEPT` > `cap-reached` >
+`diminishing-returns`. `budget-reached` fires at whichever spawn would cross the ceiling less the one agent reserved for
+5.7; unrun rows read `precondition unmet(<that row>)`. A declined 0.7 closes the run with no exit and no ledger entry,
+P5 included; a declined 1A.6 does the same but appends a ledger entry, because agents were spent.
 
 **Degraded mode**, binding when row 0.8's preflight fails. These fourteen rows are `not-run: no spawn` — 1A.3, 1A.7,
 2.2, 2.3, 2.4, 3.2, 3.4, 3.5, 3R.1, 3R.2, 3R.3, 4.1, 4.2, 5.7 — and no other row may carry that reason (ID10 checks
@@ -331,7 +333,7 @@ labelled for rubric scoring only, with N6 preserving blinded comparisons and col
 | on any pair: control = 3 (inflates: every later 3 is meaningless) · control ≥ exemplar (cannot tell them apart) · exemplar < 3 (severe, or the anchor is unreachable as written) | `re-prompted` once, naming the control as an explicit score-1-2 reference; a second inflation writes `replaced` and the scorer is replaced. **The anchor is frozen and is not re-worded here** — N4 |
 
 **An uncalibrated scorer cannot produce a ceiling ACCEPT** — a guard that leaves an artifact: one scorecard per scorer
-under `scorecards/`, and ID9 both counts the files **and recomputes each verdict from the two scores against the table
+under `scorecards/`, and ID9 both counts the files **and recomputes each verdict from each pair's scores against the table
 above**, so a truthful pair under a false verdict is arithmetic a non-participant catches. Prompt files and shuffle seeds document intended isolation; they do not authenticate it. Judging is
 pointwise, so its bias mitigation is shuffling order *across* judges; the *pairwise* one is 4.1.
 
@@ -347,7 +349,7 @@ panel's independence conditions itself — the whole reason §7 keeps a mechanis
 3.1 and 3.7 are the reset that earns its cost [EV-12].
 
 ### P3R — Reception · rows 3R.1-3R.3 · **the one phase with a return edge**
-**ENTER:** row 3.9 carries an exit other than `BLOCK` or `budget-reached`. **READ:** `evaluator-roster.md` §5. **EXIT:** to **P3** when 3R.3 fires.
+**ENTER:** row 3.9's latest cycle carries an exit other than `BLOCK` or `budget-reached`. **READ:** `evaluator-roster.md` §5. **EXIT:** to **P3** when 3R.3 fires.
 
 P3R produces **simulated cold-read evidence**, not actual recipient acceptance, preference or audience coverage.
 A matching stop-span demonstrates only that the quoted text exists. The finding still needs interpretation and
@@ -355,7 +357,7 @@ A matching stop-span demonstrates only that the quoted text exists. The finding 
 separately, with their actual source and authorization; never relabel a persona return as one.
 
 ### P4 — Exit gate · rows 4.1-4.2
-**ENTER:** row 3.6 names the artifact **and 3R.3 did not fire**. **READ:** `evaluator-loop.md` §8, which owns the
+**ENTER:** row 3.6 names the artifact, **3R.3 did not fire** and 3.9's latest exit is not `BLOCK` or `budget-reached`. **READ:** `evaluator-loop.md` §8, which owns the
 `PAIRWISE_VERDICT` schema row 4.1 hands to each of the four workers.
 
 A loss to the runner-up may reflect a regression, noise or an intentional trade-off; the comparison alone cannot decide which. **Both orders, consistent-only:**
@@ -380,8 +382,8 @@ re-quote:    n exact-match / n mismatch / n unreachable | not-run(<reason>)
 property:    n present / n absent / n not-assessed | not-run(<reason>)   reject-lists: n / n | unchallenged(n)
 separation:  n separating / n non-separating / n non-comparable | not-run(<reason>)   shared-property(n) | one-per-dimension
 challenge:   none-better-found | out-anchored | re-anchored | not-run(<reason>)   engines: cross-engine(<list>) | monoculture(declared)
-evaluators:  n calibrated / n re-prompted / n replaced | not-run(<reason>)
-reception:   simulated-cold-read: clean | re-entered(n) | demoted | residual(n, cap spent) | not-run(<reason>)
+evaluators:  n calibrated / n re-prompted / n replaced / n no-pair | not-run(<reason>)
+reception:   simulated-cold-read: clean | re-entered(n) | demoted | residual(n, cap spent | §6 declined | §6 used | void twice) | not-run(<reason>)
 exit gate:   vs-exemplar n properties: n won / n lost / n inconsistent · vs-runner-up won | lost(<property>) | inconsistent | not-run(<reason>)
 identity:    pass | imbalance(n) | not-run(<reason>)      delta: UNMEASURED
 gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
@@ -390,7 +392,7 @@ gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
 Then all twelve sections, each present or `N/A` with a one-line reason. **Contract** — every element classified per
 5.2, prohibitions on their own axis. **Anchoring** — exemplars and control with locators, spans, named properties, the
 dimension each anchors, each reject list, 1A.3's verdicts per locator and property, the challenge return, the fallback
-flag if it fired. **Calibration** — per scorer, every blind-pair pass with both scores and the orchestrator's verdict, and the
+flag if it fired. **Calibration** — per scorer, every blind-pair pass with each pair's scores and the orchestrator's verdict, and the
 final verdict, as ID9 counted and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
 scores, winner, runner-up, salvage grafted / rejected / deferred / carried. **Trajectory** — per-cycle weighted scores
 per dimension tagged R1/R2, each cycle's 3.9 verdict, and which artifact shipped and why it, not the last.
@@ -410,7 +412,7 @@ wish <slug> closed · card 57 rows: 55 ticked + 2 not-run · identities 10/10 ba
 · anchors 6 = 6 exact-match · property 4 present + 2 not-assessed · separation 4 = 4 separating
 · reject-lists 4 / 4 + 0 unchallenged · challenge none-better-found · one-per-dimension
 · salvage 9 = 6 grafted + 2 rejected + 1 deferred + 0 carried · attacks 7 = 4 killed + 2 fixed + 0 open + 1 unproven-because-new
-· scorers 7 = 7 calibrated + 0 re-prompted + 0 replaced · ext 3 = 3 recorded + 0 not-run
+· scorers 7 = 7 calibrated + 0 re-prompted + 0 replaced + 0 no-pair · ext 3 = 3 recorded + 0 not-run
 · simulated cold-read 3 = 3 valid-span + 0 void · 0 re-entered + 0 residual · exit-gate 4 properties = 4 won · exit ACCEPT
 ```
 
@@ -466,7 +468,7 @@ refuses consensus voting at P2 for the same reason.
 | **A maximally weak control** — absurd rather than ordinary, which inflates every exemplar-control gap and passes an inflating judge at 2.3's `control ≤ 2`. | Partial. `non-comparable` at 1A.3 is the control's first external verdict; 1A.4 strikes on it. It rests on one judgment from the same class of system, and 2.3's threshold is unchanged: an ordinary-but-mediocre control still passes an inflating judge. |
 | **A false `not-run:` reason** — dropping 2.6, 3.4 or 3.8 under a plausible string and exiting clean. | The legend closes the vocabulary to six reasons and ID1 rejects any other string. Two are self-certifying (`no spawn` cross-checked by ID10 against `mode:`; `no external worker` by ID8 against `ext/`). The other four are checked for form, not truth: `not applicable(document)` on 5.3 passes ID1 although `run-discipline.md` Q16 sweeps documents too. Narrower than before, not closed. |
 | **A mis-declared `mode:`** — printing `full` while spawn-dependent rows sit `not-run`. | ID10, both directions, against §3's fourteen-row list. It cannot detect a run that spawned nothing and ticked the rows anyway — the `ext` forgery row below. |
-| **`evaluators: calibrated` typed by the orchestrator that both applied the guard and declared ACCEPT.** | ID9 counts scorers from `scorecards/` **and recomputes each verdict from the two scores against §P2's table**, so a truthful pair under a false verdict — the cheaper forgery — is caught. A wholly fabricated scorecard is not. |
+| **`evaluators: calibrated` typed by the orchestrator that both applied the guard and declared ACCEPT.** | ID9 counts scorers from `scorecards/` **and recomputes each verdict from each pair's scores against §P2's table**, so a truthful pair under a false verdict — the cheaper forgery — is caught. A wholly fabricated scorecard is not. |
 | **A `spawns/` prompt file written without ever spawning.** N6 requires the file before the spawn; nothing observes the spawn. | **None.** Same class as the `ext` forgery and priced the same way: a written prompt with no worker behind it passes every check, and no identity counts `spawns/` at all. It is named here so that it is priced, not merely uncaught. |
 | A `silent` contract element written up as `ratified`. The classifier is the agent that wrote the contract. | Weak, and known to be. ID2 sums a partition and so balances whenever everything is classified. The real check is A2 — and A2 has no auditor, so this is a rule, not a residue. |
 | A re-quote checker that pastes back the span it was handed instead of re-opening the locator (1A.3). | The checker returns **what it read**; the report carries both strings side by side, and a paste-back is byte-identical with no surrounding context. Evadable for one invented sentence of context — this catches laziness, not forgery. |

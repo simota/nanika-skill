@@ -122,7 +122,7 @@ their own evidence.
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| Q12 | **Bar unmet plus envelope remaining means iterate** | Delivering a known-substandard artifact with envelope left is a protocol violation, not a style choice — unless `SKILL.md` §3's `diminishing-returns` exit applies, which is a measured stop, not a lapse. |
+| Q12 | **Bar unmet plus envelope remaining means iterate** | Delivering a known-substandard artifact with envelope left is a protocol violation, not a style choice — unless an exit in `SKILL.md` §3's table other than `budget-reached` applies, which is a stated stop, not a lapse. |
 | Q13 | **Bar unmet plus envelope exhausted means best-so-far plus the residual gap** | Report the gap precisely, under the exit reason `SKILL.md` §3's table gives it. Never silently stop; never burn cycles past marginal value. |
 | Q14 | **No status inflation** | A precise `partial` beats a `verified` with hidden holes. The acceptance section never says "all criteria met" as a blanket — row 5.2 maps each criterion individually, and ID7 sums the partition. |
 | Q15 | **Every criterion is classified, and a prohibition is not a criterion** | Row 5.2 requires both classifications; this rule owns the test each class must pass, below. The two axes are separate because a criterion is met by producing something and a prohibition is held by *nothing having happened*, which no amount of criterion evidence demonstrates. |

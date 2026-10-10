@@ -24,7 +24,7 @@ states the card legalises — `not-run` and `carried` included.
 
 **ID1 — the card.** `57 = ticked + not-run`, **and** every ticked row's `ev:` value resolves to an
 existing file inside the run directory, **and** every `not-run:` reason is one of the six strings the card
-legend closes on (`no spawn` · `no external worker` · `not applicable(<class|scope|condition>)` ·
+legend closes on (`no spawn` · `no external worker` · `not applicable(<class|scope|no amendment|first wish|single cycle>)` ·
 `precondition unmet(<row>)` · `user declined(<path>)` · `capability absent(<name>)`). A seventh string is
 an imbalance even when the arithmetic sums. Source: all 57 rows, 5.6.
 
@@ -79,7 +79,8 @@ under any other exit is an imbalance. Source: 2.6, 3.3.
 `unproven-because-new` count appears in the §5 terminal line, which carries a field for it. Source:
 3.4, 3.5.
 
-**ID6 — reception.** `personas run = valid-span + void`, counting a re-run as its own persona run; each
+**ID6 — reception.** `personas run = valid-span + void`, summed over every reception pass and counting a
+re-run as its own persona run; each
 void is followed by exactly one re-run, or — when that re-run is void too — by a named residual;
 `personas run = 0` is legal exactly when 3R.1 carries `not-run`. Source: 3R.1, 3R.2, 3R.3.
 
@@ -88,18 +89,20 @@ void is followed by exactly one re-run, or — when that re-run is void too — 
 
 **ID8 — the external cells.** `ext cells = 3 = record-present + not-run`, where
 `record-present` is `ls ext/ | wc -l` — files, not labels, one per cell: 4.1's four returns go in
-`ext/4.1.md`. Catches an absent record; does not catch
+`ext/4.1.md`, and a re-anchor's second 1A.3 return is appended to `ext/1A.3.md`, never written over it. Catches an absent record; does not catch
 a fabricated one, which `SKILL.md` §7 states rather than claims away. Source: 1A.3, 4.1, 5.7.
 
 **ID9 — the scorers.** Two clauses. A scorer is every P2 judge and every P3 evaluator, identified by the
 `scorer_id` on its scorecard, which every scoring return it makes repeats (`EVALUATION` for an evaluator,
 the P2 scoring return for a judge; `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
-cycle under the same id is the same scorer. **Count:** `scorers = calibrated + re-prompted + replaced`, one
+cycle under the same id is the same scorer. **Count:** `scorers = calibrated + re-prompted + replaced + no-pair`, one
 scorecard per scorer under `scorecards/`, each holding every blind-pair pass and the orchestrator's verdict
-on each. A scorer is bucketed by its **final** verdict: a scorer re-prompted once and then calibrated is
+on each. `no-pair` is a scorer none of whose dimensions has an `anchored` descriptor, so 2.3 gave it nothing
+to calibrate on; its scores are advisory, and the run cannot read `anchoring: sourced` anyway. A scorer is
+bucketed by its **final** verdict: a scorer re-prompted once and then calibrated is
 `calibrated`; a final `re-prompted` means the second pass never ran, which is legal only for a scorer that
 produced no score. A scorer that produced any score in `cycles/*` or in the P2 judging is an imbalance if
-it has no scorecard or its final verdict is not `calibrated`; a scorer with no score may end `re-prompted`
+it has no scorecard or its final verdict is neither `calibrated` nor `no-pair`; a scorer with no score may end `re-prompted`
 or `replaced`. A replaced scorer leaves its own scorecard
 **and** its replacement's, so a replacement raises the total by one. `scorers = 0` is legal exactly when
 2.3 and 3.2 carry `not-run`, and the header then reads `evaluators: not-run(<reason>)`. **Recompute:**
@@ -129,7 +132,8 @@ mode was invisible to every other identity. Source: 0.8, §3's degraded list.
    phase that did not run, or ran and threw its output away. Naming it is the whole of the job.
 4. Its raw return is retained in `ext/5.7.md`, linked from the report and summarized in the `identity:` header field.
    A summary that disagrees with the return is itself an imbalance.
-   **Its own row counts as done.** The audit cannot see the record it is about to become, so it counts row
+   **When 5.7 is spawned (`mode: full`), its own row counts as done.** The audit cannot see the record it is
+   about to become, so it counts row
    5.7 as ticked and `ext/5.7.md` as present. After it returns, only four writes are legal: tick 5.7, save
    `ext/5.7.md`, fill the report's `identity:` field and terminal line, and finish 5.6's link. Any other
    change to the run directory makes it a different run, which §4 says needs a new audit.
@@ -169,7 +173,7 @@ ID7  5 criteria = 3 verified + 1 partial + 0 missed + 1 dropped
 ID8  3 = 3 record-present + 0 not-run · `ls ext/` → 3 files                       — pass
 ID9  count: 7 scorers = 7 calibrated + 0 re-prompted + 0 replaced (final verdicts) · `ls scorecards/` → 7
      recompute: judge-1, judge-2 four pairs each, every pair (3, ≤2)→calibrated ✓ ·
-                judge-3 pass 1, one pair (3,3)→re-prompted ✓, pass 2 four pairs (3, ≤2)→calibrated ✓ ·
+                judge-3 pass 1, four pairs, one of them (3,3)→re-prompted ✓, pass 2 four pairs (3, ≤2)→calibrated ✓ ·
                 eval-1..4 one pair each, (3,2) (3,1) (3,2) (3,2)→calibrated ✓               — pass
 ID10 mode: full · rows carrying `not-run: no spawn` = 0 · 0.8 records exit 0           — pass
 ```
@@ -231,12 +235,16 @@ ID4  9 = 5 grafted + 2 rejected + 1 deferred + **1 carried**; exit is `budget-re
      carried > 0 is legal and the report lists the carried item                          — pass
 ID6  0 personas (3R.1 not-run) = 0 valid-span + 0 void; 3R.3 not-run with it             — pass
 ID8  3 = 2 record-present (1A.3, 5.7) + 1 not-run(precondition unmet(3.9))          — pass
-ID9  count 7 = 7 calibrated (3 judges + 4 evaluators); every pass recomputes → calibrated ✓ — pass
+ID9  count 7 = 6 calibrated + 0 re-prompted + 0 replaced + 1 no-pair: the judges calibrate on the
+     three anchored dimensions' pairs, and the paywalled dimension's evaluator has no pair; header
+     `evaluators: 6 calibrated / 0 re-prompted / 0 replaced / 1 no-pair`                      — pass
 ID10 mode: full; no row carries `not-run: no spawn`                                      — pass
 ```
 
-**D — `rubric: R2`, exit `reception-demoted`.** An amendment opened at 3.10 and a persona still bounced
-after the bonus cycle was spent. Only the identities that move are shown. The amendment added a fifth
+**D — `rubric: R2`, exit `reception-demoted`.** Two named recipients, N = 3, three reception passes. Pass 1,
+after cycle 2: one finding re-scored and re-entered (cycle 3), one routed to §6, which opened at 3.10. Pass 2,
+after cycle 3: clean; P4 lost one exemplar property, and 4.2 spent the bonus on it. Pass 3, after the bonus:
+a finding moved a score on a rubric-perfect artifact with the cap spent → demoted. Only the identities that move are shown. The amendment added a fifth
 dimension, and 1A.1 found no separate exemplar for it — so the run shares one property across two
 descriptors and must say so.
 
@@ -246,9 +254,8 @@ ID3  (c) 5 descriptors = 5 anchored; two of them cite the same property → head
          `shared-property(2)`. Legal, printed, and it lowers no other verdict — but a reader
          can now see that five dimensions rest on four properties                        — pass
 ID5  6 = 3 killed + 2 fixed + 0 open + 1 unproven-because-new                            — pass
-ID6  4 personas = 4 valid-span + 0 void; one finding routed to §6 (3R.2), one re-scored and
-     sent back through P3 by 3R.3, and one recorded as a residual — legal here, and only
-     here, because the cap was spent before it was written                               — pass
+ID6  6 personas = 6 valid-span + 0 void, summed over three passes of two; pass 3's finding is
+     the one 3R.3 may convert instead of re-entering, because the cap was spent           — pass
 ID7  6 criteria = 4 verified + 2 partial (re-scored under R2, both versions retained)    — pass
      exit: reception-demoted — never reports as ACCEPT, per §3
 ```
