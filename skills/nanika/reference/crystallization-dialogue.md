@@ -56,13 +56,14 @@ Ledger mandatory; this rule is its schema and lifecycle.
 - **Checkpoint:** a turn that presents the draft (D10, D12) for confirmation. There are at least three:
   after rows 1.1-1.7 are asked; the **final contract checkpoint** at row 1.8, before 1.9 writes
   `contract.md`; and the **rubric checkpoint** after row 1.10, which presents the dimensions and weights.
-- **Lifecycle:** `open` → `confirmed` (ratified at a checkpoint) or `open` → `parked` (moved to
-  `contract.md`'s `## Open Questions` section at the final contract checkpoint). An `open` row never
+- **Lifecycle:** `open` → `confirmed` (ratified at a checkpoint) or `open` → `parked` (moved, at the final contract checkpoint, into the `## Open Questions` section row 1.9
+  writes in `contract.md`). An `open` row never
   silently disappears.
 - **Checkpoint duty:** every checkpoint shows the count of open rows and lists the *new* ones since the
   last checkpoint.
 - **Final-checkpoint duty:** walk every `open` row; each becomes `confirmed` or `parked`. At the rubric
-  checkpoint each dimension is ratified or recorded as an `ASSUME-n`. 1A.5's Provenance Gate
+  checkpoint each dimension is ratified, or recorded as an `ASSUME-n` and walked the same way (`confirmed` or
+  `parked`). 1A.5's Provenance Gate
   (`benchmark-anchoring.md` §5) reads `confirmed` as `ratified` and `parked` as `parked`; a contract
   element or dimension with no quote and no row is `silent`, and a row still `open` at 1A.5 is
   unclassified and fails the gate.

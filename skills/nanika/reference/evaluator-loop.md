@@ -88,7 +88,7 @@ in the artifact or reproduced from the named command voids that dimension's scor
 re-run once; a second void leaves the dimension unscored for that cycle, named in the cycle file — an
 unscored dimension blocks ACCEPT and carries its prior score into Δ and row 3.6. "Should be fine" and "looks strong" are forbidden vocabulary.
 
-**No `calibration:` field exists in this schema, deliberately.** Calibration is the orchestrator's computation, written onto the
+**No `calibration:` field exists in this schema, deliberately:** a self-declared calibration state is a string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
 scorecard below and counted *and recomputed* by ID9.
 
 ## L5 — `SCORECARD`, one file per `scorer_id` under `scorecards/`
@@ -142,7 +142,7 @@ REVISION_BRIEF:
   cycle: N → N+1
   address:
     - "[dim: <name>, score 2] <gap_to_3> — <recommendation>"
-    - "[surviving attack] <the refutation that was not killed>"
+    - "[surviving attack] <an ID5 `open` attack>"
     - "[reception] <persona friction that entered as dimension evidence>"
   salvage:                             # every item from row 2.6, one of four dispositions, none silent
     - "<item> — grafted <where>"

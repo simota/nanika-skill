@@ -1,7 +1,7 @@
 # nanika-ledger.md — the scarcity record
 
 **Owns:** where the usage history lives, its schema, the counting rule, and the outcome backfill.
-**Read when:** **P0** — the only phase whose `READ:` line names this file. Row 5.5 appends one entry at P5 from §LG2's schema.
+**Read when:** **P0** — the only phase whose `READ:` line names this file. Row 5.5 appends one entry at P5 (a 1A.6 decline appends at the decline) from §LG2's schema.
 
 A wish is scarce only if something counts it. Without a ledger, "once-in-a-lifetime" is a tone of voice.
 
@@ -22,7 +22,7 @@ sanitized record. A local history still makes usage visible to its user; publica
 ## LG2 — Schema
 
 One block per wish, appended at row 5.5 — or, for a run declined at 1A.6, at the decline, with `mode` from
-row 0.8's result, `dims_at_ceiling`, `comparative` and `engines` as `n/a`, and `budget` as the agents spent so far. Where a field's vocabulary is owned elsewhere, the field takes
+row 0.8's result, `dims_at_ceiling`, `comparative` and `engines` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about. Where a field's vocabulary is owned elsewhere, the field takes
 that vocabulary verbatim rather than a copy of it kept here — a ledger that carries a stale exit word
 records a run that did not happen.
 

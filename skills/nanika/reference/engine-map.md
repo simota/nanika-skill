@@ -19,7 +19,7 @@ Contents: §0 capability → tool · §1 why engine diversity is worth its cost 
 ## §0 — Capability → tool
 
 **M1 — One capability name, one mapping, one file.** The skill's frontmatter declares what it needs by
-capability (`spawn-independent-worker`), never by tool. The table below is the only place that capability
+capability (`spawn-independent-worker`), never by tool; `allowed-tools` is a host pre-approval hint, not a declaration. The table below is the only place that capability
 becomes a name a host recognises. To port nanika to a host that is not listed: add one row here, add one row
 to §2a and one to §2b, and make sure the host lets those rows run — pre-approved or approvable — without
 widening what a worker may do. Change nothing else. A host that is *not* in these tables is not improvised at 0.8 — the run either gets a row first, or
@@ -78,8 +78,7 @@ Agent(
 ```
 then, to turn the return into an exit status:
 ```
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'
-echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
 
 **Codex CLI**
@@ -89,8 +88,7 @@ rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell
 spawn_agent({message: "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt, then return exactly PREFLIGHT-OK."})
                                                                     # tool call → <id>
 wait_agent({targets: ["<id>"], timeout_ms: 300000})                 # tool call
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'
-echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
 
 A worker that inherits a read-only sandbox cannot write the file; that is a real failure of this run's
@@ -101,8 +99,7 @@ ability to spawn a worker that writes, and it is recorded as one.
 ```
 rm -f <abs>/.nanika/runs/<slug>/preflight.txt
 agy -p "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt. Reply with exactly PREFLIGHT-OK." </dev/null >/dev/null 2>&1
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'
-echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
 
 The write needs permission for that path. Grant it narrowly in agy's own settings; never with the

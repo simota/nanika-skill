@@ -10,8 +10,8 @@ metadata:
 
 **REQUIRES:** a filesystem you may write to, and the ability to spawn an independent worker with its own context. The
 frontmatter declares that capability by name, not by host tool: **the spawn tool's name, the model names and every
-per-host command live in `reference/engine-map.md` and nowhere else** — porting nanika is one file's edit.
-`allowed-tools` only pre-approves tools for the invoking turn; it neither restricts nor guarantees them. Row 0.8 tests the capability by using it; §3's degraded block says what a
+per-host command live in `reference/engine-map.md` and nowhere else** — porting nanika is one file's edit. The one
+exception is `allowed-tools`, a host pre-approval hint for the invoking turn that neither restricts nor guarantees a tool. Row 0.8 tests the capability by using it; §3's degraded block says what a
 failure costs. Nothing depends on another skill.
 
 **DELTA: UNMEASURED.** No with-skill / without-skill A/B has been run on this document. Four evaluations that would
@@ -137,7 +137,7 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
         carried into the next cycle                                                                                            ev:
 [ ] 3.4 panel staged in at all-dims>=2: 2-4 skeptics, distinct angles; each briefed without the others' output, run for ONE
         round, and aggregated against the rubric rather than by vote           ev:
-[ ] 3.5 at all-dims=3 the panel ratified or demoted; survivors carried forward as generator exclusions                         ev:
+[ ] 3.5 at all-dims=3 the panel ratified or demoted; surviving attacks (ID5 `open`) carried forward as generator exclusions                         ev:
 [ ] 3.6 every cycle's artifact retained; the one entering P4 is the best-scoring, not the last                                 ev:
 [ ] 3.7 goal-alignment check written into the cycle file at the boundary: does this still serve the contract, semantically and
         not only by score                                                                                                      ev:
@@ -259,7 +259,7 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
 | Exit | Meaning |
 |------|---------|
 | `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, every non-advisory 4.1 loss disposed by 4.2, `mode: full`, and `anchoring: sourced`. **`sourced`:** every score-3 descriptor is ID3(c)'s `anchored` (`exact-match` ∧ `property-present` ∧ `separating`), the two flagged buckets are 0, and no exemplar is `out-anchored`; ID3(c) computes it and every other anchoring state |
-| `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection, with the cap spent (3R.3) Ships best-so-far with the persona's verbatim stop-span |
+| `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection, with the cap spent (3R.3). Ships best-so-far with the persona's verbatim stop-span |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
 | `budget-reached` | the envelope ceiling hit → deliver best-so-far with the residual gap, and every carried salvage item listed as carried |
@@ -268,14 +268,14 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
 
 The ceiling is often unreachable; a clean `diminishing-returns` is honourable, and the report names what plateaued, and why.
 
-**Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`; after those, every P3, P3R and P4
+**Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`; after those, every pre-P5
 row not yet evidenced reads `precondition unmet(<the row that recorded the exit>)` (earlier-pass evidence stands; a degraded-list row keeps `no
 spawn`), and P5 runs. A BLOCKed run resumes only as a new wish. A 3R.3 re-entry or 4.2's bonus reopens P3, and P3R
 follows that cycle again; ENTER lines, 3R.3 and P4 read the latest pass.
 3R.2-3R.3's cap is N; the +1 is 4.2's alone. The report's `exit:` is fixed when P5 opens, as the first that applies of
 `BLOCK` > `budget-reached` > `single-agent-best-effort` > `reception-demoted` > `ACCEPT` > `cap-reached` >
 `diminishing-returns`. `budget-reached` fires at whichever spawn would cross the ceiling less the one agent reserved for
-5.7, and that spawn's row records the exit. A declined 0.7 closes the run with no exit and no ledger entry,
+5.7; that spawn is not launched, and row 3.9 records the exit (before P3, the spawn's own row does). A declined 0.7 closes the run with no exit and no ledger entry,
 P5 included; a declined 1A.6 does the same but appends a ledger entry, because agents were spent.
 
 **Degraded mode**, binding when row 0.8's preflight fails. These fourteen rows are `not-run: no spawn` — 1A.3, 1A.7,
@@ -302,7 +302,7 @@ dimension row 1.10 writes).
 
 The five rows agents drop here (1.2-1.5, 1.7) get dropped because they feel answered by the rest of the conversation.
 They are not. **Row 1.7 reframes the rubric** — "make this proposal excellent" is usually "I need this person to say
-yes." Row 1.5 is useful only past its first answer (`crystallization-dialogue.md` D3, D5).
+yes." Row 1.5 is useful only past its first answer (`crystallization-dialogue.md` §1, the note under D2-D5).
 
 ### P1A — Anchor, verify, then freeze · rows 1A.1-1A.8
 **ENTER:** rows 1.1-1.12 evidenced. **READ:** `benchmark-anchoring.md`, which owns the sweep, the reject list, the

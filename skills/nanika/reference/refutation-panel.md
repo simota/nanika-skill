@@ -39,9 +39,10 @@ another, turns it into the debate the evidence argues against.
 **Return schema (N6).** Each skeptic returns, per attack:
 `ATTACK: {angle, claim_attacked, evidence: <span, file:line, or command + output>, class: refuted-on-evidence |
 unproven-because-new, confidence: high | low, falsifier: <what would show it wrong>}`. The orchestrator
-disposes each into ID5's buckets: evidence reproduced and `confidence: high` → `open` (→ `fixed` once a later
-cycle removes it); evidence not reproduced, or `confidence: low` → `killed`, with the reason recorded;
-`unproven-because-new` → that bucket, with its falsifier.
+disposes each into ID5's buckets. A `refuted-on-evidence` attack whose evidence is reproduced and whose
+`confidence` is `high` → `open` (→ `fixed` once a later cycle removes it); evidence not reproduced, or
+`confidence: low` → `killed`, with the reason recorded. An `unproven-because-new` attack → that bucket,
+with its falsifier, whatever its confidence.
 
 **Angle selection** — pick per deliverable, one skeptic each:
 
@@ -66,7 +67,7 @@ that separates them:
 - **Unproven-because-new** — the artifact does something unusual and no precedent shows it works. "We have
   no proof this lands" is the signature of a genuine bet, not grounds for demotion.
 
-**Default-to-refuted-when-uncertain applies only to evidence claims.** A choice that survives evidence-based
+**When unsure which class an attack is, class it `refuted-on-evidence` only if it is an evidence claim.** A choice that survives evidence-based
 refutation but remains unproven-because-new is recorded as a flagged residual — named, with what would
 falsify it — never silently demoted. **Every such call routes into ID5's own bucket**, which is where a
 demotion-avoiding reclassification becomes visible: `SKILL.md` §5's terminal line prints that bucket beside
@@ -103,7 +104,7 @@ second oracle, and two oracles make the loop's termination arbitrary.
 **G5.** Aggregate the independent returns; do not reconcile them.
 
 - **Evidence decides, never a head-count.** Each attack is disposed on its own evidence against the frozen
-  rubric, as row 3.4 requires: one attack refuted-on-evidence whose evidence the orchestrator can reproduce
+  rubric, as row 3.4 requires: one attack refuted-on-evidence, returned at `confidence: high`, whose evidence the orchestrator can reproduce
   demotes however many skeptics did not raise it, and an attack that is merely unproven does not demote —
   the claim survives, and the attack goes to ID5's `unproven-because-new` bucket with the flagged residual
   §2 requires, however many skeptics raised it. Counting skeptics who agree is the vote row 3.4

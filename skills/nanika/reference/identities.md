@@ -92,7 +92,7 @@ a fabricated one, which `SKILL.md` §7 states rather than claims away. Source: 1
 
 **ID9 — the scorers.** Two clauses. A scorer is every P2 judge and every P3 evaluator, identified by the
 `scorer_id` on its scorecard, which every scoring return it makes repeats (`EVALUATION` for an evaluator,
-the P2 scoring return for a judge; `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
+an `EVALUATION` with `cycle: 0` for a judge (`evaluator-roster.md` RS4); `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
 cycle under the same id is the same scorer. **Count:** `scorers = calibrated + re-prompted + replaced + no-pair`, one
 scorecard per scorer under `scorecards/`, each holding every blind-pair pass and the orchestrator's verdict
 on each. `no-pair` is a scorer none of whose dimensions has an `anchored` descriptor, so 2.3 gave it nothing
@@ -290,7 +290,7 @@ it never searched for. `SKILL.md` §7 prices each of these.
 
 An imbalance is not a reporting error and is never repaired by editing a number. It means one of three
 things, in this order of likelihood: a phase did not run; a phase ran and its output was not written to
-the run directory; or the card was edited without recomputing the census in §0. The auditor names which
+the run directory; or the card was edited without recomputing the address inventory in §0. The auditor names which
 files disagree and stops. The orchestrator then runs the phase, or records the row `not-run:` with one of
 the six legal reasons — and re-runs the audit, because a run directory that changed after an audit has an
 audit of a different run. §2's four post-audit writes are the only exception.

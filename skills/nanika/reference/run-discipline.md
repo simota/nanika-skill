@@ -3,7 +3,7 @@
 **Owns:** the stance, the eight contract-lint conditions row 1.12 runs, the Decision Ledger, acceptance
 provenance, and completion integrity.
 **Read when:** at **P1**, for §1's eight lint conditions (row 1.12) and §2's Decision Ledger, which binds from
-P2 to P5; and at **P5**, for §5's classes (row 5.2) and §6's completion sweep (row 5.3). The two read triggers are task contexts, not measured instruction loads.
+row 1.9 to P5; and at **P5**, for §5's classes (row 5.2) and §6's completion sweep (row 5.3). The two read triggers are task contexts, not measured instruction loads.
 
 Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §3 drift control, relocated · §4
 independent verification, relocated · §5 acceptance provenance (Q12-Q15) · §6 completion integrity
