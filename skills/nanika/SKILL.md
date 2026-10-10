@@ -1,7 +1,7 @@
 ---
 name: nanika
 description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; nanika may wrap them. Explicit invocation still requires spend consent."
-allowed-tools: Read, Write, Edit, Bash, WebSearch, WebFetch, Agent
+allowed-tools: Read Write Edit Bash WebSearch WebFetch Agent
 compatibility: "Needs a writable filesystem and a way to spawn an independent worker with its own context; reference/engine-map.md maps that to each host."
 metadata:
   requires-capability: spawn-independent-worker
@@ -31,7 +31,7 @@ This is not an essay about quality. It is a harness, and you are the machine in 
    the content must support that row. No artifact means the step cannot be credited as performed; an artifact alone is insufficient.
    The process/report gap [EV-14] motivates records, not a claim that records solve it. Preserve, as applicable:
    `card.md`, `gate.md`, `contract.md`, `rubric-draft.md`, `anchors.md`, `requote.md`, `engines.md`, `rubric-frozen.md`,
-   `decisions.md`, `candidates/`, `cycles/`, `personas/`, `gate4.md`, `unexplored.md`, `report.md`, `scorecards/`, `ext/`,
+   `decisions.md`, `candidates/`, `cycles/`, `personas/`, `gate4.md`, `unexplored.md`, `report.md`, `ledger-entry.md`, `scorecards/`, `ext/`,
    and `spawns/`.
    All persistence is subject to A2; unavailable or redacted evidence limits the claim, never licenses a fake tick.
 4. **Three cells are `ext`** — 1A.3, 4.1 and 5.7. The card legend defines the state, ID8 counts it from `ext/`, and
@@ -252,14 +252,14 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
        + X × (1 + re-anchors) (row 1A.1: X sweep workers, 0 when the orchestrator sweeps) + 1 + re-anchors (row 1A.3 checker) + E (row 1A.7, one per extra engine)
        + C (row 2.1 angles) + J (judges, >= 3 per `evaluator-roster.md` RS3) + 1 (outline build; outline only)
        + (N+1) × (1 generator revision + D evaluators, row 1.10 + K skeptics, row 3.4)
-       + P × reception passes (row 3R.1) + 4 × P4 passes (row 4.1: 2 pairings × 2 orders) + D (row 4.2) + 1 (row 5.7)
-       + replaced scorers, one re-run per void return, and wrapped-domain workers and retries
+       + (P + re-scored dims) × reception passes (≤ N+1; rows 3R.1-3R.2) + 4 × P4 passes (≤ 2; row 4.1: 2 pairings × 2 orders) + D (row 4.2) + 1 (row 5.7)
+       + J + D blind-pair passes (2.3, 3.2), one per re-prompt or replacement, one re-run per void return, and wrapped-domain workers and retries
 ```
 
 | Exit | Meaning |
 |------|---------|
 | `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, every non-advisory 4.1 loss disposed by 4.2, `mode: full`, and `anchoring: sourced`. **`sourced`:** every score-3 descriptor is ID3(c)'s `anchored` (`exact-match` ∧ `property-present` ∧ `separating`), the two flagged buckets are 0, and no exemplar is `out-anchored`; ID3(c) computes it and every other anchoring state |
-| `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection, with the cap spent (3R.3). Ships best-so-far with the persona's verbatim stop-span |
+| `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection, with the cap spent (3R.3), on any pass — a later clean pass does not lift it. Ships best-so-far with the persona's verbatim stop-span |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
 | `budget-reached` | the envelope ceiling hit → deliver best-so-far with the residual gap, and every carried salvage item listed as carried |
@@ -313,7 +313,7 @@ can still be irrelevant, a same-genre control can still be weak, and a trivial p
 pair. `none-better-found` means none found in the reported search, not globally best.
 
 ### P2 — Tournament · rows 2.1-2.7
-**ENTER:** rows 1A.1-1A.8 evidenced. **READ:** `evaluator-roster.md` §4, §6.
+**ENTER:** rows 1A.1-1A.8 evidenced. **READ:** `evaluator-roster.md` §4, §6; `evaluator-loop.md` L4-L5 (RS4's EVALUATION, 2.3's SCORECARD).
 
 An angle is a different *bet about what makes this excellent*, not a different tone; two angles that could produce the
 same artifact with different word choices are one angle. **Order is the trap:** candidates are generated, *then*
@@ -348,7 +348,7 @@ A matching stop-span demonstrates only that the quoted text exists. The finding 
 3R.2 disposal; a score change follows 3R.3 without enlarging the cap.
 
 ### P4 — Exit gate · rows 4.1-4.2
-**ENTER:** row 3.6 names the artifact, **3R.3 did not fire** and 3.9's latest exit is not `BLOCK` or `budget-reached`. **READ:** `evaluator-loop.md` L8, which owns the
+**ENTER:** row 3.6 names the artifact, **3R.3 did not re-open P3** (a demotion does not skip P4) and 3.9's latest exit is not `BLOCK` or `budget-reached`. **READ:** `evaluator-loop.md` L8, which owns the
 `PAIRWISE_VERDICT` schema row 4.1 hands to each of the four workers.
 
 A loss to the runner-up may reflect a regression, noise or an intentional trade-off; the comparison alone cannot decide which. **Both orders, consistent-only:**
@@ -372,7 +372,7 @@ property:    n present / n absent / n not-assessed | not-run(<reason>)   reject-
 separation:  n separating / n non-separating / n non-comparable | not-run(<reason>)   shared-property(n) | one-per-dimension
 challenge:   none-better-found | out-anchored | re-anchored | not-run(<reason>)   engines: cross-engine(<list>) | monoculture(declared)
 evaluators:  n calibrated / n re-prompted / n replaced / n no-pair | not-run(<reason>)
-reception:   simulated-cold-read: clean | re-entered(n) | demoted | residual(n, cap spent | §6 declined | §6 used | void twice) | not-run(<reason>)
+reception:   simulated-cold-read: passes(n) · re-entered(n) · demoted(0|1) · residual(n, cap spent | §6 declined | §6 used | void twice) | not-run(<reason>)
 exit gate:   vs-exemplar n properties: n won / n lost / n inconsistent · vs-runner-up won | lost(<property>) | inconsistent | not-run(<reason>)
 identity:    pass | imbalance(n) | not-run(<reason>)      delta: UNMEASURED
 gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
@@ -382,7 +382,7 @@ Then all twelve sections, each present or `N/A` with a one-line reason. **Contra
 5.2, prohibitions on their own axis. **Anchoring** — exemplars and control with locators, spans, named properties, the
 dimension each anchors, each reject list, 1A.3's verdicts per locator and property, the challenge return, the fallback
 flag if it fired. **Calibration** — per scorer, every blind-pair pass with each pair's scores and the orchestrator's verdict, and the
-final verdict, as ID9 counted and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
+final verdict, in ID9's buckets. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
 scores, winner, runner-up, salvage grafted / rejected / deferred / carried. **Trajectory** — per-cycle weighted scores
 per dimension tagged R1/R2, each cycle's 3.9 verdict, and which artifact shipped and why it, not the last.
 **Gauntlet** — attacks raised / killed / survived-then-fixed / open / `unproven-because-new`, each of the last with
@@ -428,7 +428,7 @@ request is §3's business. Calibration failures never route here (N4).
 | Refutation panel (3.4-3.5) | the attack surface nobody on the rubric is looking at | contradicted as *debate*; kept as a non-debate on row 3.4's conditions — see below |
 | **Reception with verbatim spans (3R.1), and its return edge (3R.3)** | obtain simulated cold-read friction tied to the artifact; neither audience coverage nor real reception | — (grep-checkable, zero extra spawns; 3R.3 spends a cycle already inside §3's cap) |
 | **Both-order exit gate (4.1), the exemplar pairing per property** | half the pairwise verdict; a single pass is partly a verdict about position | the swap-consistency floor, quoted once at P4 [EV-16b] |
-| **Identity audit by a non-participant (5.7)** | recompute recorded accounting; fabricated but consistent records can still pass | the compliance gap, quoted once at §0 item 3 [EV-14] |
+| **Identity audit by a non-participant (5.7)** | recompute recorded accounting; fabricated but consistent records can still pass | the compliance gap, cited once at §0 item 3 [EV-14] |
 | **Spawn preflight (0.8) and engine preflight (1A.7)** | exercise an available dispatch path; saved sentinel files alone do not authenticate a spawn | — (structural; the failure it prevents was observed in this skill's own run) |
 
 **Cut, and what covers the failure now.** What would bring each back: `evidence.md` §3.
@@ -474,6 +474,6 @@ or prove an unbettered exemplar was the best there was.
 ## 8. Reference files
 
 Twelve, one level deep, each with its own `Owns:` and `Read when:` header, not restated here. Ten are named by a
-phase's `READ:` line — `run-discipline.md`, `engine-map.md` and `evaluator-loop.md` at two phases, `evaluator-roster.md`
-at three, and `doc-deliverables.md` only for a `document` class, whose generators also receive it whole at row 2.2.
+phase's `READ:` line — `run-discipline.md` and `engine-map.md` at two phases, `evaluator-roster.md`
+and `evaluator-loop.md` at three, and `doc-deliverables.md` only for a `document` class, whose generators also receive it whole at row 2.2.
 `evidence.md` and `evaluations.md` load on question only.

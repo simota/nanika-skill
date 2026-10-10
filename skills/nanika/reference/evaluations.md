@@ -62,10 +62,13 @@ t-test.
   d = 0.71), *conditional on the assumed SD*. That power is symmetric and covers two decisions: excluding
   +0.40 when the true effect is 0 (outcome 1), and excluding 0 when it is +0.40 (outcome 2's positive
   sub-case). Outcome 3 needs a lower bound above +0.40, which a true +0.40 reaches only about 2.5% of the
-  time; 80% power for outcome 3 needs a true effect near +0.76 at this SD.
+  time; 80% power for outcome 3 needs a true effect near +0.79 at this SD.
   **If the observed SD of the paired difference exceeds 0.57** (= 0.40 / 0.70), **the study is
-  underpowered for +0.40 and its null is uninformative** — that condition is registered here so that it
+  underpowered for +0.40, and a CI that fails to exclude +0.40 is read as outcome 2, never as evidence of no effect** — that condition is registered here so that it
   cannot be discovered afterwards and reported as a finding.
+- The 18 pairs are 6 repetitions within each of 3 fixed briefs: the test is conditional on these briefs
+  (brief entered as a fixed blocking factor), does not generalise to briefs outside the set, and the assumed
+  SD is within-brief.
 - Secondary contrast W − M shares the same n and the same MDE and is explicitly **exploratory**: 18 pairs
   cannot separate a 0.2-point machinery effect from noise, and a null there means "not measured", never
   "the machinery does nothing".
@@ -76,7 +79,7 @@ W − N by where it sits relative to +0.40:
    `MEASURED: no effect above +0.40 (n=18, CI …)` and §7's kept table is re-opened against E3.
 2. CI contains +0.40 → **inconclusive against the pre-registered effect**, reported as such. `DELTA:` stays
    `UNMEASURED` with the attempt recorded; a CI that also excludes 0 is reported as "a positive effect of
-   undetermined size", never as a measured delta. This is the most likely outcome at n = 18 and saying so
+   undetermined size", never as a measured delta. This is the most likely outcome at n = 18 if the true effect is near +0.40 and saying so
    now is the point of writing the power statement before the run.
 3. Lower bound above +0.40 → a measured delta, reported with the n, the judge count, the SD actually
    observed, and the briefs.
@@ -106,7 +109,7 @@ card rather than hardcoded here (AUD step 5's rule, applied to an evaluation):
 - **ICR** = ticked rows whose `ev:` path resolves to a file that exists ÷ R, computed by a script that
   reads the filesystem and never the transcript.
 - **VCR** = rows the run's own report claims as done ÷ R.
-- **Pass: |VCR − ICR| ≤ 0.10.** The reference figure this is aimed at is a measured gap of up to 100
+- **Pass: |VCR − ICR| ≤ 0.10 in every run.** The reference figure this is aimed at is a measured gap of up to 100
   percentage points between stated and actual process compliance [EV-14].
 - **Content sample:** in each run, **20 ticked cells** drawn at random (100 cells total) are handed to a
   worker that did not run the wish, with the row text and the file, and asked one question: does this
@@ -134,7 +137,7 @@ under the reduced skill, and score with the same blind judges and the same froze
 
 **Deletion decision, specified before data collection:** define loss as full minus ablated quality. Choose a
 maximum tolerable loss for the task class before seeing results; **0.15** is an example margin and a design choice,
-not a safety invariant. A mechanism is eligible for removal when the loss's upper confidence bound is below that margin
+not a safety invariant. A mechanism is eligible for removal when the loss's one-sided 95% upper confidence bound is below that margin
 and no hard safety/correctness gate regressed. A CI containing zero is not evidence of equivalence. A wide CI is
 inconclusive, not protection for the architecture and not permission to declare the mechanism useless.
 
@@ -164,7 +167,7 @@ difference alone does not establish no loss, and null significance is not a reas
 **status: NEVER RUN.**
 
 **Question.** Does the harness execute on the weakest model tier the host offers, or does it only read
-well on the strongest? First-party guidance is to test on the weakest model you will run on [EV-3].
+well on the strongest? First-party guidance is to test with every model you plan to run on, the smallest included [EV-3].
 
 **Method.** All three E1 briefs, W arm only, on the weakest available tier. **3 runs.** Measure, per run:
 rows ticked with resolving paths ÷ R; identities balancing ÷ 10; whether row 0.8's preflight was actually
@@ -182,7 +185,7 @@ card instead of adding explanatory prose. E3 can inform deletion only when its u
 
 | result | what changes in `SKILL.md` |
 |---|---|
-| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `measured: below +0.40`; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
+| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `MEASURED: no effect above +0.40 (n=18, CI …)`; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
 | E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
 | E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |

@@ -21,7 +21,8 @@ sanitized record. A local history still makes usage visible to its user; publica
 
 ## LG2 — Schema
 
-One block per wish, appended at row 5.5 — or, for a run declined at 1A.6, at the decline, with `mode` from
+One block per wish, appended at row 5.5 and copied verbatim to `.nanika/runs/<slug>/ledger-entry.md`, which is
+5.5's `ev:` because ID1 resolves only paths inside the run directory — or, for a run declined at 1A.6, at the decline, with `mode` from
 row 0.8's result, `dims_at_ceiling`, `comparative` and `engines` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about. Where a field's vocabulary is owned elsewhere, the field takes
 that vocabulary verbatim rather than a copy of it kept here — a ledger that carries a stale exit word
 records a run that did not happen.

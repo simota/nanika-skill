@@ -173,6 +173,7 @@ owns the requirement; this rule owns the table it applies.
 | `non-separating` | struck; the property cannot separate a 3 from a 1, so it cannot carry a 3 |
 | `non-comparable` | struck; the control decided nothing, so the gap under it is unmeasured |
 | `unreachable` | reverted to unreachable-and-flagged; it no longer counts as anchored, so the header cannot read `sourced` — ID3(c) computes `mixed(a/d)`, or `unanchored` when nothing is left anchored |
+| 1A.3 `not-run` | every descriptor stays as 1A.2 wrote it and counts `invented-and-flagged` for ID3(c); 1A.4 is ticked with that statement and the fallback line; header `anchoring: unverified` |
 | `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact and 1A.3 once on the new locators, whose lines replace the old ones in `requote.md` while both returns stay in `ext/1A.3.md`; a second `stronger-candidate` for the same exemplar is `out-anchored` — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
 
 A struck descriptor is reverted, never reworded to survive (N4).

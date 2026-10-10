@@ -27,8 +27,8 @@ widening what a worker may do. Change nothing else. A host that is *not* in thes
 
 | Host | `spawn-independent-worker` resolves to | Collecting the return |
 |------|----------------------------------------|-----------------------|
-| **Claude Code** | the `Agent` tool — foreground, or `run_in_background: true` for parallel branches | the return; background tasks notify on completion. A background worker cannot answer a permission prompt, so a write it needs is denied — keep writing spawns foreground or pre-approve the path |
-| **Codex CLI** | the `spawn_agent` **tool** — a model tool call, not a shell command. Default multi-agent: `{message}`, returns an agent id. `multi_agent_v2`: `{message, task_name}`, both required, returns the task name. Both reject unknown fields, so use the schema the session's tool actually exposes | the `wait_agent` tool. Default: `{targets: [<id>], timeout_ms}`. `multi_agent_v2`: `{timeout_ms}` only, within the host's configured maximum, and it returns no content — so have the worker write its result to a file |
+| **Claude Code** | the `Agent` tool with a named `subagent_type` — never `fork`, which inherits the whole conversation and is not a separate context. Interactive sessions may run every subagent in the background; under `claude -p` a spawn is foreground unless backgrounded | the return, or for a background worker the completion notification in a later turn — read the worker's file only after it arrives. A background worker's permission prompts surface in the main session; to avoid them, pre-approve the path with an `Edit(//<abs>/.nanika/**)` allow rule (path rules written as `Write(...)` are not consulted) |
+| **Codex CLI** | the `spawn_agent` **tool** — a model tool call, not a shell command. Default multi-agent: `{message}`, returns an agent id; it starts a fresh context unless `fork_context: true`, which nanika never sets. `multi_agent_v2`: `{message, task_name, fork_turns: "none"}` — `message` and `task_name` are required, `task_name` takes only `[a-z0-9_]`, and `fork_turns` defaults to `all`, which copies the parent conversation and is not a separate context; returns the task name. v2 rejects unknown fields and the default tools ignore them, so use the schema the session's tool actually exposes | the `wait_agent` tool. Default: `{targets: [<id>], timeout_ms}`, then `close_agent({target: <id>})` — completed agents count toward the default limit of six until closed. `multi_agent_v2`: `{timeout_ms}` only, defaulting to 30 s and at most the configured maximum; it returns no content, so have the worker write its result to a file |
 | **agy** | `agy -p "<prompt>"`, headless — a separate CLI process rather than an in-session worker, so 0.8 on agy tests a CLI launch. **Not author-verified:** flags and paths here come from third-party documentation | stdout has been reported unreliable; have the prompt write its result to an absolute path and read the file |
 
 **Never grant a worker blanket permission.** Workers read untrusted material — web pages, candidates,
@@ -67,7 +67,7 @@ Use native process/dispatch receipts when supplied by the platform; otherwise re
 ```
 rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell, first
 ```
-then, in the foreground so a permission prompt can be answered:
+then (it may run in the background; its permission prompt then appears in the main session):
 ```
 Agent(
   subagent_type: "general-purpose",
@@ -76,7 +76,7 @@ Agent(
            Then reply with exactly PREFLIGHT-OK and nothing else. Do nothing else at all."
 )
 ```
-then, to turn the return into an exit status:
+then, only after the worker's return or completion notification has arrived, turn it into an exit status:
 ```
 tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
@@ -89,15 +89,18 @@ rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell
 spawn_agent({message: "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt, then return exactly PREFLIGHT-OK."})
                                                                     # tool call → <id>
 wait_agent({targets: ["<id>"], timeout_ms: 300000})                 # tool call
-# multi_agent_v2 tools, instead of the two calls above:
-spawn_agent({message: "<the same message>", task_name: "nanika-preflight"})   # tool call → task name
-wait_agent({})                                                      # tool call; host default timeout
+close_agent({target: "<id>"})                                       # tool call; frees the slot
+# multi_agent_v2 tools, instead of the three calls above:
+spawn_agent({message: "<the same message>", task_name: "nanika_preflight", fork_turns: "none"})   # → task name
+wait_agent({timeout_ms: 300000})                                    # repeat while timed_out is true
 tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
 
 Which pair to call is read off the `spawn_agent` schema the session exposes, not chosen: a `task_name`
-parameter means `multi_agent_v2`. Calling the other pair fails on unknown or missing fields, and that is a
-mis-called preflight to re-run, not a spawn failure. A worker that inherits a read-only sandbox cannot write the file; that is a real failure of this run's
+parameter means `multi_agent_v2`. The default pair on v2 fails on the missing `task_name`; the v2 pair on the
+default tools spawns a stray worker and then `wait_agent({...})` fails for want of `targets`. Either is a
+mis-called preflight to close out and re-run, not a spawn failure. A v2 session configured without
+`wait_agent` waits by re-checking the file instead. A worker that inherits a read-only sandbox cannot write the file; that is a real failure of this run's
 ability to spawn a worker that writes, and it is recorded as one.
 
 **agy**
@@ -135,22 +138,22 @@ ok() { tr -d '\r' < "$1" | grep -qxE '[[:space:]]*ENGINE-OK[[:space:]]*'; }
 # Codex CLI as an extra engine. Outside a git repository it needs --skip-git-repo-check; stdin is closed
 # because a non-terminal stdin is read to EOF; -o keeps only the final message, not the logs.
 rm -f "$R/engine-codex.txt"
-codex exec --skip-git-repo-check -o "$R/engine-codex.txt" "Reply with exactly ENGINE-OK." </dev/null >/dev/null 2>&1
+codex exec --skip-git-repo-check -o "$R/engine-codex.txt" "Reply with exactly ENGINE-OK." </dev/null >/dev/null 2>"$R/engine-codex.err"
 ok "$R/engine-codex.txt"; echo "1A.7 codex exit=$?" >> "$R/engines.md"
 
 # agy as an extra engine (not author-verified; §0). Reply-only, so it needs no permission flag.
 rm -f "$R/engine-agy.txt"
-agy -p "Reply with exactly ENGINE-OK." </dev/null > "$R/engine-agy.txt" 2>/dev/null
+agy -p "Reply with exactly ENGINE-OK." </dev/null > "$R/engine-agy.txt" 2>"$R/engine-agy.err"
 ok "$R/engine-agy.txt"; echo "1A.7 agy exit=$?" >> "$R/engines.md"
 
 # Claude Code as an extra engine, from a non-Claude host. Reply-only; no permission flag.
 rm -f "$R/engine-claude.txt"
-claude -p "Reply with exactly ENGINE-OK." </dev/null > "$R/engine-claude.txt" 2>/dev/null
+claude -p "Reply with exactly ENGINE-OK." </dev/null > "$R/engine-claude.txt" 2>"$R/engine-claude.err"
 ok "$R/engine-claude.txt"; echo "1A.7 claude exit=$?" >> "$R/engines.md"
 ```
 
 From inside a sandboxed host, an outbound engine CLI may be denied network or home-directory writes. Record
-that denial as what it is — `sandbox denied`, next to the exit status — not as the engine being absent; the
+that denial as what it is — `sandbox denied`, next to the exit status, citing the `.err` file that shows it — not as the engine being absent; the
 engine is struck either way, and the report says which.
 
 A run planning no extra engines writes row 1A.7 `not-run: capability absent(extra engine)` and runs no
