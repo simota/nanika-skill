@@ -28,7 +28,7 @@ widening what a worker may do. Change nothing else. A host that is *not* in thes
 | Host | `spawn-independent-worker` resolves to | Collecting the return |
 |------|----------------------------------------|-----------------------|
 | **Claude Code** | the `Agent` tool — foreground, or `run_in_background: true` for parallel branches | the return; background tasks notify on completion. A background worker cannot answer a permission prompt, so a write it needs is denied — keep writing spawns foreground or pre-approve the path |
-| **Codex CLI** | the `spawn_agent` **tool** (`{message}`), which returns an agent id — a model tool call, not a shell command | the `wait_agent` tool (`{targets: [<id>], timeout_ms}`); under the off-by-default `multi_agent_v2` it takes no targets and returns no content, so have the worker write its result to a file |
+| **Codex CLI** | the `spawn_agent` **tool** — a model tool call, not a shell command. Default multi-agent: `{message}`, returns an agent id. `multi_agent_v2`: `{message, task_name}`, both required, returns the task name. Both reject unknown fields, so use the schema the session's tool actually exposes | the `wait_agent` tool. Default: `{targets: [<id>], timeout_ms}`. `multi_agent_v2`: `{timeout_ms}` only, within the host's configured maximum, and it returns no content — so have the worker write its result to a file |
 | **agy** | `agy -p "<prompt>"`, headless — a separate CLI process rather than an in-session worker, so 0.8 on agy tests a CLI launch. **Not author-verified:** flags and paths here come from third-party documentation | stdout has been reported unreliable; have the prompt write its result to an absolute path and read the file |
 
 **Never grant a worker blanket permission.** Workers read untrusted material — web pages, candidates,
@@ -85,13 +85,19 @@ tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PR
 
 ```
 rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell
+# default multi-agent tools:
 spawn_agent({message: "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt, then return exactly PREFLIGHT-OK."})
                                                                     # tool call → <id>
 wait_agent({targets: ["<id>"], timeout_ms: 300000})                 # tool call
+# multi_agent_v2 tools, instead of the two calls above:
+spawn_agent({message: "<the same message>", task_name: "nanika-preflight"})   # tool call → task name
+wait_agent({})                                                      # tool call; host default timeout
 tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
 ```
 
-A worker that inherits a read-only sandbox cannot write the file; that is a real failure of this run's
+Which pair to call is read off the `spawn_agent` schema the session exposes, not chosen: a `task_name`
+parameter means `multi_agent_v2`. Calling the other pair fails on unknown or missing fields, and that is a
+mis-called preflight to re-run, not a spawn failure. A worker that inherits a read-only sandbox cannot write the file; that is a real failure of this run's
 ability to spawn a worker that writes, and it is recorded as one.
 
 **agy**
