@@ -7,7 +7,7 @@ names every spawn is authored in; and how roles are spread across engines.
 model string anywhere else is a portability defect, and the claim "porting nanika is an edit to one file" is
 false the moment one leaks.
 **Read when:** **P0**, for §2a — and **P1A**, for §2b. Those are the two `READ:` lines that name this file
-and the two loads `SKILL.md` §0.6 counts. §3 and §4 are consulted while writing a spawn at P2, P3, P3R and
+and the two loads `SKILL.md` §8 counts. §3 and §4 are consulted while writing a spawn at P2, P3, P3R and
 P4; that is the same file already open, not a third load.
 
 Contents: §0 capability → tool · §1 why engine diversity is worth its cost · **§2a spawn preflight
@@ -96,8 +96,8 @@ preflight nothing performed.
 
 **M3 — One command per extra engine, run at P1A, before P2 plans around it.** Same form as §2a and the
 same discipline: the command and its exit status are appended to `.nanika/runs/<slug>/engines.md`, which is
-row 1A.7's `ev:`. (`SKILL.md` §0.3 lists what the run directory holds *at minimum*; this is one file past
-that minimum, on purpose, so a P1A result never overwrites a P0 one.) An engine whose command exits
+row 1A.7's `ev:`, and `SKILL.md` §0.3 lists it. It is a separate file from `gate.md` on purpose, so a P1A
+result never overwrites a P0 one. An engine whose command exits
 non-zero is **struck from the plan at P1A**, not carried to P2 and discovered there. With every extra
 engine struck, the run is a monoculture and the report header says so — N5 owns that word.
 

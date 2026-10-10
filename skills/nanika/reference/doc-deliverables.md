@@ -1,9 +1,10 @@
 # doc-deliverables.md — W1-W12
 
-**Owns:** the extra rules that apply when the nanika's deliverable is a document or a document package.
-**Read when:** never by the orchestrator. **Card row 2.2 attaches this file to each generator spawn when row
-0.4's deliverable class is `document`** — that attachment is its only trigger, and it is why this file has no
-`READ:` line of its own and never enters `SKILL.md` §0.6's load table.
+**Owns:** the extra rules that apply when a wish's deliverable is a document or a document package.
+**Read when:** only when row 0.4's deliverable class is `document`, at two points. **Card row 2.2 attaches this
+file to each generator spawn**, which reads it whole; and the orchestrator reads **§5** at P1, because the W12
+gate becomes the reader-path rubric dimension row 1.10 writes. `SKILL.md` P1's `READ:` line carries that
+conditional and §8 counts it.
 
 Code has tests; documents have readers. So quality here means: the declared reader can make the declared
 decision from the artifact alone, every externally-checkable fact is grounded, and the set is internally
@@ -15,7 +16,7 @@ coherent. W12 becomes a rubric dimension; the rest are production rules for the 
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| W1 | **Audience + decision declared** | Each document states WHO reads it (role, expertise) · WHAT decision or action it supports · WHEN it is consumed. A technically perfect document for the wrong reader is a miss. In a wish this is already half-done — the Wish Contract's named recipients are the W1 audience. Multi-document packages declare it per document, not per package. |
+| W1 | **Audience + decision declared** | Each document states WHO reads it (role, expertise) · WHAT decision or action it supports · WHEN it is consumed. A technically perfect document for the wrong reader is a miss. In a wish this is already half-done — the contract's named recipients (row 1.6) are the W1 audience. Multi-document packages declare it per document, not per package. |
 | W2 | **Register calibration** | Vocabulary, depth, and assumed context follow W1's reader. Mixed audiences get layered structure (W10), not averaged prose that serves no one. |
 | W3 | **Freshness metadata** | Every document carries an `as-of` date for its facts · an owner · a **review trigger** (the event or interval that makes it stale). Documents rot silently; the trigger makes rot detectable. Time-insensitive documents state `evergreen` instead. |
 

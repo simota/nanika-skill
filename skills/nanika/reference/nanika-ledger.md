@@ -6,8 +6,7 @@
 A wish is scarce only if something counts it. Without a ledger, "once-in-a-lifetime" is a tone of voice.
 
 **What the gate then says out loud is the card's, not this file's.** Rows 0.2, 0.3, 0.5 and 0.6 each own
-one line of that surfacing, and until this cycle a list here restated all four in different words — the
-duplication this file was carrying, now deleted rather than reworded.
+one line of that surfacing, and this file does not restate them.
 
 ---
 
@@ -54,7 +53,7 @@ is the user's call, not the gate's.
 ## LG4 — Outcome backfill
 
 `outcome` is written `pending` at row 5.5 and backfilled **lazily**, at the *next* nanika's P0, with one
-question — asked in these words, which row 0.3 quotes:
+question — asked in these words when row 0.3 backfills:
 
 > "Did wish #N-1 (<date>, '<intent>') satisfy its disappointment criteria?"
 

@@ -2,9 +2,9 @@
 
 **Owns:** how to pick who scores what, how to brief a judge, how to build a reception persona, and how to
 brief a generator.
-**Read when:** at **P2**, for §4 (the blind judge panel) and §6 (generators); at **P3R**, for §5 (reception
-personas). Row 1.11 also selects from §1-§3 while the draft rubric is written, and §2's archetypes are the
-menu it selects from.
+**Read when:** at **P1**, for §1-§3, because row 1.11 selects one archetype per dimension from §2's menu
+while the draft rubric is written; at **P2**, for §4 (the blind judge panel) and §6 (generators); at **P3R**,
+for §5 (reception personas).
 
 Contents: §1 selection (RS1-RS2) · §2 archetypes · §3 default mapping by class · §4 the blind judge panel
 (RS3-RS4) · §5 reception personas (RS5-RS6) · §6 generators (RS7-RS8).
@@ -22,8 +22,8 @@ roster describes an evaluator well enough to instantiate it anywhere a worker ca
 | RS1 | **Match the archetype to the dimension** | Row 1.11 requires one evaluator archetype per rubric dimension; this rule owns the choice. Pick the archetype in §2 whose mandate most nearly *is* that dimension. A dimension no archetype matches gets a purpose-written evaluator: write its mandate in one sentence, give it a way to exercise what it scores, and name it in the report as a custom evaluator so the roster it came from is legible. |
 | RS2 | **Tool-grounded** | Every evaluator gets at least one way to *exercise* the artifact rather than read about it — run it, walk it, operate it, view it rendered, check its claims against a source. An evaluator that can only read produces a review of the prose surface, which is the score a rubric-gaming artifact is built to win. |
 
-Two constraints that bind selection are not rules of this file: **independent-verdict exclusion** is N1, not a ban on production testing, and **calibration before scoring** is card row 2.3 with `SKILL.md` §P2's table, which
-the orchestrator applies and ID9 recomputes. Neither is restated here.
+Two constraints that bind selection are not rules of this file: **independent-verdict exclusion** is N1, not a ban on production testing, and **calibration before scoring** is card rows 2.3 (judges) and 3.2 (evaluators) with `SKILL.md` §P2's table,
+which the orchestrator applies and ID9 recomputes. Neither is restated here.
 
 ## §2 — Archetypes
 

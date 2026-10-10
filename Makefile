@@ -123,6 +123,25 @@ check: ## verify the skill is self-contained and internally consistent
 	  echo "MISS a host-specific name escaped engine-map.md" >&2; fail=1; fi; \
 	if grep -nE '`[^`]*\.\./' $(DOCS) >&2; then \
 	  echo "MISS a cited path reaches through a parent directory" >&2; fail=1; fi; \
+	n=$$(wc -l < "$(SKILL)/SKILL.md" | tr -d ' '); \
+	[ "$$n" -lt 500 ] || { echo "MISS SKILL.md is $$n lines; keep the body under 500 and split into reference/" >&2; fail=1; }; \
+	rows=$$(grep -cE '^\[ \] [0-9]' "$(SKILL)/SKILL.md"); \
+	census=$$(sed -n 's/.*for \([0-9][0-9]*\) card rows.*/\1/p' "$(SKILL)/reference/identities.md" | head -1); \
+	[ "$$rows" = "$$census" ] || { echo "MISS the card has $$rows rows but identities.md §0 counts '$$census'" >&2; fail=1; }; \
+	for t in $$(grep -oE 'EV-[0-9]+[a-z]?' "$(SKILL)/SKILL.md" | sort -u); do \
+	  grep -qE "^\| $$t \|" "$(SKILL)/reference/evidence.md" \
+	    || { echo "MISS SKILL.md cites $$t, which evidence.md has no row for" >&2; fail=1; }; \
+	done; \
+	for f in "$(SKILL)"/reference/*.md; do \
+	  [ -e "$$f" ] || continue; b=$$(basename "$$f"); \
+	  head -10 "$$f" | grep -q '\*\*Owns:\*\*' || { echo "MISS reference/$$b has no **Owns:** header" >&2; fail=1; }; \
+	  [ "$$(wc -l < "$$f")" -le 100 ] || head -20 "$$f" | grep -q '^Contents:' \
+	    || { echo "MISS reference/$$b is over 100 lines with no Contents: line" >&2; fail=1; }; \
+	  grep -qF "| \`$$b\` |" "$(SKILL)/MANIFEST.md" || { echo "MISS reference/$$b has no MANIFEST.md row" >&2; fail=1; }; \
+	done; \
+	for b in $$(sed -n 's/^| `\([A-Za-z0-9._-]*\.md\)` |.*/\1/p' "$(SKILL)/MANIFEST.md"); do \
+	  [ -f "$(SKILL)/reference/$$b" ] || { echo "MISS MANIFEST.md lists $$b, which reference/ does not hold" >&2; fail=1; }; \
+	done; \
 	[ $$fail -eq 0 ] && { \
 	  echo "check ok - $$(ls "$(SKILL)"/reference/*.md | wc -l | tr -d ' ') reference files, all cited and headed"; \
 	  echo "           bare *.md citations are run-directory artifacts and are not checked here"; }; \

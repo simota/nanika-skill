@@ -5,6 +5,9 @@
 **Read when:** P3, for the convergence loop; P4, for §8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
 of its four workers.
 
+Contents: L1 separation · L2 the 0-3 scale · L3 the rubric's shape · L4 `EVALUATION` · L5 `SCORECARD` ·
+L6 aggregation and the one brief · L7 loop control · L8 `PAIRWISE_VERDICT` · anti-patterns.
+
 Nanika raises exactly one thing about this machinery — the ACCEPT bar — and adds blind-pair calibration
 (`SKILL.md` card row 2.3 and its §P2 table) and panel ratification (`refutation-panel.md`). Everything
 else below is the ordinary loop.
@@ -64,6 +67,7 @@ measurement: criterion phrasing shifts what the generator produces even with no 
 ```yaml
 EVALUATION:
   evaluator: "<archetype + dimension>"
+  scorer_id: "<stable id — names this scorer's file under scorecards/; unchanged when re-spawned per cycle>"
   rubric_version: R1 | R2              # required — an untagged score is not comparable across an amendment
   evaluator_prompt_id: "<stable id>"   # required — half of the comparability guard in L7
   evaluator_model: "<role name>"       # required — the other half; a role, never a product name
@@ -79,8 +83,7 @@ EVALUATION:
 ```
 
 **`evidence_span` is load-bearing for a card clause.** Row 3.2's "citing an observation rather than an
-impression" lands here and nowhere else — it was a standalone card row until cycle 3 folded it into 3.2,
-and this key is the artifact it folded into. **Void-and-re-run:** an `evidence_span` that cannot be found
+impression" lands here and nowhere else — this key is the artifact that clause produces. **Void-and-re-run:** an `evidence_span` that cannot be found
 in the artifact or reproduced from the named command voids that dimension's score, and the evaluator is
 re-run. "Should be fine" and "looks strong" are forbidden vocabulary.
 
@@ -92,21 +95,25 @@ scorecard below and counted *and recomputed* by ID9.
 
 ```yaml
 SCORECARD:
-  scorer_id: "<stable id — the same id the EVALUATION carries as evaluator_prompt_id>"
-  blind_pair:                          # written by the SCORER, before it sees any candidate
-    - item: A                          # unlabelled and shuffled per scorer; the orchestrator holds the key
-      score: 0-3
-      evidence: "<quoted span from that item>"
-    - item: B
-      score: 0-3
-      evidence: "<quoted span from that item>"
-  orchestrator_verdict: calibrated | re-prompted | replaced   # written by the ORCHESTRATOR only
-  verdict_basis: "<which row of SKILL.md §P2's table was applied>"
+  scorer_id: "<stable id — the same id this scorer's EVALUATION returns carry as scorer_id>"
+  role: judge | evaluator              # a P2 judge (row 2.3) or a P3 evaluator (row 3.2)
+  passes:                              # one entry per blind-pair pass; a second exists only after a re-prompt
+    - pass: 1
+      blind_pair:                      # written by the SCORER, before it sees any candidate
+        - item: A                      # unlabelled and shuffled per scorer; the orchestrator holds the key
+          score: 0-3
+          evidence: "<quoted span from that item>"
+        - item: B
+          score: 0-3
+          evidence: "<quoted span from that item>"
+      orchestrator_verdict: calibrated | re-prompted | replaced   # written by the ORCHESTRATOR only
+      verdict_basis: "<which row of SKILL.md §P2's table was applied>"
+  final_verdict: calibrated | re-prompted | replaced              # the last pass's verdict; ID9 buckets on it
 ```
 
-The two halves have different authors and the file records which. ID9 counts these files and **recomputes
-`orchestrator_verdict` from the two scores against §P2's table**; a verdict that disagrees with the
-recomputation is an imbalance. A `replaced` scorer leaves its own scorecard and its replacement leaves
+The two halves have different authors and the file records which. ID9 counts these files, buckets each on
+`final_verdict`, and **recomputes every pass's `orchestrator_verdict` from its two scores against §P2's
+table**; a verdict that disagrees with the recomputation is an imbalance. A `replaced` scorer leaves its own scorecard and its replacement leaves
 another, so a replacement raises the count by one.
 
 ## L6 — Aggregation, and the one brief

@@ -184,14 +184,14 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
     <span class="tally" id="tally"><b id="tk">0</b> ticked · <span class="nr" id="nr">0</span> not-run · of 57</span>
   </div>
   <ul class="phases" id="phases">
-    <li class="ph" data-reason="no run directory"><span class="box">[ ]</span><span class="pid">P0</span><span class="pname">scarcity gate</span><span class="rows">0.1–0.8</span><span class="enter"><b>enter</b>the request exists</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="P0 not evidenced"><span class="box">[ ]</span><span class="pid">P1</span><span class="pname">crystallize</span><span class="rows">1.1–1.12</span><span class="enter"><b>enter</b>rows 0.1–0.8 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="P1 not evidenced"><span class="box">[ ]</span><span class="pid">P1A</span><span class="pname">anchor, verify, then freeze</span><span class="rows">1A.1–1A.8</span><span class="enter"><b>enter</b>rows 1.1–1.12 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="no independent worker"><span class="box">[ ]</span><span class="pid">P2</span><span class="pname">tournament</span><span class="rows">2.1–2.7</span><span class="enter"><b>enter</b>rows 1A.1–1A.8 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="no independent worker"><span class="box">[ ]</span><span class="pid">P3</span><span class="pname">converge</span><span class="rows">3.1–3.10</span><span class="enter"><b>enter</b>rows 2.1–2.7 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="no independent worker"><span class="box">[ ]</span><span class="pid">P3R</span><span class="pname">reception <span class="ret">↰ the one phase with a return edge</span></span><span class="rows">3R.1–3R.3</span><span class="enter"><b>enter</b>row 3.9 carries a verdict</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="no artifact named"><span class="box">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, and 3R.3 did not fire</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="nothing to deliver"><span class="box">[ ]</span><span class="pid">P5</span><span class="pname">deliver</span><span class="rows">5.1–5.7</span><span class="enter"><b>enter</b>rows 4.1–4.2 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(0.1)"><span class="box">[ ]</span><span class="pid">P0</span><span class="pname">scarcity gate</span><span class="rows">0.1–0.8</span><span class="enter"><b>enter</b>the request exists</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(0.8)"><span class="box">[ ]</span><span class="pid">P1</span><span class="pname">crystallize</span><span class="rows">1.1–1.12</span><span class="enter"><b>enter</b>rows 0.1–0.8 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(1.12)"><span class="box">[ ]</span><span class="pid">P1A</span><span class="pname">anchor, verify, then freeze</span><span class="rows">1A.1–1A.8</span><span class="enter"><b>enter</b>rows 1.1–1.12 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(1A.8)"><span class="box">[ ]</span><span class="pid">P2</span><span class="pname">tournament</span><span class="rows">2.1–2.7</span><span class="enter"><b>enter</b>rows 1A.1–1A.8 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(2.7)"><span class="box">[ ]</span><span class="pid">P3</span><span class="pname">converge</span><span class="rows">3.1–3.10</span><span class="enter"><b>enter</b>rows 2.1–2.7 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(3.9)"><span class="box">[ ]</span><span class="pid">P3R</span><span class="pname">reception <span class="ret">↰ the one phase with a return edge</span></span><span class="rows">3R.1–3R.3</span><span class="enter"><b>enter</b>row 3.9 carries a verdict</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(3.6)"><span class="box">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, and 3R.3 did not fire</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(4.2)"><span class="box">[ ]</span><span class="pid">P5</span><span class="pname">deliver</span><span class="rows">5.1–5.7</span><span class="enter"><b>enter</b>rows 4.1–4.2 evidenced</span><span class="verdict"></span></li>
   </ul>
   <div class="card-foot">
     <button id="go">attempt a run</button>
@@ -214,7 +214,7 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
 <p class="said">A mechanism that leaves no artifact <em>did not happen</em>.</p>
 
 <div class="prose">
-<p><code>nanika</code> is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable — code, document, design, or plan. It does not know how to write your thing. It knows how to make sure the something that got written is the best one you were going to get.</p>
+<p><code>nanika</code> is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable — code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured nanika quality gain is established.</p>
 <p><em>Named for the thing in the story that grants any wish, absolutely, and then counts what it cost.</em></p>
 </div>
 
@@ -223,10 +223,10 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
   <h2>Agents say they ran the gate. Then they don't.</h2>
   <div class="prose">
   <p>One study measured instruction compliance at <b>0%</b> while verbal compliance stayed above <b>90%</b> — a hundred-point gap that human reviewers caught <b>0 times out of 15</b>.</p>
-  <p>So nothing here is taken on report. Every row writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.</p>
-  <p><b>An identity that does not balance is not a reporting error. It is a phase that did not run.</b></p>
+  <p>Records make the process inspectable, but their existence does not establish their truth. Every row writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.</p>
+  <p><b>An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.</b></p>
   </div>
-  <p class="count">ten identities · each with a worked example · <span class="ok">all balance under every legal state</span></p>
+  <p class="count">ten identities · each with a worked example · <span>not a semantic or authenticity proof</span></p>
 </section>
 
 <section>
@@ -254,9 +254,10 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
   <div class="prose"><p>Computed per run, never quoted from a brochure:</p></div>
 <pre><code>agents = 1 preflight + S sweep + 1 checker + E extra engines
        + C angles + J judges + cycles × (D evaluators + K skeptics)
-       + P personas + 4 pairwise + 1 audit</code></pre>
+       + P personas + 4 pairwise + 1 audit
+       + wrapped-domain workers, retries and reruns</code></pre>
   <div class="prose">
-  <p>A mid-size run lands near <b>forty agents</b>. It stops and asks twice — once before launching, once after the ceiling freezes and the number is recomputed against what the ceiling turned out to demand.</p>
+  <p>A mid-size run lands near <b>forty agents</b>. Approval is required before launching. It recomputes after the rubric settles and asks again only outside the approved ceiling or when scope, data or retention permissions change. Invocation alone is not spend consent.</p>
   <p>Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.</p>
   </div>
 </section>
@@ -270,7 +271,7 @@ make check     # verify the skill is self-contained
 make test      # assert that make check still catches things</code></pre>
   <div class="prose">
   <p>A host you do not have is skipped and named — nothing creates a skills directory for a tool that is not on the machine. <code>link</code> never removes anything; it refuses a path that already exists and tells you which.</p>
-  <p>It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to <code>single-agent(declared)</code>, thirteen rows go <code>not-run</code>, and the top verdict becomes unreachable — stated, not hidden.</p>
+  <p>It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to <code>single-agent(declared)</code>, fourteen rows go <code>not-run</code>, and the top verdict becomes unreachable — stated, not hidden.</p>
   </div>
   <p class="count">12 reference files · 12 cited · 12 headed · <span class="ok">check ok</span></p>
 </section>
@@ -295,13 +296,13 @@ make test      # assert that make check still catches things</code></pre>
 <section>
   <p class="label">what is inside</p>
 <div class="tree"><b>skills/nanika/SKILL.md</b>        the run card — 57 rows, 14 rules, nothing else required
-<b>MANIFEST.md</b>                  what each reference file carries, measured not projected
+<b>MANIFEST.md</b>                  which file owns what — an ownership index, not a capacity estimate
 <b>reference/identities.md</b>      the ten that must balance, with worked examples
 <b>reference/evaluations.md</b>     E1–E4, all NEVER RUN, including the deletion control
 <b>reference/evidence.md</b>        every figure, with its source and the scope it was measured in
 <b>reference/engine-map.md</b>      the only file allowed to name a host
 <b>reference/nanika-ledger.md</b>   the scarcity record, and what it is not evidence of
-<span style="opacity:.65">…and six more, each read at the one phase that names it</span></div>
+<span style="opacity:.65">…and seven more, each loaded where a phase's READ line names it</span></div>
 </section>
 
 <footer>

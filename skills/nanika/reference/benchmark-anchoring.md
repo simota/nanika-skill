@@ -172,7 +172,7 @@ owns the requirement; this rule owns the table it applies.
 | `property-absent` | struck; reverted to invented-and-flagged |
 | `non-separating` | struck; the property cannot separate a 3 from a 1, so it cannot carry a 3 |
 | `non-comparable` | struck; the control decided nothing, so the gap under it is unmeasured |
-| `unreachable` | reverted to unreachable-and-flagged; the run's claim weakens to `unanchored`, which must read as the weaker claim it is |
+| `unreachable` | reverted to unreachable-and-flagged; it no longer counts as anchored, so the header cannot read `sourced` — ID3(c) computes `mixed(a/d)`, or `unanchored` when nothing is left anchored |
 | `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
 
 A struck descriptor is reverted, never reworded to survive: N4 owns that prohibition, and re-anchoring
@@ -199,7 +199,7 @@ criterion, each disappointment criterion, each rubric dimension, each named reci
 | `silent` | none of the above — the dialogue never touched it |
 
 Row 1A.5 owns the arithmetic this feeds, and ID2 recomputes it. A `silent` element routes back to one
-targeted question — `crystallization-dialogue.md` owns how to ask it — or to an explicit Ledger row, and
+targeted question — `crystallization-dialogue.md` owns how to ask it — or to an explicit `ASSUME-n` row, and
 the gate re-runs. The stakes are specific to wish: a `silent` rubric dimension means the ceiling was set by
 the system, for the system, on an axis the user never endorsed, and every mechanism after the freeze will
 maximize it faithfully.
