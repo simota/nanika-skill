@@ -1,7 +1,7 @@
 ---
 name: nanika
 description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; nanika may wrap them. Explicit invocation still requires spend consent."
-allowed-tools: Read, Write, Edit, Bash, WebSearch, WebFetch, Agent
+allowed-tools: Read Write Edit Bash WebSearch WebFetch Agent
 compatibility: "Needs a writable filesystem and a way to spawn an independent worker with its own context; reference/engine-map.md maps that to each host."
 metadata:
   requires-capability: spawn-independent-worker
