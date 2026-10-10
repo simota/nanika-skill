@@ -1,7 +1,7 @@
 # nanika-ledger.md — the scarcity record
 
 **Owns:** where the usage history lives, its schema, the counting rule, and the outcome backfill.
-**Read when:** **P0** — the only phase whose `READ:` line names this file. Row 5.5 appends one entry at P5 from §LG2's schema.
+**Read when:** **P0** — the only phase whose `READ:` line names this file. Row 5.5 appends one entry at P5 (a 1A.6 decline appends at the decline) from §LG2's schema.
 
 A wish is scarce only if something counts it. Without a ledger, "once-in-a-lifetime" is a tone of voice.
 
@@ -21,7 +21,8 @@ sanitized record. A local history still makes usage visible to its user; publica
 
 ## LG2 — Schema
 
-One block per wish, appended at row 5.5. Where a field's vocabulary is owned elsewhere, the field takes
+One block per wish, appended at row 5.5 — or, for a run declined at 1A.6, at the decline, with `mode` from
+row 0.8's result, `dims_at_ceiling`, `comparative` and `engines` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about. Where a field's vocabulary is owned elsewhere, the field takes
 that vocabulary verbatim rather than a copy of it kept here — a ledger that carries a stale exit word
 records a run that did not happen.
 
@@ -34,8 +35,8 @@ records a run that did not happen.
   mode: <the report header's `mode:` field, verbatim>
   exit_reason: <the verdict from SKILL.md §3's exit table, verbatim — that table owns the vocabulary;
                `none(declined 1A.6)` for a run that spent agents and was declined there>
-  dims_at_ceiling: "4/5"       # dimensions that reached 3 / the frozen dimension count
-  comparative: <row 4.1's per-pairing verdicts, `inconsistent` included>
+  dims_at_ceiling: "4/5"       # dims at 3 on the gated artifact (row 3.6) / the frozen dimension count
+  comparative: <the report header's `exit gate:` field, verbatim>
   engines: <the report header's `engines:` field, verbatim>
   budget: <the report header's `spend:` field, verbatim>
   override: false              # true when row 0.7 journaled an override
@@ -44,8 +45,8 @@ records a run that did not happen.
 
 ## LG3 — Counting rule
 
-P0 **counts entries**; it does not parse prose. `wish: N` is the sequence number and the next entry is
-`N+1`. A file with no `## Entries` section counts as zero, and so does a missing file — both are a first
+P0 **counts entries**; it does not parse prose. The next wish number is the highest readable `wish:`
+value + 1; an unreadable block's number is not reused. A file with no `## Entries` section counts as zero, and so does a missing file — both are a first
 wish, and neither is an error to report.
 
 A block that is present but unreadable is not counted and is named to the user as unreadable. Repairing it
@@ -56,7 +57,7 @@ is the user's call, not the gate's.
 `outcome` is written `pending` at row 5.5 and backfilled **lazily**, at the *next* nanika's P0, with one
 question — asked in these words when row 0.3 backfills:
 
-> "Did wish #N-1 (<date>, '<intent>') satisfy its disappointment criteria?"
+> "Did wish #N-1 (<date>, '<intent>') avoid the disappointments you named for it — satisfied, partial, or regretted?"
 
 One line, one answer, then the gate proceeds. This is retrospective self-report, not a causal diagnosis of crystallization or an objective quality score.
 Repeated regret may justify asking what changed, never inferring why on the user's behalf.

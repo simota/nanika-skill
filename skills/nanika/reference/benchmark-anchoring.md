@@ -58,8 +58,7 @@ span are held to B2 and B3 exactly as an exemplar's are.
 and one line on why it lost *on that property* — not why it is a worse document generally. Row 1A.1 owns
 the minimum count and owns `unchallenged` for a one-candidate sweep. **Every reject locator must resolve**,
 which is what ID3(e) counts; a reject list of plausible-sounding titles is the same defect as an invented
-exemplar, one level down. What this does not buy is stated where it belongs: ID3(e) reads that the rejects
-exist and open, never *why each lost*, so a straw reject passes.
+exemplar, one level down. `SKILL.md` §7 prices what ID3(e) does not check.
 
 **B7 — Source discipline: use the tiers, do not redefine them.** `evidence.md` owns the T1-T4 trust tiers
 and this file does not restate them. For a sweep: a T1 first-party source is checked against the artifact
@@ -174,10 +173,9 @@ owns the requirement; this rule owns the table it applies.
 | `non-separating` | struck; the property cannot separate a 3 from a 1, so it cannot carry a 3 |
 | `non-comparable` | struck; the control decided nothing, so the gap under it is unmeasured |
 | `unreachable` | reverted to unreachable-and-flagged; it no longer counts as anchored, so the header cannot read `sourced` — ID3(c) computes `mixed(a/d)`, or `unanchored` when nothing is left anchored |
-| `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact and 1A.3 once on the new locators, whose lines replace the old ones in `requote.md` while both returns stay in `ext/1A.3.md`; a second `stronger-candidate` is `out-anchored` — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
+| `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact and 1A.3 once on the new locators, whose lines replace the old ones in `requote.md` while both returns stay in `ext/1A.3.md`; a second `stronger-candidate` for the same exemplar is `out-anchored` — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
 
-A struck descriptor is reverted, never reworded to survive: N4 owns that prohibition, and re-anchoring
-happens before the freeze and may only raise the bar, so it is not a goalpost move.
+A struck descriptor is reverted, never reworded to survive (N4).
 
 **The no-exemplar fallback.** For a genuinely novel class no exemplar exists. That is a legitimate outcome
 and a weaker claim, and row 1A.4 requires the run to state which way it went. When it fires: say so at the
@@ -205,6 +203,4 @@ the gate re-runs. The stakes are specific to wish: a `silent` rubric dimension m
 the system, for the system, on an axis the user never endorsed, and every mechanism after the freeze will
 maximize it faithfully.
 
-The gate's weakness is stated rather than designed around: the agent classifying the elements is the agent
-that wrote them. ID2 balances whenever everything is classified, so it detects an *unclassified* element,
-not a mis-classified one. The real check is A2, and A2 has no auditor.
+`SKILL.md` §7 prices the gate's weakness: the classifier is the agent that wrote the contract.

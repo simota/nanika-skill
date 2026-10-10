@@ -53,14 +53,14 @@ Records make the process inspectable, but their existence does not establish the
 It counts what it cost. Computed per run, never quoted from a brochure:
 
 ```
-agents = 1 preflight + S sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
+agents = 1 preflight + X sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
        + C angles + J judges (≥ 3) + 1 outline build (outline only)
        + (N+1) × (1 revision + D evaluators + K skeptics)
        + P personas × reception passes + 4 pairwise × P4 passes + D re-score + 1 audit
        + replacements, void re-runs, wrapped-domain work and retries
 ```
 
-For example, scope M (N = 3 cycles), S = 3, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives **64 agents** with the bonus cycle, its second reception pass and the advisory P4 — more if 3R.3 re-enters — before replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
+For example, scope M (N = 3 cycles), X = 3 sweep workers, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives **64 agents** with the bonus cycle, its second reception pass and the advisory P4 — more if 3R.3 re-enters — before replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
 
 Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.
 
@@ -82,6 +82,8 @@ make link AGENT="claude agy"     # this subset
 make link PROJECT=/path/to/repo  # that project's .claude/skills
 make link SKILLS_DIR=/some/path  # one literal path
 ```
+
+Codex is linked into `~/.agents/skills`, the location current Codex reads; an older link under `$CODEX_HOME/skills` still loads but is deprecated there. agy's skills directory is not confirmed by first-party documentation — override it with `AGY_SKILLS_DIR=` if yours differs.
 
 `link` never removes anything. It refuses a path that already exists and is not its own symlink, and tells you which — a directory you made by hand is never cleared to make room.
 

@@ -1,10 +1,10 @@
 # identities.md
 
-**Owns:** the card clause census, the ten run identities, and the protocol row 5.7 hands to the auditor.
+**Owns:** the card address inventory, the ten run identities, and the protocol row 5.7 hands to the auditor.
 **Read when:** at P5, by the orchestrator preparing the 5.7 spawn — and by the auditor itself, which reads
 this file and the run directory and nothing else.
 
-Contents: §0 clause census · §1 the ten identities · §2 the audit protocol · §3 worked examples, one per
+Contents: §0 address inventory · §1 the ten identities · §2 the audit protocol · §3 worked examples, one per
 legal run state · §4 what an imbalance means, and what it never licenses.
 
 ## §0 — Card address inventory
@@ -51,8 +51,7 @@ argues about.
   **and** its property is `separating`. A `mismatch`, `property-absent`, `non-separating` or
   `non-comparable` row that is still `anchored` is an imbalance — that is 1A.4 not having run. Two further
   clauses live here. **`sourced`:** the header may read `anchoring: sourced` only when `anchored` equals
-  the descriptor count, the other two buckets are 0, and (d) leaves no `out-anchored` exemplar; any state
-  with 0 < anchored < descriptors reads `mixed(<anchored>/<descriptors>)`. `SKILL.md` §3's ACCEPT row defines that word and this part computes
+  the descriptor count, the other two buckets are 0, and (d) leaves no `out-anchored` exemplar. `SKILL.md` §3's ACCEPT row defines that word and this part computes
   it, together with the header's other anchoring states, which are exhaustive and exclusive: `unverified`
   when 1A.3 carries `not-run`; `invented-fallback` when 1A.4 records that the no-exemplar fallback fired;
   otherwise `sourced` when anchored = descriptors with no `out-anchored` exemplar, `unanchored` when
@@ -66,8 +65,7 @@ argues about.
 - **(e) reject lists.** `named properties = lists-with-≥2-beaten-candidates + unchallenged`, counted from
   `anchors.md`, **and** every reject locator in every list resolves. The header's
   `reject-lists: n / n | unchallenged(n)` is read off this equation, so the field is computed rather than
-  typed — the same defect ID9 closes for calibration. **What (e) does not do:** it reads that the rejects exist and open, not
-  *why each lost*. A straw reject passes. `SKILL.md` §7 states it in those terms.
+  typed — the same defect ID9 closes for calibration. `SKILL.md` §7 prices what (e) does not check.
 
 Source for all five: 1A.1-1A.4.
 
@@ -76,7 +74,7 @@ is legal only while the loop is open or when the exit is `budget-reached`; a clo
 under any other exit is an imbalance. Source: 2.6, 3.3.
 
 **ID5 — the gauntlet.** `attacks raised = killed + fixed + open + unproven-because-new`, and the
-`unproven-because-new` count appears in the §5 terminal line, which carries a field for it. Source:
+`unproven-because-new` count appears in the `SKILL.md` §5 terminal line, which carries a field for it. Source:
 3.4, 3.5.
 
 **ID6 — reception.** `personas run = valid-span + void`, summed over every reception pass and counting a
@@ -94,7 +92,7 @@ a fabricated one, which `SKILL.md` §7 states rather than claims away. Source: 1
 
 **ID9 — the scorers.** Two clauses. A scorer is every P2 judge and every P3 evaluator, identified by the
 `scorer_id` on its scorecard, which every scoring return it makes repeats (`EVALUATION` for an evaluator,
-the P2 scoring return for a judge; `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
+an `EVALUATION` with `cycle: 0` for a judge (`evaluator-roster.md` RS4); `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
 cycle under the same id is the same scorer. **Count:** `scorers = calibrated + re-prompted + replaced + no-pair`, one
 scorecard per scorer under `scorecards/`, each holding every blind-pair pass and the orchestrator's verdict
 on each. `no-pair` is a scorer none of whose dimensions has an `anchored` descriptor, so 2.3 gave it nothing
@@ -292,7 +290,7 @@ it never searched for. `SKILL.md` §7 prices each of these.
 
 An imbalance is not a reporting error and is never repaired by editing a number. It means one of three
 things, in this order of likelihood: a phase did not run; a phase ran and its output was not written to
-the run directory; or the card was edited without recomputing the census in §0. The auditor names which
+the run directory; or the card was edited without recomputing the address inventory in §0. The auditor names which
 files disagree and stops. The orchestrator then runs the phase, or records the row `not-run:` with one of
 the six legal reasons — and re-runs the audit, because a run directory that changed after an audit has an
 audit of a different run. §2's four post-audit writes are the only exception.

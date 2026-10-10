@@ -2,7 +2,7 @@
 
 **Owns:** generator-evaluator separation, the 0-3 scale, the rubric's shape, the three output schemas
 (`EVALUATION`, `SCORECARD`, `PAIRWISE_VERDICT`), feedback aggregation, and loop control.
-**Read when:** P3, for the convergence loop; P4, for §8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
+**Read when:** P3, for the convergence loop; P4, for L8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
 of its four workers.
 
 Contents: L1 separation · L2 the 0-3 scale · L3 the rubric's shape · L4 `EVALUATION` · L5 `SCORECARD` ·
@@ -88,8 +88,7 @@ in the artifact or reproduced from the named command voids that dimension's scor
 re-run once; a second void leaves the dimension unscored for that cycle, named in the cycle file — an
 unscored dimension blocks ACCEPT and carries its prior score into Δ and row 3.6. "Should be fine" and "looks strong" are forbidden vocabulary.
 
-**No `calibration:` field exists in this schema, deliberately.** A self-declared calibration state is a
-string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
+**No `calibration:` field exists in this schema, deliberately:** a self-declared calibration state is a string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
 scorecard below and counted *and recomputed* by ID9.
 
 ## L5 — `SCORECARD`, one file per `scorer_id` under `scorecards/`
@@ -143,7 +142,7 @@ REVISION_BRIEF:
   cycle: N → N+1
   address:
     - "[dim: <name>, score 2] <gap_to_3> — <recommendation>"
-    - "[surviving attack] <the refutation that was not killed>"
+    - "[surviving attack] <an ID5 `open` attack>"
     - "[reception] <persona friction that entered as dimension evidence>"
   salvage:                             # every item from row 2.6, one of four dispositions, none silent
     - "<item> — grafted <where>"
@@ -204,7 +203,7 @@ properties are the comparable part and the part the rubric was written from.
 
 ## Anti-patterns — guidance, not a numbered rule
 
-*(The eight rules of this file are L1-L8 above; this section adds none, and `grep -c '^## L' ` returns 8.)*
+*(The eight rules of this file are L1-L8 above; this section adds none.)*
 
 **Do:** map each rubric dimension to exactly one evaluator · keep the roster at ≤ 5, beyond which
 agreement rises and information does not · tune the *evaluator*, not the generator, because making an

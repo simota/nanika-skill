@@ -30,13 +30,17 @@ PROJECT ?=
 
 CODEX_HOME ?= $(HOME)/.codex
 AGY_HOME   ?= $(HOME)/.gemini/antigravity-cli
+# Codex reads user skills from ~/.agents/skills; $(CODEX_HOME)/skills is its
+# deprecated location. agy's skills directory is not confirmed by first-party
+# documentation, so it can be overridden.
+AGY_SKILLS_DIR ?= $(AGY_HOME)/skills
 
 # Each entry is `guard|dir`: the directory whose existence means the host is on
 # this machine, and the skills directory to link into. Judging presence by the
 # host's own root rather than its skills dir keeps a first install working.
 tgt_claude := $(HOME)/.claude|$(HOME)/.claude/skills
-tgt_codex  := $(CODEX_HOME)|$(CODEX_HOME)/skills
-tgt_agy    := $(AGY_HOME)|$(AGY_HOME)/skills
+tgt_codex  := $(CODEX_HOME)|$(HOME)/.agents/skills
+tgt_agy    := $(AGY_HOME)|$(AGY_SKILLS_DIR)
 
 # Make splits words on spaces, so a path with one would be linked as fragments.
 # Refuse instead of guessing; the install targets are the ones that would write.
@@ -44,8 +48,8 @@ ifneq ($(word 2,$(REPO)),)
 $(error the repository path contains a space - move it to a path without one)
 endif
 ifneq ($(filter link unlink status,$(MAKECMDGOALS)),)
-ifneq ($(word 2,$(HOME))$(word 2,$(SKILLS_DIR))$(word 2,$(PROJECT))$(word 2,$(CODEX_HOME))$(word 2,$(AGY_HOME)),)
-$(error HOME, SKILLS_DIR, PROJECT, CODEX_HOME or AGY_HOME contains a space - link by hand or use a path without one)
+ifneq ($(word 2,$(HOME))$(word 2,$(SKILLS_DIR))$(word 2,$(PROJECT))$(word 2,$(CODEX_HOME))$(word 2,$(AGY_HOME))$(word 2,$(AGY_SKILLS_DIR)),)
+$(error HOME, SKILLS_DIR, PROJECT, CODEX_HOME, AGY_HOME or AGY_SKILLS_DIR contains a space - link by hand or use a path without one)
 endif
 ifeq ($(SKILLS_DIR)$(PROJECT),)
 UNKNOWN := $(filter-out claude codex agy,$(AGENT))
@@ -75,7 +79,7 @@ help: ## list targets
 	  | awk -F':.*## ' '{printf "  %-8s %s\n", $$1, $$2}'
 	@echo
 	@echo "  skill:  $(SKILL)"
-	@echo "  vars:   AGENT PROJECT SKILLS_DIR PAGES_PORT"
+	@echo "  vars:   AGENT PROJECT SKILLS_DIR AGY_SKILLS_DIR PAGES_PORT"
 
 link: ## symlink the skill into every installed host's skills dir
 	@[ -f "$(SKILL)/SKILL.md" ] || { echo "no skill at $(SKILL)" >&2; exit 1; }; \
