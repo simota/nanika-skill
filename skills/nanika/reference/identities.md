@@ -37,7 +37,7 @@ are 0, the clause being described is *not evaluated in that state*, and the head
 `re-quote: not-run(<reason>)` with `anchoring: unverified`. That branch is written into each part rather
 than inferred from part (a), because an exemption an auditor has to infer is an exemption an auditor
 argues about.
-- **(a) lines.** `requote.md` lines `= exact-match + mismatch + unreachable`, **and** that total equals
+- **(a) lines.** `requote.md`'s `## Locators` block lines `= exact-match + mismatch + unreachable`, **and** that total equals
   the locator count in `anchors.md`.
 - **(b) property and separation.** Property verdicts `= property-present + property-absent +
   not-assessed`, one per line in `requote.md`, so the total equals the locator count. A control locator is
@@ -103,7 +103,8 @@ produced no score. A scorer that produced any score in `cycles/*` or in the P2 j
 it has no scorecard or its final verdict is neither `calibrated` nor `no-pair`; a scorer with no score may end `re-prompted`
 or `replaced`. A replaced scorer leaves its own scorecard
 **and** its replacement's, so a replacement raises the total by one. `scorers = 0` is legal exactly when
-2.3 and 3.2 carry `not-run`, and the header then reads `evaluators: not-run(<reason>)`. **Recompute:**
+2.3 and 3.2 carry `not-run`, and the header then reads `evaluators: not-run(<reason>)`; the producer's advisory scores then carry `scorer_id: producer(advisory)`
+and are no scorer. **Recompute:**
 `SKILL.md` §P2's table is deterministic over the pairs of each pass — one exemplar-and-control pair per
 dimension the scorer scores — so the auditor recomputes each pass's verdict: every pair `exemplar = 3 ∧
 control ≤ 2 → calibrated`, otherwise `re-prompted` on the first pass and `replaced` on the second. A written verdict that disagrees with the recomputation is an imbalance.
@@ -135,7 +136,10 @@ mode was invisible to every other identity. Source: 0.8, §3's degraded list.
    5.7 as ticked and `ext/5.7.md` as present. After it returns, only four writes are legal: tick 5.7, save
    `ext/5.7.md`, fill the report's `identity:` field and terminal line, and finish 5.6's link. Any other
    change to the run directory makes it a different run, which §4 says needs a new audit.
-5. The terminal line uses `card <n> rows`, read from the card, never a hardcoded row count.
+5. The terminal line uses `card <n> rows`, read from the card, never a hardcoded row count. A field whose source
+   row carries `not-run` prints `<field> not-run(<reason>)`; in `single-agent(declared)` mode it prints
+   `identities advisory <n>/10`; when P4 ran twice, `exit-gate` and the `exit gate:` header print the acted
+   pass, then `· advisory <counts>`.
 
 ---
 
@@ -243,7 +247,7 @@ ID10 mode: full; no row carries `not-run: no spawn`                             
 after cycle 2: one finding re-scored and re-entered (cycle 3), one routed to §6, which opened at 3.10. Pass 2,
 after cycle 3: clean; P4 lost one exemplar property, and 4.2 spent the bonus on it. Pass 3, after the bonus:
 a finding moved a score on a rubric-perfect artifact with the cap spent → demoted. Only the identities that move are shown. The amendment added a fifth
-dimension, and 1A.1 found no separate exemplar for it — so the run shares one property across two
+dimension, and `anchors.md` held no separate exemplar for it — so the run shares one property across two
 descriptors and must say so.
 
 ```
@@ -271,10 +275,10 @@ ID3c  header `anchoring: sourced` with 1 invented-and-flagged descriptor
 ID3e  4 named properties, 3 reject lists, and one list's second locator does not open
                                                   → IMBALANCE(2): one property unchallenged and unheaded;
                                                      one reject locator unresolvable
-ID8   3 ext cells = 2 record-present + 0 not-run → IMBALANCE(1): `ext/5.7.md` absent
+ID8   3 ext cells = 2 record-present + 0 not-run → IMBALANCE(1): `ext/4.1.md` absent while 4.1 is ticked
 ID9   scorecard holds exemplar 2 / control 3, verdict `calibrated`
                                                   → IMBALANCE(1): §P2's table returns `re-prompted`
-ID10  mode: full, and 3R.1 + 5.7 carry `not-run: no spawn`
+ID10  mode: full, and 3R.1 + 4.1 carry `not-run: no spawn`
                                                   → IMBALANCE(1): mode contradicts the card
 ```
 

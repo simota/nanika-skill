@@ -2,7 +2,7 @@
 
 **Owns:** generator-evaluator separation, the 0-3 scale, the rubric's shape, the three output schemas
 (`EVALUATION`, `SCORECARD`, `PAIRWISE_VERDICT`), feedback aggregation, and loop control.
-**Read when:** P3, for the convergence loop; P4, for L8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
+**Read when:** P2, for L4-L5 (the judge return and row 2.3's SCORECARD); P3, for the convergence loop; P4, for L8's `PAIRWISE_VERDICT`, which row 4.1 hands to each
 of its four workers.
 
 Contents: L1 separation · L2 the 0-3 scale · L3 the rubric's shape · L4 `EVALUATION` · L5 `SCORECARD` ·
@@ -155,6 +155,9 @@ REVISION_BRIEF:
 Deduplicate across evaluators, order by the size of the gap to 3, and keep the brief inside what the
 generator can act on in one pass. A brief with thirty items produces thirty half-fixes.
 
+A 4.2 bonus cycle's brief opens with the lost property and its `evidence_span`, then carries the usual items
+above; the property leads, it does not replace them.
+
 ## L7 — Loop control and the comparability guard
 
 | Parameter | Wish value |
@@ -162,7 +165,12 @@ generator can act on in one pass. A brief with thirty items produces thirty half
 | Cycle cap | read off the card header, which row 0.4 filled from `SKILL.md` §3's scope line; + ≤1 bonus at 4.2 |
 | Diminishing returns | the constant in `SKILL.md` §3's exit table, which owns it |
 | ACCEPT | `SKILL.md` §3's ACCEPT row owns every condition, including what makes an anchor `sourced` |
+| Degraded mode | the same cap and Δ constant, on the producer's advisory scores; where full mode would exit `ACCEPT`, `cap-reached` or `diminishing-returns`, 3.9 writes `single-agent-best-effort` |
+| Several exits at once | 3.9 writes the first in `SKILL.md` §3's precedence; an `ACCEPT` there is provisional |
 | Best-of retention | **keep every cycle's artifact** — improvement is not monotonic. Card row 3.6 delivers the best, not the last |
+
+An amendment's R2 is appended to `rubric-frozen.md` under `## R2`; a new dimension's evaluator passes 3.2's
+blind pair, or is `no-pair`, before it scores.
 
 **Comparability guard.** A score is comparable across cycles only when the rubric text, the evaluator
 prompt and the evaluator model are all unchanged — which is why L4 makes all three required keys. When any
