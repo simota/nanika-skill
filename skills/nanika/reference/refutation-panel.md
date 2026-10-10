@@ -97,8 +97,9 @@ second oracle, and two oracles make the loop's termination arbitrary.
 
 - **Evidence decides, never a head-count.** Each attack is disposed on its own evidence against the frozen
   rubric, as row 3.4 requires: one attack refuted-on-evidence whose evidence the orchestrator can reproduce
-  demotes however many skeptics did not raise it, and an attack that is merely unproven survives with the
-  flagged residual §2 requires however many skeptics did. Counting skeptics who agree is the vote row 3.4
+  demotes however many skeptics did not raise it, and an attack that is merely unproven does not demote —
+  the claim survives, and the attack goes to ID5's `unproven-because-new` bucket with the flagged residual
+  §2 requires, however many skeptics raised it. Counting skeptics who agree is the vote row 3.4
   and `SKILL.md` §7 exclude.
 - **A survivor is a fact about the artifact, not about the skeptic.** Record which attacks the artifact
   survived and which it failed; row 3.5 carries the survivors into the next cycle as exclusions so the loop

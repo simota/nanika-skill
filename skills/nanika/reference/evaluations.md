@@ -59,7 +59,10 @@ t-test.
   difference, not of a single arm's score, because that is the denominator a paired test uses. +0.40
   against 0.55 is **d = 0.73**.
 - A paired t-test on **n = 18** pairs at α = 0.05, two-sided, reaches **80% power at d ≈ 0.70** (0.81 at
-  d = 0.71). So the design is powered for the effect it pre-registers, *conditional on the assumed SD*.
+  d = 0.71), *conditional on the assumed SD*. That power is symmetric and covers two decisions: excluding
+  +0.40 when the true effect is 0 (outcome 1), and excluding 0 when it is +0.40 (outcome 2's positive
+  sub-case). Outcome 3 needs a lower bound above +0.40, which a true +0.40 reaches only about 2.5% of the
+  time; 80% power for outcome 3 needs a true effect near +0.76 at this SD.
   **If the observed SD of the paired difference exceeds 0.57** (= 0.40 / 0.70), **the study is
   underpowered for +0.40 and its null is uninformative** — that condition is registered here so that it
   cannot be discovered afterwards and reported as a finding.
@@ -179,7 +182,7 @@ card instead of adding explanatory prose. E3 can inform deletion only when its u
 
 | result | what changes in `SKILL.md` |
 |---|---|
-| E1 outcome 1 (no effect above +0.40) | `delta:` becomes a measured null; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
+| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `measured: below +0.40`; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
 | E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
 | E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |

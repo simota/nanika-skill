@@ -32,7 +32,7 @@ an imbalance even when the arithmetic sums. Source: all 57 rows, 5.6.
 construction: it detects an unclassified element, not a mis-classified one. Source: 1.8, 1A.5.
 
 **ID3 — the anchor.** Five parts, each over `anchors.md` and `requote.md`. **Every part carries the same
-`not-run` disposition:** row 1A.3 `not-run` → `requote.md` is absent, all totals in (a), (b), (d) and (e)
+`not-run` disposition:** row 1A.3 `not-run` → `requote.md` is absent, all totals in (a), (b) and (d)
 are 0, the clause being described is *not evaluated in that state*, and the header reads
 `re-quote: not-run(<reason>)` with `anchoring: unverified`. That branch is written into each part rather
 than inferred from part (a), because an exemption an auditor has to infer is an exemption an auditor
@@ -51,12 +51,13 @@ argues about.
   **and** its property is `separating`. A `mismatch`, `property-absent`, `non-separating` or
   `non-comparable` row that is still `anchored` is an imbalance — that is 1A.4 not having run. Two further
   clauses live here. **`sourced`:** the header may read `anchoring: sourced` only when `anchored` equals
-  the descriptor count and the other two buckets are 0; any other mixture must read
-  `mixed(<anchored>/<descriptors>)`. `SKILL.md` §3's ACCEPT row defines that word and this part computes
+  the descriptor count, the other two buckets are 0, and (d) leaves no `out-anchored` exemplar; any state
+  with 0 < anchored < descriptors reads `mixed(<anchored>/<descriptors>)`. `SKILL.md` §3's ACCEPT row defines that word and this part computes
   it, together with the header's other anchoring states, which are exhaustive and exclusive: `unverified`
   when 1A.3 carries `not-run`; `invented-fallback` when 1A.4 records that the no-exemplar fallback fired;
-  otherwise `sourced` when anchored = descriptors, `unanchored` when anchored = 0, and `mixed(a/d)`
-  between. **One property per dimension:** each score-3 descriptor names exactly one dimension and one
+  otherwise `sourced` when anchored = descriptors with no `out-anchored` exemplar, `unanchored` when
+  anchored = 0, and `mixed(a/d)` in every other case — including all descriptors anchored but an exemplar
+  left `out-anchored`. **One property per dimension:** each score-3 descriptor names exactly one dimension and one
   property; if a property appears on more than one descriptor, the header must read `shared-property(n)`
   with n = the number of descriptors sharing, and silence is an imbalance.
 - **(d) challenge.** Exactly one challenge return per exemplar, each `none-better-found` or a
@@ -89,13 +90,15 @@ under any other exit is an imbalance. Source: 2.6, 3.3.
 a fabricated one, which `SKILL.md` §7 states rather than claims away. Source: 1A.3, 4.1, 5.7.
 
 **ID9 — the scorers.** Two clauses. A scorer is every P2 judge and every P3 evaluator, identified by the
-`scorer_id` its `EVALUATION` returns carry (`evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
+`scorer_id` on its scorecard, which every scoring return it makes repeats (`EVALUATION` for an evaluator,
+the P2 scoring return for a judge; `evaluator-loop.md` L4-L5); an evaluator re-spawned in a later
 cycle under the same id is the same scorer. **Count:** `scorers = calibrated + re-prompted + replaced`, one
 scorecard per scorer under `scorecards/`, each holding every blind-pair pass and the orchestrator's verdict
 on each. A scorer is bucketed by its **final** verdict: a scorer re-prompted once and then calibrated is
 `calibrated`; a final `re-prompted` means the second pass never ran, which is legal only for a scorer that
-produced no score. A scorer that produced any score in `cycles/*` or in the P2 judging with no scorecard,
-or whose final verdict is not `calibrated`, is an imbalance; a replaced scorer leaves its own scorecard
+produced no score. A scorer that produced any score in `cycles/*` or in the P2 judging is an imbalance if
+it has no scorecard or its final verdict is not `calibrated`; a scorer with no score may end `re-prompted`
+or `replaced`. A replaced scorer leaves its own scorecard
 **and** its replacement's, so a replacement raises the total by one. `scorers = 0` is legal exactly when
 2.3 and 3.2 carry `not-run`, and the header then reads `evaluators: not-run(<reason>)`. **Recompute:**
 `SKILL.md` §P2's table is deterministic over the two scores of each pass, so the auditor recomputes each
@@ -208,9 +211,12 @@ print `sourced`, and with a `mixed` anchor ACCEPT would be unreachable even if t
 ```
 ID1  57 = 48 ticked + 9 not-run   (3.4, 3.5, 3R.1, 3R.2, 3R.3, 4.1, 4.2 `precondition unmet(3.9)`;
                                    1A.7 `capability absent(extra engine)`, 3.10 `not applicable(no amendment)`) — pass
+     3.9 is ticked with its `budget-reached` verdict; the seven rows cite it because that verdict
+     closed the loop before their own preconditions could be met
 ID3  (a) requote.md 6 = 5 exact-match + 0 mismatch + 1 unreachable = anchors.md 6       — pass
      (b) 6 = 3 property-present + 0 absent + 3 not-assessed (2 controls + 1 unreachable);
-         3 assessable properties = 3 separating + 0 + 0                                 — pass
+         4 named properties = 4 separating + 0 + 0 (the control is reachable, so the
+         unreachable exemplar's property still gets its separation verdict)            — pass
      (c) 4 descriptors = 3 anchored + 1 unreachable-and-flagged + 0 invented-and-flagged
          → header `anchoring: mixed(3/4)`, **not** `sourced`; `one-per-dimension`        — pass
      (d) 4 challenge returns = 4 none-better-found                                       — pass
@@ -263,9 +269,9 @@ ID10  mode: full, and 3R.1 + 5.7 carry `not-run: no spawn`
 
 Each is reported as a phase that did not run, named, and then run or recorded `not-run`. None is closable
 by adjusting a count. **What still passes:** an orchestrator that writes all three `ext/` files itself,
-three plausible scorecards with internally consistent scores, `spawns/` prompts for workers it never
+plausible scorecards with internally consistent scores, `spawns/` prompts for workers it never
 spawned, two straw rejects whose locators happen to open, and a challenge return of `none-better-found`
-it never searched for. `SKILL.md` §7 says so in the same words.
+it never searched for. `SKILL.md` §7 prices each of these.
 
 ---
 

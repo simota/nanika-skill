@@ -218,8 +218,8 @@ P5 DELIVER  → report.md
   self-deception to catch afterwards. §6 is the only legal path, it produces R2, and it may never be opened by whoever
   produced the output that failed. Re-anchoring at 1A.4 happens before the freeze and may only raise the bar, so it is
   not this.
-- **N5** Never call same-model judgments model-independent, record completeness quality, a mixed/unverified or
-  out-anchored anchor sourced, an inconsistent pairing a verdict, a single-agent run full, or an unrun step N/A.
+- **N5** Never call same-model judgments model-independent, record completeness quality, an anchor ID3(c) does not
+  compute as `sourced` sourced, an inconsistent pairing a verdict, a single-agent run full, or an unrun step N/A.
   Report the actual scope of the evidence rather than upgrading its label.
 - **N6** Before each spawn, save its permitted prompt to `spawns/`; include its task, exact output schema and
   output-length envelope. Add only role-appropriate, A2-approved context: the versioned rubric for rubric scoring,
@@ -257,7 +257,7 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
 
 | Exit | Meaning |
 |------|---------|
-| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. Any other mixture prints `mixed(<anchored>/<descriptors>)`, which is a legal run and is **not** `sourced` |
+| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. A state with 0 < anchored < descriptors prints `mixed(<anchored>/<descriptors>)`, a legal run that is **not** `sourced`; ID3(c) owns the other non-`sourced` states |
 | `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection — **and the cap was already spent, which is the only state in which 3R.3 may convert that finding into a residual instead of another cycle.** Ships best-so-far with the persona's verbatim stop-span. **Never reports as `ACCEPT`** |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
@@ -378,8 +378,8 @@ gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
 Then all twelve sections, each present or `N/A` with a one-line reason. **Contract** — every element classified per
 5.2, prohibitions on their own axis. **Anchoring** — exemplars and control with locators, spans, named properties, the
 dimension each anchors, each reject list, 1A.3's verdicts per locator and property, the challenge return, the fallback
-flag if it fired. **Calibration** — per scorer, both blind-pair scores and the orchestrator's verdict, as ID9 counted
-and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
+flag if it fired. **Calibration** — per scorer, every blind-pair pass with both scores and the orchestrator's verdict, and the
+final verdict, as ID9 counted and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
 scores, winner, runner-up, salvage grafted / rejected / deferred / carried. **Trajectory** — per-cycle weighted scores
 per dimension tagged R1/R2, each cycle's 3.9 verdict, and which artifact shipped and why it, not the last.
 **Gauntlet** — attacks raised / killed / survived-then-fixed / open / `unproven-because-new`, each of the last with

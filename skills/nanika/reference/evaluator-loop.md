@@ -9,7 +9,7 @@ Contents: L1 separation · L2 the 0-3 scale · L3 the rubric's shape · L4 `EVAL
 L6 aggregation and the one brief · L7 loop control · L8 `PAIRWISE_VERDICT` · anti-patterns.
 
 Nanika raises exactly one thing about this machinery — the ACCEPT bar — and adds blind-pair calibration
-(`SKILL.md` card row 2.3 and its §P2 table) and panel ratification (`refutation-panel.md`). Everything
+(`SKILL.md` card rows 2.3 and 3.2 and the §P2 table) and panel ratification (`refutation-panel.md`). Everything
 else below is the ordinary loop.
 
 ---
@@ -91,7 +91,7 @@ re-run. "Should be fine" and "looks strong" are forbidden vocabulary.
 string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
 scorecard below and counted *and recomputed* by ID9.
 
-## L5 — `SCORECARD`, one file per scorer instance under `scorecards/`
+## L5 — `SCORECARD`, one file per `scorer_id` under `scorecards/`
 
 ```yaml
 SCORECARD:
@@ -99,6 +99,7 @@ SCORECARD:
   role: judge | evaluator              # a P2 judge (row 2.3) or a P3 evaluator (row 3.2)
   passes:                              # one entry per blind-pair pass; a second exists only after a re-prompt
     - pass: 1
+      labelled_control: false          # true on a pass-2 re-prompt, which names the control per §P2
       blind_pair:                      # written by the SCORER, before it sees any candidate
         - item: A                      # unlabelled and shuffled per scorer; the orchestrator holds the key
           score: 0-3
@@ -111,7 +112,9 @@ SCORECARD:
   final_verdict: calibrated | re-prompted | replaced              # the last pass's verdict; ID9 buckets on it
 ```
 
-The two halves have different authors and the file records which. ID9 counts these files, buckets each on
+The two halves have different authors and the file records which. A pass-2 re-prompt names the control,
+so that pass is not blind and `labelled_control: true` says so; a pass-2 `calibrated` is weaker evidence
+than a pass-1 one, and the report's Calibration section shows which it was. ID9 counts these files, buckets each on
 `final_verdict`, and **recomputes every pass's `orchestrator_verdict` from its two scores against §P2's
 table**; a verdict that disagrees with the recomputation is an imbalance. A `replaced` scorer leaves its own scorecard and its replacement leaves
 another, so a replacement raises the count by one.
