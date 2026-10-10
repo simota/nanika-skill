@@ -79,8 +79,8 @@ Findings enter the loop as evidence on existing rubric dimensions. **Reception i
 Row 3R.2 owns the disposal and carries all three of it — re-scored on a named dimension, routed to `SKILL.md`
 §6 amendment, or recorded as a residual with the reason no dimension fits, the last legal only once the cycle
 cap is spent or §6 was declined or already used. **Row 3R.3 owns what follows a re-score:** a finding that moved a score sends the run back into
-P3 while cycles remain. 3R.2's re-score is made by the calibrated P3 evaluator that owns that dimension,
-under its own `scorer_id`, handed the finding and stop-span; its `EVALUATION` is appended to the latest
+P3 while cycles remain. 3R.2's re-score is made by the P3 evaluator that owns that dimension —
+calibrated, or `no-pair` (ID9), whose re-score is advisory like all its scores — under its own `scorer_id`, handed the finding and stop-span; its `EVALUATION` is appended to the latest
 `cycles/<n>.md` tagged `reception-pass: <k>`. The orchestrator never re-scores (N1). Neither disposal nor re-entry is a rule of this file, and this file adds no fourth
 disposition and no second exit.
 
