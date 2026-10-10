@@ -85,7 +85,7 @@ EVALUATION:
 **`evidence_span` is load-bearing for a card clause.** Row 3.2's "citing an observation rather than an
 impression" lands here and nowhere else — this key is the artifact that clause produces. **Void-and-re-run:** an `evidence_span` that cannot be found
 in the artifact or reproduced from the named command voids that dimension's score, and the evaluator is
-re-run. "Should be fine" and "looks strong" are forbidden vocabulary.
+re-run once; a second void leaves the dimension unscored for that cycle, named in the cycle file. "Should be fine" and "looks strong" are forbidden vocabulary.
 
 **No `calibration:` field exists in this schema, deliberately.** A self-declared calibration state is a
 string the scorer typed about itself. Calibration is the orchestrator's computation, written onto the
@@ -100,13 +100,15 @@ SCORECARD:
   passes:                              # one entry per blind-pair pass; a second exists only after a re-prompt
     - pass: 1
       labelled_control: false          # true on a pass-2 re-prompt, which names the control per §P2
-      blind_pair:                      # written by the SCORER, before it sees any candidate
-        - item: A                      # unlabelled and shuffled per scorer; the orchestrator holds the key
-          score: 0-3
-          evidence: "<quoted span from that item>"
-        - item: B
-          score: 0-3
-          evidence: "<quoted span from that item>"
+      pairs:                           # written by the SCORER, before it sees any candidate
+        - dimension: "<name>"          # one pair per dimension this scorer scores: all for a judge, one for an evaluator
+          items:
+            - item: A                  # that dimension's exemplar and its control, unlabelled and shuffled per scorer
+              score: 0-3
+              evidence: "<quoted span from that item>"
+            - item: B
+              score: 0-3
+              evidence: "<quoted span from that item>"
       orchestrator_verdict: calibrated | re-prompted | replaced   # written by the ORCHESTRATOR only
       verdict_basis: "<which row of SKILL.md §P2's table was applied>"
   final_verdict: calibrated | re-prompted | replaced              # the last pass's verdict; ID9 buckets on it
@@ -115,7 +117,7 @@ SCORECARD:
 The two halves have different authors and the file records which. A pass-2 re-prompt names the control,
 so that pass is not blind and `labelled_control: true` says so; a pass-2 `calibrated` is weaker evidence
 than a pass-1 one, and the report's Calibration section shows which it was. ID9 counts these files, buckets each on
-`final_verdict`, and **recomputes every pass's `orchestrator_verdict` from its two scores against §P2's
+`final_verdict`, and **recomputes every pass's `orchestrator_verdict` from its pairs' scores against §P2's
 table**; a verdict that disagrees with the recomputation is an imbalance. A `replaced` scorer leaves its own scorecard and its replacement leaves
 another, so a replacement raises the count by one.
 

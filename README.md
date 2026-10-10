@@ -54,12 +54,13 @@ It counts what it cost. Computed per run, never quoted from a brochure:
 
 ```
 agents = 1 preflight + S sweep + 1 checker + E extra engines
-       + C angles + J judges + cycles × (D evaluators + K skeptics)
-       + P personas + 4 pairwise + 1 audit
-       + wrapped-domain workers, retries and reruns
+       + C angles + J judges + 1 outline build
+       + (N+1) × (1 revision + D evaluators + K skeptics)
+       + P personas per reception pass + 4 pairwise + D re-score + 1 audit
+       + replacements, void re-runs, wrapped-domain work and retries
 ```
 
-For example, scope M (N = 3 cycles), S = 3, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives at most **41 agents** before wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
+For example, scope M (N = 3 cycles), S = 3, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives at most **57 agents** with one reception pass, before replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
 
 Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.
 

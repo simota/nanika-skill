@@ -24,7 +24,7 @@ states the card legalises — `not-run` and `carried` included.
 
 **ID1 — the card.** `57 = ticked + not-run`, **and** every ticked row's `ev:` value resolves to an
 existing file inside the run directory, **and** every `not-run:` reason is one of the six strings the card
-legend closes on (`no spawn` · `no external worker` · `not applicable(<class|scope>)` ·
+legend closes on (`no spawn` · `no external worker` · `not applicable(<class|scope|condition>)` ·
 `precondition unmet(<row>)` · `user declined(<path>)` · `capability absent(<name>)`). A seventh string is
 an imbalance even when the arithmetic sums. Source: all 57 rows, 5.6.
 
@@ -79,14 +79,16 @@ under any other exit is an imbalance. Source: 2.6, 3.3.
 `unproven-because-new` count appears in the §5 terminal line, which carries a field for it. Source:
 3.4, 3.5.
 
-**ID6 — reception.** `personas run = valid-span + void`, with `void = 0` or each void a named residual;
+**ID6 — reception.** `personas run = valid-span + void`, counting a re-run as its own persona run; each
+void is followed by exactly one re-run, or — when that re-run is void too — by a named residual;
 `personas run = 0` is legal exactly when 3R.1 carries `not-run`. Source: 3R.1, 3R.2, 3R.3.
 
 **ID7 — the contract's two axes.** `acceptance criteria = verified + partial + missed + dropped`;
 `prohibitions = held + violated + unverified`, counted separately and never merged. Source: 1.2, 1.4, 5.2.
 
 **ID8 — the external cells.** `ext cells = 3 = record-present + not-run`, where
-`record-present` is `ls ext/ | wc -l` — files, not labels. Catches an absent record; does not catch
+`record-present` is `ls ext/ | wc -l` — files, not labels, one per cell: 4.1's four returns go in
+`ext/4.1.md`. Catches an absent record; does not catch
 a fabricated one, which `SKILL.md` §7 states rather than claims away. Source: 1A.3, 4.1, 5.7.
 
 **ID9 — the scorers.** Two clauses. A scorer is every P2 judge and every P3 evaluator, identified by the
@@ -101,9 +103,9 @@ it has no scorecard or its final verdict is not `calibrated`; a scorer with no s
 or `replaced`. A replaced scorer leaves its own scorecard
 **and** its replacement's, so a replacement raises the total by one. `scorers = 0` is legal exactly when
 2.3 and 3.2 carry `not-run`, and the header then reads `evaluators: not-run(<reason>)`. **Recompute:**
-`SKILL.md` §P2's table is deterministic over the two scores of each pass, so the auditor recomputes each
-pass's verdict — `exemplar ≈ 3 ∧ control ≤ 2 → calibrated`, otherwise `re-prompted` on the first pass and
-`replaced` on the second. A written verdict that disagrees with the recomputation is an imbalance.
+`SKILL.md` §P2's table is deterministic over the pairs of each pass — one exemplar-and-control pair per
+dimension the scorer scores — so the auditor recomputes each pass's verdict: every pair `exemplar = 3 ∧
+control ≤ 2 → calibrated`, otherwise `re-prompted` on the first pass and `replaced` on the second. A written verdict that disagrees with the recomputation is an imbalance.
 Counting alone catches a missing scorecard; it does not catch truthful scores under a false verdict, which
 is the cheaper of the two forgeries. Source: 2.3, 3.2, and §P2's calibration table.
 
@@ -127,6 +129,10 @@ mode was invisible to every other identity. Source: 0.8, §3's degraded list.
    phase that did not run, or ran and threw its output away. Naming it is the whole of the job.
 4. Its raw return is retained in `ext/5.7.md`, linked from the report and summarized in the `identity:` header field.
    A summary that disagrees with the return is itself an imbalance.
+   **Its own row counts as done.** The audit cannot see the record it is about to become, so it counts row
+   5.7 as ticked and `ext/5.7.md` as present. After it returns, only four writes are legal: tick 5.7, save
+   `ext/5.7.md`, fill the report's `identity:` field and terminal line, and finish 5.6's link. Any other
+   change to the run directory makes it a different run, which §4 says needs a new audit.
 5. The terminal line uses `card <n> rows`, read from the card, never a hardcoded row count.
 
 ---
@@ -162,9 +168,9 @@ ID7  5 criteria = 3 verified + 1 partial + 0 missed + 1 dropped
      2 prohibitions = 2 held + 0 violated + 0 unverified                               — pass
 ID8  3 = 3 record-present + 0 not-run · `ls ext/` → 3 files                       — pass
 ID9  count: 7 scorers = 7 calibrated + 0 re-prompted + 0 replaced (final verdicts) · `ls scorecards/` → 7
-     recompute: judge-1 (3,2)→calibrated ✓ · judge-2 (3,1)→calibrated ✓ ·
-                judge-3 pass 1 (3,3)→re-prompted ✓, pass 2 (3,2)→calibrated ✓ ·
-                eval-1..4 (3,2) (3,1) (3,2) (3,2)→calibrated ✓                            — pass
+     recompute: judge-1, judge-2 four pairs each, every pair (3, ≤2)→calibrated ✓ ·
+                judge-3 pass 1, one pair (3,3)→re-prompted ✓, pass 2 four pairs (3, ≤2)→calibrated ✓ ·
+                eval-1..4 one pair each, (3,2) (3,1) (3,2) (3,2)→calibrated ✓               — pass
 ID10 mode: full · rows carrying `not-run: no spawn` = 0 · 0.8 records exit 0           — pass
 ```
 
@@ -282,4 +288,4 @@ things, in this order of likelihood: a phase did not run; a phase ran and its ou
 the run directory; or the card was edited without recomputing the census in §0. The auditor names which
 files disagree and stops. The orchestrator then runs the phase, or records the row `not-run:` with one of
 the six legal reasons — and re-runs the audit, because a run directory that changed after an audit has an
-audit of a different run.
+audit of a different run. §2's four post-audit writes are the only exception.
