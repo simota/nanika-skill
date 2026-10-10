@@ -32,7 +32,8 @@ records a run that did not happen.
   deliverable: <row 0.4's deliverable class>
   scope: <row 0.4's scope class>
   mode: <the report header's `mode:` field, verbatim>
-  exit_reason: <the verdict from SKILL.md §3's exit table, verbatim — that table owns the vocabulary>
+  exit_reason: <the verdict from SKILL.md §3's exit table, verbatim — that table owns the vocabulary;
+               `none(declined 1A.6)` for a run that spent agents and was declined there>
   dims_at_ceiling: "4/5"       # dimensions that reached 3 / the frozen dimension count
   comparative: <row 4.1's per-pairing verdicts, `inconsistent` included>
   engines: <the report header's `engines:` field, verbatim>

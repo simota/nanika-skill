@@ -30,7 +30,7 @@ run report ───────────────────────
 
 **Agents say they ran the gate. Then they don't.**
 
-Records make the process inspectable, but their existence does not establish their truth. Every phase writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.
+Records make the process inspectable, but their existence does not establish their truth. Every ticked row cites a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.
 
 **An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.**
 
@@ -43,8 +43,8 @@ Records make the process inspectable, but their existence does not establish the
 | instead of | what happens |
 |---|---|
 | one attempt, iterated | **A tournament.** Independent candidates on genuinely different bets, judged blind, with the losers' best ideas carried into the winner under a disposition that must balance. |
-| a bar the system invented | **A sourced ceiling.** Every top descriptor cites a real artifact, a named property, a verbatim span at a locator. A worker who did not choose it re-quotes the span, checks the control does *not* share the property, and is asked to beat it. |
-| everyone scores well | **Blind-pair calibration.** Each scorer grades an unlabelled, shuffled known-good and known-ordinary pair before it sees your work. The key is held elsewhere; no scorer reports a verdict about itself. |
+| a bar the system invented | **A sourced benchmark.** Every top descriptor cites a real artifact, a named property, a verbatim span at a locator. A worker who did not choose it re-quotes the span, checks the control does *not* share the property, and is asked to beat it. It tests the selected comparison, not a global ceiling. |
+| everyone scores well | **Blind-pair calibration.** Each scorer grades an unlabelled, shuffled known-good and known-ordinary pair before it sees your work. The key is held elsewhere; no scorer reports a verdict about itself. It screens gross grading failures; passing one pair does not prove a reliable grader. |
 | grading its own homework | **A closing audit by a worker that did not run it**, recomputing every identity from the files on disk. |
 | "nothing was left on the table" | **A list of what was left.** Angles not run, salvage rejected, trade-offs taken, escalations the budget did not buy. |
 
@@ -53,13 +53,14 @@ Records make the process inspectable, but their existence does not establish the
 It counts what it cost. Computed per run, never quoted from a brochure:
 
 ```
-agents = 1 preflight + S sweep + 1 checker + E extra engines
-       + C angles + J judges + cycles × (D evaluators + K skeptics)
-       + P personas + 4 pairwise + 1 audit
-       + wrapped-domain workers, retries and reruns
+agents = 1 preflight + S sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
+       + C angles + J judges (≥ 3) + 1 outline build (outline only)
+       + (N+1) × (1 revision + D evaluators + K skeptics)
+       + P personas × reception passes + 4 pairwise × P4 passes + D re-score + 1 audit
+       + replacements, void re-runs, wrapped-domain work and retries
 ```
 
-A mid-size run lands near **forty agents**. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
+For example, scope M (N = 3 cycles), S = 3, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives **64 agents** with the bonus cycle, its second reception pass and the advisory P4 — more if 3R.3 re-enters — before replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
 
 Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.
 
@@ -84,7 +85,7 @@ make link SKILLS_DIR=/some/path  # one literal path
 
 `link` never removes anything. It refuses a path that already exists and is not its own symlink, and tells you which — a directory you made by hand is never cleared to make room.
 
-It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top verdict becomes unreachable — stated, not hidden.
+It needs a filesystem it may write to and the ability to spawn an independent worker. Without a writable filesystem it cannot run at all; without a spawnable worker it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top exit becomes unreachable — stated, not hidden.
 
 ## Usage
 
@@ -102,9 +103,9 @@ It needs a filesystem it may write to and the ability to spawn an independent wo
 
 **Price is not evidence.** Expensive implies expensive.
 
-The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Several of those traces read *none*. That section exists so the claim can be checked instead of trusted.
+The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Two of those traces read *none*. That section exists so the claim can be checked instead of trusted.
 
-If the full harness is more than your task needs, four parts change the **work** rather than the **record**, and they cost a handful of agents:
+If the full harness is more than your task needs, four parts change the **work** rather than the **record**, and they cost far fewer agents — two of them none:
 
 - ask what outcome would make you regret the request — then push past the first answer
 - ask what changes if it lands

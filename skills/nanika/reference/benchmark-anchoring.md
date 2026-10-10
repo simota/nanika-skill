@@ -76,10 +76,10 @@ Keep the reject lists in their own block below the locator table so the locator 
 
 ```
 ## Locators
-| # | role | locator | verbatim span | named property | dimension anchored | tier |
-|---|------|---------|---------------|----------------|--------------------|------|
-| 1 | exemplar | <file:line or URL> | "<span>" | <property> | <dimension> | T1 |
-| 2 | control  | <file:line or URL> | "<span>" | —          | —           | T3 |
+| # | role | locator | verbatim span | named property | dimension anchored | control # | tier |
+|---|------|---------|---------------|----------------|--------------------|-----------|------|
+| 1 | exemplar | <file:line or URL> | "<span>" | <property> | <dimension> | 2 | T1 |
+| 2 | control  | <file:line or URL> | "<span>" | —          | —           | —   | T3 |
 
 ## Reject lists
 ### property: <named property>
@@ -117,7 +117,8 @@ clause is not a verdict. `property-present` on a span whose quoted clause does n
 the finding, not the pass.
 
 **B10 — Verdict three, the separation: open the control at the exemplar's property.** *Per named property,
-not per locator.* The checker opens the **control's** locator and returns one of three, naming the clause
+not per locator.* The checker opens the locator of **the control `anchors.md` pairs with that property's
+exemplar** and returns one of three, naming the clause
 it read in each case:
 
 | verdict | what it means | what the checker names |
@@ -173,7 +174,7 @@ owns the requirement; this rule owns the table it applies.
 | `non-separating` | struck; the property cannot separate a 3 from a 1, so it cannot carry a 3 |
 | `non-comparable` | struck; the control decided nothing, so the gap under it is unmeasured |
 | `unreachable` | reverted to unreachable-and-flagged; it no longer counts as anchored, so the header cannot read `sourced` — ID3(c) computes `mixed(a/d)`, or `unanchored` when nothing is left anchored |
-| `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
+| `stronger-candidate` | re-anchor — rows 1A.1-1A.2 re-run on the stronger artifact and 1A.3 once on the new locators, whose lines replace the old ones in `requote.md` while both returns stay in `ext/1A.3.md`; a second `stronger-candidate` is `out-anchored` — or declare `out-anchored`, which `SKILL.md` §3 makes ACCEPT-unreachable |
 
 A struck descriptor is reverted, never reworded to survive: N4 owns that prohibition, and re-anchoring
 happens before the freeze and may only raise the bar, so it is not a goalpost move.

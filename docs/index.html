@@ -6,6 +6,8 @@
 <title>nanika · a mechanism that leaves no artifact did not happen</title>
 <meta name="description" content="A scarcity-gated, one-shot quality harness for any deliverable. Fifty-seven rows, none of them ticked.">
 <meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#12151c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f4ef" media="(prefers-color-scheme: light)">
 <meta property="og:title" content="nanika">
 <meta property="og:description" content="The arithmetic is fine. Nothing happened.">
 <meta property="og:type" content="website">
@@ -16,7 +18,7 @@
 <style>
 :root{
   --void:#12151c; --rule:#232936; --panel:#161a23; --panel2:#1a1f2a;
-  --ink:#e8e3d9; --faint:#737c8c; --dimmer:#464e5e;
+  --ink:#e8e3d9; --faint:#8a93a3; --dimmer:#464e5e;
   --pending:#c8973f; --balance:#6f9e8a; --mark:rgba(200,151,63,.14);
   --scan:rgba(200,151,63,.55);
   --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
@@ -24,8 +26,8 @@
 }
 @media (prefers-color-scheme:light){:root:not([data-theme="dark"]){
   --void:#f6f4ef; --rule:#ddd8cd; --panel:#fffdf9; --panel2:#f1eee6;
-  --ink:#1b1f27; --faint:#6c7482; --dimmer:#a9aeb8;
-  --pending:#9a6c1c; --balance:#3f6d5a; --mark:rgba(154,108,28,.16);
+  --ink:#1b1f27; --faint:#5d6573; --dimmer:#a9aeb8;
+  --pending:#8a5f14; --balance:#3f6d5a; --mark:rgba(138,95,20,.16);
   --scan:rgba(154,108,28,.5);
 }}
 *{box-sizing:border-box}
@@ -58,16 +60,16 @@ body{margin:0;background:var(--void);color:var(--ink);
 .ph{display:grid;grid-template-columns:1.9rem 3.1rem 1fr auto;
   gap:0 .6rem;align-items:baseline;padding:.5rem 1.1rem;
   font-size:.84rem;position:relative}
-.box{color:var(--dimmer);font-weight:500}
+.box{color:var(--faint);font-weight:500}
 .pid{color:var(--faint);font-weight:500}
 .pname{color:var(--ink)}
-.rows{color:var(--dimmer);font-size:.74rem;font-variant-numeric:tabular-nums;
+.rows{color:var(--faint);font-size:.74rem;font-variant-numeric:tabular-nums;
   white-space:nowrap}
-.enter{grid-column:3/5;color:var(--faint);font-size:.72rem;line-height:1.5;
+.enter{grid-column:3/-1;color:var(--faint);font-size:.72rem;line-height:1.5;
   margin-top:.1rem}
-.enter b{color:var(--dimmer);font-weight:400;letter-spacing:.12em;
+.enter b{color:var(--faint);font-weight:400;letter-spacing:.12em;
   text-transform:uppercase;font-size:.64rem;margin-right:.45rem}
-.verdict{grid-column:3/5;font-size:.74rem;color:var(--pending);
+.verdict{grid-column:3/-1;font-size:.74rem;color:var(--pending);
   margin-top:.25rem;opacity:0;transform:translateY(-.3em)}
 .ph[data-state="done"] .verdict{opacity:1;transform:none;
   transition:opacity .3s ease,transform .3s ease}
@@ -89,7 +91,7 @@ button:hover{filter:brightness(1.12)}
 button[disabled]{background:var(--dimmer);color:var(--panel);cursor:default;filter:none}
 button.ghost{background:none;color:var(--faint);border:1px solid var(--rule)}
 button.ghost:hover{color:var(--ink);filter:none}
-.identity{font-size:.78rem;color:var(--dimmer);font-variant-numeric:tabular-nums;
+.identity{font-size:.78rem;color:var(--faint);font-variant-numeric:tabular-nums;
   letter-spacing:.02em}
 .identity.on{color:var(--ink)}
 .identity .ok{color:var(--balance)}
@@ -109,7 +111,7 @@ button.ghost:hover{color:var(--ink);filter:none}
 .k{color:var(--faint);flex:none}
 .dots{flex:1;min-width:1rem;border-bottom:1px dotted var(--dimmer);
   transform:translateY(-.25em)}
-.v{flex:none;color:var(--dimmer)}
+.v{flex:none;color:var(--faint)}
 .v.pend{color:var(--pending);font-weight:500;letter-spacing:.06em}
 .rfoot{border-top:1px solid var(--rule);margin-top:.75rem;padding-top:.7rem;
   font-size:.74rem;color:var(--faint);white-space:normal;line-height:1.6}
@@ -137,13 +139,13 @@ h2{font-family:var(--text);font-weight:400;font-size:1.42rem;line-height:1.28;
 .swap{border-collapse:collapse;width:100%;font-size:.85rem;margin:0}
 .swap tr{border-bottom:1px solid var(--rule)}
 .swap tr:last-child{border-bottom:0}
-.swap td{padding:.8rem 0;vertical-align:top}
-.swap td:first-child{color:var(--faint);width:11rem;padding-right:1.3rem;
+.swap td,.swap th{padding:.8rem 0;vertical-align:top;text-align:left;font-weight:400}
+.swap th{color:var(--faint);width:11rem;padding-right:1.3rem;
   font-size:.76rem;line-height:1.55}
 .swap b{font-weight:500}
 @media (max-width:34rem){
-  .swap td{display:block;padding:.45rem 0}
-  .swap td:first-child{width:auto;padding:.85rem 0 0}
+  .swap td,.swap th{display:block;padding:.45rem 0}
+  .swap th{width:auto;padding:.85rem 0 0}
   .swap tr td:last-child{padding-bottom:.85rem}
   .ph{grid-template-columns:1.6rem 2.8rem 1fr;gap:0 .5rem}
   .rows{display:none}
@@ -158,7 +160,7 @@ li{margin:0 0 .45rem}
 .tree{font-size:.74rem;line-height:1.85;color:var(--faint);overflow-x:auto;white-space:pre}
 .tree b{color:var(--ink);font-weight:500}
 .exits{font-size:.76rem;color:var(--faint);line-height:2}
-.exits span{color:var(--dimmer)}
+.exits span{color:var(--ink)}
 
 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--pending);padding-bottom:.05em}
 a:hover{color:var(--pending)}
@@ -168,7 +170,7 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
   gap:.4rem 1.3rem;justify-content:space-between}
 @media (prefers-reduced-motion:reduce){
   .scan{display:none}
-  .verdict,.after{transition:none}
+  .ph[data-state] .verdict,.after{transition:none}
 }
 </style>
 </head>
@@ -184,21 +186,21 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
     <span class="tally" id="tally"><b id="tk">0</b> ticked · <span class="nr" id="nr">0</span> not-run · of 57</span>
   </div>
   <ul class="phases" id="phases">
-    <li class="ph" data-reason="precondition unmet(0.1)"><span class="box">[ ]</span><span class="pid">P0</span><span class="pname">scarcity gate</span><span class="rows">0.1–0.8</span><span class="enter"><b>enter</b>the request exists</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(0.8)"><span class="box">[ ]</span><span class="pid">P1</span><span class="pname">crystallize</span><span class="rows">1.1–1.12</span><span class="enter"><b>enter</b>rows 0.1–0.8 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(1.12)"><span class="box">[ ]</span><span class="pid">P1A</span><span class="pname">anchor, verify, then freeze</span><span class="rows">1A.1–1A.8</span><span class="enter"><b>enter</b>rows 1.1–1.12 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(1A.8)"><span class="box">[ ]</span><span class="pid">P2</span><span class="pname">tournament</span><span class="rows">2.1–2.7</span><span class="enter"><b>enter</b>rows 1A.1–1A.8 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(2.7)"><span class="box">[ ]</span><span class="pid">P3</span><span class="pname">converge</span><span class="rows">3.1–3.10</span><span class="enter"><b>enter</b>rows 2.1–2.7 evidenced</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(3.9)"><span class="box">[ ]</span><span class="pid">P3R</span><span class="pname">reception <span class="ret">↰ the one phase with a return edge</span></span><span class="rows">3R.1–3R.3</span><span class="enter"><b>enter</b>row 3.9 carries a verdict</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(3.6)"><span class="box">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, and 3R.3 did not fire</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(4.2)"><span class="box">[ ]</span><span class="pid">P5</span><span class="pname">deliver</span><span class="rows">5.1–5.7</span><span class="enter"><b>enter</b>rows 4.1–4.2 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="user declined(gate.md)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P0</span><span class="pname">scarcity gate</span><span class="rows">0.1–0.8</span><span class="enter"><b>enter</b>the request exists</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(0.8)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P1</span><span class="pname">crystallize</span><span class="rows">1.1–1.12</span><span class="enter"><b>enter</b>rows 0.1–0.8 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(1.12)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P1A</span><span class="pname">anchor, verify, then freeze</span><span class="rows">1A.1–1A.8</span><span class="enter"><b>enter</b>rows 1.1–1.12 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(1A.8)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P2</span><span class="pname">tournament</span><span class="rows">2.1–2.7</span><span class="enter"><b>enter</b>rows 1A.1–1A.8 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(2.7)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P3</span><span class="pname">converge</span><span class="rows">3.1–3.10</span><span class="enter"><b>enter</b>rows 2.1–2.7 evidenced</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(3.9)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P3R</span><span class="pname">reception <span class="ret">↰ the one phase with a return edge</span></span><span class="rows">3R.1–3R.3</span><span class="enter"><b>enter</b>row 3.9's latest cycle carries an exit other than BLOCK or budget-reached</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(3.6)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, 3R.3 did not fire, and 3.9's latest exit is not BLOCK or budget-reached</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(4.2)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P5</span><span class="pname">deliver</span><span class="rows">5.1–5.7</span><span class="enter"><b>enter</b>rows 4.1–4.2 evidenced</span><span class="verdict"></span></li>
   </ul>
   <div class="card-foot">
     <button id="go">attempt a run</button>
-    <span class="identity" id="ident">ID1 &nbsp;rows = ticked + not-run</span>
+    <span class="identity" id="ident" aria-live="polite">ID1 &nbsp;rows = ticked + not-run</span>
   </div>
 </div>
-<p class="after" id="after">The arithmetic is fine. Nothing happened.</p>
+<p class="after" id="after" aria-hidden="true">The arithmetic is fine. Nothing happened. ID1 checks a reason's form, not its truth, and with 5.7 never run even that check is advisory.</p>
 
 <div class="report" style="margin-top:1.6rem">
   <div class="rhead">run report</div>
@@ -222,8 +224,8 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
   <p class="label">why it is built this way</p>
   <h2>Agents say they ran the gate. Then they don't.</h2>
   <div class="prose">
-  <p>One study measured instruction compliance at <b>0%</b> while verbal compliance stayed above <b>90%</b> — a hundred-point gap that human reviewers caught <b>0 times out of 15</b>.</p>
-  <p>Records make the process inspectable, but their existence does not establish their truth. Every row writes a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.</p>
+  <p>One third-party study of stated-versus-actual process compliance measured instruction compliance at <b>0%</b> under default conditions while verbal compliance exceeded <b>90%</b> — a gap of up to a hundred points that human raters caught <b>0 times out of 15</b> (<a href="https://github.com/simota/nanika-skill/blob/main/skills/nanika/reference/evidence.md">EV-14</a>, with its scope).</p>
+  <p>Records make the process inspectable, but their existence does not establish their truth. Every ticked row cites a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.</p>
   <p><b>An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.</b></p>
   </div>
   <p class="count">ten identities · each with a worked example · <span>not a semantic or authenticity proof</span></p>
@@ -233,45 +235,46 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
   <p class="label">what changes</p>
   <h2>"Do your best" gives you one attempt, graded by whoever wrote it, against a bar they invented.</h2>
   <table class="swap">
-  <tr><td>one attempt, iterated</td><td><b>A tournament.</b> Independent candidates on genuinely different bets, judged blind, with the losers' best ideas carried into the winner under a disposition that must balance.</td></tr>
-  <tr><td>a bar the system invented</td><td><b>A sourced ceiling.</b> Every top descriptor cites a real artifact, a named property, a verbatim span at a locator. A worker who did not choose it re-quotes the span, checks the control does <em>not</em> share the property, and is asked to beat it.</td></tr>
-  <tr><td>everyone scores well</td><td><b>Blind-pair calibration.</b> Each scorer grades an unlabelled, shuffled known-good and known-ordinary pair before it sees your work. The key is held elsewhere; no scorer reports a verdict about itself.</td></tr>
-  <tr><td>grading its own homework</td><td><b>A closing audit by a worker that did not run it</b>, recomputing every identity from the files on disk.</td></tr>
-  <tr><td>"nothing was left on the table"</td><td><b>A list of what was left.</b> Angles not run, salvage rejected, trade-offs taken, escalations the budget did not buy.</td></tr>
+  <tr><th scope="row">one attempt, iterated</th><td><b>A tournament.</b> Independent candidates on genuinely different bets, judged blind, with the losers' best ideas carried into the winner under a disposition that must balance.</td></tr>
+  <tr><th scope="row">a bar the system invented</th><td><b>A sourced benchmark.</b> Every top descriptor cites a real artifact, a named property, a verbatim span at a locator. A worker who did not choose it re-quotes the span, checks the control does <em>not</em> share the property, and is asked to beat it. It tests the selected comparison, not a global ceiling.</td></tr>
+  <tr><th scope="row">everyone scores well</th><td><b>Blind-pair calibration.</b> Each scorer grades an unlabelled, shuffled known-good and known-ordinary pair before it sees your work. The key is held elsewhere; no scorer reports a verdict about itself. It screens gross grading failures; passing one pair does not prove a reliable grader.</td></tr>
+  <tr><th scope="row">grading its own homework</th><td><b>A closing audit by a worker that did not run it</b>, recomputing every identity from the files on disk.</td></tr>
+  <tr><th scope="row">"nothing was left on the table"</th><td><b>A list of what was left.</b> Angles not run, salvage rejected, trade-offs taken, escalations the budget did not buy.</td></tr>
   </table>
 </section>
 
 <section>
   <p class="label">how it can end</p>
-  <h2>Seven verdicts. None of them has been reached.</h2>
+  <h2>Seven exits. No recorded run of this version has reached one.</h2>
   <p class="exits"><span>ACCEPT</span> · <span>reception-demoted</span> · <span>diminishing-returns</span> · <span>cap-reached</span> · <span>budget-reached</span> · <span>single-agent-best-effort</span> · <span>BLOCK</span></p>
-  <div class="prose"><p>A plateau with attacks still open reports as a plateau with attacks still open. A run that could not spawn a worker says so and cannot reach the top verdict at all. <b>The exit vocabulary has no word for "fine".</b></p></div>
+  <div class="prose"><p>A plateau with attacks still open reports as a plateau with attacks still open. A run that could not spawn a worker says so and cannot reach the top exit at all. <b>The exit vocabulary has no word for "fine".</b></p></div>
 </section>
 
 <section>
   <p class="label">the price</p>
   <h2>It counts what it cost.</h2>
   <div class="prose"><p>Computed per run, never quoted from a brochure:</p></div>
-<pre><code>agents = 1 preflight + S sweep + 1 checker + E extra engines
-       + C angles + J judges + cycles × (D evaluators + K skeptics)
-       + P personas + 4 pairwise + 1 audit
-       + wrapped-domain workers, retries and reruns</code></pre>
+<pre tabindex="0" aria-label="agent count formula"><code>agents = 1 preflight + S sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
+       + C angles + J judges (≥ 3) + 1 outline build (outline only)
+       + (N+1) × (1 revision + D evaluators + K skeptics)
+       + P personas × reception passes + 4 pairwise × P4 passes + D re-score + 1 audit
+       + replacements, void re-runs, wrapped-domain work and retries</code></pre>
   <div class="prose">
-  <p>A mid-size run lands near <b>forty agents</b>. Approval is required before launching. It recomputes after the rubric settles and asks again only outside the approved ceiling or when scope, data or retention permissions change. Invocation alone is not spend consent.</p>
+  <p>For example, scope M (N = 3 cycles), S = 3, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives <b>64 agents</b> with the bonus cycle, its second reception pass and the advisory P4 — more if 3R.3 re-enters — before replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. It recomputes after the rubric settles and asks again only outside the approved ceiling or when scope, data or retention permissions change. Invocation alone is not spend consent.</p>
   <p>Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.</p>
   </div>
 </section>
 
 <section>
   <p class="label">install</p>
-  <h2>Three hosts, one command.</h2>
-<pre><code>make link      # symlink into every installed host's skills dir
+  <h2>Three host mappings, one command.</h2>
+<pre tabindex="0" aria-label="install commands"><code>make link      # symlink into every installed host's skills dir
 make status    # what is installed, per host
 make check     # verify the skill is self-contained
 make test      # assert that make check still catches things</code></pre>
   <div class="prose">
   <p>A host you do not have is skipped and named — nothing creates a skills directory for a tool that is not on the machine. <code>link</code> never removes anything; it refuses a path that already exists and tells you which.</p>
-  <p>It needs a filesystem it may write to and the ability to spawn an independent worker. Without that it degrades to <code>single-agent(declared)</code>, fourteen rows go <code>not-run</code>, and the top verdict becomes unreachable — stated, not hidden.</p>
+  <p>It needs a filesystem it may write to and the ability to spawn an independent worker. Without a writable filesystem it cannot run at all; without a spawnable worker it degrades to <code>single-agent(declared)</code>, fourteen rows go <code>not-run</code>, and the top exit becomes unreachable — stated, not hidden.</p>
   </div>
   <p class="count">12 reference files · 12 cited · 12 headed · <span class="ok">check ok</span></p>
 </section>
@@ -282,8 +285,8 @@ make test      # assert that make check still catches things</code></pre>
   <div class="prose">
   <p><code>E3</code> is a deletion control: strip a mechanism, see whether quality drops. Until it runs, every argument here is a mechanism that sounds plausible, and plausible mechanisms are cheap.</p>
   <p><b>Price is not evidence.</b> Expensive implies expensive.</p>
-  <p>The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Several of those traces read <em>none</em>. That section exists so the claim can be checked instead of trusted.</p>
-  <p>If the full harness is more than your task needs, four parts change the <b>work</b> rather than the <b>record</b>, and they cost a handful of agents:</p>
+  <p>The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Two of those traces read <em>none</em>. That section exists so the claim can be checked instead of trusted.</p>
+  <p>If the full harness is more than your task needs, four parts change the <b>work</b> rather than the <b>record</b>, and they cost far fewer agents — two of them none:</p>
   <ul>
     <li>ask what outcome would make you regret the request — then push past the first answer</li>
     <li>ask what changes if it lands</li>
@@ -295,8 +298,8 @@ make test      # assert that make check still catches things</code></pre>
 
 <section>
   <p class="label">what is inside</p>
-<div class="tree"><b>skills/nanika/SKILL.md</b>        the run card — 57 rows, 14 rules, nothing else required
-<b>MANIFEST.md</b>                  which file owns what — an ownership index, not a capacity estimate
+<div class="tree" tabindex="0" aria-label="repository contents"><b>skills/nanika/SKILL.md</b>        the 57-row card and 14 rule addresses; referenced tables also bind
+<b>skills/nanika/MANIFEST.md</b>     which file owns what — an ownership index, not a capacity estimate
 <b>reference/identities.md</b>      the ten that must balance, with worked examples
 <b>reference/evaluations.md</b>     E1–E4, all NEVER RUN, including the deletion control
 <b>reference/evidence.md</b>        every figure, with its source and the scope it was measured in
@@ -307,7 +310,7 @@ make test      # assert that make check still catches things</code></pre>
 
 <footer>
   <span>standalone · Claude Code, Codex CLI, agy</span>
-  <span><a href="https://github.com/simota/nanika-skill">source</a></span>
+  <span><a href="https://github.com/simota/nanika-skill/blob/main/skills/nanika/SKILL.md">SKILL.md</a> · <a href="https://github.com/simota/nanika-skill/blob/main/skills/nanika/reference/evaluations.md">evaluations</a> · <a href="https://github.com/simota/nanika-skill">source</a></span>
 </footer>
 
 </main>
@@ -333,7 +336,7 @@ make test      # assert that make check still catches things</code></pre>
     nr.textContent = '0';
     ident.className = 'identity';
     ident.innerHTML = 'ID1 &nbsp;rows = ticked + not-run';
-    after.className = 'after';
+    after.className = 'after'; after.setAttribute('aria-hidden','true');
     scan.style.opacity = '0'; scan.style.transition = 'none'; scan.style.top = '0px';
     go.textContent = 'attempt a run'; go.className = ''; go.disabled = false;
     running = false;
@@ -342,11 +345,12 @@ make test      # assert that make check still catches things</code></pre>
   function settle(){
     nr.textContent = '57';
     ident.className = 'identity on';
-    ident.innerHTML = 'ID1 &nbsp;57 = 0 ticked + 57 not-run &nbsp;<span class="ok">· balances</span>';
-    after.className = 'after on';
+    ident.innerHTML = 'ID1 &nbsp;57 = 0 ticked + 57 not-run &nbsp;<span class="ok">· balances in form</span>';
+    after.className = 'after on'; after.removeAttribute('aria-hidden');
     scan.style.opacity = '0';
     go.textContent = 'reset'; go.className = 'ghost'; go.disabled = false;
     running = false;
+    if (document.activeElement === document.body) go.focus();
   }
 
   function land(p){
@@ -393,10 +397,6 @@ make test      # assert that make check still catches things</code></pre>
     run();
   });
 
-  // the card is the page's argument; make it reachable from the keyboard alone
-  card.addEventListener('keydown', function(e){
-    if (e.key === 'Enter' && document.activeElement === go) e.preventDefault();
-  });
 })();
 </script>
 </body>
