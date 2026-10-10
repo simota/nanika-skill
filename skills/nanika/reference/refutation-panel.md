@@ -95,8 +95,12 @@ second oracle, and two oracles make the loop's termination arbitrary.
 
 **G5.** Aggregate the independent returns; do not reconcile them.
 
-- **Majority on evidence decides.** Majority refuted-on-evidence demotes. Majority merely-unproven survives,
-  with the flagged residual §2 requires.
+- **Evidence decides, never a head-count.** Each attack is disposed on its own evidence against the frozen
+  rubric, as row 3.4 requires: one attack refuted-on-evidence whose evidence the orchestrator can reproduce
+  demotes however many skeptics did not raise it, and an attack that is merely unproven does not demote —
+  the claim survives, and the attack goes to ID5's `unproven-because-new` bucket with the flagged residual
+  §2 requires, however many skeptics raised it. Counting skeptics who agree is the vote row 3.4
+  and `SKILL.md` §7 exclude.
 - **A survivor is a fact about the artifact, not about the skeptic.** Record which attacks the artifact
   survived and which it failed; row 3.5 carries the survivors into the next cycle as exclusions so the loop
   does not rediscover the same dead end.
@@ -113,10 +117,10 @@ second oracle, and two oracles make the loop's termination arbitrary.
   verdict no matter who supplies it, including the party being refuted. Name the triggering evidence, or do
   not flip.
 - **The panel does not authorize destructive or irreversible action.** A refutation implying that something
-  outside the nanika's scope should be deleted, published or rewritten is a finding for the user, not a
+  outside this wish's scope should be deleted, published or rewritten is a finding for the user, not a
   mandate (N8).
-- **A skeptic below roughly 60% confidence proposes gathering evidence, not demoting.** A low-confidence
-  demotion at the ceiling costs a full cycle for a hunch.
+- **A skeptic below roughly 60% confidence proposes gathering evidence, not demoting.** The 60% is a chosen
+  constant, not a measured one. A low-confidence demotion at the ceiling costs a full cycle for a hunch.
 
 The goal is independence from pressure, not refusal to move:
 

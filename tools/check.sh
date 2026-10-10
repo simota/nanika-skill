@@ -85,6 +85,34 @@ d=$(copy_ parent-traversal)
 printf '\nSee `../elsewhere/thing.md`.\n' >> "$d/README.md"
 case_ fail "a cited path reaching through a parent" "$d"
 
+d=$(copy_ long-skill)
+awk 'BEGIN { for (i = 0; i < 500; i++) print "" }' >> "$d/$SKILL/SKILL.md"
+case_ fail "a SKILL.md body of 500 lines or more" "$d"
+
+d=$(copy_ census-drift)
+printf '\n[ ] 5.8 a row the census never counted\n' >> "$d/$SKILL/SKILL.md"
+case_ fail "a card row the identities census misses" "$d"
+
+d=$(copy_ unknown-evidence)
+printf '\nA figure nobody registered [EV-99].\n' >> "$d/$SKILL/SKILL.md"
+case_ fail "an [EV-n] tag with no evidence.md row" "$d"
+
+d=$(copy_ missing-owns)
+sed -i.bak '/\*\*Owns:\*\*/d' "$d/$SKILL/reference/nanika-ledger.md"
+case_ fail "a reference file with no Owns: header" "$d"
+
+d=$(copy_ missing-contents)
+sed -i.bak '/^Contents:/d' "$d/$SKILL/reference/evaluations.md"
+case_ fail "a long reference file with no Contents:" "$d"
+
+d=$(copy_ manifest-missing-row)
+sed -i.bak '/^| `identities\.md` |/d' "$d/$SKILL/MANIFEST.md"
+case_ fail "a reference file MANIFEST.md never lists" "$d"
+
+d=$(copy_ manifest-stale-row)
+printf '| `gone.md` | nothing |\n' >> "$d/$SKILL/MANIFEST.md"
+case_ fail "a MANIFEST.md row for an absent file" "$d"
+
 echo
 echo "  $pass passed, $fail failed"
 [ "$fail" -eq 0 ] || exit 1

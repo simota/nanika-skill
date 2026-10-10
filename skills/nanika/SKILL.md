@@ -31,8 +31,9 @@ This is not an essay about quality. It is a harness, and you are the machine in 
    the content must support that row. A path resolving proves neither relevance nor truth. ID1 checks paths, not
    semantic support. No artifact means the step cannot be credited as performed; an artifact alone is insufficient.
    The process/report gap [EV-14] motivates records, not a claim that records solve it. Preserve, as applicable:
-   `card.md`, `gate.md`, `contract.md`, `rubric-draft.md`, `anchors.md`, `requote.md`, `rubric-frozen.md`, `candidates/`,
-   `cycles/`, `personas/`, `gate4.md`, `unexplored.md`, `report.md`, `scorecards/`, `ext/`, and `spawns/`.
+   `card.md`, `gate.md`, `contract.md`, `rubric-draft.md`, `anchors.md`, `requote.md`, `engines.md`, `rubric-frozen.md`,
+   `decisions.md`, `candidates/`, `cycles/`, `personas/`, `gate4.md`, `unexplored.md`, `report.md`, `scorecards/`, `ext/`,
+   and `spawns/`.
    All persistence is subject to A2; unavailable or redacted evidence limits the claim, never licenses a fake tick.
 4. **Three cells are `ext`** — 1A.3, 4.1 and 5.7. The card legend defines the state, ID8 counts it from `ext/`, and
    **A5** says what it buys and what it does not.
@@ -101,7 +102,7 @@ P1A ANCHOR, VERIFY, THEN FREEZE  → anchors.md, requote.md, rubric-frozen.md
          returns, naming the clause it read, `separating` (absent or materially weaker there) | `non-separating` (the control
          has it too, so the property cannot separate a 3 from a 1) | `non-comparable` (the control is not the same class of
          document doing the same job). It then returns, per exemplar, EITHER a locator and span of a document exhibiting that
-         property MORE strongly, OR `none-better-found` naming where it searched. No checker → `unverified` / `unanchored`     ev:
+         property MORE strongly, OR `none-better-found` naming where it searched. No checker → `anchoring: unverified`         ev:
 [ ] 1A.4 1A.3's verdicts acted on: every `mismatch`, `property-absent`, `non-separating` or `non-comparable` row struck and its
          descriptor reverted to invented-and-flagged; a stronger candidate found → re-anchor (1A.1-1A.2 re-run on it) or declare
          `out-anchored`, which §3 makes ACCEPT-unreachable; no-exemplar fallback fired / did not fire — stated either way       ev:
@@ -130,7 +131,8 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
 [ ] 3.1 cycle open: `rubric-frozen.md` and `contract.md` re-read, and the frozen dimension names and weights quoted into the
         cycle file — a quote a drifted memory cannot produce                                                                   ev:
 [ ] 3.2 evaluators scored independently, each score stamped with its rubric version and citing an observation rather than an
-        impression; no generator scored                                                                                        ev:
+        impression; no generator scored; each evaluator passed 2.3's blind pair under the §P2 table before its first score,
+        on its own scorecard                                                                                                   ev:
 [ ] 3.3 ONE revision brief compiled, carrying every unconsumed salvage item until it is consumed, deferred with a reason, or
         carried into the next cycle                                                                                            ev:
 [ ] 3.4 panel staged in at all-dims>=2: 2-4 skeptics, distinct angles; each briefed without the others' output, run for ONE
@@ -216,8 +218,8 @@ P5 DELIVER  → report.md
   self-deception to catch afterwards. §6 is the only legal path, it produces R2, and it may never be opened by whoever
   produced the output that failed. Re-anchoring at 1A.4 happens before the freeze and may only raise the bar, so it is
   not this.
-- **N5** Never call same-model judgments model-independent, record completeness quality, a mixed/unverified or
-  out-anchored anchor sourced, an inconsistent pairing a verdict, a single-agent run full, or an unrun step N/A.
+- **N5** Never call same-model judgments model-independent, record completeness quality, an anchor ID3(c) does not
+  compute as `sourced` sourced, an inconsistent pairing a verdict, a single-agent run full, or an unrun step N/A.
   Report the actual scope of the evidence rather than upgrading its label.
 - **N6** Before each spawn, save its permitted prompt to `spawns/`; include its task, exact output schema and
   output-length envelope. Add only role-appropriate, A2-approved context: the versioned rubric for rubric scoring,
@@ -255,7 +257,7 @@ agents = 1 (row 0.8) + 0 (P1 — the dialogue spawns nothing)
 
 | Exit | Meaning |
 |------|---------|
-| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks, no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. Any other mixture prints `mixed(<anchored>/<descriptors>)`, which is a legal run and is **not** `sourced` |
+| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open` bucket; `unproven-because-new` is reported, never blocking), no reception finding left undisposed **and 3R.3's re-entry taken wherever one moved a score**, `mode: full`, and `anchoring: sourced`. **`sourced` is defined here and nowhere else:** every score-3 descriptor's locator came back `exact-match` **and** `property-present` **and** `separating` — ID3(c)'s `anchored`, with `unreachable-and-flagged` and `invented-and-flagged` both 0 — and no `out-anchored` exemplar left un-re-anchored. A state with 0 < anchored < descriptors prints `mixed(<anchored>/<descriptors>)`, a legal run that is **not** `sourced`; ID3(c) owns the other non-`sourced` states |
 | `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact; this is not observed recipient rejection — **and the cap was already spent, which is the only state in which 3R.3 may convert that finding into a residual instead of another cycle.** Ships best-so-far with the persona's verbatim stop-span. **Never reports as `ACCEPT`** |
 | `diminishing-returns` | weighted Δ < 0.2 between cycles — a chosen constant, not a measured one. With surviving attacks open this reports as **plateau-with-open-attacks**, every attack listed — never as a clean plateau |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
@@ -281,7 +283,9 @@ claim.** Row 0.8 is the load-bearing half: every `ext` cell, every judge and the
 spawn, and one throwaway worker makes that a detected capability rather than a declared one.
 
 ### P1 — Crystallize · rows 1.1-1.12
-**ENTER:** rows 0.1-0.8 evidenced. **READ:** `crystallization-dialogue.md`; `run-discipline.md` §1 (row 1.12's lint).
+**ENTER:** rows 0.1-0.8 evidenced. **READ:** `crystallization-dialogue.md`; `run-discipline.md` §1 (row 1.12's lint);
+`evaluator-roster.md` §1-§3 (row 1.11's archetypes); for a `document` class, `doc-deliverables.md` §5 (the W12
+dimension row 1.10 writes).
 Execution reliability at this phase is tested by E4, not inferred from a rule count.
 
 The five rows agents drop here (1.2-1.5, 1.7) get dropped because they feel answered by the rest of the conversation.
@@ -320,7 +324,7 @@ above**, so a truthful pair under a false verdict is arithmetic a non-participan
 pointwise, so its bias mitigation is shuffling order *across* judges; the *pairwise* one is 4.1.
 
 ### P3 — Converge · rows 3.1-3.10
-**ENTER:** rows 2.1-2.7 evidenced. **READ:** `evaluator-loop.md`; `refutation-panel.md` from the first all-dims-2 cycle.
+**ENTER:** rows 2.1-2.7 evidenced. **READ:** `evaluator-loop.md`; `refutation-panel.md` from the first all-dims>=2 cycle.
 
 Every dimension is scored 0-3 with cited evidence, stamped with the rubric version it was made under (3.2) — a
 trajectory crossing an amendment boundary untagged is silently incomparable. Row 3.9 stops the loop's state being
@@ -374,8 +378,8 @@ gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
 Then all twelve sections, each present or `N/A` with a one-line reason. **Contract** — every element classified per
 5.2, prohibitions on their own axis. **Anchoring** — exemplars and control with locators, spans, named properties, the
 dimension each anchors, each reject list, 1A.3's verdicts per locator and property, the challenge return, the fallback
-flag if it fired. **Calibration** — per scorer, both blind-pair scores and the orchestrator's verdict, as ID9 counted
-and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
+flag if it fired. **Calibration** — per scorer, every blind-pair pass with both scores and the orchestrator's verdict, and the
+final verdict, as ID9 counted and recomputed them. **Tournament** — angles, engine distribution or declared monoculture with the 1A.7 result, blind
 scores, winner, runner-up, salvage grafted / rejected / deferred / carried. **Trajectory** — per-cycle weighted scores
 per dimension tagged R1/R2, each cycle's 3.9 verdict, and which artifact shipped and why it, not the last.
 **Gauntlet** — attacks raised / killed / survived-then-fixed / open / `unproven-because-new`, each of the last with
@@ -386,15 +390,16 @@ exemplar's verdict per named property and the runner-up's whole, both orders, `i
 property that briefed the bonus cycle, advisory verdicts. **Exit** — reason, residual gap, spend. **Unexplored-Space
 Ledger** — as accrued at 3.8, each row tagged with its cycle: the honest one-shot claim is not "nothing was left on
 the table" but "here is what was left, and why." **Identity audit** — link to the auditor's raw return with the files it opened; then the **Run Card** link from 5.6.
-Counts below are process accounting only; `ACCEPT` means harness criteria satisfied, not best possible output.
+Then the terminal line. Its counts are process accounting only; `ACCEPT` means harness criteria satisfied, not best
+possible output. The line below is `identities.md` §3 example A, field for field:
 
 ```
-wish <slug> closed · card <n> rows: n ticked + n not-run · identities 10/10 balance
-· anchors 5 = 5 exact-match · property 4 present + 1 not-assessed · separation 4 = 4 separating
+wish <slug> closed · card 57 rows: 55 ticked + 2 not-run · identities 10/10 balance
+· anchors 6 = 6 exact-match · property 4 present + 2 not-assessed · separation 4 = 4 separating
 · reject-lists 4 / 4 + 0 unchallenged · challenge none-better-found · one-per-dimension
 · salvage 9 = 6 grafted + 2 rejected + 1 deferred + 0 carried · attacks 7 = 4 killed + 2 fixed + 0 open + 1 unproven-because-new
-· scorers 3 = 3 calibrated + 0 re-prompted + 0 replaced · ext 3 = 3 recorded + 0 not-run
-· simulated cold-read 2 = 1 re-entered + 1 re-scored + 0 residual · exit-gate 4 properties = 4 won · exit ACCEPT
+· scorers 7 = 7 calibrated + 0 re-prompted + 0 replaced · ext 3 = 3 recorded + 0 not-run
+· simulated cold-read 3 = 3 valid-span + 0 void · 0 re-entered + 0 residual · exit-gate 4 properties = 4 won · exit ACCEPT
 ```
 
 ## 6. Rubric amendment — once, user-ratified
@@ -431,8 +436,8 @@ request is §3's business. Calibration failures never route here (N4).
 | Dual-lineage carry | the most expensive escalation in the old skill, specified in one sentence with no merge criterion, no schema and no evaluator | rows 3.6 and 4.1, at the four P4 agents the §3 formula prices |
 | Cross-engine as a *mechanism* | on a single-host run it resolved to a sentence in the report | angle diversity is the load-bearing half (row 2.1); engine diversity is an amplifier gated by the 1A.7 preflight |
 | The near-ceiling pre-mortem, the failure-modes table (24 rows), the per-host model-name table, and the run-level `Done when` | the pre-mortem duplicated the panel's Omission and Durability angles at the same trigger; every failure-mode mitigation was a pointer to a section above it; model names age faster than anything else here; the `Done when` restated seven P5 card rows in different words | rows 3.4-3.5; the phase blocks, which state each failure's mechanism at its point of use; role names in `engine-map.md`; the card, which is the exit condition |
-| Standalone rows 2.4 (inflation re-prompt) and 3.3 (score cites an observation); row 4.3 (bonus-cycle cap), folded into 4.2 this cycle | each was one clause with no artifact of its own; folded into rows whose artifact already exists | the behaviours survive as clauses of 2.3, 3.2 and 4.2; the row count fell by three across two cycles and the behaviour count did not |
-| The `spawns/` clauses on rows 2.2 and 2.4 | they covered two of the seven spawn kinds and left the rest to §0 prose — an orphan D2 found twice | **N6**, which now carries it for every spawn, so three sites became one and the coverage widened |
+| Standalone rows 2.4 (inflation re-prompt) and 3.3 (score cites an observation); row 4.3 (bonus-cycle cap), folded into 4.2 | each was one clause with no artifact of its own; folded into rows whose artifact already exists | the behaviours survive as clauses of 2.3, 3.2 and 4.2; the row count fell by three across two revisions and the behaviour count did not |
+| The `spawns/` clauses on rows 2.2 and 2.4 | they covered two of the seven spawn kinds and left the rest to §0 prose — an orphan D2 found twice | **N6**, which carries it for every spawn, so three sites became one and the coverage widened |
 
 **Contradicted classes, kept deliberately.** Multi-agent debate does not reliably beat chain-of-thought at matched
 compute; conformity rises per round [EV-21, EV-22]. The P3 panel is kept because it is not a debate — **row 3.4
@@ -443,19 +448,19 @@ refuses consensus voting at P2 for the same reason.
 
 | The defeat | The residue that catches it |
 |---|---|
-| **Cherry-picking a weak exemplar.** Real, re-quotable, and mediocre. | Partial. 1A.3 returns `property-present/absent` with the span clause; 1A.1 requires a reject list of ≥2 beaten candidates with locators, and **ID3(e) now counts the lists and opens each reject locator** — the header's `reject-lists: n / n` stopped being a number the orchestrator typed; 1A.3's challenge returns a stronger document or `none-better-found` with where it looked; a find makes the run `out-anchored`, ACCEPT-unreachable. **What this does not buy:** the challenger is the same class of system, a lazy `none-better-found` is cheap, and a sweep can list two straw rejects — ID3(e) reads that they exist and open, never *why each lost*. A raised cost, not a detection. |
-| **Naming a trivial property off a strong document.** Strictly worse than the row above: the challenger is diligent and *correct* — a narrow property has no stronger exemplar anywhere — and the run is still anchored on nothing. | New this cycle, and the residue is real but asserted. A trivial property is one the control has too, so 1A.3 opens the control at the same property and returns `separating | non-separating | non-comparable`; `non-separating` is struck by 1A.4 and ID3(c) fires if it is not. **What this does not buy:** a property that is narrow *and* genuinely absent from the control still passes — 1A.2's dimension clause forces it to be the property that dimension measures, and that mapping is judged by the orchestrator with no auditor. And the verdict itself is A5's asserted half. |
+| **Cherry-picking a weak exemplar.** Real, re-quotable, and mediocre. | Partial. 1A.3 returns `property-present/absent` with the span clause; 1A.1 requires a reject list of ≥2 beaten candidates with locators, and **ID3(e) counts the lists and opens each reject locator**, so the header's `reject-lists: n / n` is computed, not typed; 1A.3's challenge returns a stronger document or `none-better-found` with where it looked; a find makes the run `out-anchored`, ACCEPT-unreachable. **What this does not buy:** the challenger is the same class of system, a lazy `none-better-found` is cheap, and a sweep can list two straw rejects — ID3(e) reads that they exist and open, never *why each lost*. A raised cost, not a detection. |
+| **Naming a trivial property off a strong document.** Strictly worse than the row above: the challenger is diligent and *correct* — a narrow property has no stronger exemplar anywhere — and the run is still anchored on nothing. | The residue is real but asserted. A trivial property is one the control has too, so 1A.3 opens the control at the same property and returns `separating | non-separating | non-comparable`; `non-separating` is struck by 1A.4 and ID3(c) fires if it is not. **What this does not buy:** a property that is narrow *and* genuinely absent from the control still passes — 1A.2's dimension clause forces it to be the property that dimension measures, and that mapping is judged by the orchestrator with no auditor. And the verdict itself is A5's asserted half. |
 | **Anchoring five dimensions on one property.** | Closed as a silent state, not as a possibility. 1A.2 binds one property to one dimension unless the header prints `shared-property(n)`, and ID3(c) counts descriptors against named properties. A run may still declare it and ship; it may not do it quietly. |
-| **A maximally weak control** — absurd rather than ordinary, which inflates every exemplar-control gap and passes an inflating judge at 2.3's `control ≤ 2`. | Partial, and new. `non-comparable` at 1A.3 is the control's first external verdict; 1A.4 strikes on it. It rests on one judgment from the same class of system, and 2.3's threshold is unchanged: an ordinary-but-mediocre control still passes an inflating judge. |
-| **A false `not-run:` reason** — dropping 2.6, 3.4 or 3.8 under a plausible string and exiting clean. | The legend closes the vocabulary to six reasons and ID1 rejects any other string. Two are self-certifying (`no spawn` cross-checked by ID10 against `mode:`; `no external worker` by ID8 against `ext/`). The other four are checked for form, not truth: `not applicable(document)` on 5.3 is legal and unverified. Narrower than before, not closed. |
+| **A maximally weak control** — absurd rather than ordinary, which inflates every exemplar-control gap and passes an inflating judge at 2.3's `control ≤ 2`. | Partial. `non-comparable` at 1A.3 is the control's first external verdict; 1A.4 strikes on it. It rests on one judgment from the same class of system, and 2.3's threshold is unchanged: an ordinary-but-mediocre control still passes an inflating judge. |
+| **A false `not-run:` reason** — dropping 2.6, 3.4 or 3.8 under a plausible string and exiting clean. | The legend closes the vocabulary to six reasons and ID1 rejects any other string. Two are self-certifying (`no spawn` cross-checked by ID10 against `mode:`; `no external worker` by ID8 against `ext/`). The other four are checked for form, not truth: `not applicable(document)` on 5.3 passes ID1 although `run-discipline.md` Q16 sweeps documents too. Narrower than before, not closed. |
 | **A mis-declared `mode:`** — printing `full` while spawn-dependent rows sit `not-run`. | ID10, both directions, against §3's fourteen-row list. It cannot detect a run that spawned nothing and ticked the rows anyway — the `ext` forgery row below. |
-| **`evaluators: calibrated` typed by the orchestrator that both applied the guard and declared ACCEPT.** | ID9 counts scorers from `scorecards/` **and recomputes each verdict from the two scores against §P2's table**, so a truthful pair under a false verdict — the cheaper forgery — is now caught. A wholly fabricated scorecard is not. |
-| **A `spawns/` prompt file written without ever spawning.** N6 requires the file before the spawn; nothing observes the spawn. | **None.** Same class as the `ext` forgery and priced the same way: a written prompt with no worker behind it passes every check, and no identity counts `spawns/` at all. It is named here because until this cycle it was the one residue the document neither caught nor priced. |
+| **`evaluators: calibrated` typed by the orchestrator that both applied the guard and declared ACCEPT.** | ID9 counts scorers from `scorecards/` **and recomputes each verdict from the two scores against §P2's table**, so a truthful pair under a false verdict — the cheaper forgery — is caught. A wholly fabricated scorecard is not. |
+| **A `spawns/` prompt file written without ever spawning.** N6 requires the file before the spawn; nothing observes the spawn. | **None.** Same class as the `ext` forgery and priced the same way: a written prompt with no worker behind it passes every check, and no identity counts `spawns/` at all. It is named here so that it is priced, not merely uncaught. |
 | A `silent` contract element written up as `ratified`. The classifier is the agent that wrote the contract. | Weak, and known to be. ID2 sums a partition and so balances whenever everything is classified. The real check is A2 — and A2 has no auditor, so this is a rule, not a residue. |
 | A re-quote checker that pastes back the span it was handed instead of re-opening the locator (1A.3). | The checker returns **what it read**; the report carries both strings side by side, and a paste-back is byte-identical with no surrounding context. Evadable for one invented sentence of context — this catches laziness, not forgery. |
 | Selective re-quote: dropping the one locator that would not verify. | 1A.3 requires one line per locator and ID3(a) compares that count against `anchors.md`'s. A short `requote.md` is an imbalance, not a clean `0 mismatch`. |
 | An `ext` cell filled by the orchestrator itself, at 1A.3, 4.1 or 5.7. | The card legend's two-part record, counted by ID8 against three cells. This converts impersonation from an omission into a deliberate forgery — a real raising of the cost, and **not** detection: an orchestrator that writes both halves of the file passes. The harness has no defence against that and should not claim one. |
-| An attack reclassified `unproven-because-new` to preserve an ACCEPT. The escape hatch is deliberate — it protects bold work — and it is abusable. | ID5 carries it as its own bucket, and **the §5 terminal line now has a field for it**, beside the other zero-valued buckets it already printed. |
+| An attack reclassified `unproven-because-new` to preserve an ACCEPT. The escape hatch is deliberate — it protects bold work — and it is abusable. | ID5 carries it as its own bucket, and **the §5 terminal line has a field for it**, beside the other buckets it prints. |
 | Salvage marked `deferred` on every item — technically a disposition, substantively a discard. | ID4 splits raised into grafted + rejected + deferred + carried; an all-`deferred` list shows as zero grafted against a non-zero raised, on one line. |
 | Row 3.8's ledger written once at P5 instead of accrued per cycle. | Weak: 5.4 compares two counts the same agent wrote, and the per-cycle tag is the only friction. A prohibition with a cheap residue, named here rather than called unfakeable. |
 | An evidence file that exists but evidences nothing. | None. ID1 checks that a path resolves, not that its contents match the row. This is the largest hole left, and E2 measures it rather than closing it. |
@@ -467,6 +472,7 @@ or prove an unbettered exemplar was the best there was.
 
 ## 8. Reference files
 
-Twelve, one level deep, each with its own `Owns:` and `Read when:` header, not restated here. Nine load at the phase
-whose `READ:` names them (`run-discipline.md` at two — why P1 ties P5); `doc-deliverables.md` rides row 2.2's spawn;
-`evidence.md` and `evaluations.md` on question only.
+Twelve, one level deep, each with its own `Owns:` and `Read when:` header, not restated here. Ten are named by a
+phase's `READ:` line — `run-discipline.md`, `engine-map.md` and `evaluator-loop.md` at two phases, `evaluator-roster.md`
+at three, and `doc-deliverables.md` only for a `document` class, whose generators also receive it whole at row 2.2.
+`evidence.md` and `evaluations.md` load on question only.

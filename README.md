@@ -56,6 +56,7 @@ It counts what it cost. Computed per run, never quoted from a brochure:
 agents = 1 preflight + S sweep + 1 checker + E extra engines
        + C angles + J judges + cycles × (D evaluators + K skeptics)
        + P personas + 4 pairwise + 1 audit
+       + wrapped-domain workers, retries and reruns
 ```
 
 A mid-size run lands near **forty agents**. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.

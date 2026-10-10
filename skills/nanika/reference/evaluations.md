@@ -35,15 +35,18 @@ pre-written acceptance list: (1) a technical decision memo, (2) a small library 
 one-page plan with a named approver.
 
 **Unit of analysis.** One (brief × arm × repetition) deliverable, scored on a 0-3 weighted rubric written
-**before any arm runs** by someone who will not judge, using the same five-dimension shape this skill
-produces at row 1.10.
+**before any arm runs** by someone who will not judge, using a five-dimension shape inside the 3-5 range
+this skill produces at row 1.10. **Primary measure:** the mean of three judges' blind **pointwise**
+weighted scores for that deliverable. The pairwise judging below is a secondary measure and feeds no
+t-test.
 
 **n, stated as numbers rather than as field names:**
 - 3 briefs × 3 arms × **6 repetitions** = **54 deliverables**.
 - Paired analysis: the primary contrast is W − N within brief and repetition → **18 paired observations**.
-- **3 judges** per pairing, drawn from different model families where the host offers them; each pairing
-  judged in **both orders** → 6 verdicts per pairing, and only order-consistent verdicts count, per the
-  same rule row 4.1 uses [EV-16b].
+- **3 judges**, drawn from different model families where the host offers them, score every deliverable
+  pointwise. **Secondary:** the same judges compare each W–N pair in **both orders** → 6 returns per pairing,
+  up to 3 order-consistent verdicts; an order-inconsistent judge is `inconsistent`, a state rather than a
+  loss, per the same rule row 4.1 uses [EV-16b].
 - Judges never learn the arm. Deliverables are stripped of any card, header or run-directory artefact
   before judging — a W deliverable that arrives carrying its Fulfillment Report is unblindable and is
   re-rendered without it, or the pairing is void.
@@ -51,34 +54,42 @@ produces at row 1.10.
 **Pre-registered effect size and power.**
 - **Minimum effect of interest: +0.40** on the 0-3 weighted rubric score (W over N). Below that, the
   skill costs more agents than it earns quality, at the envelope §3 prices.
-- Assumed within-brief SD of the weighted score: **0.55 points**. This is an assumption, not a
-  measurement — no such SD has been observed for this rubric on this task class. +0.40 against 0.55 is
-  **d = 0.73**.
-- A paired t-test on **n = 18** pairs at α = 0.05, two-sided, has **80% power at d = 0.71**. So the design
-  is powered for the effect it pre-registers, *conditional on the assumed SD*. **If the observed SD
-  exceeds 0.70, the study is underpowered and its null is uninformative** — that condition is registered
-  here so that it cannot be discovered afterwards and reported as a finding.
+- Assumed SD of the **paired difference** W − N: **0.55 points**. This is an assumption, not a
+  measurement — no such SD has been observed for this rubric on this task class — and it is the SD of the
+  difference, not of a single arm's score, because that is the denominator a paired test uses. +0.40
+  against 0.55 is **d = 0.73**.
+- A paired t-test on **n = 18** pairs at α = 0.05, two-sided, reaches **80% power at d ≈ 0.70** (0.81 at
+  d = 0.71), *conditional on the assumed SD*. That power is symmetric and covers two decisions: excluding
+  +0.40 when the true effect is 0 (outcome 1), and excluding 0 when it is +0.40 (outcome 2's positive
+  sub-case). Outcome 3 needs a lower bound above +0.40, which a true +0.40 reaches only about 2.5% of the
+  time; 80% power for outcome 3 needs a true effect near +0.76 at this SD.
+  **If the observed SD of the paired difference exceeds 0.57** (= 0.40 / 0.70), **the study is
+  underpowered for +0.40 and its null is uninformative** — that condition is registered here so that it
+  cannot be discovered afterwards and reported as a finding.
 - Secondary contrast W − M shares the same n and the same MDE and is explicitly **exploratory**: 18 pairs
   cannot separate a 0.2-point machinery effect from noise, and a null there means "not measured", never
   "the machinery does nothing".
 
-**How a null reads.** Three outcomes are pre-committed:
-1. CI for W − N excludes +0.40 → the skill does not buy its cost. `DELTA:` becomes
+**How a null reads.** Three outcomes are pre-committed, and they partition every possible 95% CI for
+W − N by where it sits relative to +0.40:
+1. Upper bound below +0.40 → the skill does not buy its cost. `DELTA:` becomes
    `MEASURED: no effect above +0.40 (n=18, CI …)` and §7's kept table is re-opened against E3.
-2. CI includes +0.40 and includes 0 → **inconclusive, underpowered**, reported as such. `DELTA:` stays
-   `UNMEASURED` with the attempt recorded. This is the most likely outcome at n = 18 and saying so now is
-   the point of writing the power statement before the run.
-3. CI excludes 0 and its lower bound is above +0.40 → a measured delta, reported with the n, the judge
-   count, the SD actually observed, and the briefs.
+2. CI contains +0.40 → **inconclusive against the pre-registered effect**, reported as such. `DELTA:` stays
+   `UNMEASURED` with the attempt recorded; a CI that also excludes 0 is reported as "a positive effect of
+   undetermined size", never as a measured delta. This is the most likely outcome at n = 18 and saying so
+   now is the point of writing the power statement before the run.
+3. Lower bound above +0.40 → a measured delta, reported with the n, the judge count, the SD actually
+   observed, and the briefs.
 
 **Length control.** A W deliverable will usually be longer. Judges score against the rubric, which
-carries no length dimension, and **a win attributable to length alone scores as no delta**: any pairing
-whose winner is >1.5× the loser's token count is re-judged with both truncated to the shorter length, and
-the truncated verdict is the one that counts.
+carries no length dimension, and **a win attributable to length alone scores as no delta**: any pair whose
+higher-scoring deliverable is >1.5× the other's token count is re-scored with both truncated to the shorter
+length, and the truncated scores are the ones that count.
 
 **What would invalidate the run.** Any of: a judge that saw an arm label; a rubric edited after an arm
-ran; briefs chosen after piloting; fewer than 6 order-consistent verdicts on a pairing; the W arm run by
-the same context that wrote the brief.
+ran; briefs chosen after piloting; a deliverable missing any of its 3 pointwise scores, or a pairing
+missing any of its 6 returns (an `inconsistent` verdict is not missing); the W arm run by the same context
+that wrote the brief.
 
 ---
 
@@ -101,7 +112,7 @@ card rather than hardcoded here (AUD step 5's rule, applied to an evaluation):
   worker that did not run the wish, with the row text and the file, and asked one question: does this
   file evidence this row — `yes | no | cannot tell`. Report the three counts. This is the only place the
   content question is asked at all, and it is a sample, not a gate.
-- **Second sample, new this cycle, aimed at the residue §7 prices at "None":** in each run, every file in
+- **Second sample, aimed at the residue §7 prices at "None":** in each run, every file in
   `spawns/` is checked against the run's own agent count and against `ext/` and `scorecards/`. A prompt
   file with no corresponding return anywhere in the run directory is *not* proof of a fake spawn, and the
   measurement is deliberately weak: report the count and the ratio, and treat a ratio far from 1 as a
@@ -122,8 +133,8 @@ each, delete the mechanism (its card rows, its rules, its reference sections), r
 under the reduced skill, and score with the same blind judges and the same frozen rubric.
 
 **Deletion decision, specified before data collection:** define loss as full minus ablated quality. Choose a
-maximum tolerable loss for the task class before seeing results; the former **0.15** is a design choice, not a
-safety invariant. A mechanism is eligible for removal when the loss's upper confidence bound is below that margin
+maximum tolerable loss for the task class before seeing results; **0.15** is an example margin and a design choice,
+not a safety invariant. A mechanism is eligible for removal when the loss's upper confidence bound is below that margin
 and no hard safety/correctness gate regressed. A CI containing zero is not evidence of equivalence. A wide CI is
 inconclusive, not protection for the architecture and not permission to declare the mechanism useless.
 
@@ -135,11 +146,11 @@ than repeated unadjusted significance tests. Three briefs alone cannot establish
 **Ablations, in the order they will be run** (cheapest to delete first, so an early kill saves the rest):
 spawn/engine preflight (0.8, 1A.7) · salvage wiring (2.6 → 3.3) · reception spans (3R.1) · refutation
 panel (3.4-3.5) · identity audit (5.7) · both-order exit gate (4.1) · blind-pair calibration (2.3) ·
-external-only revision (N1, A5) · angle tournament (2.1-2.7) · anchor with re-quote, property,
+independent acceptance checking (N1, A5) · angle tournament (2.1-2.7) · anchor with re-quote, property,
 separation and challenge (1A.1-1A.4) · contract → frozen rubric (1.9-1.12, 1A.8).
 
-**A sub-ablation inside the anchor row, added this cycle.** The anchor row is the one this revision spent
-its clauses on, and ablating it whole answers "does anchoring help?", not "does anchor *strength* matter?"
+**A sub-ablation inside the anchor row.** The anchor row carries the most clauses of any kept mechanism,
+and ablating it whole answers "does anchoring help?", not "does anchor *strength* matter?"
 — which is the question the property axis and the control axis were added to serve. So the anchor
 ablation runs in four variants: full · minus the separation verdict (1A.3's control clause) · minus the
 dimension mapping (1A.2's third clause) · minus the reject list (1A.1's third clause). Same cut rule.
@@ -171,7 +182,7 @@ card instead of adding explanatory prose. E3 can inform deletion only when its u
 
 | result | what changes in `SKILL.md` |
 |---|---|
-| E1 outcome 1 (no effect above +0.40) | `delta:` becomes a measured null; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
+| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `measured: below +0.40`; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
 | E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
 | E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |
