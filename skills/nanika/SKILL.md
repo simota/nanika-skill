@@ -428,7 +428,7 @@ request is §3's business. Calibration failures never route here (N4).
 | Refutation panel (3.4-3.5) | the attack surface nobody on the rubric is looking at | contradicted as *debate*; kept as a non-debate on row 3.4's conditions — see below |
 | **Reception with verbatim spans (3R.1), and its return edge (3R.3)** | obtain simulated cold-read friction tied to the artifact; neither audience coverage nor real reception | — (grep-checkable, zero extra spawns; 3R.3 spends a cycle already inside §3's cap) |
 | **Both-order exit gate (4.1), the exemplar pairing per property** | half the pairwise verdict; a single pass is partly a verdict about position | the swap-consistency floor, quoted once at P4 [EV-16b] |
-| **Identity audit by a non-participant (5.7)** | recompute recorded accounting; fabricated but consistent records can still pass | the compliance gap, quoted once at §0 item 3 [EV-14] |
+| **Identity audit by a non-participant (5.7)** | recompute recorded accounting; fabricated but consistent records can still pass | the compliance gap, cited once at §0 item 3 [EV-14] |
 | **Spawn preflight (0.8) and engine preflight (1A.7)** | exercise an available dispatch path; saved sentinel files alone do not authenticate a spawn | — (structural; the failure it prevents was observed in this skill's own run) |
 
 **Cut, and what covers the failure now.** What would bring each back: `evidence.md` §3.
