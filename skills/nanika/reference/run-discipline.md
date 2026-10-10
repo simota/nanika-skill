@@ -2,12 +2,12 @@
 
 **Owns:** the stance, the eight contract-lint conditions row 1.12 runs, the Decision Ledger, acceptance
 provenance, and completion integrity.
-**Read when:** at **P1**, for §1's eight lint conditions, which row 1.12 lints against; and at **P5**, for §6's
-completion sweep, which row 5.3 evidences. The two read triggers are task contexts, not measured instruction loads.
+**Read when:** at **P1**, for §1's eight lint conditions (row 1.12) and §2's Decision Ledger, which binds from
+P2 to P5; and at **P5**, for §5's classes (row 5.2) and §6's completion sweep (row 5.3). The two read triggers are task contexts, not measured instruction loads.
 
 Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §3 drift control, relocated · §4
 independent verification, relocated · §5 acceptance provenance (Q12-Q15) · §6 completion integrity
-(Q16-Q19).
+(Q16-Q19). Q1-Q3 were retired.
 
 The nanika machinery attempts to improve the artifact. These rules keep the *run* honest while it does — a run that
 quietly lowered its bar, dropped a criterion, or shipped a stub can still emit a beautiful Fulfillment
@@ -46,10 +46,10 @@ and still bounded by the contract's own length:
    *consequences* that must not occur however the work is done. A blank field is not a declaration.
 4. Every disappointment criterion is attached to a rubric dimension as a score-0 trigger (rows 1.5, 1.10).
 5. Every rubric dimension carries both a score-3 and a score-1 descriptor and an assigned evaluator
-   archetype (rows 1.10, 1.11), and every descriptor not yet anchored is marked `invented` — 1A.2 is where
+   archetype (rows 1.10, 1.11), and every descriptor not yet anchored is marked `invented-and-flagged` — 1A.2 is where
    that mark is discharged, and the lint only checks that it is present and honest.
-6. The envelope and the cycle cap exist and cover success, escalation *and* abort, not success alone (rows
-   0.4, 0.6).
+6. The envelope and the cycle cap are written (rows 0.4, 0.6), and `contract.md` names who is escalated to
+   on `BLOCK` and what ships on `budget-reached`.
 
 7. **Every element admits exactly one reading** (rows 1.1-1.7). The test is per element and it is
    mechanical, not taste: (a) every evaluative word carries a bound, a comparison target, or row 1.2's
@@ -85,16 +85,16 @@ moves the same failures to P4, where they cost the run a bonus cycle it may not 
 Every load-bearing decision made without the user gets a row, in `decisions.md` inside the run directory:
 
 ```
-| ID | Decision | Alternatives rejected | Why | Reversibility | Class |
-|----|----------|----------------------|-----|---------------|-------|
-| DEC-1 | tournament angle 3 dropped for budget | keep 4 angles | envelope covers 3 | low | scope |
-| DEC-2 | "flagship" read as investor-facing | public-facing | P1 recipients named the partners | medium | interpretation |
+| ID | Decision | Alternatives rejected | Why | Reversibility | Confidence | Breaks if wrong | Confirm by | Class |
+|----|----------|----------------------|-----|---------------|------------|-----------------|------------|-------|
+| DEC-1 | tournament angle 3 dropped for budget | keep 4 angles | envelope covers 3 | low | high | a lost bet goes untested | — | scope |
+| DEC-2 | "investor deck" built as 12 slides, not 20 | 20-slide build | recipients named a 15-minute slot | medium | medium | the partners expect the appendix | cycle 2 | interpretation |
 ```
 
 | # | Rule | Discipline |
 |---|------|-----------|
 | Q4 | **Record, don't remember** | A row is written when the decision is made, never reconstructed at delivery. `decisions.md` is the file of record, and a Ledger row cited in the report is cited as a path into it, like any other evidence (`SKILL.md` §0.3). |
-| Q5 | **Interpretation decisions are flagged** | `class: interpretation` rows are the ones the user is most likely to have wanted differently. They lead the Ledger in the report and get first claim on any confirmation opportunity. Each carries what breaks if the reading was wrong, and the point past which it must be confirmed. High impact plus low confidence is validated *during* the run — an assumption surfaced only at delivery has already been built on for five cycles. |
+| Q5 | **Interpretation decisions are flagged** | `class: interpretation` rows are the ones the user is most likely to have wanted differently. They are listed first in the report's **Contract** section, each cited by path into `decisions.md`, and get first claim on any confirmation opportunity. Each carries what breaks if the reading was wrong, and the point past which it must be confirmed. High impact plus low confidence is validated *during* the run — an assumption surfaced only at delivery has already been built on for five cycles. |
 | Q6 | **Irreversible plus uncertain is not a Ledger row** | A decision that is hard to reverse AND low-confidence is a pause point, not a row. The Ledger is for judgment calls, not for gambling with irreversibility. |
 
 An ASSUME-n row on the card (row 1.8) and a `DEC-n` row here are the same discipline at two moments: 1.8
@@ -134,7 +134,7 @@ Acceptance criteria — the test for each class:
 | `verified` | met, with a path to the evidence that shows it met |
 | `partial` | partly met, and the gap is stated precisely enough to be actioned |
 | `missed` | not met, with why, and what the best-so-far state is |
-| `dropped` | descoped mid-run — legal only when a `DEC-n` row in `decisions.md` dropped it, cited by ID |
+| `dropped` | descoped mid-run — legal only when a `DEC-n` row in `decisions.md` dropped it with the user's recorded confirmation, cited by ID |
 | *(silent)* | a criterion the report never mentions. Not a class: it is an incomplete report, and ID7 fires |
 
 Prohibited outcomes, on their own axis, in the same section:
@@ -152,14 +152,9 @@ user's call, not the run's, and N8 is why row 0.7's confirmation does not pre-au
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| Q16 | **The artifact is part of done** | Complete means the *artifact* is complete, not the plan for it. **Code:** no `TODO`/`FIXME`, no placeholder body, no `not implemented`, no mock standing in for the real path, no elided "same for the others" presented as finished. **Documents:** no `TBD`, no `[fill in]`, no empty heading, no section whose body is a promise to write it. Done-ness is deliverable-relative: a design-only wish is done when the design is complete. Q16 never licenses work outside the contract — finishing is not widening. |
+| Q16 | **The artifact is part of done** | Complete means the *artifact* is complete, not the plan for it. **Code:** no `TODO`/`FIXME`, no placeholder body, no `not implemented`, no mock standing in for the real path, no elided "same for the others" presented as finished. **Documents:** no `TBD` other than a W5 `TBD(owner)`/`UNKNOWN` marker carrying a Q17 residual row, no `[fill in]`, no empty heading, no section whose body is a promise to write it. Done-ness is deliverable-relative: a design-only wish is done when the design is complete. Q16 never licenses work outside the contract — finishing is not widening. |
 | Q17 | **Residuals are typed** | Every leftover gets a row: what, why it is left, who or what finishes it, and where its marker lives. The binding is bidirectional — every marker left in a file has a row, and every row names its marker. An orphan marker and an orphan row are both incomplete reports. |
 | Q18 | **Completion sweep before delivery** | Scan the files the run actually touched for the Q16 markers. Row 5.3 owns what the evidence must contain; this rule owns the sweep: scope is the touched files, not the repository; residue the run did not introduce is reported `pre-existing` and left alone; every hit is accounted for individually rather than in aggregate; and zero is stated as a *scanned* zero, with the command that scanned it, never asserted. |
 | Q19 | **The bar does not move to meet the output** | **N4 owns the prohibition** and `SKILL.md` §6 owns the single legal path. This is a numbered rule here because the run-side duty is not a card row: descriptors in use are read from `rubric-frozen.md` rather than from memory, at every cycle boundary (row 3.1) and again before the report is written. A descriptor that quietly changed wording between 1A.8 and P5 is the hardest self-deception to catch afterwards, and re-reading the frozen file is the only thing that catches it. |
 
-**Effort allocation, unnumbered.** Spend effort where it changes the verdict, not uniformly. Wide finding and
-coverage passes — the exemplar sweep, per-dimension scoring, persona reception — run at a moderate reasoning
-tier. Reserve the highest tier for the steps whose output *is* the judgment: crystallization, anchor
-ratification, tournament adjudication, ceiling convergence, and both exit-gate verdicts. Raising effort is
-not a lever for shorter output — it governs thinking, not visible length, which is why the output-length
-envelope is a separate field on every spawn (N6).
+**Effort allocation** is `engine-map.md` §3's; the output-length envelope is a separate N6 field.

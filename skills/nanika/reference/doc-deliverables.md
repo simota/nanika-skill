@@ -2,7 +2,8 @@
 
 **Owns:** the extra rules that apply when a wish's deliverable is a document or a document package.
 **Read when:** only when row 0.4's deliverable class is `document`, at two points. **Card row 2.2 attaches this
-file to each generator spawn**, which reads it whole; and the orchestrator reads **§5** at P1, because the W12
+file to each generator spawn**, which reads it whole, and the orchestrator attaches it likewise to the outline
+build and to every P3 revision spawn, each carrying W11b's sentence; the orchestrator reads **§5** at P1, because the W12
 gate becomes the reader-path rubric dimension row 1.10 writes. `SKILL.md` P1's `READ:` line carries that
 conditional and §8 counts it.
 
@@ -24,7 +25,7 @@ coherent. W12 becomes a rubric dimension; the rest are production rules for the 
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| W4 | **Universal grounding** | Every **externally-checkable fact** — market sizes, statistics, competitor features, dates, "studies show" — is `sourced` (citation) · `ASSUMPTION` (flagged inline) · or `research-to-do`. Internal propositions (the user's own plan, opinions, recommendations) are exempt; the rule targets facts a reader could check and find false. |
+| W4 | **Universal grounding** | Every **externally-checkable fact** — market sizes, statistics, competitor features, dates, "studies show" — is `cited` (citation) · `ASSUMPTION-inline` (flagged inline) · or `research-to-do`. Internal propositions (the user's own plan, opinions, recommendations) are exempt; the rule targets facts a reader could check and find false. |
 | W5 | **UNKNOWN over fabrication** | A gap the run could not verify is written as `UNKNOWN` / `TBD(owner)`, never filled with a plausible guess. Specifics are where fabrication hides: numbers, product names, URLs, API signatures, legal citations are verified or flagged, never improvised. |
 | W6 | **Quote fidelity** | Anything presented as a quotation, spec excerpt, or reproduced requirement is verbatim from source, or explicitly marked as paraphrase. Silent paraphrase inside quotation marks is fabrication with extra steps. |
 
@@ -48,7 +49,7 @@ A one-shot document is where W4-W6 matter most: there is no second version in wh
 
 ## 5. The W12 gate — as a rubric dimension
 
-For a document wish, W12 is not a separate gate bolted onto the loop. It is **a rubric dimension**, scored every cycle by a Rigor or Behavior evaluator (`evaluator-roster.md`), with these sub-questions:
+For a document wish, W12 is not a separate gate bolted onto the loop. It is **a rubric dimension**, scored every cycle by one Behavior evaluator (row 1.11 records it). The sub-questions are that evaluator's checklist, not separate scores; the dimension takes one 0-3 score under its frozen descriptors. Drop Grounding when the rubric carries `evaluator-roster.md` §3's separate grounding dimension:
 
 | Sub-dimension | Question |
 |---------------|----------|

@@ -205,7 +205,7 @@ P5 DELIVER  → report.md
   by worker count. Intrinsic correction without external feedback has failed on reasoning tasks [EV-20]; this does
   not establish a same-model fresh-context benefit. Self-recognition remains a risk [EV-17]. Use native execution
   receipts when the platform supplies them; otherwise claim only a spawn record is present, not authenticated execution.
-- **A6** Ask one question, or one batch of at most four dimensions, per turn during P1. `crystallization-dialogue.md`
+- **A6** Ask one question, or one batch of at most four topics, per turn during P1. `crystallization-dialogue.md`
   owns how to ask; this rule owns the rate.
 
 **NEVER**
@@ -299,7 +299,7 @@ claim.** Row 0.8 is the load-bearing half: every `ext` cell, every judge and the
 spawn, and one throwaway worker makes that a detected capability rather than a declared one.
 
 ### P1 — Crystallize · rows 1.1-1.12
-**ENTER:** rows 0.1-0.8 evidenced. **READ:** `crystallization-dialogue.md`; `run-discipline.md` §1 (row 1.12's lint);
+**ENTER:** rows 0.1-0.8 evidenced. **READ:** `crystallization-dialogue.md`; `run-discipline.md` §1-§2 (row 1.12's lint; the Decision Ledger);
 `evaluator-roster.md` §1-§3 (row 1.11's archetypes); for a `document` class, `doc-deliverables.md` §5 (the W12
 dimension row 1.10 writes).
 Execution reliability at this phase is tested by E4, not inferred from a rule count.
@@ -370,7 +370,7 @@ so an overall preference is mostly a preference about genre, while the anchored 
 the part the rubric came from — and a lost property hands 4.2 a brief instead of a mood.
 
 ### P5 — Deliver · rows 5.1-5.7
-**ENTER:** rows 4.1-4.2 evidenced. **READ:** `identities.md`; `run-discipline.md` §6 for row 5.3.
+**ENTER:** rows 4.1-4.2 evidenced. **READ:** `identities.md`; `run-discipline.md` §5-§6 for rows 5.2-5.3.
 
 Emit the report, run the audit, append the ledger, hand over. Row 5.7 checks the recorded accounting, not the
 truth of every record or artifact quality [EV-14]. An imbalance can also expose a specification defect.

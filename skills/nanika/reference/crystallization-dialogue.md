@@ -2,8 +2,7 @@
 
 **Owns:** question craft, answer processing, the Assumption Ledger, checkpoint presentation, and
 engagement calibration. **How to ask — never what to ask.** Every question P1 must land is a card row
-(1.1-1.7), and the card owns them; a list of them here is the duplication this file was carrying and no
-longer does.
+(1.1-1.7), and the card owns them. Rule numbers D1, D11 and D14 were retired; the gaps are intentional.
 **Read when:** **P1**, in full, at its `READ:` line.
 
 The deliverable of a wish is only as good as the elicitation that produced it. A one-shot artifact built on
@@ -34,8 +33,8 @@ arrive only under D3 and D5.
 | # | Rule | Discipline |
 |---|------|-----------|
 | D6 | **Paraphrase-back before persist** | Before writing any user decision into `contract.md`, reflect it back in one or two lines in *different words* than the user used — echoing verbatim tests nothing. Persist on the confirmed paraphrase. A2 governs what may persist: a minimal permitted quote, or an explicitly user-approved redaction/summary. Mark the form; an unapproved paraphrase is not elicitation evidence. |
-| D7 | **One follow-up, then park** | A low-information answer ("sounds fine", "whatever works") gets exactly ONE concretizing follow-up in D2 or D3 form. A point that circles two rounds with no new information gets named as circling and the same two ways out. Either way, do not badger: lock the leading option, or record it as an `ASSUME-n` row (D9) and move on. |
-| D8 | **Contradiction surfacing** | When a new answer conflicts with an earlier persisted decision, surface it immediately ("this changes DEC-2 from X to Y — intentional?"). Never silently overwrite; never silently keep the old one. The resolution is itself a persisted decision, and `run-discipline.md` owns where it is written. |
+| D7 | **One follow-up, then park** | A low-information answer ("sounds fine", "whatever works") gets exactly ONE concretizing follow-up in D2 or D3 form. A point that circles two rounds with no new information gets named as circling, and the user is offered the same two ways out. Either way, do not badger: lock the leading option, or record it as an `ASSUME-n` row (D9) and move on. |
+| D8 | **Contradiction surfacing** | When a new answer conflicts with an earlier persisted decision, surface it immediately ("this changes the non-goal you gave earlier from X to Y — intentional?"). Never silently overwrite; never silently keep the old one. The resolution is itself a persisted decision: it replaces the old value in `contract.md` in D6's form, noting the superseded value. |
 
 ## 3. Assumption Ledger (D9)
 
@@ -54,13 +53,19 @@ Ledger mandatory; this rule is its schema and lifecycle.
 | ASSUME-2 | success is measured at the partner meeting, not at publication | partner meeting | "honestly, whatever they react to" | D7 follow-up returned no more | open |
 ```
 
-- **Lifecycle:** `open` → `confirmed` (ratified at a checkpoint, becomes a decision) or `open` → **Open
-  Questions** at the final gate. An `open` row never silently disappears.
+- **Checkpoint:** a turn that presents the draft (D10, D12) for confirmation. There are at least three:
+  after rows 1.1-1.7 are asked; the **final contract checkpoint** at row 1.8, before 1.9 writes
+  `contract.md`; and the **rubric checkpoint** after row 1.10, which presents the dimensions and weights.
+- **Lifecycle:** `open` → `confirmed` (ratified at a checkpoint) or `open` → `parked` (moved to
+  `contract.md`'s `## Open Questions` section at the final contract checkpoint). An `open` row never
+  silently disappears.
 - **Checkpoint duty:** every checkpoint shows the count of open rows and lists the *new* ones since the
   last checkpoint.
-- **Final-gate duty:** before the rubric freezes, walk the remaining `open` rows — each is ratified or
-  moved to Open Questions. A row still `open` at the freeze is what `benchmark-anchoring.md`'s Provenance
-  Gate reads as `parked`, and a contract element with no row at all is what it reads as `silent`.
+- **Final-checkpoint duty:** walk every `open` row; each becomes `confirmed` or `parked`. At the rubric
+  checkpoint each dimension is ratified or recorded as an `ASSUME-n`. 1A.5's Provenance Gate
+  (`benchmark-anchoring.md` §5) reads `confirmed` as `ratified` and `parked` as `parked`; a contract
+  element or dimension with no quote and no row is `silent`, and a row still `open` at 1A.5 is
+  unclassified and fails the gate.
 
 ## 4. Checkpoint presentation (D10, D12)
 
@@ -73,8 +78,8 @@ Ledger mandatory; this rule is its schema and lifecycle.
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| D13 | **Depth follows signal** | Rich, detailed answers → deepen: more D5 probes, finer options. Terse answers trending shorter → compress: batch dimensions to A6's limit, propose defaults, lean on the Ledger. Matching the user's bandwidth is part of the contract, not a courtesy. |
-| D15 | **Delegate mode** | When the user says "just decide", switch to propose-and-confirm: make the call, record it as `ASSUME-n (delegated)` with an empty `Utterance`, continue. Contract-level checkpoints still fire — they present the delegated decisions for ratification instead of asking the original questions. Delegation compresses the dialogue; it never deletes the checkpoints, and it never converts an unasked row into an answered one. |
+| D13 | **Depth follows signal** | Rich, detailed answers → deepen: more D5 probes, finer options. Terse answers trending shorter → compress: batch questions to A6's limit, propose defaults, lean on the Ledger. Matching the user's bandwidth is part of the contract, not a courtesy. |
+| D15 | **Delegate mode** | When the user says "just decide", switch to propose-and-confirm: make the call, record it as `ASSUME-n (delegated)` with an empty `Utterance`, continue. Checkpoints still fire — they present the delegated decisions for ratification instead of asking the original questions. Delegation compresses the dialogue; it never deletes the checkpoints, and it never converts an unasked row into an answered one. |
 
 Row 1.8 is the reason D15 cannot be a shortcut: nothing on the card distinguishes a delegated `ASSUME-n`
 from a question never asked except the row itself, which is why rows 1.2-1.7 say *asked*.

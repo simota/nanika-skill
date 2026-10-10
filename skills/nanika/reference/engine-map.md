@@ -176,10 +176,10 @@ cache, so vary it across spawns instead.
 four angles, prefer four candidates on distinct pairs over four candidates on one engine.
 
 ```
-candidate 1: engine A × angle "conventional excellence, executed perfectly"
-candidate 2: engine B × angle "the unconventional read of the brief"
-candidate 3: engine C × angle "optimized hard for the named recipient"
-candidate 4: engine A × angle "what the exemplar does not do"      ← distinct pair, allowed
+candidate 1: engine A × angle "Conventional, executed perfectly"
+candidate 2: engine B × angle "The unconventional read"
+candidate 3: engine C × angle "Recipient-optimized"
+candidate 4: engine A × angle "Against the exemplar"      ← distinct pair, allowed
 ```
 
 **Judges (P2) and skeptics (P3).** Spread them across engines where §2b left more than one standing. A
