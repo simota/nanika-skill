@@ -103,20 +103,11 @@ froze.
 
 ## §3 — Drift control, relocated
 
-Q7 (goal-alignment at every aggregation) is **card row 3.7**, written into the cycle file at the boundary.
-Q8 (re-ground the loop before the next cycle) is **card row 3.1**, which requires the frozen dimension names
-and weights quoted in — a quote a drifted memory cannot produce. Both are evidenced per cycle, which a rule
-in this file could not be. The section number is retained so §5 and §6 keep the numbers the card and the P5
-`READ:` line cite.
+Q7-Q8 are card rows 3.7 and 3.1, evidenced per cycle.
 
 ## §4 — Independent verification, relocated
 
-Q9 (producer is never the sole verifier) is **N1**, with A5 for the three `ext` cells and `SKILL.md` §3's
-degraded-mode block for what happens when the capability is absent. Q10 (evidence-bound claims) is
-`SKILL.md` §0.3 — evidence is a path — and **N3**. Q11 (the artifact reviewed as a whole, not only dimension
-by dimension) is **card row 3.7**'s semantic check, which is exactly the reading a dimension-wise score
-cannot produce. Kept here as numbered rules they would be four restatements of rules that already carry
-their own evidence.
+Q9-Q11 are N1 with A5, N3 with `SKILL.md` §0 item 3, and row 3.7's semantic check.
 
 ## §5 — Acceptance provenance (Q12-Q15)
 

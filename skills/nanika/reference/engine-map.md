@@ -52,7 +52,7 @@ engine is reachable the run still proceeds; §5 says on what terms.
 ## §2a — Spawn preflight, for card row 0.8
 
 **M2 — The preflight is a command that ran, not a description of one.** Run the row for this host verbatim
-at P0, before anything else in the gate is treated as settled. Append the literal command and its exit
+at row 0.8, after row 0.7's approval. Append the literal command and its exit
 status to `.nanika/runs/<slug>/gate.md`; that file is row 0.8's `ev:`. **Exit 0 sets `mode: full`; any
 non-zero exit sets `mode: single-agent(declared)`**, and from there `SKILL.md` §3's degraded-mode block —
 not this file and not your judgment — says what the run costs. Never infer the result from the fact that a
@@ -120,7 +120,7 @@ same discipline: the command and its exit status are appended to `.nanika/runs/<
 row 1A.7's `ev:`, and `SKILL.md` §0.3 lists it. It is a separate file from `gate.md` on purpose, so a P1A
 result never overwrites a P0 one. An engine whose command exits
 non-zero is **struck from the plan at P1A**, not carried to P2 and discovered there. With every extra
-engine struck, the run is a monoculture and the report header says so — N5 owns that word.
+engine struck, the run is a monoculture and the report header says so (`monoculture(declared)`).
 
 "Extra engine" means an engine other than the one the orchestrator is running on. The orchestrator's own
 engine is proven by §2a and is not re-tested here.
@@ -159,9 +159,7 @@ command. That is a legal state, not a failure, and it is the state `monoculture(
 `balanced` and `fast`. A spawn prompt, a card row and a report line name a role; binding a role to a model
 is the host operator's act, done in this file or not at all.
 
-**This file is the only place a model name may appear, and it deliberately carries none.** The per-host
-model table was cut because model names age faster than anything in the skill and a stale table is worse
-than an absent one — `evidence.md` §3 records what would bring it back. A host operator who wants the
+**This file is the only place a model name may appear, and it deliberately carries none.** A host operator who wants the
 binding written down adds it here, under this rule, and nowhere else.
 
 Where the run spends the high tier: the steps whose output *is* the judgment — crystallization, the anchor

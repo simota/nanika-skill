@@ -23,7 +23,7 @@ genuine attempt to refute it.
 **G1.** A skeptic is briefed to **actively refute**, never to "evaluate". A worker asked to evaluate hedges;
 one asked to kill a named claim finds the real weakness. The brief carries the claim above verbatim, one
 assigned angle from the table below, the frozen rubric with its version tag, and N6's remaining fields.
-Distribute skeptics across engines where 1A.7 found them reachable (`engine-map.md`) and tag each skeptic's
+Spread skeptics per `engine-map.md` §4 and tag each skeptic's
 engine in the record: the same priors produce the same blind spots. A skeptic that scored the artifact
 carries its own score as a prior and is excluded on that ground; a skeptic that produced or revised it is
 excluded by N1.
@@ -33,10 +33,8 @@ briefed without the others' output, that the panel runs for **one round**, and t
 against the rubric rather than voted. They live on the row so that they are countable, and they are not
 restated here. What belongs here is the operational consequence for whoever writes the briefs: never hand a
 skeptic another skeptic's return, never re-run a skeptic against a reply, and never let the panel converge
-on a shared verdict. **The reason, once:** `SKILL.md` §7 keeps this mechanism while its debate form is
-contradicted [EV-21, EV-22] — what is contradicted is multi-round, interacting debate, and what row 3.4
-specifies is independent single-pass critique. A second round, or one skeptic reading another, converts this
-panel into the mechanism the evidence argues against. If it ever becomes a discussion, §7 says to cut it.
+on a shared verdict. `SKILL.md` §7 says why these conditions are the panel's licence: a second round, or one skeptic reading
+another, turns it into the debate the evidence argues against.
 
 **Return schema (N6).** Each skeptic returns, per attack:
 `ATTACK: {angle, claim_attacked, evidence: <span, file:line, or command + output>, class: refuted-on-evidence |

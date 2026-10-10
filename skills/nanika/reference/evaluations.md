@@ -53,7 +53,7 @@ t-test.
 
 **Pre-registered effect size and power.**
 - **Minimum effect of interest: +0.40** on the 0-3 weighted rubric score (W over N). Below that, the
-  skill costs more agents than it earns quality, at the envelope §3 prices.
+  skill costs more agents than it earns quality, at the envelope `SKILL.md` §3 prices.
 - Assumed SD of the **paired difference** W − N: **0.55 points**. This is an assumption, not a
   measurement — no such SD has been observed for this rubric on this task class — and it is the SD of the
   difference, not of a single arm's score, because that is the denominator a paired test uses. +0.40
