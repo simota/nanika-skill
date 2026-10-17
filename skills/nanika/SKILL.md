@@ -168,7 +168,8 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
         from §3's table, provisional until §3's loop order fixes the run's exit                                ev:
 [ ] 3.10 §6 amendment, if opened: (a)-(d) each evidenced separately, R2 tagged, retained artifacts re-scored. Else
          `not applicable(no amendment)`                                                                        ev:
-[ ] 3.11 RE-OPEN at `plateau`, while fewer than 2 re-opens have run and the envelope covers one. Append 3 new
+[ ] 3.11 RE-OPEN at `plateau`, or once when 3.12 at the loop's exit has a taken `B<n>`, while fewer than 2
+         re-opens have run and the envelope covers one. Append 3 new
          angles to `angles.md` as `| R<n> | one-line bet | source |`, each source one of `unexplored:<row>` ·
          `combine:<S#|candidate>+<S#|candidate>` · `gap:<dim>` (that dimension's latest `gap_to_3`) ·
          `attack:<open id>` · `invert:<the assumption every tried angle held fixed>` · `property:<4.1 property>` ·
@@ -176,13 +177,14 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
          Spawn generators as at 2.2, each with its angle, its source's text and the open-attack exclusions (RS8),
          never the loop history (in degraded mode the producer writes them). The P3 evaluators score each; the
          best by 3.6's rule continues the loop; the others go to `candidates/` and their ideas to `salvage.md`.
-         No plateau in the run → `not applicable(no plateau)`                                                  ev:
+         No plateau and no taken `B<n>` in the run → `not applicable(no plateau)`                              ev:
 [ ] 3.12 BOLD PATHS, once, at the first `plateau` or at the loop's exit if none came: every option that could meet the
          goal but lies outside the contract or A2 boundary (new data, training, engine, dependency, scope) →
          `bold.md` as `| B<n> | path | outside what | needs | price (agents + the user's own units) | targets
          (criterion or OUTCOME) | what would show it failed |`, read from `unexplored.md`'s `outside` rows, 1.2's
          declined instrument and skeptics' Alternative attacks. Put to the user in one batch (A6): taken →
-         re-authorized as at 1A.6 before any action, then a 3.11 source; declined or unanswered → `unexplored.md`
+         re-authorized as at 1A.6 before any action, then a 3.11 source (at the loop's exit it opens 3.11 even
+         without a plateau, and P3R waits for that re-open); declined or unanswered → `unexplored.md`
          `user declined(B<n>)`. `none` only with the sources read listed                                       ev:
 
 P3R RECEPTION  → personas/
@@ -312,7 +314,7 @@ agents = 1 (row 0.8) + 0 (P1 spawns nothing)
 **Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`; after those, every
 pre-P5 row not yet evidenced reads `precondition unmet(<the row that recorded the exit>)` (earlier-pass evidence
 stands; a degraded-list row keeps `no spawn`), and P5 runs. A BLOCKed run resumes only as a new wish. A 3R.3
-re-entry or 4.2's bonus reopens P3, and P3R follows that cycle again; ENTER lines, 3R.3 and P4 read the latest
+re-entry, 4.2's bonus or a bold path taken at the exit's 3.12 reopens P3, and P3R follows that cycle again; ENTER lines, 3R.3 and P4 read the latest
 pass. 3R.2-3R.3's cap is N; the +1 is 4.2's alone; 3.11's re-opens do not advance the cycle counter. The report's
 `exit:` is fixed when P5 opens, as the first that applies of `BLOCK` > `budget-reached` > `single-agent-best-effort`
 > `reception-demoted` > `ACCEPT` > `cap-reached` > `diminishing-returns`. `budget-reached` fires at whichever spawn

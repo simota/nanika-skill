@@ -19,8 +19,8 @@ sanitized record.
 
 One block per wish, appended at row 5.5 and copied verbatim to `.nanika/runs/<slug>/ledger-entry.md`, which is
 5.5's `ev:` because ID1 resolves only paths inside the run directory. For a run declined at 1A.6, the entry is
-written at the decline, with `mode` from row 0.8, `dims_at_ceiling`, `comparative`, `engines`, `verify_by` and
-`ask_after` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about.
+written at the decline, with `mode` from row 0.8, `dims_at_ceiling`, `outcome_measured`, `comparative`, `engines`,
+`verify_by` and `ask_after` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about.
 Where a field's vocabulary is owned elsewhere, the field takes it verbatim.
 
 ```yaml
