@@ -190,11 +190,11 @@ printf '| `gone.md` | nothing |\n' >> "$d/$SKILL/MANIFEST.md"
 case_ fail "a MANIFEST.md row for an absent file" "MANIFEST.md lists gone.md"
 
 new_ stale-page
-sed -i.bak 's/of 57</of 56</' "$d/docs/index.html"; changed_ "$d/docs/index.html"
+sed -i.bak 's/of 59</of 58</' "$d/docs/index.html"; changed_ "$d/docs/index.html"
 case_ fail "a public page showing a stale row count" "docs/index.html does not show"
 
 new_ stale-readme
-sed -i.bak 's/57-row card/56-row card/' "$d/README.md"; changed_ "$d/README.md"
+sed -i.bak 's/59-row card/58-row card/' "$d/README.md"; changed_ "$d/README.md"
 case_ fail "a README naming a stale row count" "README.md does not name"
 
 echo

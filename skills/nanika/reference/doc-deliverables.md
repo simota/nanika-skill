@@ -5,7 +5,7 @@
 file to each generator spawn**, which reads it whole, and the orchestrator attaches it likewise to the outline
 build and to every P3 revision spawn, each carrying W11b's sentence; the orchestrator reads **§5** at P1, because the W12
 gate becomes the reader-path rubric dimension row 1.10 writes. `SKILL.md` P1's `READ:` line carries that
-conditional and §8 counts it.
+conditional and §7 names it.
 
 Code has tests; documents have readers. So quality here means: the declared reader can make the declared
 decision from the artifact alone, every externally-checkable fact is grounded, and the set is internally

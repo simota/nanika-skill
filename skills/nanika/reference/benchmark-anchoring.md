@@ -12,61 +12,37 @@ Contents: §1 what an anchor is and what each row must carry (B1-B7) · §2 the 
 **§3 the 1A.3 checker: four verdicts, four schemas (B8-B11)** · §4 disposition at 1A.4 (B12) ·
 §5 the Provenance Gate (B13).
 
-A ceiling defined only by the system that must reach it can be satisfied by mediocrity. This phase goes and
-finds out what excellent looks like for this class of artifact, writes the score-3 descriptors *from what
-it found*, and then hands the whole thing to a worker that did not run the sweep.
+A ceiling defined only by the system that must reach it can be satisfied by mediocrity. This phase finds what
+excellent looks like for this class of artifact, writes the score-3 descriptors from what it found, and hands
+the whole thing to a worker that did not run the sweep.
 
 ---
 
 ## §1 — What an anchor is, and what each row must carry
 
-**B1 — An anchor is an exemplar of excellence, not a reproduction target.** The sweep looks for the best
-existing artifacts of the deliverable's class and the specific properties that make them best; the counts
-are row 1A.1's. Two disciplines follow and neither is optional. **Reachability is demonstrated, not
-assumed** — an artifact that scores 3 exists, and its locator is in `anchors.md`, which is a stronger
-guarantee than a panel agreeing that a bar "seems achievable". And **do not copy the exemplar**: it
-calibrates the bar, and row 4.1 asks whether ours *wins*, not whether it *resembles*. The gate does not guarantee that imitation loses; similarity is not quality evidence.
+**B1 — An exemplar calibrates the bar; it is not a reproduction target.** Its locator in `anchors.md` shows that a
+score-3 artifact exists. Do not copy it: row 4.1 asks whether ours *wins* on each property, not whether it
+resembles the exemplar.
 
-**B2 — Every row carries a locator that someone else can open.** A `file:line` inside a repository the run
-can read, or a URL. A locator is not a title, a description, a search phrase or "the well-known X" —
-whether it resolves is decided by a worker that was not in the sweep's context (B8), so a locator that
-depends on knowing what the sweep meant has already failed. Reject locators are held to the same standard
-(B6), because ID3(e) opens them.
+**B2 — Every row carries a locator someone else can open**: a `file:line` the run can read, or a URL. Not a title,
+a description or "the well-known X". Reject locators are held to the same standard, because ID3(e) opens them.
 
-**B3 — Every row carries the verbatim span at that locator.** The span is copied from the artifact, not
-recalled: long enough to contain the property and no longer. A span that has been tidied, elided with an
-ellipsis, translated or reflowed is a mismatch waiting to be reported as one — B8's checker compares what
-it reads against this string.
+**B3 — Every row carries the verbatim span at that locator**, copied, not recalled: long enough to contain the
+property and no longer. A tidied, elided, translated or reflowed span is a mismatch at B8.
 
-**B4 — Every row names the property the span shows, and names the dimension that property anchors.** An
-exemplar with no articulated property is admiration, not an anchor: "it's beautiful" anchors nothing,
-"every state change is acknowledged within 100ms and never with a spinner" anchors a dimension. **One
-named property anchors at most one dimension**, unless the run declares `shared-property(n)` in the report
-header — five dimensions resting on one property is a legal run and an undeclared one is not, which is
-what row 1A.2's dimension clause and ID3(c) make countable. The mapping is the orchestrator's judgment and
-has no auditor; `SKILL.md` §7 prices that.
+**B4 — Every row names its property and the dimension that property anchors.** "It's beautiful" anchors nothing;
+"every state change is acknowledged within 100ms and never with a spinner" anchors a dimension. One property
+anchors at most one dimension unless the header declares `shared-property(n)`.
 
-**B5 — The control is ordinary, not absurd, and it is the same class of artifact doing the same job.**
-Same house style, same medium, same purpose, competent-but-unremarkable execution. Without a low anchor,
-calibration is one-sided and cannot detect an evaluator that scores everything high. **Why "ordinary" is a
-rule and not a preference:** a deliberately terrible control inflates every exemplar-control gap resting on
-it and still passes P2's calibration threshold, so choosing one is the cheapest way to fake a wide ceiling.
-That is the failure `non-comparable` (B10) exists to catch, and it is the reason the control's locator and
-span are held to B2 and B3 exactly as an exemplar's are.
+**B5 — The control is ordinary, not absurd: the same class of artifact doing the same job**, competently and
+unremarkably. An absurd control inflates every exemplar-control gap and still passes 2.3's threshold, which is
+what `non-comparable` (B10) catches. Its locator and span follow B2 and B3.
 
-**B6 — Every named property carries a reject list.** Each rejected candidate carries **its own locator**
-and one line on why it lost *on that property* — not why it is a worse document generally. Row 1A.1 owns
-the minimum count and owns `unchallenged` for a one-candidate sweep. **Every reject locator must resolve**,
-which is what ID3(e) counts; a reject list of plausible-sounding titles is the same defect as an invented
-exemplar, one level down. `SKILL.md` §7 prices what ID3(e) does not check.
+**B6 — Every named property carries a reject list**: each rejected candidate with its own locator and one line on
+why it lost *on that property*. Row 1A.1 owns the minimum count and `unchallenged`.
 
-**B7 — Source discipline: use the tiers, do not redefine them.** `evidence.md` owns the T1-T4 trust tiers
-and this file does not restate them. For a sweep: a T1 first-party source is checked against the artifact
-itself rather than its own description of itself; a T2 source tells you what the makers *thought* was
-excellent and carries low weight on whether it *is*; a T3 critique is usually the richest source of a
-*named property* and is still corroborated; a T4 source is a lead toward what people notice and never an
-anchor on its own. The tier a locator came from is recorded next to it, because a descriptor's strength is
-partly the strength of where it was found.
+**B7 — Record each locator's trust tier** (`evidence.md` rules, T1-T4) beside it. A T1 source is checked against
+the artifact rather than its self-description; a T4 source is a lead, never an anchor on its own.
 
 ## §2 — The anchor record on disk
 
@@ -126,11 +102,8 @@ it read in each case:
 | `non-separating` | the control has the property too, so **the property cannot distinguish a 3 from a 1** | the control clause that carries it |
 | `non-comparable` | the control is **not the same class of artifact doing the same job**, so the comparison decides nothing | the clause or feature that puts it in a different class |
 
-This is the rule that catches the level above B9. A genuinely excellent document with a narrow property
-named off it passes every earlier check *honestly*: the reject list beats real candidates, the property is
-really there, and B11's `none-better-found` is *true*, because a trivial property has no stronger exemplar
-anywhere. What a trivial property cannot do is fail to appear in the control. **Like B9 this is a judgment,
-not a re-read** — A5 says so — so the same discipline binds: the clause, never a bare word.
+A trivial property named off an excellent document passes B8, B9 and B11 honestly; what it cannot do is be
+absent from the control. Like B9 this is a judgment, so it names the clause, never a bare word.
 
 ```
 SEPARATION:
@@ -204,4 +177,4 @@ the gate re-runs. The stakes are specific to wish: a `silent` rubric dimension m
 the system, for the system, on an axis the user never endorsed, and every mechanism after the freeze will
 maximize it faithfully.
 
-`SKILL.md` §7 prices the gate's weakness: the classifier is the agent that wrote the contract.
+Its weakness: the classifier is the agent that wrote the contract (`evidence.md` §4).

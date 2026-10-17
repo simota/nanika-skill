@@ -12,9 +12,9 @@ This is an ownership index, not a count of executable instructions or a reliabil
 | `evaluations.md` | E1–E4 protocols, all `NEVER RUN`; E3 deletion decisions are not null-significance tests |
 | `evaluator-loop.md` | Scoring, revision and pairwise schemas; domain gates remain under N7 |
 | `evaluator-roster.md` | Evaluator roles, generators and simulated cold-read personas |
-| `evidence.md` | Literature scope and sources; borrowed evidence is not measured nanika effectiveness |
+| `evidence.md` | Literature scope and sources, mechanism rationale and known defeats; borrowed evidence is not measured nanika effectiveness |
 | `identities.md` | Card addresses, ID1–ID10 and the record-accounting audit |
-| `nanika-ledger.md` | Usage history and retrospective self-report, not objective quality |
+| `nanika-ledger.md` | Usage history, `verify_by` and the outcome backfill; self-report, not objective quality |
 | `refutation-panel.md` | Single-pass critique and attack disposition |
 | `run-discipline.md` | Contract lint, decisions, acceptance provenance and completion integrity |
 

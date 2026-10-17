@@ -1,11 +1,13 @@
 # evidence.md
 
 **Owns:** every literature figure this skill relies on — the claim, the effect size, **the scope it was
-measured in**, the source, the retrieval date and the trust tier. **Read when:** never during a run. Read
+measured in**, the source, the retrieval date and the trust tier; and §4, what each kept mechanism is meant
+to buy and what defeats it. **Read when:** never during a run. Read
 when a figure is questioned, or before any figure is added to `SKILL.md`.
 
 Contents: rules of this file · §1 figures cited inline in `SKILL.md` · §2 relied on, cited nowhere ·
-§3 abandoned mechanisms, and what would bring each back.
+§3 abandoned mechanisms, and what would bring each back · §4 what each kept mechanism is meant to buy, and
+what defeats it.
 
 Rules of this file. The first is `SKILL.md` A4 applied to the figures rather than restated: A4 owns the
 wording, this file owns the register.
@@ -25,25 +27,25 @@ wording, this file owns the register.
 
 ---
 
-## §1 — Figures cited inline in `SKILL.md`
+## §1 — Figures cited in the skill
 
-Each of these appears at exactly one use-site in the skill. The use-site is named so the pair can be
-checked by grep from either end.
+Each figure appears at exactly one use-site, in `SKILL.md` or in §4 below, which is never read during a run.
+The use-site is named so the pair can be checked by grep from either end.
 
 | tag | claim, with its effect size | **scope it was measured in** | source | tier | use-site |
 |---|---|---|---|---|---|
-| EV-10 | Top reasoning models hold near-perfect adherence into the low hundreds and then decay (threshold decay); best model 68.9% at 500 instructions, o3(high) 62.8%; primacy bias peaks at mid-range densities and fades at 300+ | IFScale: 20 models, 7 providers, **atomic keyword instructions**, 10→500. **Not** multi-clause procedural steps — the use-site states the unit mismatch and no longer computes an execution-capacity ratio | https://arxiv.org/html/2507.11538v1 | T3 | `SKILL.md` §0 item 6 |
-| EV-12 | Failures on lengthened simple tasks are execution, not reasoning; an agent's own past errors in context raise its future error rate, and model scale does not fix it (thinking mitigates it) | Long-horizon execution benchmark; plan and knowledge given explicitly, so the failure is isolated to execution | https://arxiv.org/abs/2509.09677 | T3 | `SKILL.md` N2 (the P3 block carries the bare tag) |
-| EV-14 | Instruction Compliance Rate 0% under default conditions while models verbally agreed (Claude Sonnet 4: 10/10 agreed, 10/10 bypassed) — a gap up to 100 percentage points; nine blinded human raters (Fleiss κ 0.130) correctly identified 0 of 15 compliant sessions. Instruction content explains 35.8% of compliance variance vs 8.9% for position (η²) | 6 frontier models, 2,031 sessions, 13 experiments; **stated-vs-actual process compliance**, not self-audit vs external audit — the P5 use of it is an analogy and is phrased as description | https://arxiv.org/pdf/2605.01771 | T3 | `SKILL.md` §0 item 3 (P5 block and §7 carry the bare tag) |
-| EV-16a | Reference-guided grading cut judge failure from 70% to 15% (−55pp) — the largest single effect in this file | **Math grading with a reference answer** — GPT-4 judge, 20 judgments (14/20 → 3/20). No one has measured it for rubric grading of prose; the skill states the borrowing at the use-site. | https://ar5iv.labs.arxiv.org/html/2306.05685 | T3 | `SKILL.md` §7 kept table (N6 carries the bare tag) |
-| EV-16b | Position-swap consistency: Claude-v1 23.8%, GPT-3.5 46.2%, GPT-4 65.0% — a single-pass pairwise verdict is partly a verdict about position | MT-Bench pairwise judging, stress test of two similar GPT-3.5 answers per first-turn question, default prompt; 23.8% is the **floor** of the range and is named as a floor | https://ar5iv.labs.arxiv.org/html/2306.05685 | T3 | `SKILL.md` P4 block (§7 and `evaluations.md` E1 carry the bare tag) |
+| EV-10 | Top reasoning models hold near-perfect adherence into the low hundreds and then decay (threshold decay); best model 68.9% at 500 instructions, o3(high) 62.8%; primacy bias peaks at mid-range densities and fades at 300+ | IFScale: 20 models, 7 providers, **atomic keyword instructions**, 10→500. **Not** multi-clause procedural steps — the use-site states the unit mismatch and no longer computes an execution-capacity ratio | https://arxiv.org/html/2507.11538v1 | T3 | `SKILL.md` §0 item 5 |
+| EV-12 | Failures on lengthened simple tasks are execution, not reasoning; an agent's own past errors in context raise its future error rate, and model scale does not fix it (thinking mitigates it) | Long-horizon execution benchmark; plan and knowledge given explicitly, so the failure is isolated to execution | https://arxiv.org/abs/2509.09677 | T3 | `SKILL.md` N2 |
+| EV-14 | Instruction Compliance Rate 0% under default conditions while models verbally agreed (Claude Sonnet 4: 10/10 agreed, 10/10 bypassed) — a gap up to 100 percentage points; nine blinded human raters (Fleiss κ 0.130) correctly identified 0 of 15 compliant sessions. Instruction content explains 35.8% of compliance variance vs 8.9% for position (η²) | 6 frontier models, 2,031 sessions, 13 experiments; **stated-vs-actual process compliance**, not self-audit vs external audit — the P5 use of it is an analogy and is phrased as description | https://arxiv.org/pdf/2605.01771 | T3 | `SKILL.md` §0 item 3 (§4 carries the bare tag) |
+| EV-16a | Reference-guided grading cut judge failure from 70% to 15% (−55pp) — the largest single effect in this file | **Math grading with a reference answer** — GPT-4 judge, 20 judgments (14/20 → 3/20). No one has measured it for rubric grading of prose; the skill states the borrowing at the use-site. | https://ar5iv.labs.arxiv.org/html/2306.05685 | T3 | §4 below (`SKILL.md` N6 carries the bare tag) |
+| EV-16b | Position-swap consistency: Claude-v1 23.8%, GPT-3.5 46.2%, GPT-4 65.0% — a single-pass pairwise verdict is partly a verdict about position | MT-Bench pairwise judging, stress test of two similar GPT-3.5 answers per first-turn question, default prompt; 23.8% is the **floor** of the range and is named as a floor | https://ar5iv.labs.arxiv.org/html/2306.05685 | T3 | `SKILL.md` §4, P4 line (§4 below and `evaluations.md` E1 carry the bare tag) |
 | EV-17 | Self-preference is causally tied to self-recognition: GPT-4 recognises its own text 73.5% of the time; fine-tuning recognition upward raises self-preference linearly | News-summarisation judging (CNN/DailyMail, XSUM), single-model self-evaluation. Used here as the **contradiction** to A5's asserted half, not as support for it | https://ar5iv.labs.arxiv.org/html/2404.13076 | T3 | `SKILL.md` A5 |
-| EV-19 | Showing or falsifying an author label swings **preference** votes up to 50pp, and **pointwise** ratings up to 12pp | 3 evaluator models, judging with and without author labels. P2's judging is pointwise, so 12pp is the applicable figure — **both numbers are at the use-site**, with which one applies stated there, because this file is never read during a run | https://arxiv.org/html/2508.21164v1 | T3 | `SKILL.md` §7 kept table |
-| EV-20 | Intrinsic self-correction without external feedback **degrades** performance on every benchmark tested | Reasoning benchmarks, no external validator. The converse — that a fresh-context instance of the same model supplies the missing signal — is **not** in this row and is not measured anywhere in this file | https://arxiv.org/abs/2310.01798 | T3 | `SKILL.md` A5 — **N1, §3's degraded-mode block and §7 all carry the bare tag** |
-| EV-21 | Multi-agent debate does not reliably beat CoT or self-consistency at matched or greater compute; model heterogeneity is "a universal antidote" | 5 MAD methods × 9 benchmarks × 4 models. Claim confirmed; **numbers unconfirmed-lead** | https://arxiv.org/abs/2502.08788 | T3 | `SKILL.md` §7 contradicted-classes |
-| EV-22 | Isolated self-correction beats unguided homogeneous debate (Qwen2.5-7B: GSM-Hard 61.0% vs 58.8%, the 61.0 not re-verified; MMLU-Hard 66.7% vs 60.7%) at 2.1-3.4× the tokens; sycophantic conformity (modal adoption up to 85.5%); consensus voting discards correct answers already in the pool — an "oracle gap" up to 32.3pp | Teams of 10 homogeneous 7-8B models (Qwen2.5-7B, Llama-3.1-8B, Ministral-3-8B), 3 rounds, GSM-Hard/MMLU-Hard — verifiable answers; not significant for every model. The oracle-gap claim is why P2 refuses majority aggregation; it is **not** evidence about prose quality | https://arxiv.org/html/2605.00914v1 | T3 | `SKILL.md` **card row 2.7** (§7 contradicted-classes carries the bare tag), so the refusal sits on the row that enforces it |
-| EV-23 | Self-consistency over sampled chains: +17.9pp GSM8K, +11.0 SVAMP, +12.2 AQuA, +6.4 StrategyQA, +3.9 ARC-c over CoT | **Majority vote** over sampled reasoning chains, verifiable answers. Rows 2.7 and 3.6 keep the best-scoring artifact instead of voting, so the skill states that this support does not transfer | https://arxiv.org/abs/2203.11171 | T3 | `SKILL.md` §7 kept table |
-| EV-24 | Checklist feedback beats scalar reward models for instruction following (RLCF: +5.4% rel. FollowBench hard-satisfaction, +6.9% rel. InFoBench, +6.4% rel. Arena-Hard) | **Training-time** evidence on instruction-following benchmarks — not inference-time rubric use. Numbers **unconfirmed-lead** (abstract-level; PDF unreadable at retrieval), which is why the skill imports the direction and no number | https://arxiv.org/abs/2507.18624 | T3 | `SKILL.md` §7 kept table |
+| EV-19 | Showing or falsifying an author label swings **preference** votes up to 50pp, and **pointwise** ratings up to 12pp | 3 evaluator models, judging with and without author labels. P2's judging is pointwise, so 12pp is the applicable figure — **both numbers are at the use-site** in §4, with which one applies stated there | https://arxiv.org/html/2508.21164v1 | T3 | §4 below |
+| EV-20 | Intrinsic self-correction without external feedback **degrades** performance on every benchmark tested | Reasoning benchmarks, no external validator. The converse — that a fresh-context instance of the same model supplies the missing signal — is **not** in this row and is not measured anywhere in this file | https://arxiv.org/abs/2310.01798 | T3 | `SKILL.md` A5 — **§3's degraded-mode block and §4 below carry the bare tag** |
+| EV-21 | Multi-agent debate does not reliably beat CoT or self-consistency at matched or greater compute; model heterogeneity is "a universal antidote" | 5 MAD methods × 9 benchmarks × 4 models. Claim confirmed; **numbers unconfirmed-lead** | https://arxiv.org/abs/2502.08788 | T3 | §4 below |
+| EV-22 | Isolated self-correction beats unguided homogeneous debate (Qwen2.5-7B: GSM-Hard 61.0% vs 58.8%, the 61.0 not re-verified; MMLU-Hard 66.7% vs 60.7%) at 2.1-3.4× the tokens; sycophantic conformity (modal adoption up to 85.5%); consensus voting discards correct answers already in the pool — an "oracle gap" up to 32.3pp | Teams of 10 homogeneous 7-8B models (Qwen2.5-7B, Llama-3.1-8B, Ministral-3-8B), 3 rounds, GSM-Hard/MMLU-Hard — verifiable answers; not significant for every model. The oracle-gap claim is why P2 refuses majority aggregation; it is **not** evidence about prose quality | https://arxiv.org/html/2605.00914v1 | T3 | `SKILL.md` **card row 2.7** (§4 below carries the bare tag), so the refusal sits on the row that enforces it |
+| EV-23 | Self-consistency over sampled chains: +17.9pp GSM8K, +11.0 SVAMP, +12.2 AQuA, +6.4 StrategyQA, +3.9 ARC-c over CoT | **Majority vote** over sampled reasoning chains, verifiable answers. Rows 2.7 and 3.6 keep the best-scoring artifact instead of voting, so the skill states that this support does not transfer | https://arxiv.org/abs/2203.11171 | T3 | §4 below |
+| EV-24 | Checklist feedback beats scalar reward models for instruction following (RLCF: +5.4% rel. FollowBench hard-satisfaction, +6.9% rel. InFoBench, +6.4% rel. Arena-Hard) | **Training-time** evidence on instruction-following benchmarks — not inference-time rubric use. Numbers **unconfirmed-lead** (abstract-level; PDF unreadable at retrieval), which is why the skill imports the direction and no number | https://arxiv.org/abs/2507.18624 | T3 | §4 below |
 
 ---
 
@@ -94,10 +96,55 @@ instead of a citation.
 | Majority-vote aggregation at P2 | discards correct answers already in the pool [EV-22] | a measurement of the oracle gap for **prose** candidate selection showing it smaller than the variance best-of-n reduces |
 | Multi-agent debate | contradicted at matched compute [EV-21]; conformity rises per round [EV-22] | a debate variant with independent, non-interacting rounds measured against the current single-round panel — which is what the panel already is; a *discussion* variant does not come back |
 | Near-ceiling pre-mortem | duplicated the panel's Omission and Durability angles at the same trigger | an E3 ablation showing the panel misses a class the pre-mortem caught |
-| Failure-modes table (24 rows) | every mitigation was a pointer to a section above it | nothing; the phase blocks now state each failure at its point of use. If E4 shows drift at a specific phase, that phase's block gets the row, not a table |
+| Failure-modes table (24 rows) | every mitigation was a pointer to a section above it | nothing; card rows now carry each instruction at its point of use. If E4 shows drift at a specific row, that row is shortened, not explained |
 | Per-host model-name table | model names age faster than anything else in the document | nothing. Role names in `engine-map.md` are the portable form |
 | Run-level `Done when` | seven clauses, each already a P5 card row | nothing; it restated rows in different words, the same delete-test duplication `run-discipline.md` §1 condition 8 lints for in a run's contract |
 | Standalone rows 2.4 (inflation re-prompt) and 3.3 (score cites an observation), in an earlier revision's numbering | each was one clause with no artifact of its own; folded into 2.3 and 3.2, which already produce files | an E2 content sample showing the folded clause is dropped more often than the standalone row was — a measurable claim, and currently an assumption |
 | Standalone row 4.3 (bonus-cycle cap), folded into 4.2 | one clause, no artifact of its own; 4.2 is where the bonus is spent, so the cap sits on the row that spends it | the same E2 evidence as the row above: a folded clause dropped more often than the standalone row it replaced |
 | The `spawns/` clauses on card rows 2.2 and 2.4 | they bound two spawn kinds and left the rest to §0 prose; **N6** binds every spawn in one clause | nothing as a card row. What *would* change the design is a `spawns/` identity — and there is no cheap one, because no identity can distinguish a written prompt from an issued one. E2's second sample measures the ratio without claiming to settle it |
 | A fourth `ext` cell for the challenge, and a second opinion on the property verdict | both cost a spawn the envelope prices, a card row, and an ID8 arithmetic change; neither fixes the fact that a same-model judgment stays a same-model judgment [EV-17] | a host with a reachable second engine at 1A.7, so the challenge and the property verdict can come from a different family — the only version of this that is not more of the same |
+| Phase commentary blocks and the rationale tables in `SKILL.md` | prose on the orchestrator's path that executed nothing; two run slips (salvage passed without its table, a frozen clause retyped at calibration) happened beside rows whose rule lived elsewhere | each rule moved onto its row as a command or schema (2.3, 2.6, 3.3); the rationale is §4 below. Bring prose back only if an E4 run shows a row misread for want of it |
+| `diminishing-returns` at the first plateau | ended runs on the first idea's plateau with no new hypothesis generated | rows 3.9 and 3.11: a plateau re-opens the tournament twice before the exit is legal. An E3 ablation showing re-opens buy nothing would bring the old exit back |
+| The orchestrator computing ID1-ID10 at P5 | audit arithmetic on the run path of the agent being audited | row 5.7's auditor computes them and returns the terminal line; in degraded mode the orchestrator still does, as advisory |
+
+---
+
+## §4 — What each kept mechanism is meant to buy, and what defeats it
+
+**Retained hypotheses, not established quality gains.** Each row is one ablation for `evaluations.md` E3.
+
+| # | Mechanism (rows) | Intended role, unmeasured in nanika | Evidence |
+|---|---|---|---|
+| 1 | Contract → frozen rubric (1.9-1.12, 1A.8) | keep the user's criteria stable | checklist feedback beats scalar reward — **training-time** only [EV-24] |
+| 2 | Sourced anchor, re-quoted, property-, separation- and challenge-checked (1A.1-1A.4) | make the benchmark inspectable | design argument; the re-read is mechanical, the verdicts are not (A5) |
+| 3 | Blind-pair calibration (2.3) | screen gross grading failures | reference-guided grading cut **math**-grading judge failure 70% → 15%; borrowed, unmeasured for prose rubrics [EV-16a] |
+| 4 | Angle tournament, blind, shuffled (2.1-2.7) | more than one first idea, judged without authorship | author labels swing **pointwise** ratings up to 12pp (the figure that applies) and preference votes up to 50pp (a setting not used) [EV-19]; best-of-n is supported only as majority vote, which 2.7 and 3.6 do not use [EV-23] |
+| 5 | Salvage wiring (2.6 → 3.3) | keep losing ideas reachable, with locators | structural |
+| 6 | Independent acceptance checking (N1, A5) | no producer self-certification | [EV-20]; the same-model converse is asserted, not measured |
+| 7 | Refutation panel, one non-interacting round (3.4-3.5) | the attack surface the rubric cannot see | debate is contradicted at matched compute and conformity rises per round [EV-21, EV-22]; kept only because row 3.4 forbids a second round. If it becomes a discussion, cut it |
+| 8 | Reception stop-spans and the return edge (3R.1, 3R.3) | simulated cold-read friction tied to the artifact | grep-checkable; spends cycles inside §3's cap |
+| 9 | Both-order exit gate, per property (4.1) | a pairwise verdict not decided by position | [EV-16b] |
+| 10 | Identity audit by a non-participant (5.7) | recompute the recorded accounting | [EV-14]; fabricated but consistent records still pass |
+| 11 | Spawn and engine preflight (0.8, 1A.7) | a detected dispatch path, not a declared one | structural; the failure was observed in this skill's own run |
+| 12 | OUTCOME fixed before generation (1.2, 3.2, 3.6, 5.2) | a change counts only past measured noise | design argument; no figure |
+| 13 | Plateau re-open from named sources (3.9, 3.11, 4.2) | new hypotheses when the first idea stalls | design argument; motivated by run exits on a plateau with no new hypothesis. No measurement |
+| 14 | Bold-path pricing (3.12) | options outside the boundary reach the user with a price | design argument; motivated by a run that left one unpriced |
+
+**How this gets defeated from the inside.** Each leaves the report clean; the residue named is all there is.
+
+| Defeat | Residue |
+|---|---|
+| A weak exemplar, or a trivial property off a strong one | partial: reject lists (ID3(e) opens each locator), 1A.3's challenge and its separation verdict against the control. Two straw rejects and a lazy `none-better-found` still pass; a narrow property genuinely absent from the control passes too |
+| Five dimensions on one property | closed as a silent state: `shared-property(n)` must print (ID3(c)) |
+| An absurd control | partial: `non-comparable` at 1A.3, one same-class judgment |
+| A false `not-run:` reason | form only: ID1 closes the vocabulary; `no spawn` is cross-checked by ID10 and `no external worker` by ID8, the rest are not checked for truth |
+| `evaluators: calibrated` typed over failing pairs | ID9 recomputes each verdict from the pair scores; a wholly fabricated scorecard passes |
+| A `spawns/` prompt with no spawn, or an `ext/` record the orchestrator wrote | **none**: the record raises the cost of forgery, it does not detect it |
+| A `silent` element written up as `ratified` | weak: the classifier wrote the contract; A2 has no auditor |
+| Salvage all `deferred`, attacks reclassified `unproven-because-new` | visible, not prevented: ID4 and ID5 print each bucket on the terminal line |
+| A re-open whose three angles restate the plateaued one in new words | weak: 3.11 requires a named source per angle and one `invert:`, but whether a bet truly differs is the orchestrator's judgment |
+| A bold path left off `bold.md` | weak: 3.12 reads three named sources; an option nobody wrote down is not caught |
+| An evidence file that exists but evidences nothing | **none**: ID1 checks that a path resolves. E2 measures this hole rather than closing it |
+
+The harness cannot tell a well-made artifact from a well-made *record* of one. A dropped step leaves an empty
+cell, an unresolving path or an illegal `not-run:` reason, **provided 5.7 ran**.
