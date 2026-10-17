@@ -1,141 +1,72 @@
 # refutation-panel.md — the gauntlet
 
-**Owns:** how to brief a skeptic, the angle menu, the evidence-vs-novelty discipline, verdict aggregation,
-the ratification duty, and the hard exclusions.
-**Read when:** at **P3**, from the first cycle where all rubric dimensions reach 2 — the trigger row 3.4
-carries. Not read before that; read again in any cycle a 3R.3 re-entry or 4.2's bonus opens, which must
-re-ratify at 3.5 on the revised artifact.
-
-Contents: §1 briefing a skeptic (G1) · §2 evidence vs novelty (G2) · §3 staging (G3) · §4 the ratification
-duty (G4) · §5 verdict aggregation (G5) · §6 hard exclusions (G6).
+**Owns:** how to brief a skeptic, the angle menu, the evidence-vs-novelty discipline, verdict aggregation, the
+ratification duty, and the hard exclusions.
+**Read when:** at **P3**, from the first cycle where all rubric dimensions reach 2 (row 3.4's trigger), and again
+in any cycle a 3R.3 re-entry or 4.2's bonus opens, which must re-ratify at 3.5.
 
 The panel's target claim is fixed and singular:
 
 > **"This artifact satisfies the frozen criteria without a material overlooked defect."**
 
-Every skeptic is asked to destroy that claim from an assigned angle. A claim survives only if it withstood a
-genuine attempt to refute it.
-
 ---
 
-## §1 — How to brief a skeptic (G1)
+## G1 — How to brief a skeptic
 
-**G1.** A skeptic is briefed to **actively refute**, never to "evaluate". A worker asked to evaluate hedges;
-one asked to kill a named claim finds the real weakness. The brief carries the claim above verbatim, one
-assigned angle from the table below, the frozen rubric with its version tag, and N6's remaining fields.
-Spread skeptics per `engine-map.md` §4 and tag each skeptic's
-engine in the record: the same priors produce the same blind spots. A skeptic that scored the artifact
-carries its own score as a prior and is excluded on that ground; a skeptic that produced or revised it is
-excluded by N1.
+A skeptic is briefed to **actively refute** that claim from one assigned angle, never to "evaluate": a worker asked
+to evaluate hedges. The brief carries the claim verbatim, one angle from the table below, `rubric-frozen.md` with its
+version tag, and N6's fields. Spread skeptics per `engine-map.md` §4 and tag each one's engine. A skeptic that scored
+the artifact is excluded (its score is a prior); one that produced or revised it is excluded by N1. Row 3.4 carries
+the panel's conditions; their consequence for the brief writer: never hand a skeptic another skeptic's return, never
+re-run a skeptic against a reply, never let the panel converge on a shared verdict.
 
-**Row 3.4 carries the panel's conditions** — how many skeptics, that their angles are distinct, that each is
-briefed without the others' output, that the panel runs for **one round**, and that returns are aggregated
-against the rubric rather than voted. They live on the row so that they are countable, and they are not
-restated here. What belongs here is the operational consequence for whoever writes the briefs: never hand a
-skeptic another skeptic's return, never re-run a skeptic against a reply, and never let the panel converge
-on a shared verdict. `SKILL.md` §7 says why these conditions are the panel's licence: a second round, or one skeptic reading
-another, turns it into the debate the evidence argues against.
-
-**Return schema (N6).** Each skeptic returns, per attack:
-`ATTACK: {angle, claim_attacked, evidence: <span, file:line, or command + output>, class: refuted-on-evidence |
-unproven-because-new, confidence: high | low, falsifier: <what would show it wrong>}`. The orchestrator
-disposes each into ID5's buckets. A `refuted-on-evidence` attack whose evidence is reproduced and whose
-`confidence` is `high` → `open` (→ `fixed` once a later cycle removes it); evidence not reproduced, or
-`confidence: low` → `killed`, with the reason recorded. An `unproven-because-new` attack → that bucket,
-with its falsifier, whatever its confidence.
-
-**Angle selection** — pick per deliverable, one skeptic each:
+**Return schema.** Per attack: `ATTACK: {angle, claim_attacked, evidence: <span, file:line, or command + output>,
+class: refuted-on-evidence | unproven-because-new, confidence: high | low, falsifier: <what would show it wrong>,
+outside_boundary: true | false}`. `outside_boundary: true` marks an Alternative that needs something outside the
+contract or A2 boundary; the orchestrator copies it into `bold.md` at row 3.12 and does not act on it.
 
 | Angle | The attack |
 |-------|-----------|
-| **Alternative** | "A materially different approach would have been better, and here it is." The strongest attack available, and the one the tournament exists to pre-empt |
-| **Recipient** | "The named recipient will not respond the way this assumes." Distinct from P3R: this is argued, not simulated |
-| **Durability** | "This is best *today*. It degrades, dates, or breaks under the conditions it will actually meet" |
-| **Omission** | "The best version of this contains something absent here" — a section, a case, a state, an audience |
-| **Substance** | "This scores 3 because it performs excellence rather than achieving it" — the attack on rubric-gaming |
+| **Alternative** | "A materially different approach would have been better, and here it is" |
+| **Recipient** | "The named recipient will not respond the way this assumes" — argued, not simulated as in P3R |
+| **Durability** | "This degrades, dates, or breaks under the conditions it will actually meet" |
+| **Omission** | "The best version of this contains something absent here" |
+| **Substance** | "This scores 3 because it performs excellence rather than achieving it" |
 | **Feasibility** | "This cannot actually be delivered, used, or maintained as built" |
 
-## §2 — The evidence-vs-novelty discipline (G2)
+## G2 — Kill weak work, not bold work
 
-**G2.** The panel must **kill weak work, not bold work**, and every attack is classified on the distinction
-that separates them:
+- **Refuted-on-evidence** — a concrete fact defeats the claim. Before 3.5 it enters the next brief as a surviving
+  attack; at 3.5 it demotes the candidate ACCEPT to REVISE.
+- **Unproven-because-new** — the artifact does something unusual and no precedent shows it works. That is the
+  signature of a bet, not grounds for demotion. It goes to ID5's own bucket with its falsifier, which the terminal
+  line prints, so a demotion-avoiding reclassification shows its count.
 
-- **Refuted-on-evidence** — a concrete fact defeats the claim: a better alternative exists and here it is;
-  the recipient demonstrably behaves otherwise; the artifact fails a named condition. This is a real
-  refutation: before 3.5 it enters the next `REVISION_BRIEF` as a surviving attack; at 3.5 it demotes the
-  candidate ACCEPT to REVISE.
-- **Unproven-because-new** — the artifact does something unusual and no precedent shows it works. "We have
-  no proof this lands" is the signature of a genuine bet, not grounds for demotion.
+## G3 — Staging
 
-**When unsure which class an attack is, class it `refuted-on-evidence` only if it is an evidence claim.** A choice that survives evidence-based
-refutation but remains unproven-because-new is recorded as a flagged residual — named, with what would
-falsify it — never silently demoted. **Every such call routes into ID5's own bucket**, which is where a
-demotion-avoiding reclassification becomes visible: `SKILL.md` §5's terminal line prints that bucket beside
-the others, so an ACCEPT preserved by reclassifying attacks prints its own count.
+Attacking an artifact at score 1 returns the known gap at the price of a full panel. A cycle below row 3.4's
+threshold spawns no skeptics, and their envelope term is not spent.
 
-> The gate exists to stop *plausible-but-not-actually-best* from shipping, not to enforce conservatism.
-> Penalizing a wish for lacking proof that could only exist after delivery is the exact failure this guards
-> against.
+## G4 — The ratification duty
 
-## §3 — Staging: why the panel does not run every cycle (G3)
+At a candidate ceiling the panel decides whether the run terminates (row 3.5). It sits **inside** the rubric oracle:
+it cannot ratify what the rubric scored below 3, lower the ceiling, or invent a dimension. An attack no dimension
+can express routes to `SKILL.md` §6 (row 3.10), not to a second verdict.
 
-**G3.** Attacking an artifact with a known gap at score 1 produces the gap as the attack, at the price of a
-full panel. The panel is expensive and its value is entirely in **what the rubric cannot see**, which only
-becomes visible once the rubric is close to satisfied. Rows 3.4 and 3.5 own the two triggers — the cycle
-state at which the panel stages in, and the cycle state at which its role changes to ratification. This rule
-owns only the reason, and one consequence of it: a cycle whose dimensions have not reached the staging
-threshold does not spawn skeptics, and the envelope term for them is not spent.
+## G5 — Verdict aggregation
 
-## §4 — The ratification duty (G4)
+Dispose each attack on its own evidence, never by head-count. A `refuted-on-evidence` attack at `confidence: high`
+whose evidence the orchestrator reproduces → `open` (→ `fixed` once a later cycle removes it). Evidence not
+reproduced, or `confidence: low` → `killed`, reason recorded. `unproven-because-new` → that bucket, whatever its
+confidence. Every attack appears in the report's Gauntlet section; row 3.5 carries the `open` ones as generator
+exclusions so the loop does not rediscover the same dead end.
 
-**G4.** At a candidate ceiling the panel's role changes: it is not advising, it is deciding whether the run
-terminates. Row 3.5 owns the ratify-or-demote action and the carry of surviving attacks as generator exclusions;
-`SKILL.md` §3's exit table owns the arithmetic of what an ACCEPT requires, including the surviving-attack
-term, and it is not reproduced here. What this rule owns is the panel's standing:
+## G6 — Hard exclusions
 
-**The panel is inside the rubric oracle, not beside it.** It cannot ratify something the rubric scored below
-the ceiling, it cannot lower the ceiling, and it cannot invent a dimension. An attack that no rubric
-dimension can express is not a panel verdict at all — it routes to the bounded amendment (`SKILL.md` §6,
-evidenced at row 3.10), user-ratified, at most once. A panel that acts as a second verdict has become a
-second oracle, and two oracles make the loop's termination arbitrary.
-
-## §5 — Verdict aggregation (G5)
-
-**G5.** Aggregate the independent returns; do not reconcile them.
-
-- **Evidence decides, never a head-count.** Each attack is disposed on its own evidence against the frozen
-  rubric, as row 3.4 requires: one attack refuted-on-evidence, returned at `confidence: high`, whose evidence the orchestrator can reproduce
-  demotes however many skeptics did not raise it, and an attack that is merely unproven does not demote —
-  the claim survives, and the attack goes to ID5's `unproven-because-new` bucket with the flagged residual
-  §2 requires, however many skeptics raised it. Counting skeptics who agree is the vote row 3.4
-  and `SKILL.md` §7 exclude.
-- **A surviving attack is a fact about the artifact, not about the skeptic.** A surviving attack is one the
-  artifact failed (ID5's `open`); record each, and the killed ones; row 3.5 carries the surviving attacks into the next cycle as exclusions so the loop
-  does not rediscover the same dead end.
-- **Surface, don't bury.** Every attack raised, killed, survived-then-fixed, still open, or
-  unproven-because-new appears in the report's Gauntlet section, and ID5 sums that partition. What a plateau
-  exit with open attacks is called is `SKILL.md` §3's business.
-
-## §6 — Hard exclusions (G6)
-
-**G6.** Three things the panel's disposal may never do, and three ways over-correcting fails.
-
-- **A verdict flips on new evidence, never on pressure.** An objection from the generator, the user, or a
-  louder panelist is not a refutation; only a fact that was not in the record is. Evidence updates the
-  verdict no matter who supplies it, including the party being refuted. Name the triggering evidence, or do
-  not flip.
-- **The panel does not authorize destructive or irreversible action.** A refutation implying that something
-  outside this wish's scope should be deleted, published or rewritten is a finding for the user, not a
-  mandate (N8).
-- **A low-confidence attack never demotes.** A skeptic unsure of its evidence returns `confidence: low`, and
-  §1's disposal kills it with the reason recorded; a low-confidence demotion at the ceiling costs a full
-  cycle for a hunch.
-
-The goal is independence from pressure, not refusal to move:
-
-- **Contrarian drift** — objecting by default, hedging every claim. Disagreement has become the posture
-  rather than the finding. At the ceiling this manufactures cycles.
-- **Disclaimer substitution** — "the final call is yours" appended to an attack that already decided.
-  Returning responsibility in words while removing it in substance.
-- **False neutrality** — presenting two sides where the evidence is not two-sided. Declining to demote must
-  not flatten a real gap into a balanced-looking summary.
+- **A verdict flips on new evidence, never on pressure.** An objection from the generator, the user or a louder
+  panelist is not a refutation; only a fact not already in the record is.
+- **The panel authorizes nothing destructive or irreversible.** A refutation implying that something outside the
+  wish's scope should be deleted, published or rewritten is a finding for the user (N8).
+- **A low-confidence attack never demotes.** Avoid contrarian drift (objecting by default), disclaimer substitution
+  ("the final call is yours" on an attack that already decided) and false neutrality (two sides where the evidence
+  has one).

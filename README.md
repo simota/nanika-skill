@@ -56,6 +56,7 @@ It counts what it cost. Computed per run, never quoted from a brochure:
 agents = 1 preflight + X sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
        + C angles + J judges (≥ 3) + 1 outline build (outline only)
        + (N+1) × (1 revision + D evaluators + K skeptics)
+       + R × (3 generators + 3 × D evaluator passes) plateau re-opens (R ≤ 3)
        + (P personas + re-scored dims) × reception passes + 4 pairwise × P4 passes + D re-score + 1 audit
        + J + D blind-pair passes + re-prompts, replacements, void re-runs, wrapped-domain work and retries
 ```
@@ -122,7 +123,7 @@ README.md
 docs/index.html                       the page at the project site
 tools/check.sh                        the fixture battery behind `make test`
 skills/nanika/
-  SKILL.md                            57-row card and 14 rule addresses; referenced tables also bind
+  SKILL.md                            59-row card and 14 rule addresses; referenced tables also bind
   MANIFEST.md                         reference ownership, not an execution-capacity estimate
   reference/
     identities.md                     the ten that must balance, with worked examples
@@ -141,7 +142,7 @@ skills/nanika/
 
 ## The ledger
 
-`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and — backfilled at the *next* one — whether it actually satisfied you.
+`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and — backfilled whenever you choose to answer, at the next wish or by a call that only records it — whether it actually worked and satisfied you.
 
 Raw quotes, prompts and losing candidates are not automatically safe to retain or commit. A2 controls their disclosure and retention.
 

@@ -5,7 +5,7 @@
 file to each generator spawn**, which reads it whole, and the orchestrator attaches it likewise to the outline
 build and to every P3 revision spawn, each carrying W11b's sentence; the orchestrator reads **§5** at P1, because the W12
 gate becomes the reader-path rubric dimension row 1.10 writes. `SKILL.md` P1's `READ:` line carries that
-conditional and §8 counts it.
+conditional and §7 names it.
 
 Code has tests; documents have readers. So quality here means: the declared reader can make the declared
 decision from the artifact alone, every externally-checkable fact is grounded, and the set is internally
@@ -64,9 +64,12 @@ Its score-3 descriptor is anchored like every other dimension — against the P1
 
 **The reader-path check is run *as* the W1 reader**, and the reviewer is never the author. In a wish this overlaps the P3R reception simulation, and the two are deliberately different: W12's reader-path check is a scored dimension run by an evaluator who *knows* the contract; a P3R persona knows nothing. Both run. A document that passes the first and fails the second is the common and expensive case.
 
-## 6. Failure modes prevented
+## 6. Failure modes each rule targets
 
-| Failure | Mitigation |
+Each row names the failure a rule is aimed at, not a measured preventive effect; no evaluation has tested
+these rules (`evaluations.md`, all `NEVER RUN`).
+
+| Failure | Rule aimed at it |
 |---------|------------|
 | Technically perfect document for the wrong reader | W1 audience + decision, W2 register |
 | Silent rot | W3 as-of + review trigger |

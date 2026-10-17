@@ -5,9 +5,8 @@ provenance, and completion integrity.
 **Read when:** at **P1**, for §1's eight lint conditions (row 1.12) and §2's Decision Ledger, which binds from
 row 1.9 to P5; and at **P5**, for §5's classes (row 5.2) and §6's completion sweep (row 5.3). The two read triggers are task contexts, not measured instruction loads.
 
-Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §3 drift control, relocated · §4
-independent verification, relocated · §5 acceptance provenance (Q12-Q15) · §6 completion integrity
-(Q16-Q19). Q1-Q3 were retired.
+Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §5 acceptance provenance (Q12-Q15) · §6
+completion integrity (Q16-Q19). Q1-Q3 were retired; Q7-Q11 now live on card rows 3.1, 3.7 and on N1, N3.
 
 The nanika machinery attempts to improve the artifact. These rules keep the *run* honest while it does — a run that
 quietly lowered its bar, dropped a criterion, or shipped a stub can still emit a beautiful Fulfillment
@@ -25,9 +24,9 @@ long run they often are — the disposition decides.
 
 **What it is not.** Repeating a failing approach is not perseverance: `SKILL.md` §3's exit table makes a
 repeated identical failure a `BLOCK`, and the response is to stop and diagnose, then try a *different*
-approach. Thrash is giving up while looking busy. Burning envelope past marginal value is the failure
-`budget-reached` exists to name, not a virtue — exiting at `diminishing-returns` with an honest residual gap
-**is** finishing. And grinding past a confirmation gate is not determination: the disposition raises effort,
+approach. Thrash is giving up while looking busy. A plateau is not a stop: row 3.11 re-opens the search with
+new bets, and only after its re-opens are spent is `diminishing-returns` with an honest residual gap finishing.
+Burning envelope past marginal value is the failure `budget-reached` exists to name, not a virtue. And grinding past a confirmation gate is not determination: the disposition raises effort,
 never permission (N8).
 
 ## §1 — Contract lint, run at the end of P1, not after P2
@@ -100,14 +99,6 @@ Every load-bearing decision made without the user gets a row, in `decisions.md` 
 An ASSUME-n row on the card (row 1.8) and a `DEC-n` row here are the same discipline at two moments: 1.8
 covers a contract element the user never supplied; a `DEC-n` covers a choice the run made after the contract
 froze.
-
-## §3 — Drift control, relocated
-
-Q7-Q8 are card rows 3.7 and 3.1, evidenced per cycle.
-
-## §4 — Independent verification, relocated
-
-Q9-Q11 are N1 with A5, N3 with `SKILL.md` §0 item 3, and row 3.7's semantic check.
 
 ## §5 — Acceptance provenance (Q12-Q15)
 

@@ -76,7 +76,7 @@ t-test.
 **How a null reads.** Three outcomes are pre-committed, and they partition every possible 95% CI for
 W − N by where it sits relative to +0.40:
 1. Upper bound below +0.40 → the skill does not buy its cost. `DELTA:` becomes
-   `MEASURED: no effect above +0.40 (n=18, CI …)` and §7's kept table is re-opened against E3.
+   `MEASURED: no effect above +0.40 (n=18, CI …)` and `evidence.md` §4's kept table is re-opened against E3.
 2. CI contains +0.40 → **inconclusive against the pre-registered effect**, reported as such. `DELTA:` stays
    `UNMEASURED` with the attempt recorded; a CI that also excludes 0 is reported as "a positive effect of
    undetermined size", never as a measured delta. This is the most likely outcome at n = 18 if the true effect is near +0.40 and saying so
@@ -101,7 +101,7 @@ that wrote the brief.
 **status: NEVER RUN.**
 
 **Question.** When a run reports a row as done, is the work behind it there? This is the measurement of
-the hole `SKILL.md` §7 admits with residue "None": ID1 checks that a path resolves, not that the file
+the hole `evidence.md` §4 admits with residue "none": ID1 checks that a path resolves, not that the file
 behind it evidences its row.
 
 **Method.** Over **5 completed W runs** from E1, with `R` = the card's row count read off the delivered
@@ -115,7 +115,7 @@ card rather than hardcoded here (AUD step 5's rule, applied to an evaluation):
   worker that did not run the wish, with the row text and the file, and asked one question: does this
   file evidence this row — `yes | no | cannot tell`. Report the three counts. This is the only place the
   content question is asked at all, and it is a sample, not a gate.
-- **Second sample, aimed at the residue §7 prices at "None":** in each run, every file in
+- **Second sample, aimed at the residue `evidence.md` §4 prices at "none":** in each run, every file in
   `spawns/` is checked against the run's own agent count and against `ext/` and `scorecards/`. A prompt
   file with no corresponding return anywhere in the run directory is *not* proof of a fake spawn, and the
   measurement is deliberately weak: report the count and the ratio, and treat a ratio far from 1 as a
@@ -131,7 +131,7 @@ interesting one: the paths resolve and the files say nothing. That result would 
 **status: NEVER RUN.** This is the evaluation that can only shrink this skill, which is why it is
 written before any result exists to defend.
 
-**Method.** One ablation per row of `SKILL.md` §7's kept-mechanisms table — **eleven rows, counted**. For
+**Method.** One ablation per row of `evidence.md` §4's kept-mechanisms table — **fourteen rows, counted**. For
 each, delete the mechanism (its card rows, its rules, its reference sections), run all three E1 briefs
 under the reduced skill, and score with the same blind judges and the same frozen rubric.
 
@@ -147,9 +147,10 @@ maximum sample size and multiple-ablation handling. A sequential design needs va
 than repeated unadjusted significance tests. Three briefs alone cannot establish a 0.15-point non-inferiority claim.
 
 **Ablations, in the order they will be run** (cheapest to delete first, so an early kill saves the rest):
-spawn/engine preflight (0.8, 1A.7) · salvage wiring (2.6 → 3.3) · reception spans (3R.1) · refutation
+spawn/engine preflight (0.8, 1A.7) · bold-path pricing (3.12) · salvage wiring (2.6 → 3.3) · reception spans (3R.1) · refutation
 panel (3.4-3.5) · identity audit (5.7) · both-order exit gate (4.1) · blind-pair calibration (2.3) ·
-independent acceptance checking (N1, A5) · angle tournament (2.1-2.7) · anchor with re-quote, property,
+independent acceptance checking (N1, A5) · OUTCOME fixed before generation (1.2) · plateau re-open (3.11) ·
+angle tournament (2.1-2.7) · anchor with re-quote, property,
 separation and challenge (1A.1-1A.4) · contract → frozen rubric (1.9-1.12, 1A.8).
 
 **A sub-ablation inside the anchor row.** The anchor row carries the most clauses of any kept mechanism,
@@ -185,11 +186,11 @@ card instead of adding explanatory prose. E3 can inform deletion only when its u
 
 | result | what changes in `SKILL.md` |
 |---|---|
-| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `MEASURED: no effect above +0.40 (n=18, CI …)`; §7's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
+| E1 outcome 1 (no effect above +0.40) | `delta:` becomes `MEASURED: no effect above +0.40 (n=18, CI …)`; `evidence.md` §4's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
 | E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
 | E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |
-| E2 low `yes` rate on the content sample | ID1's limitation stops being a footnote: either a content check earns a row, or §7's claim narrows again |
+| E2 low `yes` rate on the content sample | ID1's limitation stops being a footnote: either a content check earns a row, or `evidence.md` §4's claim narrows again |
 | E2's `spawns/` ratio far from 1 | not a detection — a question. It would put a `spawns/` identity on the next revision's agenda against whatever it must displace |
 | E3 upper loss bound below its prespecified margin, no hard-gate regression | remove the eligible mechanism at revision rather than defend it by elegance |
 | E3 anchor sub-ablations meeting that same decision rule | remove the eligible anchor clauses; report measured size and execution changes without a mixed-unit load ratio |
