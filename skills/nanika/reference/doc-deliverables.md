@@ -64,9 +64,12 @@ Its score-3 descriptor is anchored like every other dimension — against the P1
 
 **The reader-path check is run *as* the W1 reader**, and the reviewer is never the author. In a wish this overlaps the P3R reception simulation, and the two are deliberately different: W12's reader-path check is a scored dimension run by an evaluator who *knows* the contract; a P3R persona knows nothing. Both run. A document that passes the first and fails the second is the common and expensive case.
 
-## 6. Failure modes prevented
+## 6. Failure modes each rule targets
 
-| Failure | Mitigation |
+Each row names the failure a rule is aimed at, not a measured preventive effect; no evaluation has tested
+these rules (`evaluations.md`, all `NEVER RUN`).
+
+| Failure | Rule aimed at it |
 |---------|------------|
 | Technically perfect document for the wrong reader | W1 audience + decision, W2 register |
 | Silent rot | W3 as-of + review trigger |

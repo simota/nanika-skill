@@ -392,7 +392,7 @@ appended to `rubric-frozen.md` under `## R2`; a second request is §3's `BLOCK`.
 
 ## 7. Reference files
 
-Twelve, one level deep, each with its own `Owns:` and `Read when:` header. Ten are named by §4's `READ:` lines;
+Twelve, one level deep, each with its own `Owns:` and `Read when:` header. Nine are named by §4's `READ:` lines;
 `identities.md` is handed to the 5.7 auditor; `evidence.md` (figures, what each mechanism is meant to buy, and what
 defeats it) and `evaluations.md` load on question only, never during a run. `doc-deliverables.md` is attached whole
 to every generator and revision spawn when the class is `document`.

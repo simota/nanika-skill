@@ -115,7 +115,7 @@ brief, `cycles/<n>-brief.md`, deduplicated across evaluators and ordered by the 
 | S<n> | from <blind id> | idea | locator | open |
 ```
 
-Keep the brief inside what one pass can act on: thirty items produce thirty half-fixes. A 4.2 bonus brief opens
+Keep the brief inside what one pass can act on — a design choice, not a measured effect: a thirty-item brief invites thirty half-fixes. A 4.2 bonus brief opens
 with the lost property, the exemplar's span and the loss's `evidence_span`, then carries the items above.
 
 ## L7 — Loop control and the comparability guard

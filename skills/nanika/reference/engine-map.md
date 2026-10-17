@@ -7,7 +7,7 @@ names every spawn is authored in; and how roles are spread across engines.
 model string anywhere else is a portability defect, and the claim "porting nanika is an edit to one file" is
 false the moment one leaks.
 **Read when:** **P0**, for §2a — and **P1A**, for §2b. Those are the two `READ:` lines that name this file
-and the two loads `SKILL.md` §7 counts. §3 and §4 are consulted while writing a spawn at P2, P3, P3R and
+and the two loads `SKILL.md` §4's `READ:` lines make. §3 and §4 are consulted while writing a spawn at P2, P3, P3R and
 P4; that is the same file already open, not a third load.
 
 Contents: §0 capability → tool · §1 why engine diversity is worth its cost · **§2a spawn preflight

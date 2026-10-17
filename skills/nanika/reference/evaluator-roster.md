@@ -61,7 +61,7 @@ other once, an evaluator scores one artifact every cycle.
 
 | # | Rule | Discipline |
 |---|------|-----------|
-| RS3 | **Three judges minimum, and each sees a different order** | Three is the floor at which a single idiosyncratic judge stops deciding the tournament. Engine spread is `engine-map.md` §4's; a monoculture panel is declared, never implied (N5). Provenance stripping and the recorded shuffle seed are card row 2.4's; this rule owns only the count. |
+| RS3 | **Three judges minimum, and each sees a different order** | Three is a chosen floor, not a measured one: with fewer, a single idiosyncratic judge can decide the tournament alone. Engine spread is `engine-map.md` §4's; a monoculture panel is declared, never implied (N5). Provenance stripping and the recorded shuffle seed are card row 2.4's; this rule owns only the count. |
 | RS4 | **Every judge returns a salvage list** | For each candidate it did *not* rank first, the judge names the specific ideas worth grafting into the winner — an idea and where it is, not "the tone was good". This is what row 2.6 collects and row 3.3 carries until it is consumed, deferred or carried. A tournament that discards its losing candidates whole bought a lottery ticket, not a search. **Return:** one `EVALUATION` (`evaluator-loop.md` L4) per candidate with `cycle: 0` and `evaluator: "judge + <blind candidate id>"`, plus `SALVAGE: [{from: <blind id>, idea, locator: <file:line in that candidate>}]`, which row 2.6 copies into `salvage.md` one row per idea; "ranked first" means the judge's highest weighted score. |
 
 Aggregate by mean weighted score across judges. Break a tie on the count of first-place placements, then on the
