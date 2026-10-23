@@ -73,6 +73,7 @@ SCORECARD:
     - pass: 1
       labelled_control: false          # true on a pass-2 re-prompt, which names the control (row 2.3)
       prompt: "spawns/<scorer>-pass<k>.md"
+      rubric_version: R1 | R2          # the rubric current when that prompt was built; ID9 checks the prompt against it
       pairs:                           # written by the SCORER, before it sees any candidate
         - dimension: "<name>"          # one pair per anchored dimension it scores; others are listed `no-pair`
           items:

@@ -83,9 +83,10 @@ descriptor; its scores are advisory. A scorer that produced any score is an imba
 advisory scores then carry `scorer_id: producer(advisory)` and are no scorer. **Recompute:** row 2.3's rule is
 deterministic over each pass's pairs: every pair `exemplar = 3 ∧ control ≤ 2 → calibrated`, otherwise
 `re-prompted` on the first pass and `replaced` on the second. A written verdict that disagrees is an imbalance.
-**Re-prompt fidelity:** every pass-2 prompt file named on a scorecard contains `rubric-frozen.md`'s R1 block whole (a §6 amendment
-appends `## R2` after earlier prompts were built): `sed '/^## R2$/,$d' rubric-frozen.md | grep -v '^$' | grep -cvxFf
-<prompt>` prints `0` (no frozen line missing from the prompt).
+**Re-prompt fidelity:** every pass-2 prompt file named on a scorecard contains, whole, the rubric its pass's
+`rubric_version` names (L5): for R1 the text before `## R2` (`sed '/^## R2$/,$d' rubric-frozen.md`, since a §6
+amendment appends R2 after earlier prompts were built), for R2 all of `rubric-frozen.md`. That text piped through
+`grep -v '^$' | grep -cvxFf <prompt>` prints `0` (no frozen line missing from the prompt).
 Source: 2.3, 3.2.
 
 **ID10 — the mode.** `mode: single-agent(declared)` ⟺ **exactly** the fourteen rows in `SKILL.md` §3's degraded
