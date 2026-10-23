@@ -104,9 +104,9 @@ P1 CRYSTALLIZE  (orchestrator only — no spawns; ask per `crystallization-dialo
 [ ] 1.12 contract lint run (`run-discipline.md` §1, 8 conditions), each marked pass/fail                       ev:
 
 P1A ANCHOR, VERIFY, THEN FREEZE  (schemas: `benchmark-anchoring.md`)  → anchors.md, requote.md, rubric-frozen.md
-[ ] 1A.1 exemplar sweep → `anchors.md` in §2's layout: >=1 exemplar and >=1 control, each with LOCATOR, VERBATIM
-         SPAN, NAMED PROPERTY and, per property, a REJECT LIST of >=2 beaten candidates with locators; a
-         one-candidate sweep writes `unchallenged`                                                             ev:
+[ ] 1A.1 exemplar sweep → `anchors.md` in `benchmark-anchoring.md` §2's layout: >=1 exemplar and >=1 control,
+         each with LOCATOR, VERBATIM SPAN, NAMED PROPERTY and, per property, a REJECT LIST of >=2 beaten
+         candidates with locators; a one-candidate sweep writes `unchallenged`                                 ev:
 [ ] 1A.2 every score-3 descriptor rewritten to cite an exemplar, its property AND the dimension it anchors; every
          score-1 to the control; one property per dimension unless the header declares `shared-property(n)`    ev:
 [ ] 1A.3 ext — a worker that did not run the sweep gets `benchmark-anchoring.md` §3 and `anchors.md`, writes
@@ -152,7 +152,8 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
         `grep '| open |' salvage.md >> cycles/<n>-brief.md`, so every row travels with its locator; then
         `echo "salvage open=$(grep -c '| open |' salvage.md) brief=$(grep -c '| open |' cycles/<n>-brief.md)" >> cycles/<n>.md`.
         Unequal → rebuild before spawning. After the revision each row's status in `salvage.md` becomes
-        `grafted <where>` · `rejected <why>` · `deferred <why>`, or stays `open`                                ev:
+        `grafted <where>` · `rejected <why>` · `deferred <why>`, or stays `open`; a row still `open` when P5 opens
+        under any exit but `budget-reached` becomes `deferred <no revision followed>` (ID4)                    ev:
 [ ] 3.4 panel staged in at all-dims>=2 (`refutation-panel.md`): 2-4 skeptics, distinct angles; each briefed without
         the others' output, run for ONE round, and aggregated against the rubric rather than by vote           ev:
 [ ] 3.5 at all-dims=3 the panel ratified or demoted; surviving attacks (ID5 `open`) carried forward as generator
@@ -206,8 +207,9 @@ P4 EXIT GATE  → gate4.md
 [ ] 4.2 verdict acted on — a loss to the runner-up re-runs the P3 evaluators over the two and recomputes 3.6. A
         property lost to the exemplar spends the bonus cycle, briefed with that property, the exemplar's span
         and the loss's `evidence_span` (L6); if no direct revision follows from them, the bonus is a 3.11
-        re-open whose every angle is `property:<it>` (outside 3.11's count of 2). "No brief can be written" is
-        not a disposal. At most one bonus cycle; any second verdict is advisory, reported not acted            ev:
+        re-open whose every angle is `property:<it>` (outside 3.11's count of 2 and its `invert:` minimum).
+        "No brief can be written" is not a disposal. At most one bonus cycle; any second verdict is advisory,
+        reported not acted                                                                                     ev:
 
 P5 DELIVER  → report.md
 [ ] 5.1 Fulfillment Report from a fresh read of `rubric-frozen.md`, opening with §5's header; every §5 section

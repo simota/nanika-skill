@@ -36,8 +36,8 @@ contract or A2 boundary; the orchestrator copies it into `bold.md` at row 3.12 a
 
 ## G2 — Kill weak work, not bold work
 
-- **Refuted-on-evidence** — a concrete fact defeats the claim. Before 3.5 it enters the next brief as a surviving
-  attack; at 3.5 it demotes the candidate ACCEPT to REVISE.
+- **Refuted-on-evidence** — a concrete fact defeats the claim. Once G5 disposes it `open`, before 3.5 it enters the
+  next brief as a surviving attack; at 3.5 it demotes the candidate ACCEPT to REVISE.
 - **Unproven-because-new** — the artifact does something unusual and no precedent shows it works. That is the
   signature of a bet, not grounds for demotion. It goes to ID5's own bucket with its falsifier, which the terminal
   line prints, so a demotion-avoiding reclassification shows its count.

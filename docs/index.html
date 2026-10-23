@@ -192,7 +192,7 @@ footer{border-top:1px solid var(--rule);margin-top:3.2rem;padding-top:1.2rem;
     <li class="ph" data-reason="precondition unmet(1A.8)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P2</span><span class="pname">tournament</span><span class="rows">2.1–2.7</span><span class="enter"><b>enter</b>rows 1A.1–1A.8 evidenced</span><span class="verdict"></span></li>
     <li class="ph" data-reason="precondition unmet(2.7)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P3</span><span class="pname">converge</span><span class="rows">3.1–3.12</span><span class="enter"><b>enter</b>rows 2.1–2.7 evidenced</span><span class="verdict"></span></li>
     <li class="ph" data-reason="precondition unmet(3.9)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P3R</span><span class="pname">reception <span class="ret">↰ the one phase with a return edge</span></span><span class="rows">3R.1–3R.3</span><span class="enter"><b>enter</b>row 3.9's latest cycle carries an exit other than BLOCK or budget-reached</span><span class="verdict"></span></li>
-    <li class="ph" data-reason="precondition unmet(3.6)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, 3R.3 did not fire, and 3.9's latest exit is not BLOCK or budget-reached</span><span class="verdict"></span></li>
+    <li class="ph" data-reason="precondition unmet(3.6)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P4</span><span class="pname">exit gate</span><span class="rows">4.1–4.2</span><span class="enter"><b>enter</b>row 3.6 names the artifact, 3R.3 did not re-open P3, and 3.9's latest exit is not BLOCK or budget-reached</span><span class="verdict"></span></li>
     <li class="ph" data-reason="precondition unmet(4.2)"><span class="box" aria-hidden="true">[ ]</span><span class="pid">P5</span><span class="pname">deliver</span><span class="rows">5.1–5.7</span><span class="enter"><b>enter</b>rows 4.1–4.2 evidenced</span><span class="verdict"></span></li>
   </ul>
   <div class="card-foot">
@@ -362,7 +362,7 @@ make test      # assert that make check still catches things</code></pre>
 
   function run(){
     running = true; go.disabled = true; go.textContent = 'running';
-    var counts = [8,12,8,7,10,3,2,7], acc = 0, step = 340;
+    var counts = [8,12,8,7,12,3,2,7], acc = 0, step = 340;
 
     if (reduce){
       phases.forEach(land); settle(); return;

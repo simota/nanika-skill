@@ -5,8 +5,9 @@ not write it. **Read when:** never during a run. Read by whoever runs an evaluat
 checking what `DELTA: UNMEASURED` in `SKILL.md` is a claim about.
 
 **Every evaluation in this file is `status: NEVER RUN`.** None has produced a number. Nothing in
-`SKILL.md` is justified by a result from this file, and if it ever is, the header line
-`delta: UNMEASURED` is the token that must change — no other line in the skill claims a measured effect.
+`SKILL.md` is justified by a result from this file, and if it ever is, the report header's
+`delta: UNMEASURED` (`SKILL.md` §5) and the opening `DELTA: UNMEASURED.` paragraph are the tokens that must change —
+no other line in the skill claims a measured effect.
 
 Contents: E1 skill delta · E2 instruction-compliance vs verbal-compliance · E3 deletion control ·
 E4 weakest-tier survival · §5 what each result would change.
