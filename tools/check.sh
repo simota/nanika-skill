@@ -145,6 +145,22 @@ new_ host-path-leak
 printf '\nLink it into ~/.claude/skills.\n' >> "$d/$SKILL/reference/evaluator-loop.md"
 case_ fail "a host path outside engine-map.md" "host-specific name"
 
+# move_ <name> — rename the current copy, so a case can run under a path that
+# holds characters a regular expression would read as syntax.
+move_() {
+	mv "$d" "$TMP/$1" || exit 1
+	d=$TMP/$1
+}
+
+new_ regex-path-clean
+move_ 'regex*path'
+case_ ok "a clean tree under a path holding '*'"
+
+new_ regex-path-leak
+move_ 'regex[path'
+printf '\nSpawn it with the Claude Code Agent tool.\n' >> "$d/$SKILL/reference/evaluator-loop.md"
+case_ fail "a host-name leak under a path holding '['" "host-specific name"
+
 new_ parent-traversal
 printf '\nSee `../elsewhere/thing.md`.\n' >> "$d/README.md"
 case_ fail "a cited path reaching through a parent" "through a parent directory"
