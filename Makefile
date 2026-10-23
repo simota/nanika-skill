@@ -59,12 +59,17 @@ endif
 endif
 endif
 
+# LINKFOR names what was asked for, so a failure does not blame AGENT when
+# SKILLS_DIR or PROJECT replaced it.
 ifneq ($(SKILLS_DIR),)
 TARGETS := $(SKILLS_DIR)|$(SKILLS_DIR)
+LINKFOR := SKILLS_DIR=$(SKILLS_DIR)
 else ifneq ($(PROJECT),)
 TARGETS := $(PROJECT)|$(PROJECT)/.claude/skills
+LINKFOR := PROJECT=$(PROJECT)
 else
 TARGETS := $(sort $(foreach a,$(AGENT),$(tgt_$(a))))
+LINKFOR := $(AGENT)
 endif
 QTARGETS := $(foreach t,$(TARGETS),'$(t)')
 
@@ -96,7 +101,7 @@ link: ## symlink the skill into every installed host's skills dir
 	  mkdir -p "$$dir" && ln -s "$(SKILL)" "$$d" || exit 1; \
 	  echo "linked   $$d -> $(SKILL)"; n=$$((n+1)); \
 	done; \
-	if [ $$n -eq 0 ]; then echo "nothing linked - no skills directory found for: $(AGENT)" >&2; exit 1; fi; \
+	if [ $$n -eq 0 ]; then echo "nothing linked - no skills directory found for: $(LINKFOR)" >&2; exit 1; fi; \
 	echo "invoke it with:  nanika   (or /nanika in a slash-command harness)"
 
 unlink: ## remove the symlinks this Makefile created
@@ -146,7 +151,7 @@ check: ## verify the skill is self-contained and internally consistent
 	if grep -rlE '_quality/|_coding/|_planning/|registry/|refute\.py' "$(SKILL)" >&2; then \
 	  echo "MISS the skill reaches outside itself - standalone does not hold" >&2; fail=1; fi; \
 	if grep -rliE '(^|[^a-z0-9])(claude[ _-]?code|codex|agy|gemini|antigravity)([^a-z0-9]|$$)|\.claude/' "$(SKILL)" \
-	  | grep -vx "$(SKILL)/reference/engine-map.md" >&2; then \
+	  | grep -vxF "$(SKILL)/reference/engine-map.md" >&2; then \
 	  echo "MISS a host-specific name escaped engine-map.md" >&2; fail=1; fi; \
 	up=$$(grep -ohE '`[^`]*`' $(DOCS) | grep -E '^`(\.\./|.*/\.\./)'; grep -nE '\]\(\.\./' $(DOCS)); \
 	if [ -n "$$up" ]; then echo "$$up" >&2; \

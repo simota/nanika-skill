@@ -48,7 +48,7 @@ and still bounded by the contract's own length:
    archetype (rows 1.10, 1.11), and every descriptor not yet anchored is marked `invented-and-flagged` — 1A.2 is where
    that mark is discharged, and the lint only checks that it is present and honest.
 6. The envelope and the cycle cap are written (rows 0.4, 0.6), and `contract.md` names who is escalated to
-   on `BLOCK` and what ships on `budget-reached`.
+   on `BLOCK` and what ships on `budget-reached` (`SKILL.md` §3's exit table fixes both — the user, and best-so-far — so neither is asked).
 
 7. **Every element admits exactly one reading** (rows 1.1-1.7). The test is per element and it is
    mechanical, not taste: (a) every evaluative word carries a bound, a comparison target, or row 1.2's
@@ -66,7 +66,7 @@ and still bounded by the contract's own length:
    no acceptance criterion, oracle, non-goal, prohibited outcome, disappointment criterion or recipient
    changes reading, it was decoration — delete it. Restating one element in another element's words is the
    common case; cite the row instead of repeating it. **Two carve-outs, both binding.** User evidence follows A2: retain only permitted minimal quotes or explicitly approved summaries/redactions;
-   privacy-withheld evidence is not an unasked question (D6). And non-goals and prohibited
+   privacy-withheld evidence is not an unasked question (D9). And non-goals and prohibited
    outcomes are two axes, not a duplicated pair; condition 3 says why, and collapsing them is the
    characteristic wrong deletion here.
 

@@ -69,8 +69,8 @@ does name one for a control, it is filled in and assessed like any other.
 ## §3 — The 1A.3 checker: four verdicts, four schemas
 
 Row 1A.3 is an `ext` cell. The worker did not run the sweep, receives this section and `anchors.md`, and
-writes `requote.md`. It returns four kinds of record, in this order, and A5 states plainly which of them
-are mechanical and which are judgments.
+writes `requote.md`. It returns four kinds of record, in this order: B8's re-quote is a re-read, and B9-B10
+say plainly that their verdicts are judgments.
 
 **B8 — Verdict one, the re-quote: open every locator yourself and report what you read.** One line per
 locator, in a `## Locators` block that comes first in `requote.md` so its line count is the number ID3(a)

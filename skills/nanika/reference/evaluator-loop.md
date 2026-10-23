@@ -46,6 +46,7 @@ EVALUATION:
   evaluator_prompt_id: "<stable id>"   # required — half of the comparability guard in L7
   evaluator_model: "<role name>"       # required — the other half; a role, never a product name
   cycle: N
+  reception_pass: <k>                 # 3R.2 re-scores only (`evaluator-roster.md` §5); absent otherwise
   dimensions:
     - dimension: "<name>"
       score: 0-3
@@ -72,6 +73,7 @@ SCORECARD:
     - pass: 1
       labelled_control: false          # true on a pass-2 re-prompt, which names the control (row 2.3)
       prompt: "spawns/<scorer>-pass<k>.md"
+      rubric_version: R1 | R2          # the rubric current when that prompt was built; ID9 checks the prompt against it
       pairs:                           # written by the SCORER, before it sees any candidate
         - dimension: "<name>"          # one pair per anchored dimension it scores; others are listed `no-pair`
           items:
@@ -103,7 +105,7 @@ These are loop states, not run exits; the exit comes from `SKILL.md` §3's table
 brief, `cycles/<n>-brief.md`, deduplicated across evaluators and ordered by the gap to 3:
 
 ```
-# brief cycle N → N+1 · angle: <the generator's angle, unchanged> · rubric R1|R2 (attached: rubric-frozen.md)
+# brief cycle N → N+1 · angle: <the generator's angle, unchanged> · rubric R1|R2 (the version only; a reviser gets no rubric — N6, RS8)
 ## address
 - [dim: <name>, score 2] <gap_to_3> — <recommendation>
 - [surviving attack <id>] <claim> — <evidence>
@@ -112,7 +114,7 @@ brief, `cycles/<n>-brief.md`, deduplicated across evaluators and ordered by the 
 ## exclusions
 - <every ID5 `open` attack, so the reviser does not rediscover it>
 ## salvage   (built by row 3.3's grep; rows verbatim from salvage.md, never summarized or re-numbered)
-| S<n> | from <blind id> | idea | locator | open |
+<the rows row 3.3's grep appended, and nothing else — a copied template row would break its count>
 ```
 
 Keep the brief inside what one pass can act on — a design choice, not a measured effect: a thirty-item brief invites thirty half-fixes. A 4.2 bonus brief opens

@@ -83,4 +83,4 @@ Ledger mandatory; this rule is its schema and lifecycle.
 | D15 | **Delegate mode** | When the user says "just decide", switch to propose-and-confirm: make the call, record it as `ASSUME-n (delegated)` with an empty `Utterance`, continue. Checkpoints still fire — they present the delegated decisions for ratification instead of asking the original questions. Delegation compresses the dialogue; it never deletes the checkpoints, and it never converts an unasked row into an answered one. |
 
 Row 1.8 is the reason D15 cannot be a shortcut: nothing on the card distinguishes a delegated `ASSUME-n`
-from a question never asked except the row itself, which is why rows 1.2-1.7 say *asked*.
+from a question never asked except the row itself, which is why rows 1.2-1.5 say *asked*.

@@ -56,7 +56,7 @@ Source for all five: 1A.1-1A.4.
 **ID4 — salvage.** Over `salvage.md`, excluding `nothing salvageable` rows: `raised = grafted + rejected +
 deferred + carried`, where `carried` is a row still `open`. `carried` is legal only while the loop is open or
 when the exit is `budget-reached`. Every `cycles/<n>.md` carries row 3.3's `salvage open=… brief=…` line with
-the two numbers equal. Source: 2.6, 3.3.
+the two numbers equal. Source: 2.6, 3.3, 5.1.
 
 **ID5 — the gauntlet.** `attacks raised = killed + fixed + open + unproven-because-new`, and the
 `unproven-because-new` count appears on the terminal line. Source: 3.4, 3.5.
@@ -83,8 +83,10 @@ descriptor; its scores are advisory. A scorer that produced any score is an imba
 advisory scores then carry `scorer_id: producer(advisory)` and are no scorer. **Recompute:** row 2.3's rule is
 deterministic over each pass's pairs: every pair `exemplar = 3 ∧ control ≤ 2 → calibrated`, otherwise
 `re-prompted` on the first pass and `replaced` on the second. A written verdict that disagrees is an imbalance.
-**Re-prompt fidelity:** every pass-2 prompt file named on a scorecard contains `rubric-frozen.md` whole:
-`grep -v '^$' rubric-frozen.md | grep -cvxFf <prompt>` prints `0` (no frozen line missing from the prompt).
+**Re-prompt fidelity:** every pass-2 prompt file named on a scorecard contains, whole, the rubric its pass's
+`rubric_version` names (L5): for R1 the text before `## R2` (`sed '/^## R2$/,$d' rubric-frozen.md`, since a §6
+amendment appends R2 after earlier prompts were built), for R2 all of `rubric-frozen.md`. That text piped through
+`grep -v '^$' | grep -cvxFf <prompt>` prints `0` (no frozen line missing from the prompt).
 Source: 2.3, 3.2.
 
 **ID10 — the mode.** `mode: single-agent(declared)` ⟺ **exactly** the fourteen rows in `SKILL.md` §3's degraded
