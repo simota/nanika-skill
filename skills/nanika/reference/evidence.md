@@ -116,7 +116,7 @@ instead of a citation.
 | # | Mechanism (rows) | Intended role, unmeasured in nanika | Evidence |
 |---|---|---|---|
 | 1 | Contract → frozen rubric (1.9-1.12, 1A.8) | keep the user's criteria stable | checklist feedback beats scalar reward — **training-time** only [EV-24] |
-| 2 | Sourced anchor, re-quoted, property-, separation- and challenge-checked (1A.1-1A.4) | make the benchmark inspectable | design argument; the re-read is mechanical, the verdicts are not (`benchmark-anchoring.md` B8-B11) |
+| 2 | Sourced anchor, re-quoted, property-, separation- and challenge-checked (1A.1-1A.4) | make the benchmark inspectable | design argument; the re-read is mechanical, the verdicts are not (`benchmark-anchoring.md` B8, B9-B10) |
 | 3 | Blind-pair calibration (2.3) | screen gross grading failures | reference-guided grading cut **math**-grading judge failure 70% → 15%; borrowed, unmeasured for prose rubrics [EV-16a] |
 | 4 | Angle tournament, blind, shuffled (2.1-2.7) | more than one first idea, judged without authorship | author labels swing **pointwise** ratings up to 12pp (the figure that applies) and preference votes up to 50pp (a setting not used) [EV-19]; best-of-n is supported only as majority vote, which 2.7 and 3.6 do not use [EV-23] |
 | 5 | Salvage wiring (2.6 → 3.3) | keep losing ideas reachable, with locators | structural |

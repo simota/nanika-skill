@@ -152,8 +152,7 @@ P3 CONVERGE  (repeat per cycle; one `cycles/<n>.md` per cycle)
         `grep '| open |' salvage.md >> cycles/<n>-brief.md`, so every row travels with its locator; then
         `echo "salvage open=$(grep -c '| open |' salvage.md) brief=$(grep -c '| open |' cycles/<n>-brief.md)" >> cycles/<n>.md`.
         Unequal → rebuild before spawning. After the revision each row's status in `salvage.md` becomes
-        `grafted <where>` · `rejected <why>` · `deferred <why>`, or stays `open`; a row still `open` when P5 opens
-        under any exit but `budget-reached` becomes `deferred <no revision followed>` (ID4)                    ev:
+        `grafted <where>` · `rejected <why>` · `deferred <why>`, or stays `open`                                ev:
 [ ] 3.4 panel staged in at all-dims>=2 (`refutation-panel.md`): 2-4 skeptics, distinct angles; each briefed without
         the others' output, run for ONE round, and aggregated against the rubric rather than by vote           ev:
 [ ] 3.5 at all-dims=3 the panel ratified or demoted; surviving attacks (ID5 `open`) carried forward as generator
@@ -213,7 +212,8 @@ P4 EXIT GATE  → gate4.md
 
 P5 DELIVER  → report.md
 [ ] 5.1 Fulfillment Report from a fresh read of `rubric-frozen.md`, opening with §5's header; every §5 section
-        present or `N/A + one-line reason`                                                                     ev:
+        present or `N/A + one-line reason`. First, under any exit but `budget-reached`, every `salvage.md` row
+        still `open` becomes `deferred <no revision followed>` (ID4)                                           ev:
 [ ] 5.2 each acceptance criterion verified/partial/missed/dropped and each prohibited outcome held/violated/
         unverified, on separate axes (`run-discipline.md` §5). With an OUTCOME, its command re-run on the gated
         artifact and printed against the target; any improvement the report claims cites that value or is
