@@ -185,6 +185,9 @@ new_ phase-drift
 awk '/^P3R RECEPTION/ { print "[ ] 3.13 a P3 row the C1 per-phase list never counted" } { print }' \
 	"$d/$SKILL/SKILL.md" > "$d/tmp.md" && mv "$d/tmp.md" "$d/$SKILL/SKILL.md"
 sed -i.bak '/^\[ \] 4\.2 /d' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
+[ "$(grep -cE '^\[ \] [0-9]' "$SRC/$SKILL/SKILL.md")" = "$(grep -cE '^\[ \] [0-9]' "$d/$SKILL/SKILL.md")" ] \
+	&& grep -q '^\[ \] 3\.13 ' "$d/$SKILL/SKILL.md" \
+	|| { echo "check.sh: phase-drift no longer moves a row with the total unchanged" >&2; exit 1; }
 case_ fail "a row moved between phases, total unchanged" "C1 does not read the card's per-phase counts"
 
 new_ stale-page-phases

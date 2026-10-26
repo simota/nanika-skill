@@ -163,7 +163,7 @@ check: ## verify the skill is self-contained and internally consistent
 	[ "$$rows" = "$$census" ] || { echo "MISS the card has $$rows rows but identities.md §0 counts '$$census'" >&2; fail=1; }; \
 	perphase=$$(grep -E '^\[ \] [0-9]' "$(SKILL)/SKILL.md" | sed -E 's/^\[ \] ([0-9]+[A-Z]?)\..*/\1/' | uniq -c); \
 	c1=$$(printf '%s\n' "$$perphase" | awk '{ printf "%sP%s %s", s, $$2, $$1; s = " · " }'); \
-	tr '\n' ' ' < "$(SKILL)/reference/identities.md" | tr -s ' ' | grep -qF "$$c1" \
+	tr '\n' ' ' < "$(SKILL)/reference/identities.md" | tr -s ' ' | grep -qF "$$c1," \
 	  || { echo "MISS identities.md §0 C1 does not read the card's per-phase counts: $$c1" >&2; fail=1; }; \
 	js=$$(printf '%s\n' "$$perphase" | awk '{ printf "%s%s", s, $$1; s = "," }'); \
 	[ ! -f docs/index.html ] || grep -qF "counts = [$$js]" docs/index.html \

@@ -364,7 +364,7 @@ property:    n present / n absent / n not-assessed | not-run(<reason>)   reject-
 separation:  n separating / n non-separating / n non-comparable | not-run(<reason>)   shared-property(n) | one-per-dimension
 challenge:   none-better-found | out-anchored | re-anchored | not-run(<reason>)   engines: cross-engine(<list>) | monoculture(declared)
 evaluators:  n calibrated / n re-prompted / n replaced / n no-pair | not-run(<reason>)
-reception:   simulated-cold-read: passes(n) · re-entered(n) · demoted(0|1) · residual(n, cap spent | §6 declined | §6 used | void twice) | not-run(<reason>)
+reception:   simulated-cold-read: passes(n) · re-entered(n) · demoted(0|1) · residual(n, cap spent | §6 declined | §6 used | void twice | budget) | not-run(<reason>)
 exit gate:   vs-exemplar n properties: n won / n lost / n tied / n inconsistent · vs-runner-up won | lost(<property>) | tied | inconsistent | not-run(<reason>)
 identity:    pass | imbalance(n) | not-run(<reason>)      delta: UNMEASURED
 gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
