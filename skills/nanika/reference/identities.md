@@ -55,19 +55,25 @@ Source for all five: 1A.1-1A.4.
 
 **ID4 — salvage.** Over `salvage.md`, excluding `nothing salvageable` rows: `raised = grafted + rejected +
 deferred + carried`, where `carried` is a row still `open`. `carried` is legal only while the loop is open or
-when the exit is `budget-reached`. Every `cycles/<n>.md` carries row 3.3's `salvage open=… brief=…` line with
-the two numbers equal. Source: 2.6, 3.3, 5.1.
+when the exit is `budget-reached`. Every cycle whose L6 state is REVISE, a candidate ACCEPT the panel demoted at
+3.5 included, carries row 3.3's `salvage open=… brief=…` line in `cycles/<n>.md` with the two numbers equal,
+unless `BLOCK` or `budget-reached` stopped that cycle before row 3.3. A cycle whose state is candidate ACCEPT or
+BLOCK compiles no brief (L6) and owes no line. Source: 2.6, 3.3, 5.1.
 
 **ID5 — the gauntlet.** `attacks raised = killed + fixed + open + unproven-because-new`, and the
 `unproven-because-new` count appears on the terminal line. Source: 3.4, 3.5.
 
 **ID6 — reception.** `personas run = valid-span + void`, summed over every reception pass and counting a re-run as
-its own persona run; each void is followed by exactly one re-run or, when that is void too, a named residual;
+its own persona run; each void is followed by exactly one re-run or, when that is void too, a named residual —
+or, only when the run's exit is `budget-reached` and the re-run was the spawn it stopped, a residual naming that;
 `personas run = 0` is legal exactly when 3R.1 carries `not-run`. Source: 3R.1-3R.3.
 
 **ID7 — the contract's two axes.** `acceptance criteria = verified + partial + missed + dropped`;
-`prohibitions = held + violated + unverified`, counted separately. When `contract.md` carries an `OUTCOME:` line,
-`report.md`'s `outcome:` header field carries a value measured at 5.2, not `none`. Source: 1.2, 1.4, 5.2.
+`prohibitions = held + violated + unverified`, counted separately. `report.md`'s `outcome:` header field follows
+the form of `contract.md`'s `OUTCOME:` line, which row 1.2 always writes: a measurable `OUTCOME: {…}` → a value
+measured at 5.2, never `none`, unless the exit is `budget-reached` and no gated artifact exists, when it reads
+`none(budget-reached before an artifact)`; `OUTCOME: none(<why>)` → the same `none(<why>)`, reason verbatim.
+Source: 1.2, 1.4, 5.2.
 
 **ID8 — the external cells.** `ext cells = 3 = record-present + not-run`, where `record-present` is
 `ls ext/ | grep -cxE '(1A\.3|4\.1|5\.7)\.md'` — the three cell files by name, so support files in `ext/` do not
@@ -138,7 +144,7 @@ ID3  (a) requote.md 6 = 6 exact-match + 0 + 0 = anchors.md 6                    
      (c) 4 = 4 anchored + 0 + 0 → `sourced`; 4 properties over 4 dims → `one-per-dimension` — pass
      (d) 4 challenge returns = 4 none-better-found                                    — pass
      (e) 4 = 4 lists + 0 unchallenged; 8 reject locators resolve                       — pass
-ID4  9 = 6 grafted + 2 rejected + 1 deferred + 0 carried; each cycle's open = brief    — pass
+ID4  9 = 6 grafted + 2 rejected + 1 deferred + 0 carried; each REVISE cycle's open = brief — pass
 ID5  7 = 4 killed + 2 fixed + 0 open + 1 unproven-because-new                          — pass
 ID6  3 personas = 3 valid-span + 0 void                                                — pass
 ID7  5 criteria = 3 verified + 1 partial + 0 missed + 1 dropped; 2 prohibitions = 2 held;
@@ -181,6 +187,7 @@ ID1   a row reads `not-run: judged unnecessary`       → IMBALANCE(1): reason o
 ID3a  requote.md 5 lines vs anchors.md 6 locators      → IMBALANCE(1): a locator was never re-quoted
 ID3c  header `sourced` with 1 invented-and-flagged     → IMBALANCE(1): `sourced` requires anchored = descriptors
 ID4   cycles/2.md reads `salvage open=4 brief=2`       → IMBALANCE(1): two salvage rows never reached the reviser
+ID7   contract `OUTCOME: {…}`, report `outcome: none` → IMBALANCE(1): a measurable outcome was never measured
 ID8   `ext/4.1.md` absent while 4.1 is ticked          → IMBALANCE(1)
 ID9   exemplar 2 / control 3, verdict `calibrated`     → IMBALANCE(1): row 2.3's rule returns `re-prompted`
 ID9   a pass-2 prompt missing a frozen descriptor line → IMBALANCE(1): the re-prompt retyped the rubric

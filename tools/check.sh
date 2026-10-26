@@ -181,6 +181,19 @@ new_ census-drift
 printf '\n[ ] 5.8 a row the census never counted\n' >> "$d/$SKILL/SKILL.md"
 case_ fail "a card row the identities census misses" "identities.md §0 counts"
 
+new_ phase-drift
+awk '/^P3R RECEPTION/ { print "[ ] 3.13 a P3 row the C1 per-phase list never counted" } { print }' \
+	"$d/$SKILL/SKILL.md" > "$d/tmp.md" && mv "$d/tmp.md" "$d/$SKILL/SKILL.md"
+sed -i.bak '/^\[ \] 4\.2 /d' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
+[ "$(grep -cE '^\[ \] [0-9]' "$SRC/$SKILL/SKILL.md")" = "$(grep -cE '^\[ \] [0-9]' "$d/$SKILL/SKILL.md")" ] \
+	&& grep -q '^\[ \] 3\.13 ' "$d/$SKILL/SKILL.md" \
+	|| { echo "check.sh: phase-drift no longer moves a row with the total unchanged" >&2; exit 1; }
+case_ fail "a row moved between phases, total unchanged" "C1 does not read the card's per-phase counts"
+
+new_ stale-page-phases
+sed -i.bak 's/counts = \[8,12,8,7,12,3,2,7\]/counts = [8,12,8,7,10,3,2,7]/' "$d/docs/index.html"; changed_ "$d/docs/index.html"
+case_ fail "a public page animating a stale phase count" "does not animate the card's per-phase counts"
+
 new_ unknown-evidence
 printf '\nA figure nobody registered [EV-99].\n' >> "$d/$SKILL/SKILL.md"
 case_ fail "an [EV-n] tag with no evidence.md row" "cites EV-99"
