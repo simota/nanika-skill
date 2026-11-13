@@ -1,6 +1,6 @@
-# Reference manifest — twelve shipped files
+# Reference manifest: twelve shipped files
 
-The Run Card owns execution order. Each reference's **Read when:** header owns its load trigger.
+The Run Card owns execution order, and each reference's **Read when:** header owns its load trigger.
 This is an ownership index, not a count of executable instructions or a reliability estimate.
 
 | Reference | Owns |

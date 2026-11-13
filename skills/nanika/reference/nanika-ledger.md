@@ -1,21 +1,19 @@
-# nanika-ledger.md — the scarcity record
+# nanika-ledger.md: the scarcity record
 
 **Owns:** where the usage history lives, its schema, the counting rule, and the outcome backfill.
-**Read when:** **P0**, for rows 0.2-0.3. Row 5.5 appends one entry at P5 (a 1A.6 decline appends at the decline)
+**Read when:** P0, for rows 0.2-0.3. Row 5.5 appends one entry at P5 (a 1A.6 decline appends at the decline)
 from LG2's schema.
 
 A wish is scarce only if something counts it. Without a ledger, "once-in-a-lifetime" is a tone of voice.
 
----
-
-## LG1 — Location
+## LG1: Location
 
 `.nanika/ledger.md`, in the repository or project directory the wish is being spent on. Create it on first use.
 One YAML block per entry under a `## Entries` heading. It is distinct from `.nanika/runs/<slug>/`, which holds
 one run. A2 governs retention and sharing: keep it private and untracked by default; commit only an approved
 sanitized record.
 
-## LG2 — Schema
+## LG2: Schema
 
 One block per wish, appended at row 5.5 and copied verbatim to `.nanika/runs/<slug>/ledger-entry.md`, which is
 5.5's `ev:` because ID1 resolves only paths inside the run directory. For a run declined at 1A.6, the entry is
@@ -43,16 +41,16 @@ Where a field's vocabulary is owned elsewhere, the field takes it verbatim.
   outcome: pending             # pending | satisfied | partial | regretted | unknown — LG4 owns this field
 ```
 
-## LG3 — Counting rule
+## LG3: Counting rule
 
-P0 **counts entries**; it does not parse prose. The next wish number is the highest readable `wish:` value + 1;
+P0 counts entries; it does not parse prose. The next wish number is the highest readable `wish:` value + 1;
 an unreadable block's number is not reused. A missing file, or one with no `## Entries` section, counts as zero:
 a first wish. A block that is present but unreadable is not counted and is named to the user; repairing it is
 the user's call.
 
-## LG4 — Outcome backfill
+## LG4: Outcome backfill
 
-`outcome` is written `pending` at row 5.5. Row 0.3 asks about **every** `pending` entry whose `ask_after` has
+`outcome` is written `pending` at row 5.5. Row 0.3 asks about every `pending` entry whose `ask_after` has
 passed (an event counts as passed when the user says so), not only the last one, in these words:
 
 > "Wish #N (<date>, '<intent>') said it would be shown to work by: <verify_by>. Did that happen, and did it avoid
@@ -67,7 +65,7 @@ This is retrospective self-report, not a causal diagnosis or an objective qualit
 `outcome: unknown`, never a guessed value and never one inferred from `exit_reason`. A run can exit `ACCEPT` and
 still be regretted; that divergence is what this field measures.
 
-## LG5 — What the ledger is not
+## LG5: What the ledger is not
 
 It is not a permission system. A user who wants to spend wish #12 this month spends it; row 0.5 prices the cheaper
 path, row 0.7 records the override. A gate that refuses gets routed around, and a routed-around gate counts nothing.

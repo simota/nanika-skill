@@ -6,49 +6,51 @@ compatibility: "Needs a writable filesystem and a way to spawn an independent wo
 metadata:
   requires-capability: spawn-independent-worker
 ---
-# Wish — the one-shot delivery harness
+# Wish: the one-shot delivery harness
 
-**Use it** when a materially wrong first delivery is costly to undo and extra search beyond the domain process
+Use it when a materially wrong first delivery is costly to undo and extra search beyond the domain process
 has a specific use: a performance target the domain path could not reach, a document that must land with one
-named reader, a design that is expensive to rebuild. **Do not use it** for reversible work, for work the domain
-skill finishes on its own, or because a request says "important" or "best". Row 0.5 recommends the cheaper path
-in those cases, and nothing is spent without your approval at row 0.7.
+named reader, a design that is expensive to rebuild.
 
-**What it does on a hard problem that the domain skill alone does not:**
-- **Fixes the outcome before generating** (row 1.2). Where the result is measurable, the metric, its baseline
+Do not use it for reversible work, for work the domain skill finishes on its own, or because a request says
+"important" or "best". Row 0.5 recommends the cheaper path in those cases, and nothing is spent without your
+approval at row 0.7.
+
+On a hard problem, it does four things the domain skill alone does not:
+- It fixes the outcome before generating (row 1.2). Where the result is measurable, the metric, its baseline
   noise and the threshold a change must clear are written before any candidate exists. A change counts only
   when it clears that threshold, and the report prints the measured value against the target.
-- **Searches wide, and re-opens the search at a plateau** (rows 2.1, 3.11). Competing bets are judged
-  blind. When scores stall or one dimension sticks, the tournament re-opens with new bets drawn from
-  named sources (unexplored space, two near-misses combined, the stuck dimension's gap, open attacks, an
-  inverted assumption) instead of exiting or re-tuning the same idea.
-- **Prices the bold path to you** (row 3.12). An option outside the run's contract or data boundary (new data,
+- It searches wide, and re-opens the search at a plateau (rows 2.1, 3.11). Competing bets are judged blind.
+  When scores stall or one dimension sticks, the tournament re-opens with new bets drawn from named sources
+  (unexplored space, two near-misses combined, the stuck dimension's gap, open attacks, an inverted
+  assumption) instead of exiting or re-tuning the same idea.
+- It prices the bold path to you (row 3.12). An option outside the run's contract or data boundary (new data,
   new training, a new dependency) is listed with its price and put to you. None is taken without your approval.
-- **Leaves the outcome question reachable** (rows 5.5, 0.3). The ledger records how to check that the
+- It leaves the outcome question reachable (rows 5.5, 0.3). The ledger records how to check that the
   deliverable worked in use, and you can answer it at any later invocation in that project.
+
+REQUIRES: a writable filesystem and the ability to spawn an independent worker with its own context. The
+spawn tool's name, model names and every per-host command live in `reference/engine-map.md` and nowhere else;
+`allowed-tools` is a pre-approval hint that neither restricts nor guarantees a tool. Row 0.8 tests the
+capability by using it, and §3's degraded block says what a failure costs. Nothing depends on another skill.
 
 **DELTA: UNMEASURED.** No with-skill / without-skill A/B has been run on this document. Four evaluations that
 would measure it ship unrun in `reference/evaluations.md`, each headed `status: NEVER RUN`. Nothing here shows
 that a run's deliverable beats the domain skill's alone.
 
-**REQUIRES:** a writable filesystem and the ability to spawn an independent worker with its own context. The
-spawn tool's name, model names and every per-host command live in `reference/engine-map.md` and nowhere else;
-`allowed-tools` is a pre-approval hint that neither restricts nor guarantees a tool. Row 0.8 tests the
-capability by using it, and §3's degraded block says what a failure costs. Nothing depends on another skill.
-
 ## 0. How to execute this document
 
-1. **The specification is the Run Card (§1), Always/Never (§2) and §3's decisions.** Each instruction sits on
-   the row that executes it, and a file or section a row names is part of that row. §4 says only when a
-   phase opens and what to load. An imperative found anywhere else is a specification defect: record it in the
+1. The specification is the Run Card (§1), Always/Never (§2) and §3's decisions. Each instruction sits on the
+   row that executes it, and a file or section a row names is part of that row. §4 says only when a phase
+   opens and what to load. An imperative found anywhere else is a specification defect: record it in the
    report's Amendment section and do not execute it.
-2. **Write the card to `.nanika/runs/<slug>/card.md` before Phase 0** and keep it current (A1).
-3. **Evidence is a path plus content that supports the row** [EV-14]. Each filled `ev:` points to a file in the
+2. Write the card to `.nanika/runs/<slug>/card.md` before Phase 0 and keep it current (A1).
+3. Evidence is a path plus content that supports the row [EV-14]. Each filled `ev:` points to a file in the
    run directory, and a file alone is not enough. All persistence is subject to A2; withheld evidence limits
    the claim and never licenses a tick.
-4. **The gate is hard.** A phase begins only when every row of the previous phase carries evidence or a legal
+4. The gate is hard. A phase begins only when every row of the previous phase carries evidence or a legal
    `not-run:`. If a row is empty, the only legal next action is to fill it.
-5. **Execution capacity is unmeasured** [EV-10]. If a run drops rows, shorten the card. Do not add explanation.
+5. Execution capacity is unmeasured [EV-10]. If a run drops rows, shorten the card. Do not add explanation.
 
 ## 1. The Run Card
 
@@ -233,64 +235,79 @@ P5 DELIVER  → report.md
 
 ## 2. Always / Never
 
-**ALWAYS**
+Always:
 
-- **A1** Update the full `card.md` at each gate. Show the user a compact phase/delta/blocker/spend summary and its
+- A1 Update the full `card.md` at each gate. Show the user a compact phase/delta/blocker/spend summary and its
   link; reprint the full card only on request or when needed to resolve a discrepancy.
-- **A2** Before copying user data, record the approved boundary in `gate.md`: current execution only, approved worker
+- A2 Before copying user data, record the approved boundary in `gate.md`: current execution only, approved worker
   destinations, or public; plus what may persist and for how long. Unapproved web queries, other workers/engines,
   persistence and commits are not authorized by invocation. Keep run records private and untracked by default.
   For elicitation, retain only permitted minimal quotes, or a user-approved redaction/summary labelled as such.
   Never call a summary verbatim or a hash proof of meaning/consent. This governs all prompts, candidates and ledgers;
   evidence withheld for privacy remains unverified, not silently complete.
-- **A3** Write a phase's output to a file before opening the next phase. Prose about a step is not the step.
-- **A4** State a figure once, in the file that owns it: `reference/evidence.md` owns every literature figure and its
-  scope; card and rule address counts are `identities.md` §0's.
-- **A5** Use a worker outside the producer's context for the three `ext` cells. A fresh context is not proof of
+- A3 Write a phase's output to a file before opening the next phase. Prose about a step is not the step.
+- A4 State a figure once, in the file that owns it: `reference/evidence.md` owns every literature figure and
+  its scope; card and rule address counts are `identities.md` §0's.
+- A5 Use a worker outside the producer's context for the three `ext` cells. A fresh context is not proof of
   independent judgment: intrinsic correction without external feedback has failed on reasoning tasks [EV-20],
   which does not establish a same-model fresh-context benefit, and self-recognition remains a risk [EV-17].
-  Use native execution receipts when the platform supplies them; otherwise claim only that a spawn record exists.
-- **A6** Ask one question, or one batch of at most four topics, per turn. `crystallization-dialogue.md` owns how.
+  Use native execution receipts when the platform supplies them; otherwise claim only that a spawn record
+  exists.
+- A6 Ask one question, or one batch of at most four topics, per turn. `crystallization-dialogue.md` owns how.
 
-**NEVER**
+Never:
 
-- **N1** The producer may run tests, inspect renders and debug using external feedback, but may not supply its own
-  independent score, judge verdict, refutation or audit. Tool-grounded self-testing is not intrinsic self-correction,
-  nor does it replace independent acceptance checking. §3 owns the declared single-agent fallback.
-- **N2** Never open a phase whose `ENTER` line is unmet: earlier errors left in context raise later error rates,
+- N1 The producer may run tests, inspect renders and debug using external feedback, but may not supply its own
+  independent score, judge verdict, refutation or audit. Tool-grounded self-testing is not intrinsic
+  self-correction, nor does it replace independent acceptance checking. §3 owns the declared single-agent
+  fallback.
+- N2 Never open a phase whose `ENTER` line is unmet: earlier errors left in context raise later error rates,
   and model scale does not fix it [EV-12].
-- **N3** Never tick a card row without a path (§0.3). An empty cell is a truthful card.
-- **N4** Never reword a frozen rubric descriptor, in a brief, a re-prompt or a score, so the artifact can reach 3.
-  §6 is the only legal path, it produces R2, and it may never be opened by whoever produced the output that
-  failed. Re-anchoring at 1A.4 happens before the freeze and may only raise the bar.
-- **N5** Never call same-model judgments model-independent, record completeness quality, a rubric score a measured
-  outcome, an anchor ID3(c) does not compute as `sourced` sourced, an inconsistent pairing a verdict, a single-agent
-  run full, a persona return an observed recipient reaction, or an unrun step N/A.
-- **N6** Before each spawn, save its permitted prompt to `spawns/`; include its task, exact output schema and
-  output-length envelope. Add only role-appropriate, A2-approved context: the versioned rubric for rubric scoring,
-  no rubric/history for cold-read personas or generators, nothing that does not yet exist for preflight work.
-  Blind calibration and blind comparisons get no answer/provenance labels. After calibration, rubric scorers may
-  receive labelled anchor breakdowns as a borrowed grading aid [EV-16a], not as evidence that they are reliable.
-- **N7** Flatten only a wrapped process's optional improvement loop. Preserve its safety, correctness, acceptance
-  and permission gates; a failed domain gate disqualifies the candidate regardless of rubric score. Use one agreed
-  revision budget within both processes' hard caps. Conflicting oracles require upstream repair or escalation,
-  never removal of a non-negotiable gate merely to avoid two loops.
-- **N8** Row 0.7 authorizes only the stated spend and data/retention boundary, not publication, destructive actions
-  or code commits. Ordinary domain duties remain; autonomous mode does not skip required consent under 0.7, 1A.6 or §6.
+- N3 Never tick a card row without a path (§0.3). An empty cell is a truthful card.
+- N4 Never reword a frozen rubric descriptor, in a brief, a re-prompt or a score, so the artifact can reach 3.
+  §6 is the only legal path. It produces R2, and whoever produced the output that failed may never open it.
+  Re-anchoring at 1A.4 happens before the freeze and may only raise the bar.
+- N5 Never call:
+  - same-model judgments model-independent;
+  - record completeness quality;
+  - a rubric score a measured outcome;
+  - an anchor ID3(c) does not compute as `sourced` sourced;
+  - an inconsistent pairing a verdict;
+  - a single-agent run full;
+  - a persona return an observed recipient reaction;
+  - an unrun step N/A.
+- N6 Before each spawn, save its permitted prompt to `spawns/`; include its task, exact output schema and
+  output-length envelope. Add only role-appropriate, A2-approved context: the versioned rubric for rubric
+  scoring, no rubric/history for cold-read personas or generators, nothing that does not yet exist for
+  preflight work. Blind calibration and blind comparisons get no answer/provenance labels. After calibration,
+  rubric scorers may receive labelled anchor breakdowns as a borrowed grading aid [EV-16a], not as evidence
+  that they are reliable.
+- N7 Flatten only a wrapped process's optional improvement loop. Preserve its safety, correctness, acceptance
+  and permission gates; a failed domain gate disqualifies the candidate regardless of rubric score. Use one
+  agreed revision budget within both processes' hard caps. Conflicting oracles require upstream repair or
+  escalation, never removal of a non-negotiable gate merely to avoid two loops.
+- N8 Row 0.7 authorizes only the stated spend and data/retention boundary, not publication, destructive
+  actions or code commits. Ordinary domain duties remain; autonomous mode does not skip required consent
+  under 0.7, 1A.6 or §6.
 
 ## 3. Pre-resolved decisions
 
-**Scope**, judged by how much one generator can produce well in one pass, read off at row 0.4 with both its values:
-**S** one artifact, one sitting, one reader-path — N=3, outline · **M** one artifact with internal structure — N=3,
-outline · **L** several coupled artifacts, or one whose parts must cohere — N=5, full-build · **XL** a set whose
-composition is itself the design problem — N=5, full-build. Row 0.6 lowers N=5 to 3, and rewrites the header, when
-its envelope cannot cover N=5. *Outline* = generators compete at outline level and a spawned generator builds the
-winner before cycle 1, so 4.1's runner-up is the second-best retained artifact (3.6), or `not applicable(single
-cycle)`; *full-build* = each ships a complete artifact. Plus at most one bonus cycle from P4 — total N+1.
+Scope is judged by how much one generator can produce well in one pass. Row 0.4 reads both values off the
+scope class's line:
 
-**Envelope.** Computed at 0.6. Include wrapped-domain work and retries, not just nanika seats. Counts are not
-monetary cost or quality evidence; name the cost units actually bounded and any unpriced exposure. No overrun is
-authorized by a low point estimate.
+- S: one artifact, one sitting, one reader-path. N=3, outline.
+- M: one artifact with internal structure. N=3, outline.
+- L: several coupled artifacts, or one whose parts must cohere. N=5, full-build.
+- XL: a set whose composition is itself the design problem. N=5, full-build.
+
+*Outline* means generators compete at outline level and a spawned generator builds the winner before cycle 1,
+so 4.1's runner-up is the second-best retained artifact (3.6), or `not applicable(single cycle)`. *Full-build*
+means each ships a complete artifact. Row 0.6 lowers N=5 to 3, and rewrites the header, when its envelope
+cannot cover N=5. P4 adds at most one bonus cycle, for a total of N+1.
+
+Envelope, computed at 0.6. Include wrapped-domain work and retries, not just nanika seats. Counts are not
+monetary cost or quality evidence; name the cost units actually bounded and any unpriced exposure. A low point
+estimate authorizes no overrun.
 
 ```
 agents = 1 (row 0.8) + 0 (P1 spawns nothing)
@@ -305,54 +322,57 @@ agents = 1 (row 0.8) + 0 (P1 spawns nothing)
 
 | Exit | Meaning |
 |------|---------|
-| `ACCEPT` | **Harness criteria satisfied, not maximal quality or measured benefit.** All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open`; `unproven-because-new` is reported, never blocking), every reception finding disposed **and 3R.3's re-entry taken wherever one moved a score**, every non-advisory 4.1 loss disposed by 4.2, an OUTCOME (if 1.2 fixed one) at or past its target, `mode: full`, and `anchoring: sourced` (ID3(c): every score-3 descriptor `exact-match` ∧ `property-present` ∧ `separating`, no flagged descriptor, no `out-anchored` exemplar) |
+| `ACCEPT` | Harness criteria satisfied, not maximal quality or measured benefit. All dims = 3 on evaluators ID9 counts as calibrated, panel-ratified with 0 surviving attacks (ID5's `open`; `unproven-because-new` is reported, never blocking), every reception finding disposed and 3R.3's re-entry taken wherever one moved a score, every non-advisory 4.1 loss disposed by 4.2, an OUTCOME (if 1.2 fixed one) at or past its target, `mode: full`, and `anchoring: sourced` (ID3(c): every score-3 descriptor `exact-match` ∧ `property-present` ∧ `separating`, no flagged descriptor, no `out-anchored` exemplar) |
 | `reception-demoted` | a simulated cold-read finding changed a score on a rubric-perfect artifact with the cap spent (3R.3), on any pass; not observed recipient rejection. Ships best-so-far with the persona's verbatim stop-span |
-| `diminishing-returns` | weighted Δ < 0.2 between cycles (a chosen constant, not a measured one) **after** row 3.11's two re-opens are spent or the envelope cannot cover one; before that, the same Δ is `plateau`, not an exit. With surviving attacks open it reports as **plateau-with-open-attacks**, every attack listed |
+| `diminishing-returns` | weighted Δ < 0.2 between cycles (a chosen constant, not a measured one), but only after row 3.11's two re-opens are spent or the envelope cannot cover one; before that, the same Δ is `plateau`, not an exit. With surviving attacks open it reports as plateau-with-open-attacks, every attack listed |
 | `cap-reached` | the cycle cap (+ ≤1 bonus) elapsed below the ceiling |
 | `budget-reached` | the envelope ceiling hit → deliver best-so-far with the residual gap, and every carried salvage item listed as carried |
 | `single-agent-best-effort` | `mode: single-agent(declared)`; the ceiling is unreachable by construction and the report says which checks were never available |
-| `BLOCK` | any dim = 0, two identical failures in a row, or a second amendment request — stop and escalate to the user |
+| `BLOCK` | any dim = 0, two identical failures in a row, or a second amendment request. Stop and escalate to the user |
 
-**Loop order and the exit.** P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`; after those, every
-pre-P5 row not yet evidenced reads `precondition unmet(<the row that recorded the exit>)` (earlier-pass evidence
-stands; a degraded-list row keeps `no spawn`), and P5 runs. A BLOCKed run resumes only as a new wish. A 3R.3
-re-entry, 4.2's bonus or a bold path taken at the exit's 3.12 reopens P3, and P3R follows that cycle again; ENTER lines, 3R.3 and P4 read the latest
-pass. 3R.2-3R.3's cap is N; the +1 is 4.2's alone; 3.11's re-opens do not advance the cycle counter. The report's
-`exit:` is fixed when P5 opens, as the first that applies of `BLOCK` > `budget-reached` > `single-agent-best-effort`
-> `reception-demoted` > `ACCEPT` > `cap-reached` > `diminishing-returns`. `budget-reached` fires at whichever spawn
-would cross the ceiling less the one agent reserved for 5.7; that spawn is not launched, and row 3.9 records the
-exit (before P3, the spawn's own row does). A declined 0.7 closes the run with no exit and no ledger entry, P5
-included; a declined 1A.6 does the same but appends a ledger entry, because agents were spent.
+Loop order and the exit. P3R follows every exit from 3.9 except `BLOCK` and `budget-reached`. After those,
+every pre-P5 row not yet evidenced reads `precondition unmet(<the row that recorded the exit>)` (earlier-pass
+evidence stands; a degraded-list row keeps `no spawn`), and P5 runs. A BLOCKed run resumes only as a new wish.
+A 3R.3 re-entry, 4.2's bonus or a bold path taken at the exit's 3.12 reopens P3, and P3R follows that cycle
+again; ENTER lines, 3R.3 and P4 read the latest pass. 3R.2-3R.3's cap is N; the +1 is 4.2's alone; 3.11's
+re-opens do not advance the cycle counter.
 
-**Degraded mode**, binding when row 0.8's preflight fails. These fourteen rows are `not-run: no spawn` — 1A.3, 1A.7,
-2.2, 2.3, 2.4, 3.2, 3.4, 3.5, 3R.1, 3R.2, 3R.3, 4.1, 4.2, 5.7 — and no other row may carry that reason (ID10 checks
-the biconditional). N1 is then unsatisfiable: the only available scorer is the producer [EV-20]. Rows outside the
-list run on the producer's scores, advisory and reported as such; `ACCEPT` is unreachable, and the only legal exits
-are `single-agent-best-effort`, `budget-reached` or `BLOCK`. The header prints the mode.
+The report's `exit:` is fixed when P5 opens, as the first that applies of `BLOCK` > `budget-reached` >
+`single-agent-best-effort` > `reception-demoted` > `ACCEPT` > `cap-reached` > `diminishing-returns`.
+`budget-reached` fires at whichever spawn would cross the ceiling less the one agent reserved for 5.7; that
+spawn is not launched, and row 3.9 records the exit (before P3, the spawn's own row does). A declined 0.7
+closes the run with no exit and no ledger entry, P5 included; a declined 1A.6 does the same but appends a
+ledger entry, because agents were spent.
 
-## 4. Phases — when each opens and what to load
+Degraded mode binds when row 0.8's preflight fails. N1 is then unsatisfiable, because the only available
+scorer is the producer [EV-20]. These fourteen rows are `not-run: no spawn`: 1A.3, 1A.7, 2.2, 2.3, 2.4, 3.2,
+3.4, 3.5, 3R.1, 3R.2, 3R.3, 4.1, 4.2, 5.7. No other row may carry that reason (ID10 checks the biconditional).
+Rows outside the list run on the producer's advisory scores, reported as such. `ACCEPT` is unreachable; the
+only legal exits are `single-agent-best-effort`, `budget-reached` or `BLOCK`. The header prints the mode.
+
+## 4. Phases: when each opens and what to load
 
 Reference files below are basenames in `reference/`. *Evidenced* is §0 item 4's.
 
-- **P0** · ENTER: the request exists · READ: `nanika-ledger.md`; `engine-map.md` §2a.
-- **P1** · ENTER: 0.1-0.8 evidenced · READ: `crystallization-dialogue.md`; `run-discipline.md` §1-§2;
+- P0 · ENTER: the request exists · READ: `nanika-ledger.md`; `engine-map.md` §2a.
+- P1 · ENTER: 0.1-0.8 evidenced · READ: `crystallization-dialogue.md`; `run-discipline.md` §1-§2;
   `evaluator-roster.md` §1-§3; for class `document`, `doc-deliverables.md` §5.
-- **P1A** · ENTER: 1.1-1.12 evidenced · READ: `benchmark-anchoring.md`; `engine-map.md` §2b. The control and
-  property checks test the selected comparison, not a global ceiling; `none-better-found` means none found in the
-  reported search.
-- **P2** · ENTER: 1A.1-1A.8 evidenced · READ: `evaluator-roster.md` §4, §6; `evaluator-loop.md` L4-L5. Order is
+- P1A · ENTER: 1.1-1.12 evidenced · READ: `benchmark-anchoring.md`; `engine-map.md` §2b. The control and
+  property checks test the selected comparison, not a global ceiling; `none-better-found` means none found in
+  the reported search.
+- P2 · ENTER: 1A.1-1A.8 evidenced · READ: `evaluator-roster.md` §4, §6; `evaluator-loop.md` L4-L5. Order is
   fixed: candidates generated, *then* judges calibrate on the pair, *then* judging opens.
-- **P3** · ENTER: 2.1-2.7 evidenced · READ: `evaluator-loop.md`; `refutation-panel.md` from the first
+- P3 · ENTER: 2.1-2.7 evidenced · READ: `evaluator-loop.md`; `refutation-panel.md` from the first
   all-dims>=2 cycle. The rubric controls optional iteration, subject to N7's domain gates.
-- **P3R** · ENTER: 3.9's latest cycle carries an exit other than `BLOCK` or `budget-reached` · READ:
+- P3R · ENTER: 3.9's latest cycle carries an exit other than `BLOCK` or `budget-reached` · READ:
   `evaluator-roster.md` §5 · EXIT: to P3 when 3R.3 fires. Personas are simulated cold reads, not recipients.
-- **P4** · ENTER: 3.6 names the artifact, 3R.3 did not re-open P3 (a demotion does not skip P4), and 3.9's latest
-  exit is not `BLOCK` or `budget-reached` · READ: `evaluator-loop.md` L8. Swap-consistency has been measured as
-  low as 23.8% [EV-16b], so a single-order pairwise verdict is partly a verdict about position.
-- **P5** · ENTER: 4.1-4.2 evidenced · READ: `run-discipline.md` §5-§6. `identities.md` is the 5.7 auditor's
+- P4 · ENTER: 3.6 names the artifact, 3R.3 did not re-open P3 (a demotion does not skip P4), and 3.9's latest
+  exit is not `BLOCK` or `budget-reached` · READ: `evaluator-loop.md` L8. Swap-consistency has been measured
+  as low as 23.8% [EV-16b], so a single-order pairwise verdict is partly a verdict about position.
+- P5 · ENTER: 4.1-4.2 evidenced · READ: `run-discipline.md` §5-§6. `identities.md` is the 5.7 auditor's
   brief; the orchestrator does not compute the identities in `mode: full`.
 
-## 5. The Fulfillment Report — process state, not a quality certificate
+## 5. The Fulfillment Report: process state, not a quality certificate
 
 ```
 mode:        full | single-agent(declared)                rubric: R1 | R2
@@ -370,36 +390,53 @@ identity:    pass | imbalance(n) | not-run(<reason>)      delta: UNMEASURED
 gated artifact: <path>       exit: <§3 reason>       spend: <n> / <envelope>
 ```
 
-Then twelve sections, each present or `N/A` with a one-line reason. **Contract** — every element classified per
-5.2, prohibitions on their own axis, `class: interpretation` decisions first. **Outcome** — the OUTCOME's
-baseline, per-cycle values and delivered value, or why none exists and what instrument was declined.
-**Anchoring** — exemplars and control with locators, spans, properties, dimensions, reject lists, 1A.3's verdicts,
-the challenge return, the fallback flag. **Calibration** — per scorer, every blind-pair pass with its scores and the
-orchestrator's verdict. **Tournament and search** — every `angles.md` row with its source, engine spread or declared
-monoculture, blind scores, winner, runner-up, salvage grafted / rejected / deferred / carried, and every `bold.md`
-row with its price and the user's answer. **Trajectory** — per-cycle weighted scores per dimension tagged R1/R2,
-each 3.9 verdict, and which artifact shipped and why. **Gauntlet** — attacks raised / killed / fixed / open /
-`unproven-because-new`, each of the last with its falsifier. **Reception** — per persona, the verbatim stop-span,
-each finding's disposal, and 3R.3's decision. **Amendment** — trigger, (a)-(d), R1→R2, re-scored delta, and any
-imperative the card did not carry (§0 item 1). **Exit gate** — per-property and runner-up verdicts, both orders,
-the property that briefed the bonus cycle. **Exit** — reason, residual gap, spend; on `ACCEPT`, the line "the
-rubric is satisfied; whether the deliverable worked in use is `verify_by`, unasked until LG4". **Unexplored-Space
-Ledger** — as accrued at 3.8, each row tagged with its cycle. Then the identity audit's return and the Run Card
-link, then the terminal line exactly as 5.7 returned it (`identities.md` §2, step 5).
+Then twelve sections, each present or `N/A` with a one-line reason:
 
-## 6. Rubric amendment — once, user-ratified
+1. Contract: every element classified per 5.2, prohibitions on their own axis, `class: interpretation`
+   decisions first.
+2. Outcome: the OUTCOME's baseline, per-cycle values and delivered value, or why none exists and what
+   instrument was declined.
+3. Anchoring: exemplars and control with locators, spans, properties, dimensions, reject lists, 1A.3's
+   verdicts, the challenge return, the fallback flag.
+4. Calibration: per scorer, every blind-pair pass with its scores and the orchestrator's verdict.
+5. Tournament and search: every `angles.md` row with its source, engine spread or declared monoculture, blind
+   scores, winner, runner-up, salvage grafted / rejected / deferred / carried, and every `bold.md` row with its
+   price and the user's answer.
+6. Trajectory: per-cycle weighted scores per dimension tagged R1/R2, each 3.9 verdict, and which artifact
+   shipped and why.
+7. Gauntlet: attacks raised / killed / fixed / open / `unproven-because-new`, each of the last with its
+   falsifier.
+8. Reception: per persona, the verbatim stop-span, each finding's disposal, and 3R.3's decision.
+9. Amendment: trigger, (a)-(d), R1→R2, re-scored delta, and any imperative the card did not carry (§0 item 1).
+10. Exit gate: per-property and runner-up verdicts, both orders, the property that briefed the bonus cycle.
+11. Exit: reason, residual gap, spend; on `ACCEPT`, the line "the rubric is satisfied; whether the deliverable
+    worked in use is `verify_by`, unasked until LG4".
+12. Unexplored-Space Ledger: as accrued at 3.8, each row tagged with its cycle.
 
-Amendment is legal when all four hold, row 3.10 evidencing each separately: (a) a surviving attack or reception
-finding exists; (b) no dimension can express it, and re-scoring under one was tried first; (c) the user ratifies;
-(d) retained artifacts are re-scored on the amended rubric so the trajectory stays comparable. Result: **R2**,
-appended to `rubric-frozen.md` under `## R2`; a second request is §3's `BLOCK`. Calibration failures never route here (N4).
+Then the identity audit's return and the Run Card link, then the terminal line exactly as 5.7 returned it
+(`identities.md` §2, step 5).
+
+## 6. Rubric amendment: once, user-ratified
+
+Amendment is legal when all four hold, row 3.10 evidencing each separately:
+
+- (a) a surviving attack or reception finding exists;
+- (b) no dimension can express it, and re-scoring under one was tried first;
+- (c) the user ratifies;
+- (d) retained artifacts are re-scored on the amended rubric so the trajectory stays comparable.
+
+Calibration failures never route here (N4). The result is R2, appended to `rubric-frozen.md` under `## R2`; a
+second request is §3's `BLOCK`.
 
 ## 7. Reference files
 
-Twelve, one level deep, each with its own `Owns:` and `Read when:` header. Nine are named by §4's `READ:` lines;
-`identities.md` is handed to the 5.7 auditor; `evidence.md` (figures, what each mechanism is meant to buy, and what
-defeats it) and `evaluations.md` load on question only, never during a run. `doc-deliverables.md` is attached whole
-to every generator and revision spawn when the class is `document`.
+Twelve, one level deep, each with its own `Owns:` and `Read when:` header:
+
+- Nine are named by §4's `READ:` lines.
+- `identities.md` is handed to the 5.7 auditor.
+- `evidence.md` (figures, what each mechanism is meant to buy, and what defeats it) and `evaluations.md` load
+  on question only, never during a run.
+- `doc-deliverables.md` is attached whole to every generator and revision spawn when the class is `document`.
 
 as-of 2026-10-17 · owner: this repository's maintainer · review trigger: any E1-E4 result, or a run that hits a
 situation no card row covers.

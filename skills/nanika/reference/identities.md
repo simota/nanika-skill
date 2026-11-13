@@ -8,108 +8,104 @@ orchestrator reads it only in `mode: single-agent(declared)`, where it computes 
 Contents: §0 address inventory · §1 the ten identities · §2 the audit protocol and the terminal line · §3 worked
 examples · §4 what an imbalance means, and what it never licenses.
 
-## §0 — Card address inventory
+## §0. Card address inventory
 
-**C1.** Count addresses, not execution capacity: P0 8 · P1 12 · P1A 8 · P2 7 · P3 12 · P3R 3 · P4 2 · P5 7,
+C1. Count addresses, not execution capacity: P0 8 · P1 12 · P1A 8 · P2 7 · P3 12 · P3R 3 · P4 2 · P5 7,
 for 59 card rows, plus A1–A6 and N1–N8. A row may contain several independently failing requirements.
 
----
+## §1. The ten identities
 
-## §1 — The ten identities
+Design rule: **an identity may not have fewer buckets than the row it audits has legal outcomes**, because an
+identity that fires on a correct run teaches the auditor to explain imbalances away. Every bucket set below is a
+partition of the states the card legalises, `not-run` and `carried` included.
 
-Design rule: **an identity may not have fewer buckets than the row it audits has legal outcomes.** An identity
-that fires on a correct run teaches the auditor to explain imbalances away. Every bucket set below is a partition
-of the states the card legalises — `not-run` and `carried` included.
-
-**ID1 — the card.** `59 = ticked + not-run`, **and** every ticked row's `ev:` value resolves to an existing file
-inside the run directory, **and** every `not-run:` reason is one of the six strings the card legend closes on
+ID1, the card. `59 = ticked + not-run`, and every ticked row's `ev:` value resolves to an existing file
+inside the run directory, and every `not-run:` reason is one of the six strings the card legend closes on
 (`no spawn` · `no external worker` · `not applicable(<class|scope|no amendment|no plateau|first wish|single cycle>)` ·
 `precondition unmet(<row>)` · `user declined(<path>)` · `capability absent(<name>)`). A seventh string is an
 imbalance even when the arithmetic sums. Source: all 59 rows, 5.6.
 
-**ID2 — the contract.** `elements = elicited + ratified + parked`, with `silent = 0`. Weak by construction: it
+ID2, the contract. `elements = elicited + ratified + parked`, with `silent = 0`. Weak by construction: it
 detects an unclassified element, not a mis-classified one. Source: 1.8, 1A.5.
 
-**ID3 — the anchor.** Five parts, over `anchors.md` and `requote.md`. **Every part carries the same `not-run`
-disposition:** row 1A.3 `not-run` → `requote.md` is absent, all totals in (a), (b) and (d) are 0, the clause is
+ID3, the anchor. Five parts, over `anchors.md` and `requote.md`. Every part carries the same `not-run`
+disposition: row 1A.3 `not-run` → `requote.md` is absent, all totals in (a), (b) and (d) are 0, the clause is
 *not evaluated in that state*, and the header reads `re-quote: not-run(<reason>)` with `anchoring: unverified`.
-- **(a) lines.** `requote.md`'s `## Locators` block lines `= exact-match + mismatch + unreachable`, **and** that
+- (a) lines. `requote.md`'s `## Locators` block lines `= exact-match + mismatch + unreachable`, and that
   total equals the locator count in `anchors.md`.
-- **(b) property and separation.** Property verdicts `= property-present + property-absent + not-assessed`, one
+- (b) property and separation. Property verdicts `= property-present + property-absent + not-assessed`, one
   per `requote.md` line. A control locator is `not-assessed` unless 1A.1 named a property for it; an exemplar is
-  `not-assessed` only when its locator came back `unreachable`. **And, per named property:** `named properties =
+  `not-assessed` only when its locator came back `unreachable`. And, per named property: `named properties =
   separating + non-separating + non-comparable`; a named property with no separation verdict is an imbalance.
-- **(c) descriptors.** score-3 descriptors `= anchored + unreachable-and-flagged + invented-and-flagged`, where
-  `anchored` means `exact-match` **and** `property-present` **and** `separating`. A struck verdict still counted
+- (c) descriptors. score-3 descriptors `= anchored + unreachable-and-flagged + invented-and-flagged`, where
+  `anchored` means `exact-match` and `property-present` and `separating`. A struck verdict still counted
   `anchored` is an imbalance (1A.4 did not run). The header's anchoring state is computed here and is exhaustive
   and exclusive: `unverified` when 1A.3 is `not-run`; `invented-fallback` when 1A.4 records the fallback fired;
   otherwise `sourced` when anchored = descriptors with no `out-anchored` exemplar, `unanchored` when anchored = 0,
-  and `mixed(a/d)` in every other case. **One property per dimension:** if a property appears on more than one
+  and `mixed(a/d)` in every other case. One property per dimension: if a property appears on more than one
   descriptor, the header must read `shared-property(n)`; silence is an imbalance.
-- **(d) challenge.** Exactly one challenge return per exemplar, `none-better-found` or a stronger-candidate
+- (d) challenge. Exactly one challenge return per exemplar, `none-better-found` or a stronger-candidate
   locator; every stronger-candidate is followed in the header by `re-anchored` or `out-anchored`.
-- **(e) reject lists.** `named properties = lists-with-≥2-beaten-candidates + unchallenged`, counted from
-  `anchors.md`, **and** every reject locator resolves. The header's `reject-lists:` field is read off this.
+- (e) reject lists. `named properties = lists-with-≥2-beaten-candidates + unchallenged`, counted from
+  `anchors.md`, and every reject locator resolves. The header's `reject-lists:` field is read off this.
 
 Source for all five: 1A.1-1A.4.
 
-**ID4 — salvage.** Over `salvage.md`, excluding `nothing salvageable` rows: `raised = grafted + rejected +
+ID4, salvage. Over `salvage.md`, excluding `nothing salvageable` rows: `raised = grafted + rejected +
 deferred + carried`, where `carried` is a row still `open`. `carried` is legal only while the loop is open or
 when the exit is `budget-reached`. Every cycle whose L6 state is REVISE, a candidate ACCEPT the panel demoted at
 3.5 included, carries row 3.3's `salvage open=… brief=…` line in `cycles/<n>.md` with the two numbers equal,
 unless `BLOCK` or `budget-reached` stopped that cycle before row 3.3. A cycle whose state is candidate ACCEPT or
 BLOCK compiles no brief (L6) and owes no line. Source: 2.6, 3.3, 5.1.
 
-**ID5 — the gauntlet.** `attacks raised = killed + fixed + open + unproven-because-new`, and the
+ID5, the gauntlet. `attacks raised = killed + fixed + open + unproven-because-new`, and the
 `unproven-because-new` count appears on the terminal line. Source: 3.4, 3.5.
 
-**ID6 — reception.** `personas run = valid-span + void`, summed over every reception pass and counting a re-run as
-its own persona run; each void is followed by exactly one re-run or, when that is void too, a named residual —
-or, only when the run's exit is `budget-reached` and the re-run was the spawn it stopped, a residual naming that;
-`personas run = 0` is legal exactly when 3R.1 carries `not-run`. Source: 3R.1-3R.3.
+ID6, reception. `personas run = valid-span + void`, summed over every reception pass and counting a re-run as
+its own persona run. Each void is followed by exactly one re-run; when that re-run is void too, a named residual
+follows it. Only when the run's exit is `budget-reached` and the re-run was the spawn it stopped may a residual
+naming that condition take the re-run's place. `personas run = 0` is legal exactly when 3R.1 carries `not-run`. Source: 3R.1-3R.3.
 
-**ID7 — the contract's two axes.** `acceptance criteria = verified + partial + missed + dropped`;
+ID7, the contract's two axes. `acceptance criteria = verified + partial + missed + dropped`;
 `prohibitions = held + violated + unverified`, counted separately. `report.md`'s `outcome:` header field follows
 the form of `contract.md`'s `OUTCOME:` line, which row 1.2 always writes: a measurable `OUTCOME: {…}` → a value
 measured at 5.2, never `none`, unless the exit is `budget-reached` and no gated artifact exists, when it reads
 `none(budget-reached before an artifact)`; `OUTCOME: none(<why>)` → the same `none(<why>)`, reason verbatim.
 Source: 1.2, 1.4, 5.2.
 
-**ID8 — the external cells.** `ext cells = 3 = record-present + not-run`, where `record-present` is
-`ls ext/ | grep -cxE '(1A\.3|4\.1|5\.7)\.md'` — the three cell files by name, so support files in `ext/` do not
-count. 4.1's four returns go in `ext/4.1.md`; a re-anchor's second 1A.3 return is appended to `ext/1A.3.md`.
-Catches an absent record, not a fabricated one. Source: 1A.3, 4.1, 5.7.
+ID8, the external cells. `ext cells = 3 = record-present + not-run`, where `record-present` is
+`ls ext/ | grep -cxE '(1A\.3|4\.1|5\.7)\.md'`, which matches the three cell files by name, so support files in
+`ext/` do not count. It catches an absent record, not a fabricated one. 4.1's four returns go in `ext/4.1.md`;
+a re-anchor's second 1A.3 return is appended to `ext/1A.3.md`. Source: 1A.3, 4.1, 5.7.
 
-**ID9 — the scorers.** A scorer is every P2 judge and every P3 evaluator, identified by the `scorer_id` its
+ID9, the scorers. A scorer is every P2 judge and every P3 evaluator, identified by the `scorer_id` its
 scorecard and every scoring return carry (`evaluator-loop.md` L4-L5; a judge's returns are `EVALUATION`s with
-`cycle: 0`). **Count:** `scorers = calibrated + re-prompted + replaced + no-pair`, one scorecard per scorer under
+`cycle: 0`). Count: `scorers = calibrated + re-prompted + replaced + no-pair`, one scorecard per scorer under
 `scorecards/`, bucketed by `final_verdict`. `no-pair` is a scorer none of whose dimensions has an `anchored`
 descriptor; its scores are advisory. A scorer that produced any score is an imbalance unless its final verdict is
 `calibrated` or `no-pair`. `scorers = 0` is legal exactly when 2.3 and 3.2 carry `not-run`; the producer's
-advisory scores then carry `scorer_id: producer(advisory)` and are no scorer. **Recompute:** row 2.3's rule is
+advisory scores then carry `scorer_id: producer(advisory)` and are no scorer. Recompute: row 2.3's rule is
 deterministic over each pass's pairs: every pair `exemplar = 3 ∧ control ≤ 2 → calibrated`, otherwise
 `re-prompted` on the first pass and `replaced` on the second. A written verdict that disagrees is an imbalance.
-**Re-prompt fidelity:** every pass-2 prompt file named on a scorecard contains, whole, the rubric its pass's
+Re-prompt fidelity: every pass-2 prompt file named on a scorecard contains, whole, the rubric its pass's
 `rubric_version` names (L5): for R1 the text before `## R2` (`sed '/^## R2$/,$d' rubric-frozen.md`, since a §6
 amendment appends R2 after earlier prompts were built), for R2 all of `rubric-frozen.md`. That text piped through
 `grep -v '^$' | grep -cvxFf <prompt>` prints `0` (no frozen line missing from the prompt).
 Source: 2.3, 3.2.
 
-**ID10 — the mode.** `mode: single-agent(declared)` ⟺ **exactly** the fourteen rows in `SKILL.md` §3's degraded
-list carry `not-run: no spawn`; `mode: full` ⟺ **no** row carries it; and `mode:` equals the result row 0.8's
+ID10, the mode. `mode: single-agent(declared)` ⟺ exactly the fourteen rows in `SKILL.md` §3's degraded
+list carry `not-run: no spawn`; `mode: full` ⟺ no row carries it; and `mode:` equals the result row 0.8's
 evidence records. Source: 0.8, §3's degraded list.
 
----
+## §2. The audit protocol and the terminal line
 
-## §2 — The audit protocol and the terminal line
+AUD. The 5.7 worker is spawned with this file and the path to the run directory, and nothing else.
 
-**AUD.** The 5.7 worker is spawned with this file and the path to the run directory, and nothing else.
-
-1. It **reads the run directory, never the transcript**, and lists every file it opened.
+1. It reads the run directory, never the transcript, and lists every file it opened.
 2. It recomputes ID1-ID10 and returns, per identity, `pass` or `IMBALANCE(<n>): <what does not sum, and which
    files disagree>`.
-3. **It never adjusts a count and never proposes a fix.** Naming the imbalance is the whole of the job.
-4. **Its own row counts as done**: it counts 5.7 as ticked and `ext/5.7.md` as present. After it returns, only
+3. It never adjusts a count and never proposes a fix. Naming the imbalance is the whole of the job.
+4. Its own row counts as done: it counts 5.7 as ticked and `ext/5.7.md` as present. After it returns, only
    four writes are legal: tick 5.7, save `ext/5.7.md`, paste its return into the report's `identity:` field and
    terminal line, and finish 5.6's link. Any other change makes it a different run (§4).
 5. It returns the terminal line, built from the files, `card <n>` read from the card. A field whose source row
@@ -127,11 +123,9 @@ wish <slug> closed · card 59 rows: 56 ticked + 3 not-run · identities 10/10 ba
 · exit-gate 4 properties = 4 won + 0 lost + 0 tied + 0 inconsistent · exit ACCEPT
 ```
 
----
+## §3. Worked examples
 
-## §3 — Worked examples
-
-**A — `mode: full`, exit `ACCEPT`.** Four dimensions; six locators (four exemplars, two controls); nine salvage
+**A: `mode: full`, exit `ACCEPT`.** Four dimensions; six locators (four exemplars, two controls); nine salvage
 items, one deferred; one attack `unproven-because-new`; no extra engines; no amendment; no plateau; seven scorers,
 one judge re-prompted once and then calibrated. The terminal line in §2 is this example.
 
@@ -155,8 +149,8 @@ ID9  7 scorers = 7 calibrated (final); judge-3 pass 1 had a (3,3) pair → re-pr
 ID10 mode: full · 0 rows carry `no spawn` · 0.8 records exit 0                         — pass
 ```
 
-**B — `mode: single-agent(declared)`, exit `single-agent-best-effort`.** Row 0.8 returned non-zero. Row 5.7 is
-itself `not-run: no spawn`, so these recomputations are the orchestrator's own and are reported as **advisory**.
+**B: `mode: single-agent(declared)`, exit `single-agent-best-effort`.** Row 0.8 returned non-zero. Row 5.7 is
+itself `not-run: no spawn`, so these recomputations are the orchestrator's own and are reported as advisory.
 
 ```
 ID1  59 = 43 ticked + 16 not-run (the fourteen §3 rows `no spawn`, 3.10 `not applicable(no amendment)`,
@@ -169,7 +163,7 @@ ID9  0 scorers; 2.3 and 3.2 not-run; header `evaluators: not-run(no spawn)`     
 ID10 exactly the fourteen rows carry `no spawn`; 0.8 records a non-zero exit            — pass
 ```
 
-**C — `mode: full`, exit `budget-reached` mid-loop, one salvage item carried, a `mixed` anchor.** One exemplar is
+**C: `mode: full`, exit `budget-reached` mid-loop, one salvage item carried, a `mixed` anchor.** One exemplar is
 behind a paywall. One plateau came at cycle 2 and ran a re-open; the budget ran out in cycle 3.
 
 ```
@@ -180,7 +174,7 @@ ID8  3 = 2 record-present (1A.3, 5.7) + 1 not-run                               
 ID9  7 = 6 calibrated + 1 no-pair (the paywalled dimension's evaluator)                  — pass
 ```
 
-**E — the imbalances that must fire.**
+**E: the imbalances that must fire.**
 
 ```
 ID1   a row reads `not-run: judged unnecessary`       → IMBALANCE(1): reason outside the closed six
@@ -194,13 +188,11 @@ ID9   a pass-2 prompt missing a frozen descriptor line → IMBALANCE(1): the re-
 ID10  mode: full, and 3R.1 carries `not-run: no spawn` → IMBALANCE(1): mode contradicts the card
 ```
 
-**What still passes:** `ext/` files the orchestrator wrote itself, plausible scorecards, `spawns/` prompts for
-workers never spawned, straw rejects whose locators open, and an unsearched `none-better-found`.
-`evidence.md` §4 prices each.
+What still passes, priced in `evidence.md` §4: `ext/` files the orchestrator wrote itself, plausible
+scorecards, `spawns/` prompts for workers never spawned, straw rejects whose locators open, and an unsearched
+`none-better-found`.
 
----
-
-## §4 — What an imbalance means
+## §4. What an imbalance means
 
 An imbalance is never repaired by editing a number. It means, in this order of likelihood: a phase did not run;
 a phase ran and its output was not written to the run directory; or the card was edited without recomputing §0.

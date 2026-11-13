@@ -14,25 +14,17 @@ run report ───────────────────────
   fill the delta ship with `status: NEVER RUN`.
 ```
 
-**This is the first thing to weigh, and it is not a disclaimer — it is the state of the thing.**
-
----
-
 > ### A mechanism that leaves no artifact *did not happen*.
 
-`nanika` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable — code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured nanika quality gain is established.
+`nanika` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable, whether code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured nanika quality gain is established.
 
 *Named for the thing in the story that grants any wish, absolutely, and then counts what it cost.*
-
----
 
 ## Why it exists
 
 **Agents say they ran the gate. Then they don't.**
 
-Records make the process inspectable, but their existence does not establish their truth. Every ticked row cites a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid.
-
-**An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.**
+Records make the process inspectable, but their existence does not establish their truth. Every ticked row cites a file, and the run closes on arithmetic that has to resolve: rows ticked against artifacts present, salvage raised against salvage disposed, personas returned against personas valid. An imbalance calls for investigation; balanced records do not certify artifact quality or genuine execution.
 
 `ten accounting identities · worked examples · not a semantic or authenticity proof`
 
@@ -48,9 +40,26 @@ Records make the process inspectable, but their existence does not establish the
 | grading its own homework | **A closing audit by a worker that did not run it**, recomputing every identity from the files on disk. |
 | "nothing was left on the table" | **A list of what was left.** Angles not run, salvage rejected, trade-offs taken, escalations the budget did not buy. |
 
+The benchmark is sourced because a system that defines excellence and then grades itself against that definition will find it has achieved excellence. The residual is listed because "nothing was left on the table" is unfalsifiable, and "here is exactly what was left" is a claim you can check.
+
+## Is it worth it
+
+**Not demonstrated. The evaluation that would settle it is written and unrun.**
+
+`E3` is a deletion control: strip a mechanism, see whether quality drops. Until it runs, every argument here is a mechanism that sounds plausible, and plausible mechanisms are cheap. Price is not evidence either.
+
+The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Two of those traces read *none*. That section exists so the claim can be checked instead of trusted.
+
+If the full harness is more than your task needs, four parts change the work rather than the record. They cost far fewer agents, and two of them cost none:
+
+- ask what outcome would make you regret the request, then push past the first answer
+- ask what changes if it lands
+- generate competing bets instead of one attempt, and keep the losers
+- never let whoever wrote something be the one who grades it
+
 ## The price
 
-It counts what it cost. Computed per run, never quoted from a brochure:
+The cost is computed per run, never quoted from a brochure:
 
 ```
 agents = 1 preflight + X sweep × (1 + re-anchors) + (1 + re-anchors) checkers + E extra engines
@@ -61,11 +70,21 @@ agents = 1 preflight + X sweep × (1 + re-anchors) + (1 + re-anchors) checkers +
        + J + D blind-pair passes + re-prompts, replacements, void re-runs, wrapped-domain work and retries
 ```
 
-For example, scope M (N = 3 cycles), X = 3 sweep workers, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives at least **71 agents** with the bonus cycle, its second reception pass, the advisory P4 and the seven blind-pair passes — more for each reception re-score or 3R.3 re-entry — before re-prompts, replacements, void re-runs, wrapped work and retries; yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching. Recompute after the rubric settles; ask again only outside the approved ceiling or when scope/data/retention permissions change. Invocation alone is not spend consent.
+For example, scope M (N = 3 cycles), X = 3 sweep workers, no extra engines, C = 4, J = 3, D = 4, K = 3 and P = 3 gives at least **71 agents** with the bonus cycle, its second reception pass, the advisory P4 and the seven blind-pair passes. Each reception re-score or 3R.3 re-entry adds more, as do re-prompts, replacements, void re-runs, wrapped work and retries.
 
-Before any of that, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it.
+Yours is computed at row 0.6, and no point estimate authorizes an overrun. Approval is required before launching; invocation alone is not spend consent. Recompute after the rubric settles, and ask again only outside the approved ceiling or when scope/data/retention permissions change.
+
+## The ledger
+
+`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and whether it actually worked and satisfied you. You backfill that last part whenever you choose to answer, at the next wish or by a call that only records it. Raw quotes, prompts and losing candidates are not automatically safe to retain or commit; A2 controls their disclosure and retention.
+
+Before anything is spent, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it. It informs; it never refuses. A gate that refuses is a gate people route around.
+
+The ledger is not evidence of quality. Every field is copied from a report the run wrote about itself. `outcome`, which you fill in later, is the only one that came from outside the run.
 
 ## Install
+
+It needs a filesystem it may write to and the ability to spawn an independent worker. Without a writable filesystem it cannot run at all. Without a spawnable worker it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top exit becomes unreachable; the run states this instead of hiding it.
 
 ```bash
 make link      # symlink into every installed host's skills dir
@@ -75,7 +94,7 @@ make check     # verify the skill is self-contained
 make test      # assert that make check still catches things
 ```
 
-A host you do not have is skipped and named — nothing creates a skills directory for a tool that is not on the machine. Narrowing is explicit:
+`link` never removes anything. It refuses, and names, a path that already exists and is not its own symlink; a directory you made by hand is never cleared to make room. A host you do not have is skipped and named, and nothing creates a skills directory for a tool that is not on the machine. Narrowing is explicit:
 
 ```bash
 make link AGENT=codex            # this host only
@@ -84,11 +103,7 @@ make link PROJECT=/path/to/repo  # that project's .claude/skills
 make link SKILLS_DIR=/some/path  # one literal path
 ```
 
-Codex is linked into `~/.agents/skills`, the location current Codex reads; an older link under `$CODEX_HOME/skills` still loads but is deprecated there. agy's skills directory is not confirmed by first-party documentation — override it with `AGY_SKILLS_DIR=` if yours differs.
-
-`link` never removes anything. It refuses a path that already exists and is not its own symlink, and tells you which — a directory you made by hand is never cleared to make room.
-
-It needs a filesystem it may write to and the ability to spawn an independent worker. Without a writable filesystem it cannot run at all; without a spawnable worker it degrades to `single-agent(declared)`, fourteen rows go `not-run`, and the top exit becomes unreachable — stated, not hidden.
+Codex is linked into `~/.agents/skills`, the location current Codex reads; an older link under `$CODEX_HOME/skills` still loads but is deprecated there. agy's skills directory is not confirmed by first-party documentation, so override it with `AGY_SKILLS_DIR=` if yours differs.
 
 ## Usage
 
@@ -97,23 +112,6 @@ It needs a filesystem it may write to and the ability to spawn an independent wo
 /nanika "the migration guide our whole user base will read once"
 /nanika "the API surface we cannot change after launch"
 ```
-
-## Is it worth it
-
-**Not demonstrated. The evaluation that would settle it is written and unrun.**
-
-`E3` is a deletion control: strip a mechanism, see whether quality drops. Until it runs, every argument here is a mechanism that sounds plausible, and plausible mechanisms are cheap.
-
-**Price is not evidence.** Expensive implies expensive.
-
-The ways this can be faked from the inside are named in the skill itself, each paired with the trace that would catch it. Two of those traces read *none*. That section exists so the claim can be checked instead of trusted.
-
-If the full harness is more than your task needs, four parts change the **work** rather than the **record**, and they cost far fewer agents — two of them none:
-
-- ask what outcome would make you regret the request — then push past the first answer
-- ask what changes if it lands
-- generate competing bets instead of one attempt, and keep the losers
-- never let whoever wrote something be the one who grades it
 
 ## What is inside
 
@@ -139,19 +137,3 @@ skills/nanika/
     engine-map.md                     the only file allowed to name a host
     nanika-ledger.md                  the scarcity record, and what it is not evidence of
 ```
-
-## The ledger
-
-`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and — backfilled whenever you choose to answer, at the next wish or by a call that only records it — whether it actually worked and satisfied you.
-
-Raw quotes, prompts and losing candidates are not automatically safe to retain or commit. A2 controls their disclosure and retention.
-
-It informs; it never refuses. A gate that refuses is a gate people route around.
-
-It is **not evidence of quality**. Every field is copied from a report the run wrote about itself. `outcome`, which you fill in later, is the only one that came from outside the run.
-
-## Design notes
-
-**A ceiling you did not invent.** A system that defines excellence and then grades itself against that definition will find it has achieved excellence. So every top descriptor cites an artifact that exists, and a worker who did not choose the anchor re-quotes its span, verifies the control does not share the property, and is asked to find something better.
-
-**Honesty about the residual.** The most useful section of a report is the one listing what was *not* done. "Nothing was left on the table" is unfalsifiable. "Here is exactly what was left" is a claim you can check.

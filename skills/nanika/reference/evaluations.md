@@ -5,194 +5,190 @@ not write it. **Read when:** never during a run. Read by whoever runs an evaluat
 checking what `DELTA: UNMEASURED` in `SKILL.md` is a claim about.
 
 **Every evaluation in this file is `status: NEVER RUN`.** None has produced a number. Nothing in
-`SKILL.md` is justified by a result from this file, and if it ever is, the report header's
-`delta: UNMEASURED` (`SKILL.md` §5) and the opening `DELTA: UNMEASURED.` paragraph are the tokens that must change —
-no other line in the skill claims a measured effect.
+`SKILL.md` is justified by a result from this file. If one ever is, the report header's
+`delta: UNMEASURED` (`SKILL.md` §5) and the opening `DELTA: UNMEASURED.` paragraph are the tokens that must
+change; no other line in the skill claims a measured effect.
 
 Contents: E1 skill delta · E2 instruction-compliance vs verbal-compliance · E3 deletion control ·
 E4 weakest-tier survival · §5 what each result would change.
 
 Read row counts from the actual card; do not infer execution capacity from mixed instruction units.
 
----
+## E1: Skill delta
 
-## E1 — Skill delta
-
-**status: NEVER RUN.** No arm of this has been executed. The design below is complete enough to run and
+status: NEVER RUN. No arm of this has been executed. The design below is complete enough to run and
 is pre-registered here so that a later run cannot choose its analysis after seeing the scores.
 
-**Question.** Does an agent handed this skill produce a better deliverable than the same agent handed the
-same brief without it — and if it does, is the gain in the machinery or in the prose?
+Question. Does an agent handed this skill produce a better deliverable than the same agent handed the
+same brief without it? If it does, is the gain in the machinery or in the prose?
 
-**Arms**, three, all on the same brief and the same model tier:
-- **W** with-skill: `SKILL.md` plus `reference/`, run to completion.
-- **N** no-skill: the brief alone, plus "produce the best version of this you can."
-- **M** skill-minus-run-directory: `SKILL.md` with the Run Card, the identities and every `ev:` path
+Arms, three, all on the same brief and the same model tier:
+- W, with-skill: `SKILL.md` plus `reference/`, run to completion.
+- N, no-skill: the brief alone, plus "produce the best version of this you can."
+- M, skill-minus-run-directory: `SKILL.md` with the Run Card, the identities and every `ev:` path
   requirement removed, the prose kept. Isolates the harness from the writing. M is the arm that decides
-  whether this document is a machine or an essay, and it is the arm most likely to embarrass it.
+  whether this document is a machine or an essay.
 
-**Briefs**, three, fixed before any arm runs, one per deliverable class, each with a real recipient and a
+Briefs, three, fixed before any arm runs, one per deliverable class, each with a real recipient and a
 pre-written acceptance list: (1) a technical decision memo, (2) a small library plus its README, (3) a
 one-page plan with a named approver.
 
-**Unit of analysis.** One (brief × arm × repetition) deliverable, scored on a 0-3 weighted rubric written
-**before any arm runs** by someone who will not judge, using a five-dimension shape inside the 3-5 range
-this skill produces at row 1.10. **Primary measure:** the mean of three judges' blind **pointwise**
+Unit of analysis. One (brief × arm × repetition) deliverable, scored on a 0-3 weighted rubric written
+before any arm runs by someone who will not judge, using a five-dimension shape inside the 3-5 range
+this skill produces at row 1.10. The primary measure is the mean of three judges' blind pointwise
 weighted scores for that deliverable. The pairwise judging below is a secondary measure and feeds no
 t-test.
 
-**n, stated as numbers rather than as field names:**
-- 3 briefs × 3 arms × **6 repetitions** = **54 deliverables**.
-- Paired analysis: the primary contrast is W − N within brief and repetition → **18 paired observations**.
-- **3 judges**, drawn from different model families where the host offers them, score every deliverable
-  pointwise. **Secondary:** the same judges compare each W–N pair in **both orders** → 6 returns per pairing,
-  up to 3 order-consistent verdicts; an order-inconsistent judge is `inconsistent`, a state rather than a
-  loss, per the same rule row 4.1 uses [EV-16b].
+n, stated as numbers rather than as field names:
+- 3 briefs × 3 arms × 6 repetitions = 54 deliverables.
+- Paired analysis: the primary contrast is W − N within brief and repetition → 18 paired observations.
+- 3 judges, drawn from different model families where the host offers them, score every deliverable
+  pointwise. As the secondary measure, the same judges compare each W–N pair in both orders → 6 returns
+  per pairing, up to 3 order-consistent verdicts; an order-inconsistent judge is `inconsistent`, a state
+  rather than a loss, per the same rule row 4.1 uses [EV-16b].
 - Judges never learn the arm. Deliverables are stripped of any card, header or run-directory artefact
-  before judging — a W deliverable that arrives carrying its Fulfillment Report is unblindable and is
+  before judging. A W deliverable that arrives carrying its Fulfillment Report is unblindable and is
   re-rendered without it, or the pairing is void.
 
-**Pre-registered effect size and power.**
-- **Minimum effect of interest: +0.40** on the 0-3 weighted rubric score (W over N). Below that, the
+Pre-registered effect size and power:
+- Minimum effect of interest: +0.40 on the 0-3 weighted rubric score (W over N). Below that, the
   skill costs more agents than it earns quality, at the envelope `SKILL.md` §3 prices.
-- Assumed SD of the **paired difference** W − N: **0.55 points**. This is an assumption, not a
-  measurement — no such SD has been observed for this rubric on this task class — and it is the SD of the
-  difference, not of a single arm's score, because that is the denominator a paired test uses. +0.40
-  against 0.55 is **d = 0.73**.
-- A paired t-test on **n = 18** pairs at α = 0.05, two-sided, reaches **80% power at d ≈ 0.70** (0.81 at
+- Assumed SD of the paired difference W − N: 0.55 points. This is an assumption, not a measurement; no
+  such SD has been observed for this rubric on this task class. It is the SD of the difference, not of a
+  single arm's score, because that is the denominator a paired test uses. +0.40 against 0.55 is
+  d = 0.73.
+- A paired t-test on n = 18 pairs at α = 0.05, two-sided, reaches 80% power at d ≈ 0.70 (0.81 at
   d = 0.71), *conditional on the assumed SD*. That power is symmetric and covers two decisions: excluding
   +0.40 when the true effect is 0 (outcome 1), and excluding 0 when it is +0.40 (outcome 2's positive
   sub-case). Outcome 3 needs a lower bound above +0.40, which a true +0.40 reaches only about 2.5% of the
   time; 80% power for outcome 3 needs a true effect near +0.79 at this SD.
   **If the observed SD of the paired difference exceeds 0.57** (= 0.40 / 0.70), **the study is
-  underpowered for +0.40, and a CI that fails to exclude +0.40 is read as outcome 2, never as evidence of no effect** — that condition is registered here so that it
-  cannot be discovered afterwards and reported as a finding.
+  underpowered for +0.40, and a CI that fails to exclude +0.40 is read as outcome 2, never as evidence of
+  no effect.** That condition is registered here so that it cannot be discovered afterwards and reported
+  as a finding.
 - The 18 pairs are 6 repetitions within each of 3 fixed briefs: the test is conditional on these briefs
   (brief entered as a fixed blocking factor), does not generalise to briefs outside the set, and the assumed
   SD is within-brief.
-- Secondary contrast W − M shares the same n and the same MDE and is explicitly **exploratory**: 18 pairs
+- Secondary contrast W − M shares the same n and the same MDE and is explicitly exploratory: 18 pairs
   cannot separate a 0.2-point machinery effect from noise, and a null there means "not measured", never
   "the machinery does nothing".
 
-**How a null reads.** Three outcomes are pre-committed, and they partition every possible 95% CI for
+How a null reads. Three outcomes are pre-committed, and they partition every possible 95% CI for
 W − N by where it sits relative to +0.40:
 1. Upper bound below +0.40 → the skill does not buy its cost. `DELTA:` becomes
    `MEASURED: no effect above +0.40 (n=18, CI …)` and `evidence.md` §4's kept table is re-opened against E3.
-2. CI contains +0.40 → **inconclusive against the pre-registered effect**, reported as such. `DELTA:` stays
+2. CI contains +0.40 → inconclusive against the pre-registered effect, reported as such. `DELTA:` stays
    `UNMEASURED` with the attempt recorded; a CI that also excludes 0 is reported as "a positive effect of
-   undetermined size", never as a measured delta. This is the most likely outcome at n = 18 if the true effect is near +0.40 and saying so
-   now is the point of writing the power statement before the run.
+   undetermined size", never as a measured delta. This is the most likely outcome at n = 18 if the true
+   effect is near +0.40, and saying so now is the point of writing the power statement before the run.
 3. Lower bound above +0.40 → a measured delta, reported with the n, the judge count, the SD actually
    observed, and the briefs.
 
-**Length control.** A W deliverable will usually be longer. Judges score against the rubric, which
-carries no length dimension, and **a win attributable to length alone scores as no delta**: any pair whose
+Length control. A W deliverable will usually be longer. Judges score against the rubric, which
+carries no length dimension, and a win attributable to length alone scores as no delta: any pair whose
 higher-scoring deliverable is >1.5× the other's token count is re-scored with both truncated to the shorter
 length, and the truncated scores are the ones that count.
 
-**What would invalidate the run.** Any of: a judge that saw an arm label; a rubric edited after an arm
+What would invalidate the run. Any of: a judge that saw an arm label; a rubric edited after an arm
 ran; briefs chosen after piloting; a deliverable missing any of its 3 pointwise scores, or a pairing
 missing any of its 6 returns (an `inconsistent` verdict is not missing); the W arm run by the same context
 that wrote the brief.
 
----
+## E2: Instruction Compliance Rate vs Verbal Compliance Rate
 
-## E2 — Instruction Compliance Rate vs Verbal Compliance Rate
+status: NEVER RUN.
 
-**status: NEVER RUN.**
+Question. When a run reports a row as done, is the work behind it there? This measures the hole
+`evidence.md` §4 admits with residue "none": ID1 checks that a path resolves, not that the file behind it
+evidences its row.
 
-**Question.** When a run reports a row as done, is the work behind it there? This is the measurement of
-the hole `evidence.md` §4 admits with residue "none": ID1 checks that a path resolves, not that the file
-behind it evidences its row.
-
-**Method.** Over **5 completed W runs** from E1, with `R` = the card's row count read off the delivered
+Method. Over 5 completed W runs from E1, with `R` = the card's row count read off the delivered
 card rather than hardcoded here (AUD step 5's rule, applied to an evaluation):
-- **ICR** = ticked rows whose `ev:` path resolves to a file that exists ÷ R, computed by a script that
+- ICR = ticked rows whose `ev:` path resolves to a file that exists ÷ R, computed by a script that
   reads the filesystem and never the transcript.
-- **VCR** = rows the run's own report claims as done ÷ R.
-- **Pass: |VCR − ICR| ≤ 0.10 in every run.** The reference figure this is aimed at is a measured gap of up to 100
-  percentage points between stated and actual process compliance [EV-14].
-- **Content sample:** in each run, **20 ticked cells** drawn at random (100 cells total) are handed to a
+- VCR = rows the run's own report claims as done ÷ R.
+- Pass: |VCR − ICR| ≤ 0.10 in every run. The reference figure this is aimed at is a measured gap of up to
+  100 percentage points between stated and actual process compliance [EV-14].
+- Content sample: in each run, 20 ticked cells drawn at random (100 cells total) are handed to a
   worker that did not run the wish, with the row text and the file, and asked one question: does this
-  file evidence this row — `yes | no | cannot tell`. Report the three counts. This is the only place the
-  content question is asked at all, and it is a sample, not a gate.
-- **Second sample, aimed at the residue `evidence.md` §4 prices at "none":** in each run, every file in
+  file evidence this row? Answers are `yes | no | cannot tell`. Report the three counts. This is the only
+  place the content question is asked at all, and it is a sample, not a gate.
+- Second sample, aimed at the residue `evidence.md` §4 prices at "none": in each run, every file in
   `spawns/` is checked against the run's own agent count and against `ext/` and `scorecards/`. A prompt
   file with no corresponding return anywhere in the run directory is *not* proof of a fake spawn, and the
   measurement is deliberately weak: report the count and the ratio, and treat a ratio far from 1 as a
   question for the next revision rather than as a detection. Nothing in the harness can settle it.
 
-**Reading it.** ICR ≈ VCR with a low `yes` rate on the content sample is the bad case, and the
+Reading it. ICR ≈ VCR with a low `yes` rate on the content sample is the bad case, and the
 interesting one: the paths resolve and the files say nothing. That result would move E3's ordering.
 
----
+## E3: Deletion control
 
-## E3 — Deletion control
-
-**status: NEVER RUN.** This is the evaluation that can only shrink this skill, which is why it is
+status: NEVER RUN. This is the evaluation that can only shrink this skill, which is why it is
 written before any result exists to defend.
 
-**Method.** One ablation per row of `evidence.md` §4's kept-mechanisms table — **fourteen rows, counted**. For
+Method. One ablation per row of `evidence.md` §4's kept-mechanisms table: fourteen rows, counted. For
 each, delete the mechanism (its card rows, its rules, its reference sections), run all three E1 briefs
 under the reduced skill, and score with the same blind judges and the same frozen rubric.
 
-**Deletion decision, specified before data collection:** define loss as full minus ablated quality. Choose a
-maximum tolerable loss for the task class before seeing results; **0.15** is an example margin and a design choice,
-not a safety invariant. A mechanism is eligible for removal when the loss's one-sided 95% upper confidence bound is below that margin
-and no hard safety/correctness gate regressed. A CI containing zero is not evidence of equivalence. A wide CI is
-inconclusive, not protection for the architecture and not permission to declare the mechanism useless.
+Deletion decision, specified before data collection. Define loss as full minus ablated quality. Choose a
+maximum tolerable loss for the task class before seeing results; 0.15 is an example margin and a design
+choice, not a safety invariant. A mechanism is eligible for removal when the loss's one-sided 95% upper
+confidence bound is below that margin and no hard safety/correctness gate regressed. A CI containing zero
+is not evidence of equivalence. A wide CI is inconclusive, not protection for the architecture and not
+permission to declare the mechanism useless.
 
-Pair full and ablated runs on the same briefs, models and budgets. Pilot the **paired-difference SD**; repeats on
-one brief and repeated judgments are not independent briefs. Prespecify class coverage, uncertainty estimation,
-maximum sample size and multiple-ablation handling. A sequential design needs valid stopping boundaries rather
-than repeated unadjusted significance tests. Three briefs alone cannot establish a 0.15-point non-inferiority claim.
+Pair full and ablated runs on the same briefs, models and budgets. Pilot the paired-difference SD; repeats
+on one brief and repeated judgments are not independent briefs.
+Prespecify class coverage, uncertainty estimation, maximum sample size and multiple-ablation handling. A
+sequential design needs valid stopping boundaries rather than repeated unadjusted significance tests. Three briefs alone cannot establish a
+0.15-point non-inferiority claim.
 
-**Ablations, in the order they will be run** (cheapest to delete first, so an early kill saves the rest):
+Ablations, in the order they will be run (cheapest to delete first, so an early kill saves the rest):
 spawn/engine preflight (0.8, 1A.7) · bold-path pricing (3.12) · salvage wiring (2.6 → 3.3) · reception spans (3R.1) · refutation
 panel (3.4-3.5) · identity audit (5.7) · both-order exit gate (4.1) · blind-pair calibration (2.3) ·
 independent acceptance checking (N1, A5) · OUTCOME fixed before generation (1.2) · plateau re-open (3.11) ·
 angle tournament (2.1-2.7) · anchor with re-quote, property,
 separation and challenge (1A.1-1A.4) · contract → frozen rubric (1.9-1.12, 1A.8).
 
-**A sub-ablation inside the anchor row.** The anchor row carries the most clauses of any kept mechanism,
-and ablating it whole answers "does anchoring help?", not "does anchor *strength* matter?"
-— which is the question the property axis and the control axis were added to serve. So the anchor
-ablation runs in four variants: full · minus the separation verdict (1A.3's control clause) · minus the
-dimension mapping (1A.2's third clause) · minus the reject list (1A.1's third clause). Same cut rule.
-The reduced variants remain deletion candidates. Apply the same upper-bound rule separately; a small observed
-difference alone does not establish no loss, and null significance is not a reason to preserve or delete a mechanism.
+A sub-ablation inside the anchor row. The anchor row carries the most clauses of any kept mechanism,
+and ablating it whole answers "does anchoring help?", not "does anchor *strength* matter?", which is the
+question the property axis and the control axis were added to serve. So the anchor ablation runs in four
+variants: full · minus the separation verdict (1A.3's control clause) · minus the dimension mapping
+(1A.2's third clause) · minus the reject list (1A.1's third clause). Same cut rule. The reduced variants
+remain deletion candidates. Apply the same upper-bound rule separately; a small observed difference alone
+does not establish no loss, and null significance is not a reason to preserve or delete a mechanism.
 
----
+## E4: Weakest-tier survival
 
-## E4 — Weakest-tier survival
+status: NEVER RUN.
 
-**status: NEVER RUN.**
+Question. Does the harness execute on the weakest model tier the host offers, or does it only read
+well on the strongest? First-party guidance is to test with every model you plan to run on, the smallest
+included [EV-3].
 
-**Question.** Does the harness execute on the weakest model tier the host offers, or does it only read
-well on the strongest? First-party guidance is to test with every model you plan to run on, the smallest included [EV-3].
-
-**Method.** All three E1 briefs, W arm only, on the weakest available tier. **3 runs.** Measure, per run:
+Method. All three E1 briefs, W arm only, on the weakest available tier, 3 runs. Measure, per run:
 rows ticked with resolving paths ÷ R; identities balancing ÷ 10; whether row 0.8's preflight was actually
-executed; and where in the card the run first drifted — the phase at which a row was ticked without its
-artifact.
+executed; and where in the card the run first drifted, meaning the phase at which a row was ticked without
+its artifact.
 
-**Pass:** ≥ 0.90 of rows carry resolving paths and ≥ 9 of 10 identities balance in all three runs.
-**Execution hypothesis, untested:** omissions may grow with instruction burden; no validated count predicts the
-first failing phase [EV-10]. Record that phase rather than inferring it from mixed units. If E4 fails, reduce the
-card instead of adding explanatory prose. E3 can inform deletion only when its uncertainty is adequate.
+Pass: ≥ 0.90 of rows carry resolving paths and ≥ 9 of 10 identities balance in all three runs.
 
----
+Execution hypothesis, untested: omissions may grow with instruction burden; no validated count predicts
+the first failing phase [EV-10]. Record that phase rather than inferring it from mixed units. If E4 fails,
+reduce the card instead of adding explanatory prose. E3 can inform deletion only when its uncertainty is
+adequate.
 
-## §5 — What each result would change
+## §5. What each result would change
 
 | result | what changes in `SKILL.md` |
 |---|---|
 | E1 outcome 1 (no effect above +0.40) | `delta:` becomes `MEASURED: no effect above +0.40 (n=18, CI …)`; `evidence.md` §4's kept table is re-opened against E3 and mechanisms are cut, not re-argued |
 | E1 outcome 2 (inconclusive) | nothing changes except that the attempt is recorded; the header stays `UNMEASURED`. Registered as the most likely outcome |
-| E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs — never a bare number |
+| E1 outcome 3 (measured delta) | `delta:` carries n, judges, observed SD and the briefs, never a bare number |
 | E1's M arm appears similar to W | treat this as an ablation lead, not proof of equivalence; apply E3's uncertainty and hard-gate conditions before deleting the bundle |
 | E2 low `yes` rate on the content sample | ID1's limitation stops being a footnote: either a content check earns a row, or `evidence.md` §4's claim narrows again |
-| E2's `spawns/` ratio far from 1 | not a detection — a question. It would put a `spawns/` identity on the next revision's agenda against whatever it must displace |
+| E2's `spawns/` ratio far from 1 | not a detection but a question. It would put a `spawns/` identity on the next revision's agenda against whatever it must displace |
 | E3 upper loss bound below its prespecified margin, no hard-gate regression | remove the eligible mechanism at revision rather than defend it by elegance |
 | E3 anchor sub-ablations meeting that same decision rule | remove the eligible anchor clauses; report measured size and execution changes without a mixed-unit load ratio |
 | E4 execution failure | reduce the card or duplication at the observed failure; use E3 only within its measured uncertainty |

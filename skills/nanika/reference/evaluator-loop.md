@@ -1,4 +1,4 @@
-# evaluator-loop.md — the scoring machinery
+# evaluator-loop.md: the scoring machinery
 
 **Owns:** generator-evaluator separation, the 0-3 scale, the rubric's shape, the three output schemas
 (`EVALUATION`, `SCORECARD`, `PAIRWISE_VERDICT`), the revision brief, and loop control.
@@ -8,35 +8,34 @@ L8's `PAIRWISE_VERDICT`, which row 4.1 hands to each of its four workers.
 Contents: L1 separation · L2 the 0-3 scale · L3 the rubric's shape · L4 `EVALUATION` · L5 `SCORECARD` ·
 L6 aggregation and the one brief · L7 loop control · L8 `PAIRWISE_VERDICT`.
 
----
-
-## L1 — Separation
+## L1: Separation
 
 The generator produces the deliverable; independent evaluators score it against the contract using the frozen
-rubric. A generator asked to grade its work grades the *intent* it held, not the artifact it produced. N1 owns
-the prohibition. **Evaluators are read-only**: they never modify the artifact, and each gets at least one way to
+rubric. A generator asked to grade its work grades the *intent* it held, not the artifact it produced; N1 owns
+the prohibition. Evaluators are read-only: they never modify the artifact, and each gets at least one way to
 exercise it (`evaluator-roster.md` RS2). A passing loop does not replace exercising the deliverable.
 
-## L2 — The 0-3 scale, and where nanika's bar differs
+## L2: The 0-3 scale, and where nanika's bar differs
 
 | Score | Level | Meaning | Ordinary decision | Wish decision |
 |-------|-------|---------|-------------------|---------------|
-| 3 | Exemplary | matches or exceeds the sourced score-3 anchor | ACCEPT | **required on every dimension** for candidate ACCEPT |
-| 2 | Sufficient | meets the acceptance criteria | ACCEPT | REVISE — and stages in the refutation panel |
+| 3 | Exemplary | matches or exceeds the sourced score-3 anchor | ACCEPT | required on every dimension for candidate ACCEPT |
+| 2 | Sufficient | meets the acceptance criteria | ACCEPT | REVISE, and stages in the refutation panel |
 | 1 | Partial | gaps exist | REVISE | REVISE |
 | 0 | Not considered | serious issue, or a disappointment criterion tripped | BLOCK | BLOCK |
 
-Ordinary loops accept at `all dims ≥ 2`; a wish accepts at `all dims = 3`, on calibrated evaluators, ratified by
-the panel. Each disappointment criterion is a dimension's score-0 trigger, so it cannot be averaged away.
+Where an ordinary loop accepts at `all dims ≥ 2`, a wish accepts at `all dims = 3`, on calibrated evaluators,
+ratified by the panel. Each disappointment criterion is a dimension's score-0 trigger, so it cannot be averaged
+away.
 
-## L3 — The rubric's shape
+## L3: The rubric's shape
 
-3-5 dimensions, weights summing to 1.0. Each carries a **name** and one line on what it measures; a **weight**; a
-**score-3 descriptor** that after 1A.2 names its exemplar, its property and the dimension that property anchors; a
-**score-1 descriptor** drawn from the control; the **evaluator archetype**; and any **score-0 triggers**. Weight
-the dimensions where the model is weak: over-weighting one it already handles raises the score, not the artifact.
+3-5 dimensions, weights summing to 1.0. Each carries a name and one line on what it measures; a weight; a
+score-3 descriptor that after 1A.2 names its exemplar, its property and the dimension that property anchors; a
+score-1 descriptor drawn from the control; the evaluator archetype; and any score-0 triggers. Put the weight
+where the model is weak: over-weighting a dimension it already handles raises the score, not the artifact.
 
-## L4 — `EVALUATION`, the per-cycle scoring return
+## L4: `EVALUATION`, the per-cycle scoring return
 
 ```yaml
 EVALUATION:
@@ -63,7 +62,7 @@ that cycle, named in the cycle file. An unscored dimension blocks ACCEPT and car
 row 3.6. "Should be fine" and "looks strong" are not evidence. There is no `calibration:` field: calibration is
 the orchestrator's verdict on the scorecard (L5), recomputed by ID9.
 
-## L5 — `SCORECARD`, one file per `scorer_id` under `scorecards/`
+## L5: `SCORECARD`, one file per `scorer_id` under `scorecards/`
 
 ```yaml
 SCORECARD:
@@ -90,7 +89,7 @@ SCORECARD:
 A pass-2 `calibrated` is weaker evidence than a pass-1 one, because the control was named; the report's
 Calibration section shows which it was. A `replaced` scorer keeps its scorecard and its replacement gets another.
 
-## L6 — Aggregation, and the one brief
+## L6: Aggregation, and the one brief
 
 ```
 collect all EVALUATION
@@ -101,8 +100,10 @@ collect all EVALUATION
    └─ all dimensions = 3           → candidate ACCEPT → panel ratifies or demotes
 ```
 
-These are loop states, not run exits; the exit comes from `SKILL.md` §3's table. On REVISE, compile **one**
-brief, `cycles/<n>-brief.md`, deduplicated across evaluators and ordered by the gap to 3:
+These are loop states, not run exits; the exit comes from `SKILL.md` §3's table. On REVISE, compile one brief,
+`cycles/<n>-brief.md`, deduplicated across evaluators, ordered by the gap to 3, and kept inside what one pass can
+act on: a thirty-item brief invites thirty half-fixes. The limit is a design choice, not a measured effect. A 4.2
+bonus brief opens with the lost property, the exemplar's span and the loss's `evidence_span`, then carries the items below.
 
 ```
 # brief cycle N → N+1 · angle: <the generator's angle, unchanged> · rubric R1|R2 (the version only; a reviser gets no rubric — N6, RS8)
@@ -117,10 +118,7 @@ brief, `cycles/<n>-brief.md`, deduplicated across evaluators and ordered by the 
 <the rows row 3.3's grep appended, and nothing else — a copied template row would break its count>
 ```
 
-Keep the brief inside what one pass can act on — a design choice, not a measured effect: a thirty-item brief invites thirty half-fixes. A 4.2 bonus brief opens
-with the lost property, the exemplar's span and the loss's `evidence_span`, then carries the items above.
-
-## L7 — Loop control and the comparability guard
+## L7: Loop control and the comparability guard
 
 | Parameter | Wish value |
 |-----------|-----------|
@@ -131,16 +129,18 @@ with the lost property, the exemplar's span and the loss's `evidence_span`, then
 | Several exits at once | 3.9 writes the first in `SKILL.md` §3's precedence; an `ACCEPT` there is provisional |
 | Best-of retention | keep every cycle's and every re-open's artifact; row 3.6 delivers the best, not the last |
 
-A new dimension added by an amendment gets an evaluator that passes 2.3's blind pair, or is `no-pair`, before
-it scores. **Comparability guard.** A score is comparable across cycles only when the rubric text, the evaluator
-prompt and the evaluator model are unchanged, which is why L4 requires all three. When any changes, re-score the
-retained artifacts before comparing a trend across the boundary.
+**Comparability guard.** A score is comparable across cycles only when the rubric text, the evaluator prompt and
+the evaluator model are unchanged, which is why L4 requires all three. When any changes, re-score the retained
+artifacts before comparing a trend across the boundary. A new dimension added by an amendment gets an evaluator
+that passes 2.3's blind pair, or is `no-pair`, before it scores.
 
-## L8 — `PAIRWISE_VERDICT`, the P4 exit-gate return
+## L8: `PAIRWISE_VERDICT`, the P4 exit-gate return
 
 Row 4.1 spawns four workers: two pairings (this artifact vs the P1A exemplars, each worker receiving every one;
-this artifact vs the retained runner-up) × two orders. The exemplar pairing returns one verdict **per named 1A.1
-property**; the runner-up pairing one verdict overall. Each worker returns exactly this:
+this artifact vs the retained runner-up) × two orders. The runner-up pairing returns one verdict overall. The
+exemplar pairing returns one verdict per named 1A.1 property, because the artifact was built not to resemble the
+exemplar: an overall preference between them is mostly a preference about genre. Each worker returns exactly
+this:
 
 ```yaml
 PAIRWISE_VERDICT:
@@ -155,6 +155,4 @@ PAIRWISE_VERDICT:
 **Aggregation is mechanical.** Map both returns back to the labelled items and compare entry by entry, matched on
 `property`: the same winner in both orders → `won` or `lost`; `tie` in both orders → `tied`; anything else →
 `inconsistent`, a state, not a loss. A missing property is a missing return. The header counts all four
-(`SKILL.md` §5). A `lost` entry's `property` and `evidence_span` are row 4.2's brief. The exemplar is judged per
-property because the artifact was built not to resemble it: an overall preference between them is mostly a
-preference about genre.
+(`SKILL.md` §5). A `lost` entry's `property` and `evidence_span` are row 4.2's brief.
