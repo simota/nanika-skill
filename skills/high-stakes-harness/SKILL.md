@@ -6,7 +6,7 @@ compatibility: "Needs a writable filesystem and a way to spawn an independent wo
 metadata:
   requires-capability: spawn-independent-worker
 ---
-# Wish: the one-shot delivery harness
+# High-stakes harness: one-shot delivery for costly work
 
 Use it when a materially wrong first delivery is costly to undo and extra search beyond the domain process
 has a specific use: a performance target the domain path could not reach, a document that must land with one
