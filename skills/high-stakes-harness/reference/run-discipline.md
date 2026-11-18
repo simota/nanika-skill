@@ -8,7 +8,7 @@ row 1.9 to P5; and at P5, for §5's classes (row 5.2) and §6's completion sweep
 Contents: §0 stance · §1 contract lint · §2 Decision Ledger (Q4-Q6) · §5 acceptance provenance (Q12-Q15) · §6
 completion integrity (Q16-Q19). Q1-Q3 were retired; Q7-Q11 now live on card rows 3.1, 3.7 and on N1, N3.
 
-While the nanika machinery attempts to improve the artifact, these rules keep the *run* honest. A run that
+While the high-stakes-harness machinery attempts to improve the artifact, these rules keep the *run* honest. A run that
 quietly lowered its bar, dropped a criterion, or shipped a stub can still emit a beautiful Fulfillment Report.
 
 ## §0. Stance

@@ -4,7 +4,7 @@
 actual tool; the two preflight commands (§2a for card row 0.8, §2b for card row 1A.7); the role
 names every spawn is authored in; and how roles are spread across engines.
 This is the only file in the skill where a host-specific name may appear. A host tool, binary, flag or
-model string anywhere else is a portability defect, and the claim "porting nanika is an edit to one file" is
+model string anywhere else is a portability defect, and the claim "porting high-stakes-harness is an edit to one file" is
 false the moment one leaks.
 **Read when:** P0, for §2a, and P1A, for §2b. Those are the two `READ:` lines that name this file
 and the two loads `SKILL.md` §4's `READ:` lines make. §3 and §4 are consulted while writing a spawn at P2, P3, P3R and
@@ -18,21 +18,21 @@ Contents: §0 capability → tool · §1 why engine diversity is worth its cost 
 
 **M1: One capability name, one mapping, one file.** The skill's frontmatter declares what it needs by
 capability (`spawn-independent-worker`), never by tool; `allowed-tools` is a host pre-approval hint, not a declaration. The table below is the only place that capability
-becomes a name a host recognises. To port nanika to a host that is not listed: add one row here, add one row
+becomes a name a host recognises. To port high-stakes-harness to a host that is not listed: add one row here, add one row
 to §2a and one to §2b, and make sure the host lets those rows run, pre-approved or approvable, without
 widening what a worker may do. Change nothing else. A host that is not in these tables is not improvised at 0.8: the run either gets a row first, or
 0.8 records the failure and `SKILL.md` §3's degraded-mode block binds.
 
 | Host | `spawn-independent-worker` resolves to | Collecting the return |
 |------|----------------------------------------|-----------------------|
-| Claude Code | the `Agent` tool with a named `subagent_type`; never `fork`, which inherits the whole conversation and is not a separate context. Interactive sessions may run every subagent in the background; under `claude -p` a spawn is foreground unless backgrounded | the return, or for a background worker the completion notification in a later turn; read the worker's file only after it arrives. A background worker's permission prompts surface in the main session; to avoid them, pre-approve the path with an `Edit(//<abs>/.nanika/**)` allow rule (path rules written as `Write(...)` are not consulted) |
-| Codex CLI | the `spawn_agent` tool, a model tool call rather than a shell command. Default multi-agent: `{message}`, returns an agent id; it starts a fresh context unless `fork_context: true`, which nanika never sets. `multi_agent_v2`: `{message, task_name, fork_turns: "none"}`; `message` and `task_name` are required, `task_name` takes only `[a-z0-9_]`, and `fork_turns` defaults to `all`, which copies the parent conversation and is not a separate context; returns the task name. v2 rejects unknown fields and the default tools ignore them, so use the schema the session's tool actually exposes | the `wait_agent` tool. Default: `{targets: [<id>], timeout_ms}`, then `close_agent({target: <id>})`; completed agents count toward the default limit of six until closed. `multi_agent_v2`: `{timeout_ms}` only, defaulting to 30 s and at most the configured maximum; it returns no content, so have the worker write its result to a file |
+| Claude Code | the `Agent` tool with a named `subagent_type`; never `fork`, which inherits the whole conversation and is not a separate context. Interactive sessions may run every subagent in the background; under `claude -p` a spawn is foreground unless backgrounded | the return, or for a background worker the completion notification in a later turn; read the worker's file only after it arrives. A background worker's permission prompts surface in the main session; to avoid them, pre-approve the path with an `Edit(//<abs>/.high-stakes-harness/**)` allow rule (path rules written as `Write(...)` are not consulted) |
+| Codex CLI | the `spawn_agent` tool, a model tool call rather than a shell command. Default multi-agent: `{message}`, returns an agent id; it starts a fresh context unless `fork_context: true`, which high-stakes-harness never sets. `multi_agent_v2`: `{message, task_name, fork_turns: "none"}`; `message` and `task_name` are required, `task_name` takes only `[a-z0-9_]`, and `fork_turns` defaults to `all`, which copies the parent conversation and is not a separate context; returns the task name. v2 rejects unknown fields and the default tools ignore them, so use the schema the session's tool actually exposes | the `wait_agent` tool. Default: `{targets: [<id>], timeout_ms}`, then `close_agent({target: <id>})`; completed agents count toward the default limit of six until closed. `multi_agent_v2`: `{timeout_ms}` only, defaulting to 30 s and at most the configured maximum; it returns no content, so have the worker write its result to a file |
 | agy | `agy -p "<prompt>"`, headless: a separate CLI process rather than an in-session worker, so 0.8 on agy tests a CLI launch. Not author-verified: flags and paths here come from third-party documentation | stdout has been reported unreliable; have the prompt write its result to an absolute path and read the file |
 
 **Never grant a worker blanket permission.** Workers read untrusted material (web pages, candidates,
 exemplars), so a worker spawned with permission checks disabled (`--dangerously-skip-permissions`, `--yolo`,
 `--dangerously-bypass-approvals-and-sandbox`) is a prompt-injection path to the host's shell. Pre-approve only
-writes under `<abs>/.nanika/`, or run the whole session in a disposable container and say so in `gate.md`.
+writes under `<abs>/.high-stakes-harness/`, or run the whole session in a disposable container and say so in `gate.md`.
 
 Here the worker capability means a *separate context*, not demonstrated independent judgment or a separate turn. A second reply in the same context
 is the configuration N1 forbids, whatever the host calls it.
@@ -51,7 +51,7 @@ engine is reachable the run still proceeds; §5 says on what terms.
 
 **M2: The preflight is a command that ran, not a description of one.** Run the row for this host verbatim
 at row 0.8, after row 0.7's approval. Append the literal command and its exit
-status to `.nanika/runs/<slug>/gate.md`; that file is row 0.8's `ev:`. **Exit 0 sets `mode: full`; any
+status to `.high-stakes-harness/runs/<slug>/gate.md`; that file is row 0.8's `ev:`. **Exit 0 sets `mode: full`; any
 non-zero exit sets `mode: single-agent(declared)`**, and from there `SKILL.md` §3's degraded-mode block,
 not this file and not your judgment, says what the run costs. Never infer the result from the fact that a
 spawn tool is listed above: a listed tool the host will not run (disabled, denied or unapprovable) fails
@@ -63,35 +63,35 @@ Use native process/dispatch receipts when supplied by the platform; otherwise re
 Claude Code:
 
 ```
-rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell, first
+rm -f <abs>/.high-stakes-harness/runs/<slug>/preflight.txt          # shell, first
 ```
 then (it may run in the background; its permission prompt then appears in the main session):
 ```
 Agent(
   subagent_type: "general-purpose",
   description: "spawn preflight",
-  prompt: "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt using the Write tool.
+  prompt: "Write the single line PREFLIGHT-OK to <abs>/.high-stakes-harness/runs/<slug>/preflight.txt using the Write tool.
            Then reply with exactly PREFLIGHT-OK and nothing else. Do nothing else at all."
 )
 ```
 then, only after the worker's return or completion notification has arrived, turn it into an exit status:
 ```
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+tr -d '\r' < <abs>/.high-stakes-harness/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.high-stakes-harness/runs/<slug>/gate.md
 ```
 
 Codex CLI:
 
 ```
-rm -f <abs>/.nanika/runs/<slug>/preflight.txt                       # shell
+rm -f <abs>/.high-stakes-harness/runs/<slug>/preflight.txt          # shell
 # default multi-agent tools:
-spawn_agent({message: "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt, then return exactly PREFLIGHT-OK."})
+spawn_agent({message: "Write the single line PREFLIGHT-OK to <abs>/.high-stakes-harness/runs/<slug>/preflight.txt, then return exactly PREFLIGHT-OK."})
                                                                     # tool call → <id>
 wait_agent({targets: ["<id>"], timeout_ms: 300000})                 # tool call
 close_agent({target: "<id>"})                                       # tool call; frees the slot
 # multi_agent_v2 tools, instead of the three calls above:
-spawn_agent({message: "<the same message>", task_name: "nanika_preflight", fork_turns: "none"})   # → task name
+spawn_agent({message: "<the same message>", task_name: "high_stakes_harness_preflight", fork_turns: "none"})   # → task name
 wait_agent({timeout_ms: 300000})                                    # repeat while timed_out is true
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+tr -d '\r' < <abs>/.high-stakes-harness/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.high-stakes-harness/runs/<slug>/gate.md
 ```
 
 Which pair to call is read off the `spawn_agent` schema the session exposes, not chosen: a `task_name`
@@ -104,9 +104,9 @@ ability to spawn a worker that writes, and it is recorded as one.
 agy:
 
 ```
-rm -f <abs>/.nanika/runs/<slug>/preflight.txt
-agy -p "Write the single line PREFLIGHT-OK to <abs>/.nanika/runs/<slug>/preflight.txt. Reply with exactly PREFLIGHT-OK." </dev/null >/dev/null 2>&1
-tr -d '\r' < <abs>/.nanika/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.nanika/runs/<slug>/gate.md
+rm -f <abs>/.high-stakes-harness/runs/<slug>/preflight.txt
+agy -p "Write the single line PREFLIGHT-OK to <abs>/.high-stakes-harness/runs/<slug>/preflight.txt. Reply with exactly PREFLIGHT-OK." </dev/null >/dev/null 2>&1
+tr -d '\r' < <abs>/.high-stakes-harness/runs/<slug>/preflight.txt | grep -qxE '[[:space:]]*PREFLIGHT-OK[[:space:]]*'; echo "0.8 spawn preflight exit=$?" >> <abs>/.high-stakes-harness/runs/<slug>/gate.md
 ```
 
 The write needs permission for that path. Grant it narrowly in agy's own settings; never with the
@@ -120,7 +120,7 @@ deletes `preflight.txt` first, because a stale file passes a preflight nothing p
 ## §2b. Engine reachability preflight, for card row 1A.7
 
 **M3: One command per extra engine, run at P1A, before P2 plans around it.** Same form as §2a and the
-same discipline: the command and its exit status are appended to `.nanika/runs/<slug>/engines.md`, which is
+same discipline: the command and its exit status are appended to `.high-stakes-harness/runs/<slug>/engines.md`, which is
 row 1A.7's `ev:`. It is a separate file from `gate.md` on purpose, so a P1A
 result never overwrites a P0 one. An engine whose command exits
 non-zero is struck from the plan at P1A, not carried to P2 and discovered there. With every extra
@@ -130,7 +130,7 @@ engine struck, the run is a monoculture and the report header says so (`monocult
 engine is proven by §2a and is not re-tested here.
 
 ```
-R=<abs>/.nanika/runs/<slug>
+R=<abs>/.high-stakes-harness/runs/<slug>
 ok() { tr -d '\r' < "$1" | grep -qxE '[[:space:]]*ENGINE-OK[[:space:]]*'; }
 
 # Codex CLI as an extra engine. Outside a git repository it needs --skip-git-repo-check; stdin is closed

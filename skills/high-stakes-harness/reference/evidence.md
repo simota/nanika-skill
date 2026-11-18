@@ -103,7 +103,7 @@ alone, which is why E3 gained four anchor sub-variants instead of a citation.
 
 **Retained hypotheses, not established quality gains:** each row is one ablation for `evaluations.md` E3.
 
-| # | Mechanism (rows) | Intended role, unmeasured in nanika | Evidence |
+| # | Mechanism (rows) | Intended role, unmeasured in high-stakes-harness | Evidence |
 |---|---|---|---|
 | 1 | Contract → frozen rubric (1.9-1.12, 1A.8) | keep the user's criteria stable | checklist feedback beats scalar reward, training-time only [EV-24] |
 | 2 | Sourced anchor, re-quoted, property-, separation- and challenge-checked (1A.1-1A.4) | make the benchmark inspectable | design argument; the re-read is mechanical, the verdicts are not (`benchmark-anchoring.md` B8, B9-B10) |

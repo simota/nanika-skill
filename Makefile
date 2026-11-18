@@ -1,6 +1,6 @@
-# nanika — install helpers
+# high-stakes-harness — install helpers
 #
-#   make link      symlink skills/nanika into every installed host's skills dir
+#   make link      symlink skills/high-stakes-harness into every installed host's skills dir
 #   make unlink    remove those symlinks
 #   make status    show what is installed, per host
 #   make check     verify the skill is self-contained and internally consistent
@@ -15,7 +15,7 @@
 #   make link PROJECT=/path/to/repo  # that project's .claude/skills instead
 #   make link SKILLS_DIR=/some/path  # one literal path; AGENT unused
 
-NAME    := nanika
+NAME    := high-stakes-harness
 REPO    := $(patsubst %/,%,$(dir $(abspath $(lastword $(MAKEFILE_LIST)))))
 SKILL   := $(REPO)/skills/$(NAME)
 PAGES   := $(REPO)/docs
@@ -78,7 +78,7 @@ DOCS := README.md skills/$(NAME)/*.md skills/$(NAME)/reference/*.md
 .PHONY: help link unlink status check test pages
 
 help: ## list targets
-	@echo "nanika - skill install"
+	@echo "high-stakes-harness - skill install"
 	@echo
 	@grep -E '^[a-z-]+:.*## ' $(lastword $(MAKEFILE_LIST)) \
 	  | awk -F':.*## ' '{printf "  %-8s %s\n", $$1, $$2}'
@@ -102,7 +102,7 @@ link: ## symlink the skill into every installed host's skills dir
 	  echo "linked   $$d -> $(SKILL)"; n=$$((n+1)); \
 	done; \
 	if [ $$n -eq 0 ]; then echo "nothing linked - no skills directory found for: $(LINKFOR)" >&2; exit 1; fi; \
-	echo "invoke it with:  nanika   (or /nanika in a slash-command harness)"
+	echo "invoke it with:  high-stakes-harness   (or /high-stakes-harness in a slash-command harness)"
 
 unlink: ## remove the symlinks this Makefile created
 	@for t in $(QTARGETS); do \

@@ -16,8 +16,8 @@
 set -u
 
 SRC=$(cd "$(dirname "$0")/.." && pwd)
-SKILL=skills/nanika
-TMP=$(mktemp -d "${TMPDIR:-/tmp}/nanika-check.XXXXXX") || exit 1
+SKILL=skills/high-stakes-harness
+TMP=$(mktemp -d "${TMPDIR:-/tmp}/high-stakes-harness-check.XXXXXX") || exit 1
 trap 'rm -rf "$TMP"' EXIT
 trap 'exit 130' INT TERM
 
@@ -107,14 +107,14 @@ sed -i.bak '1s/^---$/-/' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
 case_ fail "frontmatter that does not open with a fence" "does not open a frontmatter fence"
 
 new_ wrong-name
-sed -i.bak 's/^name: nanika$/name: something-else/' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
-case_ fail "frontmatter whose name is not the skill" "no 'name: nanika' line"
+sed -i.bak 's/^name: high-stakes-harness$/name: something-else/' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
+case_ fail "frontmatter whose name is not the skill" "no 'name: high-stakes-harness' line"
 
 new_ name-outside-fence
-sed -i.bak 's/^name: nanika$/name: something-else/' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
-awk 'f == 0 && NR > 1 && /^---$/ { print; print "name: nanika"; f = 1; next } { print }' \
+sed -i.bak 's/^name: high-stakes-harness$/name: something-else/' "$d/$SKILL/SKILL.md"; changed_ "$d/$SKILL/SKILL.md"
+awk 'f == 0 && NR > 1 && /^---$/ { print; print "name: high-stakes-harness"; f = 1; next } { print }' \
 	"$d/$SKILL/SKILL.md" > "$d/tmp.md" && mv "$d/tmp.md" "$d/$SKILL/SKILL.md"
-case_ fail "the right name only after the fence closes" "no 'name: nanika' line"
+case_ fail "the right name only after the fence closes" "no 'name: high-stakes-harness' line"
 
 new_ long-description
 awk 'NR==3 && /^description:/ { printf "description: \"%s\"\n", sprintf("%*s", 500, "") ; next } { print }' \
@@ -203,7 +203,7 @@ printf '\nA figure nobody registered [EV-98].\n' >> "$d/$SKILL/reference/run-dis
 case_ fail "an [EV-n] tag in a reference file, unregistered" "cites EV-98"
 
 new_ missing-owns
-sed -i.bak '/\*\*Owns:\*\*/d' "$d/$SKILL/reference/nanika-ledger.md"; changed_ "$d/$SKILL/reference/nanika-ledger.md"
+sed -i.bak '/\*\*Owns:\*\*/d' "$d/$SKILL/reference/high-stakes-harness-ledger.md"; changed_ "$d/$SKILL/reference/high-stakes-harness-ledger.md"
 case_ fail "a reference file with no Owns: header" "no **Owns:** header"
 
 new_ missing-contents

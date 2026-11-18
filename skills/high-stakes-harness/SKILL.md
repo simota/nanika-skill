@@ -1,6 +1,6 @@
 ---
-name: nanika
-description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; nanika may wrap them. Explicit invocation still requires spend consent."
+name: high-stakes-harness
+description: "Optional high-cost quality harness for code, documents, designs or plans when a materially wrong first delivery is costly to undo AND extra search or scrutiny beyond the domain process is justified. Not for ordinary reversible work or merely important/best/critical phrasing. Domain skills own the work; high-stakes-harness may wrap them. Explicit invocation still requires spend consent."
 allowed-tools: Read Write Edit Bash WebSearch WebFetch Agent
 compatibility: "Needs a writable filesystem and a way to spawn an independent worker with its own context; reference/engine-map.md maps that to each host."
 metadata:
@@ -44,7 +44,7 @@ that a run's deliverable beats the domain skill's alone.
    row that executes it, and a file or section a row names is part of that row. §4 says only when a phase
    opens and what to load. An imperative found anywhere else is a specification defect: record it in the
    report's Amendment section and do not execute it.
-2. Write the card to `.nanika/runs/<slug>/card.md` before Phase 0 and keep it current (A1).
+2. Write the card to `.high-stakes-harness/runs/<slug>/card.md` before Phase 0 and keep it current (A1).
 3. Evidence is a path plus content that supports the row [EV-14]. Each filled `ev:` points to a file in the
    run directory, and a file alone is not enough. All persistence is subject to A2; withheld evidence limits
    the claim and never licenses a tick.
@@ -66,21 +66,21 @@ ext = filled only by a worker that was not in the context it checks; `ext/<row>.
   prompt and raw return, appended, never overwritten. A saved record does not authenticate a worker.
 
 P0 SCARCITY GATE  → gate.md
-[ ] 0.1 run dir `.nanika/runs/<slug>/` exists and holds this card                                              ev:
-[ ] 0.2 ledger read and counted (`nanika-ledger.md` LG1, LG3); "this is wish #N", last date/intent/exit stated  ev:
+[ ] 0.1 run dir `.high-stakes-harness/runs/<slug>/` exists and holds this card                                 ev:
+[ ] 0.2 ledger read and counted (`high-stakes-harness-ledger.md` LG1, LG3); "this is wish #N", last date/intent/exit stated  ev:
 [ ] 0.3 every `outcome: pending` entry whose `ask_after` has passed is asked LG4's question, its `verify_by` read
         out; the answer is written, or `unknown` if declined. An invocation that only records an outcome runs
         0.2-0.3, spends nothing and closes                                                                     ev:
 [ ] 0.4 deliverable class and scope class chosen and written; the cycle cap AND the generation level read off §3's
         scope line for that class and written into the card header                                            ev:
 [ ] 0.5 state the concrete cost of a materially wrong first delivery and why the cheaper domain path is insufficient.
-        Recommend nanika only when that loss is high AND additional search or scrutiny has a specific expected use;
+        Recommend high-stakes-harness only when that loss is high AND additional search or scrutiny has a specific expected use;
         otherwise recommend the cheaper path. Unknown stakes or marginal value → clarify, not launch.
         Urgency words, novelty alone and an explicit invocation are not severity evidence                       ev:
 [ ] 0.6 envelope computed from the §3 formula, not quoted from prose                                           ev:
 [ ] 0.7 user approved the stated spend ceiling (including only explicitly granted headroom) and the data/retention
         boundary under A2; record consent in the approved form and any override of the cheaper-path recommendation.
-        `/nanika` alone is not informed authorization                                                          ev:
+        `/high-stakes-harness` alone is not informed authorization                                             ev:
 [ ] 0.8 spawn preflight: `engine-map.md` §2a's row for this host run verbatim, after 0.7; the exit line it appends
         to gate.md sets `mode:`; non-zero → §3's degraded list binds                                           ev:
 
@@ -222,7 +222,7 @@ P5 DELIVER  → report.md
         labelled `rubric judgment`                                                                             ev:
 [ ] 5.3 completion sweep (`run-discipline.md` Q18): the command, the hit count, the accounting for each hit    ev:
 [ ] 5.4 unexplored-space ledger delivered as accrued; row count equals `unexplored.md`'s                       ev:
-[ ] 5.5 ledger entry appended (`nanika-ledger.md` LG2) with `outcome: pending`, `verify_by:` (what would show the
+[ ] 5.5 ledger entry appended (`high-stakes-harness-ledger.md` LG2) with `outcome: pending`, `verify_by:` (what would show the
         deliverable worked in use: the OUTCOME command, or for a design or plan, "built, and <criterion> held")
         and `ask_after:` the date or event the user picks; copied to `ledger-entry.md`; the delivery message
         ends with LG4's question                                                                               ev:
@@ -305,7 +305,7 @@ so 4.1's runner-up is the second-best retained artifact (3.6), or `not applicabl
 means each ships a complete artifact. Row 0.6 lowers N=5 to 3, and rewrites the header, when its envelope
 cannot cover N=5. P4 adds at most one bonus cycle, for a total of N+1.
 
-Envelope, computed at 0.6. Include wrapped-domain work and retries, not just nanika seats. Counts are not
+Envelope, computed at 0.6. Include wrapped-domain work and retries, not just high-stakes-harness seats. Counts are not
 monetary cost or quality evidence; name the cost units actually bounded and any unpriced exposure. A low point
 estimate authorizes no overrun.
 
@@ -354,7 +354,7 @@ only legal exits are `single-agent-best-effort`, `budget-reached` or `BLOCK`. Th
 
 Reference files below are basenames in `reference/`. *Evidenced* is §0 item 4's.
 
-- P0 · ENTER: the request exists · READ: `nanika-ledger.md`; `engine-map.md` §2a.
+- P0 · ENTER: the request exists · READ: `high-stakes-harness-ledger.md`; `engine-map.md` §2a.
 - P1 · ENTER: 0.1-0.8 evidenced · READ: `crystallization-dialogue.md`; `run-discipline.md` §1-§2;
   `evaluator-roster.md` §1-§3; for class `document`, `doc-deliverables.md` §5.
 - P1A · ENTER: 1.1-1.12 evidenced · READ: `benchmark-anchoring.md`; `engine-map.md` §2b. The control and

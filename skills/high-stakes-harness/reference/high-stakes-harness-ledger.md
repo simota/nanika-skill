@@ -1,4 +1,4 @@
-# nanika-ledger.md: the scarcity record
+# high-stakes-harness-ledger.md: the scarcity record
 
 **Owns:** where the usage history lives, its schema, the counting rule, and the outcome backfill.
 **Read when:** P0, for rows 0.2-0.3. Row 5.5 appends one entry at P5 (a 1A.6 decline appends at the decline)
@@ -8,14 +8,14 @@ A wish is scarce only if something counts it. Without a ledger, "once-in-a-lifet
 
 ## LG1: Location
 
-`.nanika/ledger.md`, in the repository or project directory the wish is being spent on. Create it on first use.
-One YAML block per entry under a `## Entries` heading. It is distinct from `.nanika/runs/<slug>/`, which holds
+`.high-stakes-harness/ledger.md`, in the repository or project directory the wish is being spent on. Create it on first use.
+One YAML block per entry under a `## Entries` heading. It is distinct from `.high-stakes-harness/runs/<slug>/`, which holds
 one run. A2 governs retention and sharing: keep it private and untracked by default; commit only an approved
 sanitized record.
 
 ## LG2: Schema
 
-One block per wish, appended at row 5.5 and copied verbatim to `.nanika/runs/<slug>/ledger-entry.md`, which is
+One block per wish, appended at row 5.5 and copied verbatim to `.high-stakes-harness/runs/<slug>/ledger-entry.md`, which is
 5.5's `ev:` because ID1 resolves only paths inside the run directory. For a run declined at 1A.6, the entry is
 written at the decline, with `mode` from row 0.8, `dims_at_ceiling`, `outcome_measured`, `comparative`, `engines`,
 `verify_by` and `ask_after` as `n/a`, `budget` as the agents spent so far, and `outcome: unknown`, which LG4 never asks about.
@@ -57,7 +57,7 @@ passed (an event counts as passed when the user says so), not only the last one,
 > the disappointments you named — satisfied, partial, or regretted?"
 
 One answer per entry, then the gate proceeds. **Reachable with a single wish:** the delivery message at 5.5 ends
-with this question and says it can be answered now, or later by invoking nanika only to record an outcome, which
+with this question and says it can be answered now, or later by invoking high-stakes-harness only to record an outcome, which
 runs rows 0.2-0.3, spends nothing and closes. Where `verify_by` is a command, re-running it is the first thing to
 offer before asking.
 

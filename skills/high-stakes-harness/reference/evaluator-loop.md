@@ -15,7 +15,7 @@ rubric. A generator asked to grade its work grades the *intent* it held, not the
 the prohibition. Evaluators are read-only: they never modify the artifact, and each gets at least one way to
 exercise it (`evaluator-roster.md` RS2). A passing loop does not replace exercising the deliverable.
 
-## L2: The 0-3 scale, and where nanika's bar differs
+## L2: The 0-3 scale, and where high-stakes-harness's bar differs
 
 | Score | Level | Meaning | Ordinary decision | Wish decision |
 |-------|-------|---------|-------------------|---------------|

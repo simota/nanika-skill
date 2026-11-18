@@ -1,4 +1,4 @@
-# nanika
+# high-stakes-harness
 
 ```
 run report ─────────────────────────────────────────────── —
@@ -16,7 +16,7 @@ run report ───────────────────────
 
 > ### A mechanism that leaves no artifact *did not happen*.
 
-`nanika` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable, whether code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured nanika quality gain is established.
+`high-stakes-harness` is a self-contained agent skill: a scarcity-gated, one-shot quality harness for any deliverable, whether code, document, design, or plan. It does not know how to write your thing. It attempts additional search and scrutiny; no measured high-stakes-harness quality gain is established.
 
 *Named for the thing in the story that grants any wish, absolutely, and then counts what it cost.*
 
@@ -76,7 +76,7 @@ Yours is computed at row 0.6, and no point estimate authorizes an overrun. Appro
 
 ## The ledger
 
-`nanika` keeps an A2-approved private, untracked `.nanika/ledger.md` in the project you spend it on: one entry per wish, with how it exited and whether it actually worked and satisfied you. You backfill that last part whenever you choose to answer, at the next wish or by a call that only records it. Raw quotes, prompts and losing candidates are not automatically safe to retain or commit; A2 controls their disclosure and retention.
+`high-stakes-harness` keeps an A2-approved private, untracked `.high-stakes-harness/ledger.md` in the project you spend it on: one entry per wish, with how it exited and whether it actually worked and satisfied you. You backfill that last part whenever you choose to answer, at the next wish or by a call that only records it. Raw quotes, prompts and losing candidates are not automatically safe to retain or commit; A2 controls their disclosure and retention.
 
 Before anything is spent, a gate counts how often you have spent one of these, shows how the last ones turned out, and tells you when what you are asking for is ordinary work that does not need it. It informs; it never refuses. A gate that refuses is a gate people route around.
 
@@ -108,9 +108,9 @@ Codex is linked into `~/.agents/skills`, the location current Codex reads; an ol
 ## Usage
 
 ```
-/nanika "the investor update that decides whether we raise"
-/nanika "the migration guide our whole user base will read once"
-/nanika "the API surface we cannot change after launch"
+/high-stakes-harness "the investor update that decides whether we raise"
+/high-stakes-harness "the migration guide our whole user base will read once"
+/high-stakes-harness "the API surface we cannot change after launch"
 ```
 
 ## What is inside
@@ -120,7 +120,7 @@ Makefile
 README.md
 docs/index.html                       the page at the project site
 tools/check.sh                        the fixture battery behind `make test`
-skills/nanika/
+skills/high-stakes-harness/
   SKILL.md                            59-row card and 14 rule addresses; referenced tables also bind
   MANIFEST.md                         reference ownership, not an execution-capacity estimate
   reference/
@@ -135,5 +135,5 @@ skills/nanika/
     run-discipline.md                 contract lint, decision ledger, completion integrity
     doc-deliverables.md               when the deliverable is a document
     engine-map.md                     the only file allowed to name a host
-    nanika-ledger.md                  the scarcity record, and what it is not evidence of
+    high-stakes-harness-ledger.md     the scarcity record, and what it is not evidence of
 ```
