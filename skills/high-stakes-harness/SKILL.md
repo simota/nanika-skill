@@ -75,7 +75,7 @@ P0 SCARCITY GATE  → gate.md
         scope line for that class and written into the card header                                            ev:
 [ ] 0.5 state the concrete cost of a materially wrong first delivery and why the cheaper domain path is insufficient.
         Recommend high-stakes-harness only when that loss is high AND additional search or scrutiny has a specific expected use;
-        otherwise recommend the cheaper path. Unknown stakes or marginal value → clarify, not launch.
+        otherwise recommend the cheaper path. Unknown stakes or marginal value → clarify with the user, not launch.
         Urgency words, novelty alone and an explicit invocation are not severity evidence                       ev:
 [ ] 0.6 envelope computed from the §3 formula, not quoted from prose                                           ev:
 [ ] 0.7 user approved the stated spend ceiling (including only explicitly granted headroom) and the data/retention
